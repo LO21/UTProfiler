@@ -278,7 +278,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/UTProfiler1.0.0 || mkdir -p .tmp/UTProfiler1.0.0
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/UTProfiler1.0.0/ && $(COPY_FILE) --parents ../UTProfiler/main.cpp .tmp/UTProfiler1.0.0/ && (cd `dirname .tmp/UTProfiler1.0.0` && $(TAR) UTProfiler1.0.0.tar UTProfiler1.0.0 && $(COMPRESS) UTProfiler1.0.0.tar) && $(MOVE) `dirname .tmp/UTProfiler1.0.0`/UTProfiler1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/UTProfiler1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/UTProfiler1.0.0/ && $(COPY_FILE) --parents ../UTProfiler/UTProfiler.h .tmp/UTProfiler1.0.0/ && $(COPY_FILE) --parents ../UTProfiler/main.cpp .tmp/UTProfiler1.0.0/ && (cd `dirname .tmp/UTProfiler1.0.0` && $(TAR) UTProfiler1.0.0.tar UTProfiler1.0.0 && $(COMPRESS) UTProfiler1.0.0.tar) && $(MOVE) `dirname .tmp/UTProfiler1.0.0`/UTProfiler1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/UTProfiler1.0.0
 
 
 clean:compiler_clean 
@@ -317,7 +317,8 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../UTProfiler/main.cpp /usr/include/qt5/QtWidgets/QApplication \
+main.o: ../UTProfiler/main.cpp ../UTProfiler/UTProfiler.h \
+		/usr/include/qt5/QtWidgets/QApplication \
 		/usr/include/qt5/QtWidgets/qapplication.h \
 		/usr/include/qt5/QtCore/qcoreapplication.h \
 		/usr/include/qt5/QtCore/qglobal.h \
@@ -431,197 +432,10 @@ main.o: ../UTProfiler/main.cpp /usr/include/qt5/QtWidgets/QApplication \
 		/usr/include/qt5/QtGui/qtouchdevice.h \
 		/usr/include/qt5/QtGui/qguiapplication.h \
 		/usr/include/qt5/QtGui/qinputmethod.h \
-		/usr/include/qt5/QtGui/QtGui \
-		/usr/include/qt5/QtGui/QtGuiDepends \
-		/usr/include/qt5/QtCore/QtCore \
-		/usr/include/qt5/QtCore/QtCoreDepends \
-		/usr/include/qt5/QtCore/qabstractanimation.h \
-		/usr/include/qt5/QtCore/qanimationgroup.h \
-		/usr/include/qt5/QtCore/qparallelanimationgroup.h \
-		/usr/include/qt5/QtCore/qpauseanimation.h \
-		/usr/include/qt5/QtCore/qpropertyanimation.h \
-		/usr/include/qt5/QtCore/qvariantanimation.h \
-		/usr/include/qt5/QtCore/qeasingcurve.h \
-		/usr/include/qt5/QtCore/qsequentialanimationgroup.h \
-		/usr/include/qt5/QtCore/qtextcodec.h \
-		/usr/include/qt5/QtCore/qendian.h \
-		/usr/include/qt5/QtCore/qlibraryinfo.h \
-		/usr/include/qt5/QtCore/qdatetime.h \
-		/usr/include/qt5/QtCore/qnumeric.h \
-		/usr/include/qt5/QtCore/qbuffer.h \
-		/usr/include/qt5/QtCore/qdir.h \
-		/usr/include/qt5/QtCore/qfileinfo.h \
-		/usr/include/qt5/QtCore/qdiriterator.h \
-		/usr/include/qt5/QtCore/qfileselector.h \
-		/usr/include/qt5/QtCore/QObject \
-		/usr/include/qt5/QtCore/QStringList \
-		/usr/include/qt5/QtCore/qfilesystemwatcher.h \
-		/usr/include/qt5/QtCore/qlockfile.h \
-		/usr/include/qt5/QtCore/qloggingcategory.h \
-		/usr/include/qt5/QtCore/qprocess.h \
-		/usr/include/qt5/QtCore/qresource.h \
-		/usr/include/qt5/QtCore/qsavefile.h \
-		/usr/include/qt5/QtCore/qsettings.h \
-		/usr/include/qt5/QtCore/qstandardpaths.h \
-		/usr/include/qt5/QtCore/qtemporarydir.h \
-		/usr/include/qt5/QtCore/QScopedPointer \
-		/usr/include/qt5/QtCore/qtemporaryfile.h \
-		/usr/include/qt5/QtCore/qabstractitemmodel.h \
-		/usr/include/qt5/QtCore/qabstractproxymodel.h \
-		/usr/include/qt5/QtCore/qidentityproxymodel.h \
-		/usr/include/qt5/QtCore/qitemselectionmodel.h \
-		/usr/include/qt5/QtCore/qsortfilterproxymodel.h \
-		/usr/include/qt5/QtCore/qstringlistmodel.h \
-		/usr/include/qt5/QtCore/qjsonarray.h \
-		/usr/include/qt5/QtCore/qjsonvalue.h \
-		/usr/include/qt5/QtCore/qjsondocument.h \
-		/usr/include/qt5/QtCore/qjsonobject.h \
-		/usr/include/qt5/QtCore/qabstracteventdispatcher.h \
-		/usr/include/qt5/QtCore/qabstractnativeeventfilter.h \
-		/usr/include/qt5/QtCore/qbasictimer.h \
-		/usr/include/qt5/QtCore/qmath.h \
-		/usr/include/qt5/QtCore/qmetaobject.h \
-		/usr/include/qt5/QtCore/qmimedata.h \
-		/usr/include/qt5/QtCore/qobjectcleanuphandler.h \
-		/usr/include/qt5/QtCore/qpointer.h \
-		/usr/include/qt5/QtCore/qsharedmemory.h \
-		/usr/include/qt5/QtCore/qsignalmapper.h \
-		/usr/include/qt5/QtCore/qsocketnotifier.h \
-		/usr/include/qt5/QtCore/qsystemsemaphore.h \
-		/usr/include/qt5/QtCore/qtimer.h \
-		/usr/include/qt5/QtCore/qtranslator.h \
-		/usr/include/qt5/QtCore/qwineventnotifier.h \
-		/usr/include/qt5/QtCore/qmimedatabase.h \
-		/usr/include/qt5/QtCore/qmimetype.h \
-		/usr/include/qt5/QtCore/qfactoryinterface.h \
-		/usr/include/qt5/QtCore/qlibrary.h \
-		/usr/include/qt5/QtCore/qplugin.h \
-		/usr/include/qt5/QtCore/qpluginloader.h \
-		/usr/include/qt5/QtCore/quuid.h \
-		/usr/include/qt5/QtCore/qabstractstate.h \
-		/usr/include/qt5/QtCore/qabstracttransition.h \
-		/usr/include/qt5/QtCore/qeventtransition.h \
-		/usr/include/qt5/QtCore/qfinalstate.h \
-		/usr/include/qt5/QtCore/qhistorystate.h \
-		/usr/include/qt5/QtCore/qsignaltransition.h \
-		/usr/include/qt5/QtCore/qstate.h \
-		/usr/include/qt5/QtCore/qstatemachine.h \
-		/usr/include/qt5/QtCore/qexception.h \
-		/usr/include/qt5/QtCore/qfuture.h \
-		/usr/include/qt5/QtCore/qfutureinterface.h \
-		/usr/include/qt5/QtCore/qrunnable.h \
-		/usr/include/qt5/QtCore/qresultstore.h \
-		/usr/include/qt5/QtCore/qfuturesynchronizer.h \
-		/usr/include/qt5/QtCore/qfuturewatcher.h \
-		/usr/include/qt5/QtCore/qreadwritelock.h \
-		/usr/include/qt5/QtCore/qsemaphore.h \
-		/usr/include/qt5/QtCore/qthread.h \
-		/usr/include/qt5/QtCore/qthreadpool.h \
-		/usr/include/qt5/QtCore/qthreadstorage.h \
-		/usr/include/qt5/QtCore/qwaitcondition.h \
-		/usr/include/qt5/QtCore/qarraydataops.h \
-		/usr/include/qt5/QtCore/qarraydatapointer.h \
-		/usr/include/qt5/QtCore/qbitarray.h \
-		/usr/include/qt5/QtCore/qbytearraymatcher.h \
-		/usr/include/qt5/QtCore/qcache.h \
-		/usr/include/qt5/QtCore/qcollator.h \
-		/usr/include/qt5/QtCore/qcommandlineoption.h \
-		/usr/include/qt5/QtCore/qcommandlineparser.h \
-		/usr/include/qt5/QtCore/qcryptographichash.h \
-		/usr/include/qt5/QtCore/qelapsedtimer.h \
-		/usr/include/qt5/QtCore/qlinkedlist.h \
-		/usr/include/qt5/QtCore/qmessageauthenticationcode.h \
-		/usr/include/qt5/QtCore/qqueue.h \
-		/usr/include/qt5/QtCore/qregularexpression.h \
-		/usr/include/qt5/QtCore/qscopedvaluerollback.h \
-		/usr/include/qt5/QtCore/qstack.h \
-		/usr/include/qt5/QtCore/qtextboundaryfinder.h \
-		/usr/include/qt5/QtCore/qtimeline.h \
-		/usr/include/qt5/QtCore/qtimezone.h \
-		/usr/include/qt5/QtCore/qxmlstream.h \
-		/usr/include/qt5/QtCore/qtcoreversion.h \
-		/usr/include/qt5/QtGui/qaccessible.h \
-		/usr/include/qt5/QtGui/qaccessiblebridge.h \
-		/usr/include/qt5/QtGui/qaccessibleobject.h \
-		/usr/include/qt5/QtGui/qaccessibleplugin.h \
-		/usr/include/qt5/QtGui/qbitmap.h \
-		/usr/include/qt5/QtGui/qicon.h \
-		/usr/include/qt5/QtGui/qiconengine.h \
-		/usr/include/qt5/QtGui/qiconengineplugin.h \
-		/usr/include/qt5/QtGui/qimageiohandler.h \
-		/usr/include/qt5/QtGui/qimagereader.h \
-		/usr/include/qt5/QtGui/qimagewriter.h \
-		/usr/include/qt5/QtGui/qmovie.h \
-		/usr/include/qt5/QtGui/qpicture.h \
-		/usr/include/qt5/QtGui/qpictureformatplugin.h \
-		/usr/include/qt5/QtGui/qpixmapcache.h \
-		/usr/include/qt5/QtGui/qstandarditemmodel.h \
-		/usr/include/qt5/QtGui/qclipboard.h \
-		/usr/include/qt5/QtGui/qdrag.h \
-		/usr/include/qt5/QtGui/qgenericplugin.h \
-		/usr/include/qt5/QtGui/qgenericpluginfactory.h \
-		/usr/include/qt5/QtGui/qoffscreensurface.h \
-		/usr/include/qt5/QtGui/qsurface.h \
-		/usr/include/qt5/QtGui/qsurfaceformat.h \
-		/usr/include/qt5/QtGui/qopenglcontext.h \
-		/usr/include/qt5/QtGui/QSurfaceFormat \
-		/usr/include/qt5/QtGui/qopengl.h \
-		/usr/include/qt5/QtCore/qt_windows.h \
-		/usr/include/qt5/QtGui/qopengles2ext.h \
-		/usr/include/qt5/QtGui/qopenglext.h \
-		/usr/include/qt5/QtGui/qopenglversionfunctions.h \
-		/usr/include/qt5/QtGui/qscreen.h \
-		/usr/include/qt5/QtCore/QList \
-		/usr/include/qt5/QtCore/QRect \
-		/usr/include/qt5/QtCore/QSize \
-		/usr/include/qt5/QtCore/QSizeF \
-		/usr/include/qt5/QtGui/QTransform \
-		/usr/include/qt5/QtGui/qsessionmanager.h \
-		/usr/include/qt5/QtGui/qstylehints.h \
-		/usr/include/qt5/QtGui/qwindow.h \
-		/usr/include/qt5/QtCore/QEvent \
-		/usr/include/qt5/QtCore/QMargins \
-		/usr/include/qt5/QtGui/qgenericmatrix.h \
-		/usr/include/qt5/QtGui/qmatrix4x4.h \
-		/usr/include/qt5/QtGui/qvector3d.h \
-		/usr/include/qt5/QtGui/qvector4d.h \
-		/usr/include/qt5/QtGui/qquaternion.h \
-		/usr/include/qt5/QtGui/qopenglbuffer.h \
-		/usr/include/qt5/QtGui/qopengldebug.h \
-		/usr/include/qt5/QtGui/qopenglframebufferobject.h \
-		/usr/include/qt5/QtGui/qopenglfunctions.h \
-		/usr/include/qt5/QtGui/qopenglpaintdevice.h \
-		/usr/include/qt5/QtGui/qopenglpixeltransferoptions.h \
-		/usr/include/qt5/QtCore/QSharedDataPointer \
-		/usr/include/qt5/QtGui/qopenglshaderprogram.h \
-		/usr/include/qt5/QtGui/qopengltexture.h \
-		/usr/include/qt5/QtGui/qopengltimerquery.h \
-		/usr/include/qt5/QtGui/qopenglvertexarrayobject.h \
-		/usr/include/qt5/QtGui/qbackingstore.h \
-		/usr/include/qt5/QtGui/qpagedpaintdevice.h \
-		/usr/include/qt5/QtGui/qpaintengine.h \
-		/usr/include/qt5/QtGui/qpainter.h \
-		/usr/include/qt5/QtGui/qtextoption.h \
-		/usr/include/qt5/QtGui/qpen.h \
-		/usr/include/qt5/QtGui/qpdfwriter.h \
-		/usr/include/qt5/QtGui/qabstracttextdocumentlayout.h \
-		/usr/include/qt5/QtGui/qtextlayout.h \
-		/usr/include/qt5/QtGui/qtextformat.h \
-		/usr/include/qt5/QtGui/qglyphrun.h \
-		/usr/include/qt5/QtGui/qrawfont.h \
-		/usr/include/qt5/QtGui/qfontdatabase.h \
-		/usr/include/qt5/QtGui/qtextcursor.h \
-		/usr/include/qt5/QtGui/qtextdocument.h \
-		/usr/include/qt5/QtGui/qstatictext.h \
-		/usr/include/qt5/QtGui/qsyntaxhighlighter.h \
-		/usr/include/qt5/QtGui/qtextobject.h \
-		/usr/include/qt5/QtGui/qtextdocumentfragment.h \
-		/usr/include/qt5/QtGui/qtextdocumentwriter.h \
-		/usr/include/qt5/QtGui/qtextlist.h \
-		/usr/include/qt5/QtGui/qtexttable.h \
-		/usr/include/qt5/QtGui/qdesktopservices.h \
-		/usr/include/qt5/QtGui/qvalidator.h \
-		/usr/include/qt5/QtGui/qtguiversion.h
+		/usr/include/qt5/QtWidgets/QPushButton \
+		/usr/include/qt5/QtWidgets/qpushbutton.h \
+		/usr/include/qt5/QtWidgets/qabstractbutton.h \
+		/usr/include/qt5/QtGui/qicon.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../UTProfiler/main.cpp
 
 ####### Install
