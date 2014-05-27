@@ -1,1551 +1,1551 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<uvs>
-    <uv automne="true" printemps="true">
+<UVSection>
+    <uv>
         <code>BL01</code>
-        <titre>Sciences Biologiques Pour L'Ingénieur</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Sciences Biologiques Pour L'Ing&#xE9;nieur</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><automne/><printemps/></uv>
+    <uv>
         <code>BL10</code>
-        <titre>Structures Et Physicochimie Des Molécules Biologiques</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Structures Et Physicochimie Des Mol&#xE9;cules Biologiques</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><automne/><printemps/></uv>
+    <uv>
         <code>BL22</code>
-        <titre>Microbiologie Et Biologie Moléculaire</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Microbiologie Et Biologie Mol&#xE9;culaire</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><printemps/></uv>
+    <uv>
         <code>CM01</code>
-        <titre>Physique De La Matière</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Physique De La Mati&#xE8;re</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><printemps/></uv>
+    <uv>
         <code>CM11</code>
-        <titre>Chimie Générale</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Chimie G&#xE9;n&#xE9;rale</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><automne/><printemps/></uv>
+    <uv>
         <code>CM12</code>
-        <titre>Chimie Physique Minérale</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Chimie Physique Min&#xE9;rale</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><automne/><printemps/></uv>
+    <uv>
         <code>CM13</code>
-        <titre>Chimie Des Substances Organiques Et Biologiques</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Chimie Des Substances Organiques Et Biologiques</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><automne/><printemps/></uv>
+    <uv>
         <code>CM15</code>
-        <titre>Systemes Colloidaux - Applications Agroalimentaires</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Systemes Colloidaux - Applications Agroalimentaires</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>GP</branche><printemps/></uv>
+    <uv>
         <code>EL01</code>
-        <titre>Phénomènes Electromagnétiques</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Ph&#xE9;nom&#xE8;nes Electromagn&#xE9;tiques</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>GM</branche><printemps/></uv>
+    <uv>
         <code>EN21</code>
-        <titre>Bases De L'électronique Analogique</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Bases De L'&#xE9;lectronique Analogique</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>GM</branche><branche>GSM</branche><automne/><printemps/></uv>
+    <uv>
         <code>IA02</code>
-        <titre>Résolution De Problèmes Et Programmation Logique</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>R&#xE9;solution De Probl&#xE8;mes Et Programmation Logique</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><branche>GI</branche><printemps/></uv>
+    <uv>
         <code>MQ01</code>
-        <titre>éléments De Resistance Des Matériaux</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>&#xE9;l&#xE9;ments De Resistance Des Mat&#xE9;riaux</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>GM</branche><branche>GSM</branche><branche>GP</branche><branche>GSU</branche><automne/><printemps/></uv>
+    <uv>
         <code>MQ03</code>
-        <titre>Mécanique Des Vibrations I</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>M&#xE9;canique Des Vibrations I</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>GM</branche><branche>GSM</branche><automne/><printemps/></uv>
+    <uv>
         <code>MQ17</code>
-        <titre>Introduction Aux Propriétés Mécaniques Et à L'Ingénierie Des Matériaux</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Introduction Aux Propri&#xE9;t&#xE9;s M&#xE9;caniques Et &#xE0; L'Ing&#xE9;nierie Des Mat&#xE9;riaux</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>GM</branche><branche>GSM</branche><automne/><printemps/></uv>
+    <uv>
         <code>MQ18</code>
-        <titre>Cinématique Et Dynamique Des Systèmes</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Cin&#xE9;matique Et Dynamique Des Syst&#xE8;mes</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>GM</branche><branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>MT10</code>
-        <titre>Structures,Calcul Formel Et Algorithmes</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Structures,Calcul Formel Et Algorithmes</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>GI</branche><printemps/></uv>
+    <uv>
         <code>MT12</code>
-        <titre>Methodes Mathematiques Pour L'Analyse Du Signal Et De L'Image</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Methodes Mathematiques Pour L'Analyse Du Signal Et De L'Image</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>GI</branche><branche>GM</branche><branche>GSM</branche><automne/><printemps/></uv>
+    <uv>
         <code>MT22</code>
-        <titre>Fonctions De Plusieurs Variables Réelles Et Applications</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Fonctions De Plusieurs Variables R&#xE9;elles Et Applications</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><automne/><printemps/></uv>
+    <uv>
         <code>MT23</code>
-        <titre>Algèbre Linéaire Et Applications</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Alg&#xE8;bre Lin&#xE9;aire Et Applications</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><automne/><printemps/></uv>
+    <uv>
         <code>MT90</code>
-        <titre>Fonctions D'Une Variable Reelle 1</titre>
-        <credits>4</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Fonctions D'Une Variable Reelle 1</nom>
+        <credit type="CS">4</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><automne/><printemps/></uv>
+    <uv>
         <code>MT91</code>
-        <titre>Fonctions D'Une Variable Reelle 2</titre>
-        <credits>3</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Fonctions D'Une Variable Reelle 2</nom>
+        <credit type="CS">3</credit>
+       
+    <branche>TC</branche><automne/><printemps/></uv>
+    <uv>
         <code>NF04</code>
-        <titre>Modélisation Numérique Des Problèmes De L'Ingénieur</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Mod&#xE9;lisation Num&#xE9;rique Des Probl&#xE8;mes De L'Ing&#xE9;nieur</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>GM</branche><branche>GSM</branche><branche>GP</branche><branche>GSU</branche><automne/><printemps/></uv>
+    <uv>
         <code>NF16</code>
-        <titre>Algorithmique Et Structures De Données</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Algorithmique Et Structures De Donn&#xE9;es</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><branche>GI</branche><automne/><printemps/></uv>
+    <uv>
         <code>PS04</code>
-        <titre>Thermodynamique</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Thermodynamique</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><automne/><printemps/></uv>
+    <uv>
         <code>PS91</code>
-        <titre>Mecanique Physique</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Mecanique Physique</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><automne/><printemps/></uv>
+    <uv>
         <code>PS92</code>
-        <titre>Dynamique Des Systemes Et Des Solides</titre>
-        <credits>3</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Dynamique Des Systemes Et Des Solides</nom>
+        <credit type="CS">3</credit>
+       
+    <branche>TC</branche><printemps/></uv>
+    <uv>
         <code>PS93</code>
-        <titre>Optique Geometrique</titre>
-        <credits>3</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Optique Geometrique</nom>
+        <credit type="CS">3</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><automne/><printemps/></uv>
+    <uv>
         <code>PS94</code>
-        <titre>Electricite</titre>
-        <credits>3</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Electricite</nom>
+        <credit type="CS">3</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><automne/><printemps/></uv>
+    <uv>
         <code>RO03</code>
-        <titre>Recherche Opérationnelle, Optimisation Combinatoire</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Recherche Op&#xE9;rationnelle, Optimisation Combinatoire</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>GI</branche><branche>GSU</branche><printemps/></uv>
+    <uv>
         <code>RR01</code>
-        <titre>Cinétique Chimique Et Réacteurs Homogènes</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Cin&#xE9;tique Chimique Et R&#xE9;acteurs Homog&#xE8;nes</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>GP</branche><printemps/></uv>
+    <uv>
         <code>SR02</code>
-        <titre>Systèmes D'Exploitation : Des Concepts à La Programmation</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Syst&#xE8;mes D'Exploitation : Des Concepts &#xE0; La Programmation</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>GI</branche><printemps/></uv>
+    <uv>
         <code>SY01</code>
-        <titre>éléments De Probabilités</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>&#xE9;l&#xE9;ments De Probabilit&#xE9;s</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><automne/><printemps/></uv>
+    <uv>
         <code>SY02</code>
-        <titre>Méthodes Statistiques Pour L'Ingénieur</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>M&#xE9;thodes Statistiques Pour L'Ing&#xE9;nieur</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>GI</branche><branche>GM</branche><branche>GSM</branche><branche>GP</branche><branche>GSU</branche><automne/><printemps/></uv>
+    <uv>
         <code>SY04</code>
-        <titre>Systèmes Asservis Linéaires : Analyse Et Commande</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Syst&#xE8;mes Asservis Lin&#xE9;aires : Analyse Et Commande</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>GM</branche><branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>SY14</code>
-        <titre>éléments D'Automatique</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>&#xE9;l&#xE9;ments D'Automatique</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>GI</branche><printemps/></uv>
+    <uv>
         <code>TF01</code>
-        <titre>Mécanique Des Fluides Incompressibles</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>M&#xE9;canique Des Fluides Incompressibles</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>GM</branche><branche>GSM</branche><branche>GP</branche><automne/><printemps/></uv>
+    <uv>
         <code>TF06</code>
-        <titre>Transfert De Chaleur</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Transfert De Chaleur</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><branche>GP</branche><branche>GSU</branche><printemps/></uv>
+    <uv>
         <code>TN06</code>
-        <titre>Transmission Des Efforts En Mécanique</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Transmission Des Efforts En M&#xE9;canique</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>TC</branche><automne/><printemps/></uv>
+    <uv>
         <code>BA07</code>
-        <titre>Modes Opératoires De La Construction</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Modes Op&#xE9;ratoires De La Construction</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><branche>GSU</branche><printemps/></uv>
+    <uv>
         <code>BL09</code>
-        <titre>Biophysique Des Systèmes Biologiques</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Biophysique Des Syst&#xE8;mes Biologiques</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><printemps/></uv>
+    <uv>
         <code>BM01</code>
-        <titre>Introduction à L'Instrumentation Biomédicale</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Introduction &#xE0; L'Instrumentation Biom&#xE9;dicale</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>TC</branche><printemps/></uv>
+    <uv>
         <code>BT02</code>
-        <titre>Opérations Agro-Industrielles</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Op&#xE9;rations Agro-Industrielles</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>GP</branche><printemps/></uv>
+    <uv>
         <code>C2I1</code>
-        <titre>Certificat Informatique Et Internet Niveau 1</titre>
-        <credits>4</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Certificat Informatique Et Internet Niveau 1</nom>
+        <credit type="TM">4</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><automne/><printemps/></uv>
+    <uv>
         <code>CM70</code>
-        <titre>Travaux Pratiques De Gp (1)</titre>
-        <credits>3</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Travaux Pratiques De Gp (1)</nom>
+        <credit type="TM">3</credit>
+       
+    <branche>TC</branche><branche>GP</branche><printemps/></uv>
+    <uv>
         <code>DD02</code>
-        <titre>Introduction A L'Eco-Conception Et A L'Analyse De Cycle De Vie</titre>
-        <credits>3</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Introduction A L'Eco-Conception Et A L'Analyse De Cycle De Vie</nom>
+        <credit type="TM">3</credit>
+       
+    <branche>TC</branche><branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>EL02</code>
-        <titre>électricité Industrielle Appliquée</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>&#xE9;lectricit&#xE9; Industrielle Appliqu&#xE9;e</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>GM</branche><printemps/></uv>
+    <uv>
         <code>FQ01</code>
-        <titre>économie Globale Et Maitrise De La Qualité</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>&#xE9;conomie Globale Et Maitrise De La Qualit&#xE9;</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>GI</branche><branche>GM</branche><branche>GSM</branche><branche>GP</branche><branche>GSU</branche><automne/><printemps/></uv>
+    <uv>
         <code>GE37</code>
-        <titre>Gestion De Projet</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Gestion De Projet</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>GI</branche><branche>GM</branche><branche>GSM</branche><branche>GSU</branche><automne/><printemps/></uv>
+    <uv>
         <code>LO01</code>
-        <titre>Bases De La Programmation</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Bases De La Programmation</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><branche>GM</branche><branche>GSM</branche><branche>GSU</branche><automne/><printemps/></uv>
+    <uv>
         <code>LO21</code>
-        <titre>Programmation Et Conception Orientees Objet </titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Programmation Et Conception Orientees Objet</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><branche>GI</branche><printemps/></uv>
+    <uv>
         <code>LO22</code>
-        <titre>Genie Logiciel</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Genie Logiciel</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>GI</branche><printemps/></uv>
+    <uv>
         <code>MT94</code>
-        <titre>Introduction Aux Mathematiques Appliquées</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Introduction Aux Mathematiques Appliqu&#xE9;es</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><printemps/></uv>
+    <uv>
         <code>NF01</code>
-        <titre>Algorithmique Et Programmation</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Algorithmique Et Programmation</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><automne/><printemps/></uv>
+    <uv>
         <code>NF02</code>
-        <titre>Du Circuit Intégré Au Microprocesseur</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Du Circuit Int&#xE9;gr&#xE9; Au Microprocesseur</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>GM</branche><branche>GSM</branche><automne/><printemps/></uv>
+    <uv>
         <code>NF15</code>
-        <titre>Microprocesseurs, Interfaces Et Logiciels De Bases</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Microprocesseurs, Interfaces Et Logiciels De Bases</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>GM</branche><printemps/></uv>
+    <uv>
         <code>NF17</code>
-        <titre>Conception De Bases De Données</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Conception De Bases De Donn&#xE9;es</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><branche>GI</branche><printemps/></uv>
+    <uv>
         <code>NF22</code>
-        <titre>Micro-Ordinateurs Et Applications</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Micro-Ordinateurs Et Applications</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>GM</branche><branche>GSM</branche><branche>GP</branche><automne/><printemps/></uv>
+    <uv>
         <code>NF92</code>
-        <titre>Traitement Automatique De L'Information</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Traitement Automatique De L'Information</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><automne/><printemps/></uv>
+    <uv>
         <code>NP90</code>
-        <titre>Nano-Projets</titre>
-        <credits>2</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Nano-Projets</nom>
+        <credit type="TM">2</credit>
+       
+    <branche>TC</branche><automne/><printemps/></uv>
+    <uv>
         <code>NX17</code>
-        <titre>Introduction Aux Bases De Donnees</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Introduction Aux Bases De Donnees</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>GSM</branche><branche>GSU</branche><printemps/></uv>
+    <uv>
         <code>PR</code>
-        <titre>Réalisation De Projet</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>R&#xE9;alisation De Projet</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><branche>GI</branche><branche>GM</branche><branche>GSM</branche><branche>GP</branche><branche>GSU</branche><automne/><printemps/></uv>
+    <uv>
         <code>PS09</code>
-        <titre>Acoustique Appliquée</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Acoustique Appliqu&#xE9;e</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>GM</branche><branche>GSU</branche><printemps/></uv>
+    <uv>
         <code>PS90</code>
-        <titre>Introduction A La Mesure</titre>
-        <credits>3</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Introduction A La Mesure</nom>
+        <credit type="TM">3</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><automne/><printemps/></uv>
+    <uv>
         <code>TF14</code>
-        <titre>Les Opérations De Transfert De Matière</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Les Op&#xE9;rations De Transfert De Mati&#xE8;re</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>GP</branche><printemps/></uv>
+    <uv>
         <code>TN01</code>
-        <titre>éléments De Dessin Technique</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>&#xE9;l&#xE9;ments De Dessin Technique</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><automne/><printemps/></uv>
+    <uv>
         <code>TN02</code>
-        <titre>Introduction A La Conception Mécanique</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Introduction A La Conception M&#xE9;canique</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>GM</branche><branche>GSM</branche><automne/><printemps/></uv>
+    <uv>
         <code>TN03</code>
-        <titre>Fabrication Mécanique</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Fabrication M&#xE9;canique</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><automne/><printemps/></uv>
+    <uv>
         <code>TN04</code>
-        <titre>Réalisation</titre>
-        <credits>4</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>R&#xE9;alisation</nom>
+        <credit type="TM">4</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><automne/><printemps/></uv>
+    <uv>
         <code>TN08</code>
-        <titre>Dessin De Communication</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Dessin De Communication</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>TC</branche><branche>GM</branche><automne/><printemps/></uv>
+    <uv>
         <code>TN20</code>
-        <titre>Cao : Modélisation Géométrique</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Cao : Mod&#xE9;lisation G&#xE9;om&#xE9;trique</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>GM</branche><branche>GSM</branche><automne/><printemps/></uv>
+    <uv>
         <code>TN22</code>
-        <titre>éléments De Bureau D'études</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>&#xE9;l&#xE9;ments De Bureau D'&#xE9;tudes</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>GM</branche><branche>GSM</branche><automne/><printemps/></uv>
+    <uv>
         <code>TR91</code>
-        <titre>Techniques De Recherche D'Information Pour L'Ingenieur</titre>
-        <credits>2</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Techniques De Recherche D'Information Pour L'Ingenieur</nom>
+        <credit type="TM">2</credit>
+       
+    <branche>TC</branche><automne/><printemps/></uv>
+    <uv>
         <code>TS01</code>
-        <titre>Maitrise Des Risques</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Maitrise Des Risques</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>TC</branche><branche>GP</branche><printemps/></uv>
+    <uv>
         <code>TX</code>
-        <titre>étude Expérimentale</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>&#xE9;tude Exp&#xE9;rimentale</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>TC</branche><branche>GI</branche><branche>GM</branche><branche>GSM</branche><branche>GP</branche><branche>GSU</branche><automne/><printemps/></uv>
+    <uv>
         <code>UB04</code>
-        <titre>Ambiances Et Environnement Lumineux</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Ambiances Et Environnement Lumineux</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>TC</branche><branche>GSU</branche><printemps/></uv>
+    <uv>
         <code>UR03</code>
-        <titre>Cartographie Sémiologie Graphique Et Cao/Dao</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Cartographie S&#xE9;miologie Graphique Et Cao/Dao</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><branche>GSU</branche><automne/><printemps/></uv>
+    <uv>
         <code>UR05</code>
-        <titre>Aménagement Et Environnement</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Am&#xE9;nagement Et Environnement</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>TC</branche><branche>HUTECH</branche><branche>GSU</branche><printemps/></uv>
+    <uv>
         <code>AR03</code>
-        <titre>Art Et Technologies Contemporaines</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Art Et Technologies Contemporaines</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>DI01</code>
-        <titre>Initiation Au Design Industriel</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Initiation Au Design Industriel</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>DI02</code>
-        <titre>Initiation Au Design Graphique</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Initiation Au Design Graphique</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>EI03</code>
-        <titre>Communication Interculturelle En Entreprises, Organisations Transnationales</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Communication Interculturelle En Entreprises, Organisations Transnationales</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>EI04</code>
-        <titre>Intelligence économique : Stratégie D'Entreprise, Démarche Et Outils</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Intelligence &#xE9;conomique : Strat&#xE9;gie D'Entreprise, D&#xE9;marche Et Outils</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>EI05</code>
-        <titre>Science, Technologie Et Société Dans L'Union Européenne</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Science, Technologie Et Soci&#xE9;t&#xE9; Dans L'Union Europ&#xE9;enne</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>GE10</code>
-        <titre>économie Politique</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>&#xE9;conomie Politique</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>GE12</code>
-        <titre>Géographie Et économie Des Territoires</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>G&#xE9;ographie Et &#xE9;conomie Des Territoires</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>GE13</code>
-        <titre>Les Risques Entre Technique Et Societe</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Les Risques Entre Technique Et Societe</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>GE15</code>
-        <titre>Initiation A La Création Et Gestion D'Entreprises Innovantes</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Initiation A La Cr&#xE9;ation Et Gestion D'Entreprises Innovantes</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>GE20</code>
-        <titre>économie Industrielle</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>&#xE9;conomie Industrielle</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>GE21</code>
-        <titre>économie Et Gestion De L'Innovation Et Du Numérique</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>&#xE9;conomie Et Gestion De L'Innovation Et Du Num&#xE9;rique</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>GE22</code>
-        <titre>économie Internationale</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>&#xE9;conomie Internationale</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>GE23</code>
-        <titre>Transferts De Technologies Et Développements</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Transferts De Technologies Et D&#xE9;veloppements</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>GE24</code>
-        <titre>Recherche Developpement : Ingenieur Et Investisseurs</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Recherche Developpement : Ingenieur Et Investisseurs</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>GE25</code>
-        <titre>Gestion Et Organisation De La Production</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Gestion Et Organisation De La Production</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>GE26</code>
-        <titre>Management Stratégique Des Ressources Humaines</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Management Strat&#xE9;gique Des Ressources Humaines</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>GE28</code>
-        <titre>économie Et Droit De La Propriété Intellectuelle (Industrielle Et Artistique) Dans Une économie Reposant Sur La Connaissance</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>&#xE9;conomie Et Droit De La Propri&#xE9;t&#xE9; Intellectuelle (Industrielle Et Artistique) Dans Une &#xE9;conomie Reposant Sur La Connaissance</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>GE29</code>
-        <titre>Gestion Et Management International De L'Entreprise</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Gestion Et Management International De L'Entreprise</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>GE36</code>
-        <titre>Marketing</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Marketing</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>GE90</code>
-        <titre>Organisation, Innovation Et International</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Organisation, Innovation Et International</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>HE01</code>
-        <titre>épistémologie Et Histoire Des Sciences</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>&#xE9;pist&#xE9;mologie Et Histoire Des Sciences</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>HE03</code>
-        <titre>Logique : Histoire Et Formalisme</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Logique : Histoire Et Formalisme</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>HE05</code>
-        <titre>Culture Et Histoire Des Techniques</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Culture Et Histoire Des Techniques</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>IC01</code>
-        <titre>Histoire Et Prospective Des Industries Culturelles</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Histoire Et Prospective Des Industries Culturelles</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>IC03</code>
-        <titre>Le Numérique : Des Formats Aux Chaines De Production</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Le Num&#xE9;rique : Des Formats Aux Chaines De Production</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>IC05</code>
-        <titre>Technologies Pour La Documentation Et L'Indexation Dans L'Hypermédia</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Technologies Pour La Documentation Et L'Indexation Dans L'Hyperm&#xE9;dia</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>IC07</code>
-        <titre>Techniques Et Technologies Du Musical Et Du Sonore</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Techniques Et Technologies Du Musical Et Du Sonore</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA00</code>
-        <titre>Allemand Initiation</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Allemand Initiation</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA01</code>
-        <titre>Allemand Niveau I</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Allemand Niveau I</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA02</code>
-        <titre>Allemand Niveau II</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Allemand Niveau II</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA03</code>
-        <titre>Allemand Niveau III</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Allemand Niveau III</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA04</code>
-        <titre>Pratique De La Communication En Allemand</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Pratique De La Communication En Allemand</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA11</code>
-        <titre>Anglais Niveau I</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Anglais Niveau I</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA12</code>
-        <titre>Anglais Niveau II</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Anglais Niveau II</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA13</code>
-        <titre>Anglais Niveau III</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Anglais Niveau III</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA14</code>
-        <titre>Civilisation Du Monde Anglophone</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Civilisation Du Monde Anglophone</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA15</code>
-        <titre>Anglais Professionnel - Niveau V</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Anglais Professionnel - Niveau V</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA20</code>
-        <titre>Espagnol Initiation</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Espagnol Initiation</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA21</code>
-        <titre>Espagnol Niveau I</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Espagnol Niveau I</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA22</code>
-        <titre>Espagnol Niveau II</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Espagnol Niveau II</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA23</code>
-        <titre>Espagnol Niveau III</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Espagnol Niveau III</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA24</code>
-        <titre>Le Monde Hispanique Contemporain : L'Amérique Latine (Niveau IV)</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Le Monde Hispanique Contemporain : L'Am&#xE9;rique Latine (Niveau IV)</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA91</code>
-        <titre>Francais Langue étrangère Niveau I</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Francais Langue &#xE9;trang&#xE8;re Niveau I</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA92</code>
-        <titre>Francais Langue étrangère Niveau II</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Francais Langue &#xE9;trang&#xE8;re Niveau II</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA93</code>
-        <titre>Francais Langue étrangère Niveau III</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Francais Langue &#xE9;trang&#xE8;re Niveau III</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LA94</code>
-        <titre>Francais Langue étrangère Niveau IV</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Francais Langue &#xE9;trang&#xE8;re Niveau IV</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LB04</code>
-        <titre>Interculturalité Franco-Allemande</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Interculturalit&#xE9; Franco-Allemande</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LB14</code>
-        <titre>Interculturalité Appliquée Aux Pays Anglophones</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Interculturalit&#xE9; Appliqu&#xE9;e Aux Pays Anglophones</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LB24</code>
-        <titre>Le Monde Hispanique (Niveau IV): L'Espagne</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Le Monde Hispanique (Niveau IV): L'Espagne</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LC14</code>
-        <titre>Communication Scientifique Et Technique En Anglais</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Communication Scientifique Et Technique En Anglais</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LG30</code>
-        <titre>Japonais Initiation</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Japonais Initiation</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LG31</code>
-        <titre>Japonais Niveau I</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Japonais Niveau I</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LG40</code>
-        <titre>Portugais Initiation</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Portugais Initiation</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LG41</code>
-        <titre>Portugais Niveau I</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Portugais Niveau I</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LG42</code>
-        <titre>Portugais Niveau II</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Portugais Niveau II</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LG50</code>
-        <titre>Italien Initiation</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Italien Initiation</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LG51</code>
-        <titre>Italien Niveau I</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Italien Niveau I</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LG52</code>
-        <titre>Italien Niveau II</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Italien Niveau II</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LG60</code>
-        <titre>Chinois Initiation</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Chinois Initiation</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>LG61</code>
-        <titre>Chinois Niveau I</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Chinois Niveau I</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>MU01</code>
-        <titre>Pratique Instrumentale D'Ensemble</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Pratique Instrumentale D'Ensemble</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>MU02</code>
-        <titre>Pratique Instrumentale De Haut Niveau</titre>
-        <credits>8</credits>
-        <categorie>TSH</categorie>
+        <nom>Pratique Instrumentale De Haut Niveau</nom>
+        <credit type="TSH">8</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>MU03</code>
-        <titre>Pratique Collective Des Musiques Contemporaines</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Pratique Collective Des Musiques Contemporaines</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>PH01</code>
-        <titre>Introduction à La Philosophie</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Introduction &#xE0; La Philosophie</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>PH09</code>
-        <titre>éthiques : Approche Pluridisciplinaire</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>&#xE9;thiques : Approche Pluridisciplinaire</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SA11</code>
-        <titre>Pratiques Théatrales</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Pratiques Th&#xE9;atrales</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SC01</code>
-        <titre>Séminaire Interdisciplinaire De Sciences Et Technologies Cognitives</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>S&#xE9;minaire Interdisciplinaire De Sciences Et Technologies Cognitives</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SC11</code>
-        <titre>Théorie Des Sciences Cognitives : Computation Et énaction</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Th&#xE9;orie Des Sciences Cognitives : Computation Et &#xE9;naction</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SC12</code>
-        <titre>Technologie, Cognition, Perception</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Technologie, Cognition, Perception</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SC21</code>
-        <titre>Linguistique Et Philosophie Du Langage</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Linguistique Et Philosophie Du Langage</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SC22</code>
-        <titre>Sociologie Cognitive, Lien Social Et Techniques</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Sociologie Cognitive, Lien Social Et Techniques</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SI01</code>
-        <titre>Science Et Debat Public</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Science Et Debat Public</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SI02</code>
-        <titre>Communication Professionnelle De L'Ingénieur</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Communication Professionnelle De L'Ing&#xE9;nieur</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SI05</code>
-        <titre>Theories De La Communication</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Theories De La Communication</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SI06</code>
-        <titre>La Documentattion Cross-Media Pour Les Entreprises Et Les Collectivites Locales</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>La Documentattion Cross-Media Pour Les Entreprises Et Les Collectivites Locales</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SI07</code>
-        <titre>Medias Classiques Et Medias Numeriques</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Medias Classiques Et Medias Numeriques</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SI11</code>
-        <titre>Expression Orale- Parole Publique</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Expression Orale- Parole Publique</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SI14</code>
-        <titre>Parole Publique En Anglais</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Parole Publique En Anglais</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SI20</code>
-        <titre>Rhetorique Et Arts Du Discours</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Rhetorique Et Arts Du Discours</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SI22</code>
-        <titre>Signes Et Contenus Numeriques</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Signes Et Contenus Numeriques</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SI24</code>
-        <titre>études Des écritures Numériques Ordinaires</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>&#xE9;tudes Des &#xE9;critures Num&#xE9;riques Ordinaires</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SI28</code>
-        <titre>écriture Interactive Et Multimédia</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>&#xE9;criture Interactive Et Multim&#xE9;dia</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SI90</code>
-        <titre>Séminaire De Communication Des Connaissances Technologiques</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>S&#xE9;minaire De Communication Des Connaissances Technologiques</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SL</code>
-        <titre>Suivi Linguistique</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Suivi Linguistique</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SO04</code>
-        <titre>Initiation Au Droit</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Initiation Au Droit</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SO05</code>
-        <titre>Sociologie, Organisations Et Dynamiques Des Collectifs</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Sociologie, Organisations Et Dynamiques Des Collectifs</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SP01</code>
-        <titre>Un Corps Pour Comprendre Et Apprendre</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Un Corps Pour Comprendre Et Apprendre</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SP02</code>
-        <titre>Conduire Un Projet Sportif</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>Conduire Un Projet Sportif</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>TN16</code>
-        <titre>étude Interculturelle</titre>
-        <credits>4</credits>
-        <categorie>TSH</categorie>
+        <nom>&#xE9;tude Interculturelle</nom>
+        <credit type="TSH">4</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>TO01</code>
-        <titre>Module De Preparation Au Toeic</titre>
-        <credits>2</credits>
-        <categorie>TSH</categorie>
+        <nom>Module De Preparation Au Toeic</nom>
+        <credit type="TSH">2</credit>
+       
     </uv>
-    <uv automne="false" printemps="true">
+    <uv>
         <code>MT34</code>
-        <titre>Analyse 2 : Mesures, Intégrations, Probabilités</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Analyse 2 : Mesures, Int&#xE9;grations, Probabilit&#xE9;s</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>HUTECH</branche><printemps/></uv>
+    <uv>
         <code>MT37</code>
-        <titre>Logiques, Quelques Approfondissements Mathématiques Et Philosophiques</titre>
-        <credits>3</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Logiques, Quelques Approfondissements Math&#xE9;matiques Et Philosophiques</nom>
+        <credit type="CS">3</credit>
+       
+    <branche>HUTECH</branche><printemps/></uv>
+    <uv>
         <code>MT38</code>
-        <titre>Probabilités</titre>
-        <credits>3</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Probabilit&#xE9;s</nom>
+        <credit type="CS">3</credit>
+       
+    <branche>HUTECH</branche><printemps/></uv>
+    <uv>
         <code>AP</code>
-        <titre>Atelier Projet</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Atelier Projet</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GSU</branche><automne/><printemps/></uv>
+    <uv>
         <code>API06</code>
-        <titre>Analyse De Donnees Et Data Mining (Apprentissage)</titre>
-        <credits>4</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Analyse De Donnees Et Data Mining (Apprentissage)</nom>
+        <credit type="CS">4</credit>
+       
+    <branche>GI</branche><printemps/></uv>
+    <uv>
         <code>API07</code>
-        <titre>Architecture Des Applications Internet, Programmation Web Et Securite (Apprentissage)</titre>
-        <credits>3</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Architecture Des Applications Internet, Programmation Web Et Securite (Apprentissage)</nom>
+        <credit type="TM">3</credit>
+       
+    <branche>GI</branche><printemps/></uv>
+    <uv>
         <code>API08</code>
-        <titre>Ihm Et Multimédia (Apprentissage)</titre>
-        <credits>4</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Ihm Et Multim&#xE9;dia (Apprentissage)</nom>
+        <credit type="TM">4</credit>
+       
+    <branche>GI</branche><printemps/></uv>
+    <uv>
         <code>API09</code>
-        <titre>Méthodes Et Outils Pour L'Optimisation Et La Simulation (Apprentissage)</titre>
-        <credits>4</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>M&#xE9;thodes Et Outils Pour L'Optimisation Et La Simulation (Apprentissage)</nom>
+        <credit type="CS">4</credit>
+       
+    <branche>GI</branche><printemps/></uv>
+    <uv>
         <code>API10</code>
-        <titre>Méthodes De Vérification Et Validation De Logiciel Et Programmation Sous Linux (Apprentissage)</titre>
-        <credits>3</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>M&#xE9;thodes De V&#xE9;rification Et Validation De Logiciel Et Programmation Sous Linux (Apprentissage)</nom>
+        <credit type="TM">3</credit>
+       
+    <branche>GI</branche><printemps/></uv>
+    <uv>
         <code>BA01</code>
-        <titre>Equipements Techniques Du Batiment</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Equipements Techniques Du Batiment</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>GSU</branche><printemps/></uv>
+    <uv>
         <code>BA02</code>
-        <titre>Gestion Technique Du Patrimoine Immobilier</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Gestion Technique Du Patrimoine Immobilier</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>GSU</branche><printemps/></uv>
+    <uv>
         <code>BA04</code>
-        <titre>Conversion Et Gestion Des Energies Renouvelables</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Conversion Et Gestion Des Energies Renouvelables</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GP</branche><branche>GSU</branche><automne/><printemps/></uv>
+    <uv>
         <code>BA09</code>
-        <titre>Introduction Au Calcul Des Structures Du Batiment</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Introduction Au Calcul Des Structures Du Batiment</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>GSU</branche><printemps/></uv>
+    <uv>
         <code>BI01</code>
-        <titre>Modeles Pour La Bioinformatique</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Modeles Pour La Bioinformatique</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>GI</branche><printemps/></uv>
+    <uv>
         <code>BL30</code>
-        <titre>Physiologie Des Systèmes Intégrés</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
+        <nom>Physiologie Des Syst&#xE8;mes Int&#xE9;gr&#xE9;s</nom>
+        <credit type="CS">6</credit>
+       
     </uv>
-    <uv automne="false" printemps="true">
+    <uv>
         <code>BL40</code>
-        <titre>Génie Cellulaire</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
+        <nom>G&#xE9;nie Cellulaire</nom>
+        <credit type="CS">6</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>BM02</code>
-        <titre>Organes Artificiels Et Biorheologie</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
+        <nom>Organes Artificiels Et Biorheologie</nom>
+        <credit type="TM">6</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>BM08</code>
-        <titre>Modélisation Des Systèmes Biomécaniques</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Mod&#xE9;lisation Des Syst&#xE8;mes Biom&#xE9;caniques</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>BT06</code>
-        <titre>Analyse Des Produits Biologiques Et Alimentaires</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Analyse Des Produits Biologiques Et Alimentaires</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GP</branche><printemps/></uv>
+    <uv>
         <code>BT10</code>
-        <titre>Risques Biologiques Et Sécurité Alimentaire</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
+        <nom>Risques Biologiques Et S&#xE9;curit&#xE9; Alimentaire</nom>
+        <credit type="TM">5</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>BT21</code>
-        <titre>Biotechnologies Moleculaires Et Genie Genetique</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
+        <nom>Biotechnologies Moleculaires Et Genie Genetique</nom>
+        <credit type="TM">6</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>BT22</code>
-        <titre>Les Agroressources</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
+        <nom>Les Agroressources</nom>
+        <credit type="TM">6</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>CM06</code>
-        <titre>Calcul D'Une Opération Industrielle</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Calcul D'Une Op&#xE9;ration Industrielle</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GP</branche><automne/><printemps/></uv>
+    <uv>
         <code>CM40</code>
-        <titre>Catalyse Heterogene</titre>
-        <credits>3</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Catalyse Heterogene</nom>
+        <credit type="CS">3</credit>
+       
+    <branche>GP</branche><printemps/></uv>
+    <uv>
         <code>CT02</code>
-        <titre>Maitrise Statistique Des Processus</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Maitrise Statistique Des Processus</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GM</branche><branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>CT04</code>
-        <titre>Controles Non Destructifs</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Controles Non Destructifs</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>GM</branche><printemps/></uv>
+    <uv>
         <code>DI03</code>
-        <titre>Conception Formelle Des Produits</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Conception Formelle Des Produits</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GM</branche><printemps/></uv>
+    <uv>
         <code>DI05</code>
-        <titre>Methodologie Et Analyse De La Valeur</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Methodologie Et Analyse De La Valeur</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>HUTECH</branche><branche>GM</branche><branche>GSM</branche><automne/><printemps/></uv>
+    <uv>
         <code>DI06</code>
-        <titre>Analyse Des Produits De Consommation</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Analyse Des Produits De Consommation</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>GM</branche><printemps/></uv>
+    <uv>
         <code>EG01</code>
-        <titre>Ergonomie</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Ergonomie</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GM</branche><automne/><printemps/></uv>
+    <uv>
         <code>EN14</code>
-        <titre>Fonctions Électroniques Pour L'Ingénieur</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Fonctions &#xC9;lectroniques Pour L'Ing&#xE9;nieur</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GM</branche><printemps/></uv>
+    <uv>
         <code>EV01</code>
-        <titre>Procédés De Traitement Des Déchets</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Proc&#xE9;d&#xE9;s De Traitement Des D&#xE9;chets</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GP</branche><branche>GSU</branche><printemps/></uv>
+    <uv>
         <code>FPP02</code>
-        <titre>Fiabilite Et Ingenierie Robuste De Produits (Apprentissage)</titre>
-        <credits>3</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Fiabilite Et Ingenierie Robuste De Produits (Apprentissage)</nom>
+        <credit type="CS">3</credit>
+       
+    <branche>GM</branche><branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>FQ07</code>
-        <titre>La Qualité Des Services A L'Industrie</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>La Qualit&#xE9; Des Services A L'Industrie</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>GM</branche><printemps/></uv>
+    <uv>
         <code>GE38</code>
-        <titre>Management Et Outils D'Aide à La Créativité Industrielle Et à L'Innovation</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Management Et Outils D'Aide &#xE0; La Cr&#xE9;ativit&#xE9; Industrielle Et &#xE0; L'Innovation</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GI</branche><branche>GM</branche><branche>GSM</branche><branche>GP</branche><branche>GSU</branche><automne/><printemps/></uv>
+    <uv>
         <code>GE39</code>
-        <titre>Management Et Marketing De L'Innovation</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Management Et Marketing De L'Innovation</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GI</branche><branche>GM</branche><branche>GSM</branche><branche>GP</branche><branche>GSU</branche><automne/><printemps/></uv>
+    <uv>
         <code>GPL01</code>
-        <titre>Gestion De Production Et Erp (Apprentissage)</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Gestion De Production Et Erp (Apprentissage)</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>GM</branche><branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>IA04</code>
-        <titre>Systèmes Multiagents</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Syst&#xE8;mes Multiagents</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GI</branche><printemps/></uv>
+    <uv>
         <code>LO17</code>
-        <titre>Indexation Et Recherche D'Information</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Indexation Et Recherche D'Information</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GI</branche><printemps/></uv>
+    <uv>
         <code>LO18</code>
-        <titre>Projets Multimédia Pour La Formation</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Projets Multim&#xE9;dia Pour La Formation</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GI</branche><printemps/></uv>
+    <uv>
         <code>MAT03</code>
-        <titre>Mecanique Des Materiaux (Apprentissage)</titre>
-        <credits>3</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="true" printemps="true">
+        <nom>Mecanique Des Materiaux (Apprentissage)</nom>
+        <credit type="CS">3</credit>
+       
+    <branche>GM</branche><branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>MB11</code>
-        <titre>Révision D'Analyse Et D'Algèbre (Gb, Gi, Gsu)</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>R&#xE9;vision D'Analyse Et D'Alg&#xE8;bre (Gb, Gi, Gsu)</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>GI</branche><branche>GSU</branche><automne/><printemps/></uv>
+    <uv>
         <code>MC01</code>
-        <titre>Machines Électriques</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Machines &#xC9;lectriques</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>GM</branche><printemps/></uv>
+    <uv>
         <code>MC05</code>
-        <titre>Machines De Transfert De Fluides</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Machines De Transfert De Fluides</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GM</branche><branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>MC07</code>
-        <titre>Électronique De Puissance</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>&#xC9;lectronique De Puissance</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GM</branche><printemps/></uv>
+    <uv>
         <code>MEQ03</code>
-        <titre>Dynamique Des Solides (Apprentissage)</titre>
-        <credits>3</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Dynamique Des Solides (Apprentissage)</nom>
+        <credit type="CS">3</credit>
+       
+    <branche>GM</branche><branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>MI03</code>
-        <titre>Systèmes Temps Réel</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Syst&#xE8;mes Temps R&#xE9;el</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GI</branche><printemps/></uv>
+    <uv>
         <code>MP02</code>
-        <titre>Introduction Aux Méthodes De La Gpao</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Introduction Aux M&#xE9;thodes De La Gpao</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GI</branche><branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>MQ02</code>
-        <titre>Mécanique Des Solides Déformables</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>M&#xE9;canique Des Solides D&#xE9;formables</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>GM</branche><branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>MQ04</code>
-        <titre>Polymères</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Polym&#xE8;res</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GM</branche><printemps/></uv>
+    <uv>
         <code>MQ06</code>
-        <titre>Modélisation Des Structures Par Éléments Finis</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Mod&#xE9;lisation Des Structures Par &#xC9;l&#xE9;ments Finis</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GM</branche><branche>GSM</branche><automne/><printemps/></uv>
+    <uv>
         <code>MQ08</code>
-        <titre>Elaboration Et Proprietes D'Usage Des Metaux</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Elaboration Et Proprietes D'Usage Des Metaux</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GM</branche><printemps/></uv>
+    <uv>
         <code>MQ09</code>
-        <titre>Mécanique Des Vibrations II</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>M&#xE9;canique Des Vibrations II</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GM</branche><printemps/></uv>
+    <uv>
         <code>MQ10</code>
-        <titre>Comportement Mécanique Des Matériaux</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Comportement M&#xE9;canique Des Mat&#xE9;riaux</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GM</branche><printemps/></uv>
+    <uv>
         <code>MQ11</code>
-        <titre>Mise En Oeuvre Des Matériaux</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Mise En Oeuvre Des Mat&#xE9;riaux</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GM</branche><printemps/></uv>
+    <uv>
         <code>MQ14</code>
-        <titre>Optimisation En Mécanique</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Optimisation En M&#xE9;canique</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>MQ19</code>
-        <titre>Dynamique Des Structures</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Dynamique Des Structures</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GM</branche><branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>MS02</code>
-        <titre>Principes Physiques Des Capteurs Et Instrumentation</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Principes Physiques Des Capteurs Et Instrumentation</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>MS03</code>
-        <titre>Pratique Expérimentale En Acoustique Et Vibrations</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Pratique Exp&#xE9;rimentale En Acoustique Et Vibrations</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GM</branche><automne/><printemps/></uv>
+    <uv>
         <code>NF11</code>
-        <titre>Théorie Des Langages De Programmation</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Th&#xE9;orie Des Langages De Programmation</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>GI</branche><printemps/></uv>
+    <uv>
         <code>NF24</code>
-        <titre>Modelisation Et Simulation Des Procedes</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Modelisation Et Simulation Des Procedes</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GP</branche><printemps/></uv>
+    <uv>
         <code>NF26</code>
-        <titre>Data Warehouse Et Outils Décisionnels</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Data Warehouse Et Outils D&#xE9;cisionnels</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GI</branche><printemps/></uv>
+    <uv>
         <code>NF28</code>
-        <titre>Ingénierie Des Systèmes Intéractifs</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Ing&#xE9;nierie Des Syst&#xE8;mes Int&#xE9;ractifs</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GI</branche><printemps/></uv>
+    <uv>
         <code>NF33</code>
-        <titre>Conception Et Architecture De Systèmes Numériques Informatiques</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Conception Et Architecture De Syst&#xE8;mes Num&#xE9;riques Informatiques</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GI</branche><printemps/></uv>
+    <uv>
         <code>PS05</code>
-        <titre>Fondements De L'Acoustique Et Modélisations</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Fondements De L'Acoustique Et Mod&#xE9;lisations</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>GM</branche><printemps/></uv>
+    <uv>
         <code>RO04</code>
-        <titre>Optimisation Et Recherche Opérationnelle</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Optimisation Et Recherche Op&#xE9;rationnelle</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>GI</branche><printemps/></uv>
+    <uv>
         <code>SCI08</code>
-        <titre>Introduction A L'Ingenierie Systeme</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
+        <nom>Introduction A L'Ingenierie Systeme</nom>
+        <credit type="TM">6</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>SR03</code>
-        <titre>Architecture Des Applications Internet</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Architecture Des Applications Internet</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GI</branche><printemps/></uv>
+    <uv>
         <code>SY05</code>
-        <titre>Conduite Des Procédés</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Conduite Des Proc&#xE9;d&#xE9;s</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GP</branche><printemps/></uv>
+    <uv>
         <code>SY06</code>
-        <titre>Analyse Et Traitement Du Signal</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Analyse Et Traitement Du Signal</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>GI</branche><branche>GM</branche><printemps/></uv>
+    <uv>
         <code>SY09</code>
-        <titre>Analyse Des Données Et Data Mining</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Analyse Des Donn&#xE9;es Et Data Mining</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>GI</branche><branche>GM</branche><printemps/></uv>
+    <uv>
         <code>SY12</code>
-        <titre>Modélisation Et Performance Des Systèmes De Production</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Mod&#xE9;lisation Et Performance Des Syst&#xE8;mes De Production</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>SY15</code>
-        <titre>Automatique Avancée</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Automatique Avanc&#xE9;e</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>GI</branche><printemps/></uv>
+    <uv>
         <code>SY26</code>
-        <titre>Télécommunications</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>T&#xE9;l&#xE9;communications</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GI</branche><printemps/></uv>
+    <uv>
         <code>TA02</code>
-        <titre>Évaluation Économique Des Procédés</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>&#xC9;valuation &#xC9;conomique Des Proc&#xE9;d&#xE9;s</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GP</branche><printemps/></uv>
+    <uv>
         <code>TF07</code>
-        <titre>Calcul Des Échangeurs Thermiques Industriels</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Calcul Des &#xC9;changeurs Thermiques Industriels</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GP</branche><printemps/></uv>
+    <uv>
         <code>TF08</code>
-        <titre>Hydrodynamique Des Systèmes Dispersés</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Hydrodynamique Des Syst&#xE8;mes Dispers&#xE9;s</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GP</branche><printemps/></uv>
+    <uv>
         <code>TMI01</code>
-        <titre>Conception Niveau 2 (Apprentissage)</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Conception Niveau 2 (Apprentissage)</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>GM</branche><branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>TMI05</code>
-        <titre>Fabrication Assistee Par Ordinateur Et Machines A Commande Numerique (Apprentissage)</titre>
-        <credits>3</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Fabrication Assistee Par Ordinateur Et Machines A Commande Numerique (Apprentissage)</nom>
+        <credit type="TM">3</credit>
+       
+    <branche>GM</branche><branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>TN12</code>
-        <titre>Conception Mécanique</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Conception M&#xE9;canique</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GM</branche><branche>GSM</branche><automne/><printemps/></uv>
+    <uv>
         <code>TN13</code>
-        <titre>Dimensionnement Pour La Conception Des Systemes Mecaniques</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Dimensionnement Pour La Conception Des Systemes Mecaniques</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>TN15</code>
-        <titre>Création De Produit, D'Activité, D'Entreprise</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
+        <nom>Cr&#xE9;ation De Produit, D'Activit&#xE9;, D'Entreprise</nom>
+        <credit type="TM">6</credit>
+       
     </uv>
-    <uv automne="false" printemps="false">
+    <uv>
         <code>TN24</code>
-        <titre>Technologies De Fabrication Et Outils Méthodes</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Technologies De Fabrication Et Outils M&#xE9;thodes</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>TN29</code>
-        <titre>Outils De Definition Et De Developpement De Systemes</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Outils De Definition Et De Developpement De Systemes</nom>
+        <credit type="TM">6</credit>
+       
+    <branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>TN30</code>
-        <titre>Xao En Milieu Professionnel</titre>
-        <credits>3</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Xao En Milieu Professionnel</nom>
+        <credit type="TM">3</credit>
+       
+    <branche>GSM</branche><printemps/></uv>
+    <uv>
         <code>UB02</code>
-        <titre>Systemes De Transport Urbain</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Systemes De Transport Urbain</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>GSU</branche><printemps/></uv>
+    <uv>
         <code>UB06</code>
-        <titre>Mises En Scènes Urbaines</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="true">
+        <nom>Mises En Sc&#xE8;nes Urbaines</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>GSU</branche><printemps/></uv>
+    <uv>
         <code>UB08</code>
-        <titre>Hydrologie Urbaine</titre>
-        <credits>6</credits>
-        <categorie>CS</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Hydrologie Urbaine</nom>
+        <credit type="CS">6</credit>
+       
+    <branche>GSU</branche><printemps/></uv>
+    <uv>
         <code>UR01</code>
-        <titre>Droit De L'Urbanisme, De La Construction Et De L'Environnement</titre>
-        <credits>5</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
+        <nom>Droit De L'Urbanisme, De La Construction Et De L'Environnement</nom>
+        <credit type="TM">5</credit>
+       
+    <branche>GSU</branche><printemps/></uv>
+    <uv>
         <code>UXD01</code>
-        <titre>Design D'Experience</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
+        <nom>Design D'Experience</nom>
+        <credit type="TM">6</credit>
+       
     </uv>
-</uvs>
+ 
+</UVSection>
