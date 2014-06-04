@@ -141,7 +141,7 @@ class Semestre {
     string getCommentaire() const {return commentaire;}
     bool getExt() const {return ext;}
     FormationExterieure* getFormationExterieure() const {return formationExt;}
-    //iterator pour naviguer entre les inscriptions
+
     void setAnnee (unsigned int i) {annee=i;}
     void setSaison (Saison& s) {saison=s;}
     void setCommentaire (const string& s) {commentaire=s;}
@@ -156,6 +156,11 @@ class Semestre {
      * par le pointeur prévu à cet effet.
      *
      * Tout ceci doit être géré dans le constructeur. */
+
+    //iterator pour naviguer entre les inscriptions
+    void ajouterInscription();
+    void supprimerInscription();
+    void modifierInscription();
 };
 
 class Dossier {
@@ -165,6 +170,14 @@ class Dossier {
     string conseiller;
     bool validationAEU;
     Semestre *semestres;
+    FormationExterieure *formationsExterieures;
+    bool mineurCCT;
+    bool mineurDDRESET;
+    bool mineurFIRME;
+    bool mineurINTENT;
+    bool mineurPHITECO;
+    bool mineurST;
+    bool mineurTCN;
    public :
     Dossier();
     ~Dossier();
@@ -173,32 +186,77 @@ class Dossier {
     string getPrenom() const {return prenom;}
     string getConseiller() const {return conseiller;}
     bool getValidationAEU() const {return validationAEU;}
-    //iterator pour naviguer entre les semestres
     void setLogin (const string& s) {login=s;}
     void setNom (const string& s) {nom=s;}
     void setPrenom (const string& s) {prenom=s;}
     void setConseiller (const string& s) {conseiller=s;}
     void setValidationAEU (bool b) {validationAEU=b;}
+    void checkMineurs();
+    void checkMineurCCT();
+    void checkMineurDDRESET();
+    void checkMineurFIRME();
+    void checkMineurINTENT();
+    void checkMineurPHITECO();
+    void checkMineurST();
+    void checkMineurTCN();
+    void suggestionsProchainSemestre();
+
+    //iterator pour naviguer entre les semestres
+    void ajouterSemestre();
+    void supprimerSemestre();
+    void modifierSemestre();
+
+    //iterator pour naviguer entre les formations exterieures
+    void ajouterFormationExterieure();
+    void supprimerFormationExterieure();
+    void modiferFormationExterieure();
 };
 
-class Formation { //à retravailler
+class Formation {
+    string nom;
+    string responsable;
+    string *uvs;
+    unsigned int nbCreditsTot;
+    unsigned int nbCreditsCS;
+    unsigned int nbCreditsTM;
+    unsigned int nbCreditsTSH;
+    unsigned int nbCreditsSP;
 };
 
 class Manager {
-    //Singleton
-    //Classe Abstraite
+    Manager();
+    Manager(Manager& copy);
+    Manager& operator=(Manager& other);
+   public :
+    virtual Manager* getInstance()=0;
+    virtual void libererInstance()=0;
 };
 
 class UVManager : public Manager {
-    //On n'a plus à se soucier du singleton : héritage de Manager
+    UV *uvs;
+   public :
+    UV* trouverUV(const string& s);
+    void ajouterUV();
+    void supprimerUV();
+    void modifierUV();
 };
 
 class FormationManager : public Manager {
-    //On n'a plus à se soucier du singleton : héritage de Manager
+    Formation *formations;
+   public :
+    Formation* trouverFormation(const string& s);
+    void ajouterFormation();
+    void supprimerFormation();
+    void modifierFormation();
 };
 
 class DossierManager : public Manager {
-    //On n'a plus à se soucier du singleton : héritage de Manager
+    Dossier *dossiers;
+   public :
+    Dossier* trouverDossier(const string& s);
+    void ajouterDossier();
+    void supprimerDossier();
+    void modifierDossier();
 };
 
 class InterfaceSQL {
