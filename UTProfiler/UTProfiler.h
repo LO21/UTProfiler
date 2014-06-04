@@ -3,8 +3,14 @@
 
 #include <iostream>
 #include <string>
+#include <QString>
 #include <QApplication>
 #include <QPushButton>
+#include <QtSql>
+#include <QFile>
+#include <QFileDialog>
+#include <QTextStream>
+#include <QMessageBox>
 
 using namespace std;
 
@@ -41,8 +47,12 @@ enum Categorie {
     SP
 };
 
-class UTProfilerException : public std::exception {
-
+class UTProfilerException {
+    QString msg;
+   public :
+    UTProfilerException(const QString& s);
+    //UTProfilerException(const string& s);
+    ~UTProfilerException() {}
 };
 
 class UV {
@@ -189,6 +199,22 @@ class FormationManager : public Manager {
 
 class DossierManager : public Manager {
     //On n'a plus à se soucier du singleton : héritage de Manager
+};
+
+class InterfaceSQL {
+    static InterfaceSQL *instanceUnique;
+    QSqlDatabase db;
+    QSqlQuery *query;
+    InterfaceSQL();
+    InterfaceSQL(InterfaceSQL& copy) {throw UTProfilerException("Erreur : Un objet InterfaceSQL existe déjà.");}
+    InterfaceSQL& operator=(InterfaceSQL& other) {throw UTProfilerException("Erreur : Un objet InterfaceSQL existe déjà."); return other;}
+    ~InterfaceSQL() {}
+   public :
+    static InterfaceSQL* getInstance();
+    static void libererInstance();
+    bool load();
+    bool load(const QString& chemin);
+    QSqlQuery& execQuery(const QString& q);
 };
 
 #endif // UTPROFILER_H
