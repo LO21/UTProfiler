@@ -19,11 +19,8 @@ void InterfaceSQL::libererInstance() {
 InterfaceSQL::InterfaceSQL() {
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("UTProfiler");
-    db.setHostName("localhost");
-    db.setUserName("root");
-    db.setPassword("");
     if (!db.open()) {QMessageBox::critical(0,"Erreur de création de la base de données",db.lastError().text());}
-    query = new QSqlQuery;
+    query = new QSqlQuery(db);
 }
 
 bool InterfaceSQL::load() {
