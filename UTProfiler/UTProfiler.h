@@ -5,7 +5,13 @@
 #include <string>
 #include <QString>
 #include <QApplication>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QPushButton>
+#include <QLabel>
+#include <QLineEdit>
+#include <QTextEdit>
+#include <QCheckBox>
 #include <QtSql>
 #include <QFile>
 #include <QFileDialog>
@@ -269,6 +275,29 @@ class InterfaceSQL {
     bool load();
     bool load(const QString& chemin);
     QSqlQuery& execQuery(const QString& q);
+};
+
+class UVWindow : public QWidget {
+    Q_OBJECT
+    UV *uv;
+    QVBoxLayout *mainlayout;
+    QHBoxLayout *hlayout1;
+    QLabel *lcode;
+    QLineEdit *lecode;
+    QLabel *lresponsable;
+    QLineEdit *leresponsable;
+    QHBoxLayout *hlayout2;
+    QTextEdit *tedescription;
+    QVBoxLayout *vlayout21;
+    QHBoxLayout *hlayout211;
+    QLabel *lprintemps;
+    QCheckBox *cbprintemps;
+    QHBoxLayout *hlayout212;
+    QLabel *lautomne;
+    QCheckBox *cbautomne;
+    QHBoxLayout *hlayout3;
+    QHBoxLayout *hlayout4;
+
 };
 
 #endif // UTPROFILER_H

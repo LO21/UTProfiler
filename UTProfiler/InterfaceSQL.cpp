@@ -18,7 +18,7 @@ InterfaceSQL::InterfaceSQL() {
     query = new QSqlQuery(db);
 }
 
-bool InterfaceSQL::load() {
+bool InterfaceSQL::load() { //une barre de chargement ?
     QString msgerr;
     QString chemin = QFileDialog::getOpenFileName();
     QFile f(chemin);
