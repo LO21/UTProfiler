@@ -59,8 +59,10 @@ class UV {
     string code;
     string titre;
     string responsable;
-    unsigned int nbCredits;
-    Categorie categorie;
+    unsigned int creditsCS;
+    unsigned int creditsTM;
+    unsigned int creditsTSH;
+    unsigned int creditsSP;
     bool printemps;
     bool automne;
    public :
@@ -68,26 +70,20 @@ class UV {
     string getCode() const {return code;}
     string getTitre() const {return titre;}
     string getResponsable() const {return responsable;}
-    Categorie getCategorie() const {return categorie;}
-    unsigned int getNbCredits() const {return nbCredits;}
+    unsigned int getCreditsCS() const {return creditsCS;}
+    unsigned int getCreditsTM() const {return creditsTM;}
+    unsigned int getCreditsTSH() const {return creditsTSH;}
+    unsigned int getCreditsSP() const {return creditsSP;}
     bool getPrintemps() const {return printemps;}
     bool getAutomne() const {return automne;}
     void setCode(const string& s) {code=s;}
     void setTitre(const string& s) {titre=s;}
-    void setNbCredits (unsigned int i) {nbCredits=i;}
-    void setCategorie (Categorie& c) {categorie=c;}
+    void getCreditsCS(unsigned int cs) {creditsCS=cs;}
+    void getCreditsTM(unsigned int tm) {creditsTM=tm;}
+    void getCreditsTSH(unsigned int tsh) {creditsTSH=tsh;}
+    void getCreditsSP(unsigned int sp) {creditsSP=sp;}
     void setPrintemps (bool b) {printemps=b;}
     void setAutomne (bool b) {automne=b;}
-/* Proposition concernant les UVs pouvant avoir deux catégories :
- * struct Credits {
- *    Categorie categorie;
- *    unsigned int nbCredits;
- * }
- * Credits *credits;
- *
- * credits fonctionnerai comme un tableau : la plupart des UVs ferai genre : credits = new Credits;
- * mais certaines pourrai faire : credits = new Credits[2];
- * Un iterateur nous permettrai de gérer les cas ou il peut y en avoir plusieurs */
 };
 
 class Inscription {

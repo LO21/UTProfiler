@@ -11,6 +11,7 @@ TEMPLATE = app
 
 SOURCES += \
     main.cpp \
+    InterfaceSQL.cpp \
     UTProfiler.cpp
 
 HEADERS += \
