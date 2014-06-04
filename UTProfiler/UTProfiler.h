@@ -279,7 +279,7 @@ class InterfaceSQL {
 
 class UVWindow : public QWidget {
     Q_OBJECT
-    UV *uv;
+    //UV *uv;
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
     QLabel *lcode;
@@ -296,8 +296,19 @@ class UVWindow : public QWidget {
     QLabel *lautomne;
     QCheckBox *cbautomne;
     QHBoxLayout *hlayout3;
+    QLabel *lcs;
+    QLineEdit *lecs;
+    QLabel *ltm;
+    QLineEdit *letm;
+    QLabel *ltsh;
+    QLineEdit *letsh;
+    QLabel *lsp;
+    QLineEdit *lesp;
     QHBoxLayout *hlayout4;
-
+    QPushButton *pbannuler;
+    QPushButton *pbsauver;
+   public :
+    UVWindow();
 };
 
 #endif // UTPROFILER_H
