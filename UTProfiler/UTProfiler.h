@@ -62,9 +62,9 @@ class UTProfilerException {
 };
 
 class UV {
-    string code;
-    string titre;
-    string responsable;
+    QString code;
+    QString titre;
+    QString responsable;
     unsigned int creditsCS;
     unsigned int creditsTM;
     unsigned int creditsTSH;
@@ -72,18 +72,18 @@ class UV {
     bool printemps;
     bool automne;
    public :
-    UV();//à voir : c'est à UVManager de gérer leurs cycles de vie
-    string getCode() const {return code;}
-    string getTitre() const {return titre;}
-    string getResponsable() const {return responsable;}
+    UV(const QString& c, const QString& t, const QString& r,unsigned int cs, unsigned int tm, unsigned int tsh, unsigned int sp, bool p, bool a) : code(c), titre(t), responsable(r), creditsCS(cs), creditsTM(tm), creditsTSH(tsh), creditsSP(sp), printemps(p), automne(a) {}
+    QString getCode() const {return code;}
+    QString getTitre() const {return titre;}
+    QString getResponsable() const {return responsable;}
     unsigned int getCreditsCS() const {return creditsCS;}
     unsigned int getCreditsTM() const {return creditsTM;}
     unsigned int getCreditsTSH() const {return creditsTSH;}
     unsigned int getCreditsSP() const {return creditsSP;}
     bool getPrintemps() const {return printemps;}
     bool getAutomne() const {return automne;}
-    void setCode(const string& s) {code=s;}
-    void setTitre(const string& s) {titre=s;}
+    void setCode(const QString& s) {code=s;}
+    void setTitre(const QString& s) {titre=s;}
     void getCreditsCS(unsigned int cs) {creditsCS=cs;}
     void getCreditsTM(unsigned int tm) {creditsTM=tm;}
     void getCreditsTSH(unsigned int tsh) {creditsTSH=tsh;}
@@ -275,11 +275,12 @@ class InterfaceSQL {
     bool load();
     bool load(const QString& chemin);
     QSqlQuery& execQuery(const QString& q);
+    UV* selectUV(const QString& q);
 };
 
 class UVWindow : public QWidget {
     Q_OBJECT
-    //UV *uv;
+    UV *uv;
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
     QLabel *lcode;
@@ -309,6 +310,7 @@ class UVWindow : public QWidget {
     QPushButton *pbsauver;
    public :
     UVWindow();
+    void associerUV(UV *uv);
 };
 
 #endif // UTPROFILER_H

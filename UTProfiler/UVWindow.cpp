@@ -56,3 +56,15 @@ UVWindow::UVWindow() {
     mainlayout->addLayout(hlayout4);
     this->setLayout(mainlayout);
 }
+
+void UVWindow::associerUV(UV *uv) {
+    lecode->setText(uv->getCode());
+    leresponsable->setText(uv->getResponsable());
+    tedescription->setText(uv->getTitre());
+    lecs->setText(QString::number(uv->getCreditsCS()));
+    letm->setText(QString::number(uv->getCreditsTM()));
+    letsh->setText(QString::number(uv->getCreditsTSH()));
+    lesp->setText(QString::number(uv->getCreditsSP()));
+    cbautomne->setChecked(uv->getAutomne());
+    cbprintemps->setChecked(uv->getPrintemps());
+}
