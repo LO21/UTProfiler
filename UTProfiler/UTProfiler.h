@@ -285,6 +285,7 @@ class UVWindow : public QWidget {
     QHBoxLayout *hlayout1;
     QLabel *lcode;
     QLineEdit *lecode;
+    QPushButton *pbrechercher;
     QLabel *lresponsable;
     QLineEdit *leresponsable;
     QHBoxLayout *hlayout2;
@@ -311,6 +312,10 @@ class UVWindow : public QWidget {
    public :
     UVWindow();
     void associerUV(UV *uv);
+   public slots :
+    void sauver();
+    void pbsauverEnable();
+    void rechercher();
 };
 
 #endif // UTPROFILER_H
