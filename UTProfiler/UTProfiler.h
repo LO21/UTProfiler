@@ -17,6 +17,7 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QMessageBox>
+#include <QRadioButton>
 
 using namespace std;
 
@@ -316,6 +317,35 @@ class UVWindow : public QWidget {
     void sauver();
     void pbsauverEnable();
     void rechercher();
+};
+
+class DossierWindow : public QWidget {
+    Q_OBJECT
+    Semestre *semestre;
+    QVBoxLayout *mainlayout;
+    QHBoxLayout *hlayout1;
+    QHBoxLayout *hlayout2;
+    QLabel *llogin;
+    QLineEdit *lelogin;
+    QPushButton *pbrechercher;
+    QLabel *lnom;
+    QLineEdit *lenom;
+    QLabel *lprenom;
+    QLineEdit *leprenom;
+    QPushButton *pbannuler;
+    QPushButton *pbsauver;
+    QLabel *lconseiller;
+    QLineEdit *leconseiller;
+    QLabel *lactiviteEU;
+    QRadioButton *lAEUOui;
+    QRadioButton *lAEUNon;
+
+   public :
+    DossierWindow();
+   public slots :
+    //void sauver();
+    //void pbsauverEnable();
+    //void rechercher();
 };
 
 #endif // UTPROFILER_H

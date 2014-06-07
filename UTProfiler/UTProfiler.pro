@@ -13,7 +13,8 @@ SOURCES += \
     main.cpp \
     InterfaceSQL.cpp \
     UTProfiler.cpp \
-    UVWindow.cpp
+    UVWindow.cpp \
+    DossierWindow.cpp
 
 HEADERS += \
     UTProfiler.h
