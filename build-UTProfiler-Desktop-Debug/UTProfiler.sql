@@ -34,8 +34,7 @@ CREATE TABLE IF NOT EXISTS Dossier (
 	prenom VARCHAR(25) NOT NULL,
 	conseiller VARCHAR(25) NOT NULL,
 	validationAEU BOOL,
-	branche VARCHAR(10) REFERENCES Branche(b),
-	mineur VARCHAR(10));
+	branche VARCHAR(10));
 
 CREATE TABLE IF NOT EXISTS Saison (
 	s CHAR(1));

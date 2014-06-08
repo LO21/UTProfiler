@@ -18,6 +18,7 @@
 #include <QTextStream>
 #include <QMessageBox>
 #include <QRadioButton>
+#include <QDebug>
 
 using namespace std;
 
@@ -167,11 +168,12 @@ class Semestre {
 };
 
 class Dossier {
-    string login;
-    string nom;
-    string prenom;
-    string conseiller;
+    QString login;
+    QString nom;
+    QString prenom;
+    QString conseiller;
     bool validationAEU;
+    QString branche;
     Semestre *semestres;
     FormationExterieure *formationsExterieures;
     bool mineurCCT;
@@ -182,26 +184,62 @@ class Dossier {
     bool mineurST;
     bool mineurTCN;
    public :
-    Dossier();
+    Dossier(const QString& l, const QString& n, const QString& p, const QString& c, bool AEU, const QString& b) : login(l), nom(n),
+        prenom(p), conseiller(c), validationAEU(AEU), branche(b), mineurCCT(false), mineurDDRESET(false), mineurFIRME(false),
+        mineurINTENT(false), mineurPHITECO(false), mineurST(false), mineurTCN(false){}
     ~Dossier();
-    string getLogin() const {return login;}
-    string getNom() const {return nom;}
-    string getPrenom() const {return prenom;}
-    string getConseiller() const {return conseiller;}
-    bool getValidationAEU() const {return validationAEU;}
-    void setLogin (const string& s) {login=s;}
-    void setNom (const string& s) {nom=s;}
-    void setPrenom (const string& s) {prenom=s;}
-    void setConseiller (const string& s) {conseiller=s;}
+    QString getLogin() const {return login;}
+    QString getNom() const {return nom;}
+    QString getPrenom() const {return prenom;}
+    QString getConseiller() const {return conseiller;}
+    QString getBranche() const {return branche;}
+    bool getValidationAEU() const {qDebug() << "Validation AEU :" <<validationAEU; return validationAEU;}
+    void setLogin (const QString& s) {login=s;}
+    void setNom (const QString& s) {nom=s;}
+    void setPrenom (const QString& s) {prenom=s;}
+    void setConseiller (const QString& s) {conseiller=s;}
+    void setBranche(const QString& s) {branche=s;}
     void setValidationAEU (bool b) {validationAEU=b;}
     void checkMineurs();
-    void checkMineurCCT();
-    void checkMineurDDRESET();
-    void checkMineurFIRME();
-    void checkMineurINTENT();
-    void checkMineurPHITECO();
-    void checkMineurST();
-    void checkMineurTCN();
+    bool checkMineurCCT() const{return false;}
+    bool checkMineurDDRESET() const{return false;}
+    bool checkMineurFIRME() const{return false;}
+    bool checkMineurINTENT() const{return false;}
+    bool checkMineurPHITECO() const{return false;}
+    bool checkMineurST() const{return false;}
+    bool checkMineurTCN() const{return false;}
+    bool checkGI() const{
+        QString b = "GI";
+        if (branche == b) {return true;}
+        return false;}
+    bool checkGM()const{
+        QString b = "GM";
+        if (branche == b) {return true;}
+        return false;}
+    bool checkGP()const{
+        QString b = "GP";
+        if (branche == b) {return true;}
+        return false;}
+    bool checkGSM()const{
+        QString b = "GSM";
+        if (branche == b) {return true;}
+        return false;}
+    bool checkGSU()const{
+        QString b = "GSU";
+        if (branche == b) {return true;}
+        return false;}
+    bool checkGB()const{
+        QString b = "GB";
+        if (branche == b) {return true;}
+        return false;}
+    bool checkTC()const{
+        QString b = "TC";
+        if (branche == b) {return true;}
+        return false;}
+    bool checkHutech()const{
+        QString b = "HUTECH";
+        if (branche == b) {return true;}
+        return false;}
     void suggestionsProchainSemestre();
 
     //iterator pour naviguer entre les semestres
@@ -277,6 +315,7 @@ class InterfaceSQL {
     bool load(const QString& chemin);
     QSqlQuery& execQuery(const QString& q);
     UV* selectUV(const QString& q);
+    Dossier* selectDossier(const QString& q);
 };
 
 class UVWindow : public QWidget {
@@ -325,6 +364,13 @@ class DossierWindow : public QWidget {
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
     QHBoxLayout *hlayout2;
+    QHBoxLayout *hlayout3;
+    QHBoxLayout *hlayout4;
+    QHBoxLayout *hlayout5;
+    QHBoxLayout *hlayout6;
+    QHBoxLayout *hlayout7;
+    QHBoxLayout *hlayout8;
+    QHBoxLayout *hlayout9;
     QLabel *llogin;
     QLineEdit *lelogin;
     QPushButton *pbrechercher;
@@ -339,13 +385,36 @@ class DossierWindow : public QWidget {
     QLabel *lactiviteEU;
     QRadioButton *lAEUOui;
     QRadioButton *lAEUNon;
+    QLabel *lformationext;
+    QPushButton *pbajouterformext;
+    QLabel *lmineurs;
+    QCheckBox *cbCCT;
+    QCheckBox *cbFIRME;
+    QCheckBox *cbPHITECO;
+    QCheckBox *cbTCN;
+    QCheckBox *cbDDRESET;
+    QCheckBox *cbINTENT;
+    QCheckBox *cbST;
+    QLabel *lsemestres;
+    QPushButton *pbajoutersemestres;
+    QLabel *lbranche;
+    QCheckBox *cbGI;
+    QCheckBox *cbGM;
+    QCheckBox *cbGSM;
+    QCheckBox *cbGB;
+    QCheckBox *cbGP;
+    QCheckBox *cbGSU;
+    QCheckBox *cbTC;
+    QCheckBox *cbHutech;
+
 
    public :
     DossierWindow();
+    void associerDossier(Dossier* d);
    public slots :
-    //void sauver();
-    //void pbsauverEnable();
-    //void rechercher();
+    void sauver();
+    void pbsauverEnable();
+    void rechercher();
 };
 
 #endif // UTPROFILER_H
