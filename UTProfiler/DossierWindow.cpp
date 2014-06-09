@@ -109,6 +109,8 @@ DossierWindow::DossierWindow() {
     mainlayout->addLayout(hlayout7);
     this->setLayout(mainlayout);
 
+    QString l = lelogin->text();
+
     QObject::connect(pbrechercher,SIGNAL(clicked()),this,SLOT(rechercher()));
     QObject::connect(pbsauver,SIGNAL(clicked()),this,SLOT(sauver()));
     QObject::connect(lenom,SIGNAL(textChanged(QString)),this,SLOT(pbsauverEnable()));
@@ -124,6 +126,7 @@ DossierWindow::DossierWindow() {
     QObject::connect(cbGSU,SIGNAL(stateChanged(int)),this,SLOT(pbsauverEnable()));
     QObject::connect(cbTC,SIGNAL(stateChanged(int)),this,SLOT(pbsauverEnable()));
     QObject::connect(cbHutech,SIGNAL(stateChanged(int)),this,SLOT(pbsauverEnable()));
+    QObject::connect(pbajouterformext, SIGNAL(clicked()), this, SLOT(ajouterFormExt()));
 }
 
 
@@ -185,7 +188,7 @@ void DossierWindow::associerDossier(Dossier *d) {
     pbsauver->setEnabled(false);
 
     // Afficher ici les semestres sous forme de tableau avec les UV et les notes obtenues
-    QString qu="SELECT nom, semestre, lieu, creditsCS, creditsTM, creditsTSH, creditsSP FROM FormationExt WHERE login = '";
+    QString qu="SELECT nom, lieu, creditsCS, creditsTM, creditsTSH, creditsSP FROM FormationExt WHERE login = '";
     qu.append(lelogin->text());
     qu.append("';");
     InterfaceSQL *sql2 = InterfaceSQL::getInstance();
@@ -194,11 +197,11 @@ void DossierWindow::associerDossier(Dossier *d) {
     while(query.next())
         {
             QString nom = query.value(0).toString();
-            QString lieu = query.value(2).toString();
-            int creditsCS = query.value(3).toInt();
-            int creditsTM = query.value(4).toInt();
-            int creditsTSH = query.value(5).toInt();
-            int creditsSP = query.value(6).toInt();
+            QString lieu = query.value(1).toString();
+            int creditsCS = query.value(2).toInt();
+            int creditsTM = query.value(3).toInt();
+            int creditsTSH = query.value(4).toInt();
+            int creditsSP = query.value(5).toInt();
             table->insertRow(table->currentRow() + 1);
 
             QTableWidgetItem *itemNom = new QTableWidgetItem(nom);
@@ -233,3 +236,91 @@ void DossierWindow::rechercher() {
 
 }
 
+void DossierWindow::ajouterFormExt(){
+    QString l = lelogin->text();
+    FormationExtWindow *fenetre = new FormationExtWindow(l);
+
+    fenetre->show();
+}
+
+FormationExtWindow::FormationExtWindow(const QString& l): login(l) {
+    mainlayout = new QVBoxLayout();
+
+    hlayout1 = new QHBoxLayout();
+    lnom = new QLabel("Nom de la formation :");
+    lenom = new QLineEdit;
+    llieu = new QLabel("Lieu :");
+    lelieu = new QLineEdit;
+    hlayout1->addWidget(lnom);
+    hlayout1->addWidget(lenom);
+    hlayout1->addWidget(llieu);
+    hlayout1->addWidget(lelieu);
+
+    hlayout2 = new QHBoxLayout();
+    lequivalences = new QLabel("Equivalences obtenues :");
+    hlayout2->addWidget(lequivalences);
+
+    hlayout3 = new QHBoxLayout();
+    lcs = new QLabel("CS");
+    lecs = new QLineEdit;
+    ltm = new QLabel("TM");
+    letm = new QLineEdit;
+    ltsh = new QLabel("TSH");
+    letsh = new QLineEdit;
+    lsp = new QLabel("SP");
+    lesp = new QLineEdit;
+
+    hlayout3->addWidget(lcs);
+    hlayout3->addWidget(lecs);
+    hlayout3->addWidget(ltm);
+    hlayout3->addWidget(letm);
+    hlayout3->addWidget(ltsh);
+    hlayout3->addWidget(letsh);
+    hlayout3->addWidget(lsp);
+    hlayout3->addWidget(lesp);
+
+    hlayout4 = new QHBoxLayout();
+    pbajouter = new QPushButton("Ajouter");
+    hlayout4->addWidget(pbajouter);
+
+    mainlayout->addLayout(hlayout1);
+    mainlayout->addLayout(hlayout2);
+    mainlayout->addLayout(hlayout3);
+    mainlayout->addLayout(hlayout4);
+
+    this->setLayout(mainlayout);
+
+    QObject::connect(pbajouter,SIGNAL(clicked()),this,SLOT(ajouter()));
+
+}
+
+void FormationExtWindow::ajouter() {
+    qDebug() <<"login : "<<getLogin();
+    if (getLogin() == '\0'){
+        QMessageBox msg;
+        msg.setText("Pour ajouter une formation, il faut chercher au préalable un login.");
+        msg.exec();
+    }
+    else {
+        QString q="INSERT INTO FormationExt(login, nom, lieu, creditsCS, creditsTM, creditsTSH, creditsSP) VALUES ('";
+        q.append(getLogin());
+        q.append("','");
+        q.append(lenom->text());
+        q.append("','");
+        q.append(lelieu->text());
+        q.append("','");
+        q.append(lecs->text());
+        q.append("','");
+        q.append(letm->text());
+        q.append("','");
+        q.append(letsh->text());
+        q.append("','");
+        q.append(lesp->text());
+        q.append("');");
+        InterfaceSQL *sql = InterfaceSQL::getInstance();
+        sql->execQuery(q);
+    }
+    close();
+
+
+}

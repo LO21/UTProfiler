@@ -81,10 +81,9 @@ CREATE TABLE IF NOT EXISTS Inscription (
 CREATE TABLE IF NOT EXISTS FormationExt (
 	login CHAR(8) REFERENCES Dossier(login),
 	nom VARCHAR(50),
-	semestre INTEGER(10) REFERENCES Semestre(id),
 	lieu VARCHAR(50) NOT NULL,
 	creditsCS INTEGER(2),
 	creditsTM INTEGER(2),
 	creditsTSH INTEGER(2),
 	creditsSP INTEGER(2),
-	PRIMARY KEY (semestre, login) );
+	PRIMARY KEY (nom, login) );

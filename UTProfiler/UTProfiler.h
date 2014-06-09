@@ -419,6 +419,42 @@ class DossierWindow : public QWidget {
     void sauver();
     void pbsauverEnable();
     void rechercher();
+    void ajouterFormExt();
+};
+
+class FormationExtWindow : public QWidget {
+    Q_OBJECT
+
+    QString login;
+
+    QVBoxLayout *mainlayout;
+    QHBoxLayout *hlayout1;
+    QHBoxLayout *hlayout2;
+    QHBoxLayout *hlayout3;
+    QHBoxLayout *hlayout4;
+    QLabel *lnom;
+    QLineEdit *lenom;
+    QLabel *llieu;
+    QLineEdit *lelieu;
+    QLabel *lequivalences;
+    QLabel *lcs;
+    QLineEdit *lecs;
+    QLabel *ltm;
+    QLineEdit *letm;
+    QLabel *ltsh;
+    QLineEdit *letsh;
+    QLabel *lsp;
+    QLineEdit *lesp;
+
+    QPushButton *pbajouter;
+
+
+   public :
+    FormationExtWindow(const QString& l);
+    QString getLogin() const {return login;}
+
+   public slots :
+    void ajouter();
 };
 
 #endif // UTPROFILER_H
