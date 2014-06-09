@@ -232,6 +232,8 @@ void DossierWindow::rechercher() {
     q.append("';");
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     Dossier *d = sql->selectDossier(q);
+    table->clearContents();
+    table->setRowCount(0);
     associerDossier(d);
 
 }
