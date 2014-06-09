@@ -17,6 +17,7 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QMessageBox>
+#include <QProgressBar>
 
 using namespace std;
 
@@ -72,7 +73,8 @@ class UV {
     bool printemps;
     bool automne;
    public :
-    UV(const QString& c, const QString& t, const QString& r,unsigned int cs, unsigned int tm, unsigned int tsh, unsigned int sp, bool p, bool a) : code(c), titre(t), responsable(r), creditsCS(cs), creditsTM(tm), creditsTSH(tsh), creditsSP(sp), printemps(p), automne(a) {}
+    bool *branche;
+    UV(const QString& c, const QString& t, const QString& r,unsigned int cs, unsigned int tm, unsigned int tsh, unsigned int sp, bool p, bool a) : code(c), titre(t), responsable(r), creditsCS(cs), creditsTM(tm), creditsTSH(tsh), creditsSP(sp), printemps(p), automne(a) {branche = new bool[8];}
     QString getCode() const {return code;}
     QString getTitre() const {return titre;}
     QString getResponsable() const {return responsable;}
@@ -90,6 +92,7 @@ class UV {
     void getCreditsSP(unsigned int sp) {creditsSP=sp;}
     void setPrintemps (bool b) {printemps=b;}
     void setAutomne (bool b) {automne=b;}
+    void getBranche();
 };
 
 class Inscription {
@@ -221,6 +224,7 @@ class Formation {
     unsigned int nbCreditsTot;
     unsigned int nbCreditsCS;
     unsigned int nbCreditsTM;
+    unsigned int nbCreditsCSTM;
     unsigned int nbCreditsTSH;
     unsigned int nbCreditsSP;
 };
@@ -266,7 +270,7 @@ class InterfaceSQL {
     QSqlDatabase db;
     QSqlQuery *query;
     InterfaceSQL();
-    InterfaceSQL(InterfaceSQL& copy) {throw UTProfilerException("Erreur : Un objet InterfaceSQL existe déjà.");}
+    InterfaceSQL(InterfaceSQL&) {throw UTProfilerException("Erreur : Un objet InterfaceSQL existe déjà.");}
     InterfaceSQL& operator=(InterfaceSQL& other) {throw UTProfilerException("Erreur : Un objet InterfaceSQL existe déjà."); return other;}
     ~InterfaceSQL() {}
    public :
@@ -275,12 +279,34 @@ class InterfaceSQL {
     bool load();
     bool load(const QString& chemin);
     QSqlQuery& execQuery(const QString& q);
+    bool tupleExiste(const QString& q) {query->exec(q); query->next(); return query->isValid();}
     UV* selectUV(const QString& q);
+};
+
+class UVWindow;
+
+class NewUVWindow : public QWidget {
+    Q_OBJECT
+   friend class UVWindow;
+    UVWindow *master;
+    QLabel *label;
+    QLineEdit *lecode;
+    QHBoxLayout *hlayout1;
+    QPushButton *pbannuler;
+    QPushButton *pbvalider;
+    QHBoxLayout *hlayout2;
+    QVBoxLayout *vlayout;
+    NewUVWindow(UVWindow *m);
+   public slots :
+    void pbvaliderEnable();
+    void nouveau_annuler();
+    void nouveau_valider();
 };
 
 class UVWindow : public QWidget {
     Q_OBJECT
     UV *uv;
+    NewUVWindow *newuvwindow;
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
     QLabel *lcode;
@@ -307,15 +333,43 @@ class UVWindow : public QWidget {
     QLabel *lsp;
     QLineEdit *lesp;
     QHBoxLayout *hlayout4;
+    QPushButton *pbnouveau;
     QPushButton *pbannuler;
     QPushButton *pbsauver;
+    QHBoxLayout *hlayout5;
+    QLabel *ltc;
+    QCheckBox *cbtc;
+    QLabel *lhutech;
+    QCheckBox *cbhutech;
+    QLabel *lgb;
+    QCheckBox *cbgb;
+    QLabel *lgi;
+    QCheckBox *cbgi;
+    QLabel *lgm;
+    QCheckBox *cbgm;
+    QLabel *lgp;
+    QCheckBox *cbgp;
+    QLabel *lgsm;
+    QCheckBox *cbgsm;
+    QLabel *lgsu;
+    QCheckBox *cbgsu;
    public :
     UVWindow();
     void associerUV(UV *uv);
+    void changeTC();
+    void changeHUTECH();
+    void changeGB();
+    void changeGI();
+    void changeGM();
+    void changeGP();
+    void changeGSM();
+    void changeGSU();
    public slots :
     void sauver();
+    void annuler();
     void pbsauverEnable();
     void rechercher();
+    void nouveau();
 };
 
 #endif // UTPROFILER_H

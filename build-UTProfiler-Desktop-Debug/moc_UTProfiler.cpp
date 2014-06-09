@@ -18,29 +18,29 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-struct qt_meta_stringdata_UVWindow_t {
+struct qt_meta_stringdata_NewUVWindow_t {
     QByteArrayData data[5];
-    char stringdata[44];
+    char stringdata[62];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_UVWindow_t, stringdata) + ofs \
+    offsetof(qt_meta_stringdata_NewUVWindow_t, stringdata) + ofs \
         - idx * sizeof(QByteArrayData) \
     )
-static const qt_meta_stringdata_UVWindow_t qt_meta_stringdata_UVWindow = {
+static const qt_meta_stringdata_NewUVWindow_t qt_meta_stringdata_NewUVWindow = {
     {
-QT_MOC_LITERAL(0, 0, 8),
-QT_MOC_LITERAL(1, 9, 6),
-QT_MOC_LITERAL(2, 16, 0),
-QT_MOC_LITERAL(3, 17, 14),
-QT_MOC_LITERAL(4, 32, 10)
+QT_MOC_LITERAL(0, 0, 11),
+QT_MOC_LITERAL(1, 12, 15),
+QT_MOC_LITERAL(2, 28, 0),
+QT_MOC_LITERAL(3, 29, 15),
+QT_MOC_LITERAL(4, 45, 15)
     },
-    "UVWindow\0sauver\0\0pbsauverEnable\0"
-    "rechercher\0"
+    "NewUVWindow\0pbvaliderEnable\0\0"
+    "nouveau_annuler\0nouveau_valider\0"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_UVWindow[] = {
+static const uint qt_meta_data_NewUVWindow[] = {
 
  // content:
        7,       // revision
@@ -66,14 +66,119 @@ static const uint qt_meta_data_UVWindow[] = {
        0        // eod
 };
 
+void NewUVWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        NewUVWindow *_t = static_cast<NewUVWindow *>(_o);
+        switch (_id) {
+        case 0: _t->pbvaliderEnable(); break;
+        case 1: _t->nouveau_annuler(); break;
+        case 2: _t->nouveau_valider(); break;
+        default: ;
+        }
+    }
+    Q_UNUSED(_a);
+}
+
+const QMetaObject NewUVWindow::staticMetaObject = {
+    { &QWidget::staticMetaObject, qt_meta_stringdata_NewUVWindow.data,
+      qt_meta_data_NewUVWindow,  qt_static_metacall, 0, 0}
+};
+
+
+const QMetaObject *NewUVWindow::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *NewUVWindow::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_NewUVWindow.stringdata))
+        return static_cast<void*>(const_cast< NewUVWindow*>(this));
+    return QWidget::qt_metacast(_clname);
+}
+
+int NewUVWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 3)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 3;
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 3)
+            *reinterpret_cast<int*>(_a[0]) = -1;
+        _id -= 3;
+    }
+    return _id;
+}
+struct qt_meta_stringdata_UVWindow_t {
+    QByteArrayData data[7];
+    char stringdata[60];
+};
+#define QT_MOC_LITERAL(idx, ofs, len) \
+    Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_UVWindow_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+static const qt_meta_stringdata_UVWindow_t qt_meta_stringdata_UVWindow = {
+    {
+QT_MOC_LITERAL(0, 0, 8),
+QT_MOC_LITERAL(1, 9, 6),
+QT_MOC_LITERAL(2, 16, 0),
+QT_MOC_LITERAL(3, 17, 7),
+QT_MOC_LITERAL(4, 25, 14),
+QT_MOC_LITERAL(5, 40, 10),
+QT_MOC_LITERAL(6, 51, 7)
+    },
+    "UVWindow\0sauver\0\0annuler\0pbsauverEnable\0"
+    "rechercher\0nouveau\0"
+};
+#undef QT_MOC_LITERAL
+
+static const uint qt_meta_data_UVWindow[] = {
+
+ // content:
+       7,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       5,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: name, argc, parameters, tag, flags
+       1,    0,   39,    2, 0x0a,
+       3,    0,   40,    2, 0x0a,
+       4,    0,   41,    2, 0x0a,
+       5,    0,   42,    2, 0x0a,
+       6,    0,   43,    2, 0x0a,
+
+ // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+
+       0        // eod
+};
+
 void UVWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         UVWindow *_t = static_cast<UVWindow *>(_o);
         switch (_id) {
         case 0: _t->sauver(); break;
-        case 1: _t->pbsauverEnable(); break;
-        case 2: _t->rechercher(); break;
+        case 1: _t->annuler(); break;
+        case 2: _t->pbsauverEnable(); break;
+        case 3: _t->rechercher(); break;
+        case 4: _t->nouveau(); break;
         default: ;
         }
     }
@@ -105,13 +210,13 @@ int UVWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 5;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 5)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 3;
+        _id -= 5;
     }
     return _id;
 }
