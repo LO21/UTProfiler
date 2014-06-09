@@ -79,27 +79,14 @@ CREATE TABLE IF NOT EXISTS Inscription (
 	PRIMARY KEY (uv, semestre));
 
 CREATE TABLE IF NOT EXISTS FormationExt (
-<<<<<<< HEAD
-=======
 	login CHAR(8) REFERENCES Dossier(login),
 	nom VARCHAR(50),
-<<<<<<< HEAD
 	lieu VARCHAR(50) NOT NULL,
-=======
->>>>>>> ca066837db7a1e7d3b17183ff87e545d5832793e
-	semestre INTEGER(10) REFERENCES Semestre(id),
-	nom VARCHAR(50),
-	lieu VARCHAR(50),
->>>>>>> af2af93f35c9b3d1f666cb3d06323f931ea63566
 	creditsCS INTEGER(2),
 	creditsTM INTEGER(2),
 	creditsTSH INTEGER(2),
 	creditsSP INTEGER(2),
-<<<<<<< HEAD
 	PRIMARY KEY (nom, login) );
-=======
-<<<<<<< HEAD
-	PRIMARY KEY (semestre));
 
 CREATE TABLE IF NOT EXISTS Formation (
 	nom VARCHAR(25) PRIMARY KEY,
@@ -131,8 +118,3 @@ CREATE TABLE IF NOT EXISTS AssociationUVBranche (
 	uv VARCHAR(10) REFERENCES UV(code),
 	branche VARCHAR(25) REFERENCES Formation(nom),
 	PRIMARY KEY (uv,branche));
-
-=======
-	PRIMARY KEY (semestre, login) );
->>>>>>> ca066837db7a1e7d3b17183ff87e545d5832793e
->>>>>>> af2af93f35c9b3d1f666cb3d06323f931ea63566
