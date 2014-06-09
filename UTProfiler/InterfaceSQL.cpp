@@ -18,8 +18,7 @@ InterfaceSQL::InterfaceSQL() {
     query = new QSqlQuery(db);
 }
 
-bool InterfaceSQL::load() { //une barre de chargement ?
-    QString msgerr;
+bool InterfaceSQL::load() {
     QString chemin = QFileDialog::getOpenFileName();
     QFile f(chemin);
     if (!f.exists()) {throw UTProfilerException(QString::fromStdString("Erreur : Le fichier '"+chemin.toStdString()+"' n'existe pas.")); return false;}
@@ -63,15 +62,25 @@ bool InterfaceSQL::load(const QString &chemin) {
 }
 
 QSqlQuery& InterfaceSQL::execQuery(const QString &q) {
-    if (!query->exec(q)) {throw UTProfilerException(QString::fromStdString("Erreur : La requête :\n")+q+QString::fromStdString("\n n'a pas fonctionné.\nDernière Erreur : ")+query->lastError().text());}
+    if (!query->exec(q)) {throw UTProfilerException(QString::fromStdString("Erreur : La requête suivante n'a pas fonctionné :\n")+q+QString::fromStdString("\n\nDernière Erreur : ")+query->lastError().text());}
     return *query;
 }
 
 UV* InterfaceSQL::selectUV(const QString& q) {
-    if (!query->exec(q)) {throw UTProfilerException(QString::fromStdString("Erreur : La requête :\n")+q+QString::fromStdString("\n n'a pas fonctionné.\nDernière Erreur : ")+query->lastError().text());}
+    string check1 = "SELECT * FROM UV";
+    string check2 = q.toStdString();
+    int check3 = check2.find(check1);
+    if (check3==-1) {throw UTProfilerException(QString::fromStdString("Erreur sur InterfaceSQL::selectUV(const QString&) : La requête doit être de la forme : 'SELECT * FROM UV'"));}
+    if (!query->exec(q)) {throw UTProfilerException(QString::fromStdString("Erreur : La requête suivante n'a pas fonctionné :\n")+q+QString::fromStdString("\n\nDernière Erreur : ")+query->lastError().text());}
     query->next();
-    UV* res = new UV(query->value(0).toString(),query->value(1).toString(),query->value(2).toString(),query->value(3).toUInt(),query->value(4).toUInt(),query->value(5).toUInt(),query->value(6).toUInt(),query->value(7).toBool(),query->value(8).toBool());
-    return res;
+    if (query->isValid()) {
+        UV* res = new UV(query->value(0).toString(),query->value(1).toString(),query->value(2).toString(),query->value(3).toUInt(),query->value(4).toUInt(),query->value(5).toUInt(),query->value(6).toUInt(),query->value(7).toBool(),query->value(8).toBool());
+        return res;
+    }
+    else {
+        throw UTProfilerException(QString::fromStdString("Erreur : la requête suivante n'a pas fonctionné :\n"+q.toStdString()+"\nL'UV demandée n'existe pas"));
+        return 0;
+    }
 }
 
 Dossier* InterfaceSQL::selectDossier(const QString& q) {
