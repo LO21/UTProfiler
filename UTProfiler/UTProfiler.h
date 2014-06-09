@@ -19,6 +19,8 @@
 #include <QMessageBox>
 #include <QRadioButton>
 #include <QDebug>
+#include <QTableWidget>
+#include <QTableWidgetItem>
 
 using namespace std;
 
@@ -193,7 +195,7 @@ class Dossier {
     QString getPrenom() const {return prenom;}
     QString getConseiller() const {return conseiller;}
     QString getBranche() const {return branche;}
-    bool getValidationAEU() const {qDebug() << "Validation AEU :" <<validationAEU; return validationAEU;}
+    bool getValidationAEU() const {return validationAEU;}
     void setLogin (const QString& s) {login=s;}
     void setNom (const QString& s) {nom=s;}
     void setPrenom (const QString& s) {prenom=s;}
@@ -371,6 +373,7 @@ class DossierWindow : public QWidget {
     QHBoxLayout *hlayout7;
     QHBoxLayout *hlayout8;
     QHBoxLayout *hlayout9;
+    QHBoxLayout *hlayout10;
     QLabel *llogin;
     QLineEdit *lelogin;
     QPushButton *pbrechercher;
@@ -406,6 +409,7 @@ class DossierWindow : public QWidget {
     QCheckBox *cbGSU;
     QCheckBox *cbTC;
     QCheckBox *cbHutech;
+    QTableWidget *table;
 
 
    public :

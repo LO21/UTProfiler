@@ -36,6 +36,13 @@ DossierWindow::DossierWindow() {
 
     // J'aimerais ajouter ici les formations extérieures déjà disponibles avec une requete en SELECT
 
+    hlayout10 = new QHBoxLayout();
+    table = new QTableWidget(this);
+    table->setColumnCount(6);
+    table->setHorizontalHeaderLabels(QStringList()<<"Nom"<<"Lieu"<<"Crédits CS"<<"Crédits TM"<<"Crédits TSH"<<"Crédits SP");
+    hlayout10->addWidget(table);
+
+
     hlayout4 = new QHBoxLayout();
     lmineurs = new QLabel("Mineurs :");
     hlayout4->addWidget(lmineurs);
@@ -84,8 +91,6 @@ DossierWindow::DossierWindow() {
     hlayout9->addWidget(cbTC);
     hlayout9->addWidget(cbHutech);
 
-    // Afficher ici les semestres sous forme de tableau avec les UV et les notes obtenues
-
     hlayout7 = new QHBoxLayout();
     pbannuler = new QPushButton("Annuler");
     pbsauver = new QPushButton("Sauver");
@@ -95,6 +100,7 @@ DossierWindow::DossierWindow() {
     mainlayout->addLayout(hlayout1);
     mainlayout->addLayout(hlayout2);
     mainlayout->addLayout(hlayout3);
+    mainlayout->addLayout(hlayout10);
     mainlayout->addLayout(hlayout8);
     mainlayout->addLayout(hlayout9);
     mainlayout->addLayout(hlayout6);
@@ -177,6 +183,44 @@ void DossierWindow::associerDossier(Dossier *d) {
     cbTC->setChecked(d->checkTC());
     cbHutech->setChecked(d->checkHutech());
     pbsauver->setEnabled(false);
+
+    // Afficher ici les semestres sous forme de tableau avec les UV et les notes obtenues
+    QString qu="SELECT nom, semestre, lieu, creditsCS, creditsTM, creditsTSH, creditsSP FROM FormationExt WHERE login = '";
+    qu.append(lelogin->text());
+    qu.append("';");
+    InterfaceSQL *sql2 = InterfaceSQL::getInstance();
+    QSqlQuery query = sql2->execQuery(qu);
+
+    while(query.next())
+        {
+            QString nom = query.value(0).toString();
+            QString lieu = query.value(2).toString();
+            int creditsCS = query.value(3).toInt();
+            int creditsTM = query.value(4).toInt();
+            int creditsTSH = query.value(5).toInt();
+            int creditsSP = query.value(6).toInt();
+            table->insertRow(table->currentRow() + 1);
+
+            QTableWidgetItem *itemNom = new QTableWidgetItem(nom);
+            table->setItem(table->currentRow() + 1, 0, itemNom);
+            QTableWidgetItem *itemLieu = new QTableWidgetItem(lieu);
+            table->setItem(table->currentRow() + 1, 1, itemLieu);
+            QTableWidgetItem *itemCS = new QTableWidgetItem();
+            itemCS->setData(Qt::DisplayRole,creditsCS);
+            table->setItem(table->currentRow() + 1, 2, itemCS);
+            QTableWidgetItem *itemTM = new QTableWidgetItem();
+            itemTM->setData(Qt::DisplayRole,creditsTM);
+            table->setItem(table->currentRow() + 1, 3, itemTM);
+            QTableWidgetItem *itemTSH = new QTableWidgetItem();
+            itemTSH->setData(Qt::DisplayRole,creditsTSH);
+            table->setItem(table->currentRow() + 1, 4, itemTSH);
+            QTableWidgetItem *itemSP = new QTableWidgetItem();
+            itemSP->setData(Qt::DisplayRole,creditsSP);
+            table->setItem(table->currentRow() + 1, 5, itemSP);
+
+
+            //qDebug() << "Semestre :" <<semestre;
+        }
 }
 
 void DossierWindow::rechercher() {
@@ -186,5 +230,6 @@ void DossierWindow::rechercher() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     Dossier *d = sql->selectDossier(q);
     associerDossier(d);
+
 }
 
