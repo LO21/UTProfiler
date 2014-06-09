@@ -1,3 +1,5 @@
+DROP TABLE FormationExt;
+
 CREATE TABLE IF NOT EXISTS FormationExt (
 	login CHAR(8) REFERENCES Dossier(login),
 	nom VARCHAR(50),
@@ -6,15 +8,7 @@ CREATE TABLE IF NOT EXISTS FormationExt (
 	creditsTM INTEGER(2),
 	creditsTSH INTEGER(2),
 	creditsSP INTEGER(2),
-	PRIMARY KEY (nom, login) );
-	
-	CREATE TABLE IF NOT EXISTS Dossier (
-	login CHAR(8) PRIMARY KEY,
-	nom VARCHAR(25) NOT NULL,
-	prenom VARCHAR(25) NOT NULL,
-	conseiller VARCHAR(25) NOT NULL,
-	validationAEU BOOL,
-	branche VARCHAR(10));
+	PRIMARY KEY (login, nom));
 	
 INSERT INTO FormationExt(login, nom, lieu, creditsCS, creditsTM,creditsTSH,creditsSP)
 VALUES ('ritgabri', 'UTSEUS', 'Chine', 14, 0, 6, 0);

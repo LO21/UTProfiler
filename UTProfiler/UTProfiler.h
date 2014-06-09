@@ -474,6 +474,7 @@ class DossierWindow : public QWidget {
     void pbsauverEnable();
     void rechercher();
     void ajouterFormExt();
+    void supprFormExt(int r, int c);
 };
 
 class FormationExtWindow : public QWidget {
