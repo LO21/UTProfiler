@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS FormationExt (
 	creditsTM INTEGER(2),
 	creditsTSH INTEGER(2),
 	creditsSP INTEGER(2),
-	PRIMARY KEY (nom, login) );
+	PRIMARY KEY (login, nom));
 
 CREATE TABLE IF NOT EXISTS Formation (
 	nom VARCHAR(25) PRIMARY KEY,

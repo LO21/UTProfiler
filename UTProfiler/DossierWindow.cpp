@@ -34,12 +34,12 @@ DossierWindow::DossierWindow() {
     hlayout3->addWidget(lformationext);
     hlayout3->addWidget(pbajouterformext);
 
-    // J'aimerais ajouter ici les formations extérieures déjà disponibles avec une requete en SELECT
+    /* Tableau Formations Extérieures */
 
     hlayout10 = new QHBoxLayout();
     table = new QTableWidget(this);
-    table->setColumnCount(6);
-    table->setHorizontalHeaderLabels(QStringList()<<"Nom"<<"Lieu"<<"Crédits CS"<<"Crédits TM"<<"Crédits TSH"<<"Crédits SP");
+    table->setColumnCount(7);
+    table->setHorizontalHeaderLabels(QStringList()<<"Nom"<<"Lieu"<<"Crédits CS"<<"Crédits TM"<<"Crédits TSH"<<"Crédits SP"<<"");
     hlayout10->addWidget(table);
 
 
@@ -68,6 +68,9 @@ DossierWindow::DossierWindow() {
     pbajoutersemestres = new QPushButton("Ajouter");
     hlayout6->addWidget(lsemestres);
     hlayout6->addWidget(pbajoutersemestres);
+
+    /* Tableau Formations Extérieures */
+    // A implémenter
 
     hlayout8 = new QHBoxLayout();
     lbranche = new QLabel("Branche :");
@@ -127,10 +130,16 @@ DossierWindow::DossierWindow() {
     QObject::connect(cbTC,SIGNAL(stateChanged(int)),this,SLOT(pbsauverEnable()));
     QObject::connect(cbHutech,SIGNAL(stateChanged(int)),this,SLOT(pbsauverEnable()));
     QObject::connect(pbajouterformext, SIGNAL(clicked()), this, SLOT(ajouterFormExt()));
+    QObject::connect(table,SIGNAL(cellChanged(int,int)),this,SLOT(pbsauverEnable()));
+    QObject::connect(table,SIGNAL(cellClicked(int,int)),this,SLOT(supprFormExt(int, int)));
+
+
 }
 
 
 void DossierWindow::sauver() {
+    /* Sauvegarde des modifications liées au dossier */
+
     QString q="UPDATE Dossier SET nom = '";
     q.append(lenom->text());
     q.append("', prenom = '");
@@ -153,8 +162,29 @@ void DossierWindow::sauver() {
     q.append(lelogin->text());
     q.append("';");
     InterfaceSQL *sql = InterfaceSQL::getInstance();
-    pbsauver->setEnabled(false);
     sql->execQuery(q);
+
+    /* Sauvegarde des modifications liées aux formations extérieures */
+
+    for (int i=0; i<table->rowCount(); i++){
+        QString q2 = "UPDATE FormationExt SET lieu = '";
+        q2.append((table->item(i,1)->data(Qt::EditRole)).toString());
+        q2.append("', creditsCS = '");
+        q2.append((table->item(i,2)->data(Qt::EditRole)).toString());
+        q2.append("', creditsTM = '");
+        q2.append((table->item(i,3)->data(Qt::EditRole)).toString());
+        q2.append("', creditsTSH = '");
+        q2.append((table->item(i,4)->data(Qt::EditRole)).toString());
+        q2.append("', creditsSP = '");
+        q2.append((table->item(i,5)->data(Qt::EditRole)).toString());
+        q2.append("' WHERE login = '");
+        q2.append(lelogin->text());
+        q2.append("' AND nom = '");
+        q2.append((table->item(i,0)->data(Qt::EditRole)).toString());
+        q2.append("';");
+        sql->execQuery(q2);
+    }
+    pbsauver->setEnabled(false);
 }
 
 void DossierWindow::pbsauverEnable() {
@@ -185,7 +215,6 @@ void DossierWindow::associerDossier(Dossier *d) {
     cbGSU->setChecked(d->checkGSU());
     cbTC->setChecked(d->checkTC());
     cbHutech->setChecked(d->checkHutech());
-    pbsauver->setEnabled(false);
 
     // Afficher ici les semestres sous forme de tableau avec les UV et les notes obtenues
     QString qu="SELECT nom, lieu, creditsCS, creditsTM, creditsTSH, creditsSP FROM FormationExt WHERE login = '";
@@ -206,6 +235,7 @@ void DossierWindow::associerDossier(Dossier *d) {
 
             QTableWidgetItem *itemNom = new QTableWidgetItem(nom);
             table->setItem(table->currentRow() + 1, 0, itemNom);
+            itemNom->setFlags(itemNom->flags() & ~ Qt::ItemIsEditable);
             QTableWidgetItem *itemLieu = new QTableWidgetItem(lieu);
             table->setItem(table->currentRow() + 1, 1, itemLieu);
             QTableWidgetItem *itemCS = new QTableWidgetItem();
@@ -220,10 +250,14 @@ void DossierWindow::associerDossier(Dossier *d) {
             QTableWidgetItem *itemSP = new QTableWidgetItem();
             itemSP->setData(Qt::DisplayRole,creditsSP);
             table->setItem(table->currentRow() + 1, 5, itemSP);
+            QTableWidgetItem *itemSuppr = new QTableWidgetItem("Supprimer");
+            table->setItem(table->currentRow() + 1, 6, itemSuppr);
+            itemSuppr->setFlags(itemNom->flags() & ~ Qt::ItemIsEditable);
 
-
-            //qDebug() << "Semestre :" <<semestre;
         }
+    pbsauver->setEnabled(false);
+    //qDebug()<<"Nombre de lignes :"<<table->rowCount();
+
 }
 
 void DossierWindow::rechercher() {
@@ -241,8 +275,20 @@ void DossierWindow::rechercher() {
 void DossierWindow::ajouterFormExt(){
     QString l = lelogin->text();
     FormationExtWindow *fenetre = new FormationExtWindow(l);
-
     fenetre->show();
+}
+
+void DossierWindow::supprFormExt(int r, int c){
+    if (c == 6){
+        QString q = "DELETE FROM FormationExt WHERE login = '";
+        q.append(lelogin->text());
+        q.append("' AND nom = '");
+        q.append((table->item(r,0)->data(Qt::EditRole)).toString());
+        q.append("';");
+        InterfaceSQL *sql = InterfaceSQL::getInstance();
+        sql->execQuery(q);
+        table->removeRow(r);
+    }
 }
 
 FormationExtWindow::FormationExtWindow(const QString& l): login(l) {
