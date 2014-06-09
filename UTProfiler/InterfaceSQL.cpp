@@ -82,3 +82,10 @@ UV* InterfaceSQL::selectUV(const QString& q) {
         return 0;
     }
 }
+
+Dossier* InterfaceSQL::selectDossier(const QString& q) {
+    if (!query->exec(q)) {throw UTProfilerException(QString::fromStdString("Erreur : La requête :\n")+q+QString::fromStdString("\n n'a pas fonctionné.\nDernière Erreur : ")+query->lastError().text());}
+    query->next();
+    Dossier* res = new Dossier(query->value(0).toString(),query->value(1).toString(),query->value(2).toString(),query->value(3).toString(),query->value(4).toBool(), query->value(5).toString());
+    return res;
+}

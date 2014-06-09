@@ -10,4 +10,5 @@ int main (int argc, char* argv[]) {
     fen->associerUV(test);
     fen->show();
     return app.exec();
+
 }
