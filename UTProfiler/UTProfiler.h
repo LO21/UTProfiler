@@ -629,4 +629,28 @@ class SemestreWindow : public QWidget {
 
 QString checkSyntax(QString s);
 
+class FormationWindow : public QWidget {
+    Q_OBJECT
+};
+
+class HomeWindow : public QWidget {
+    Q_OBJECT
+    InterfaceSQL *sql;
+    UVWindow *uvwindow;
+    FormationWindow *formationwindow;
+    DossierWindow *dossierwindow;
+    QVBoxLayout *mainlayout;
+    QHBoxLayout *hlayout1;
+    QPushButton *pbuv;
+    QPushButton *pbnewuv;
+    QHBoxLayout *hlayout2;
+    QPushButton *pbformation;
+    QPushButton *pbnewformation;
+    QHBoxLayout *hlayout3;
+    QPushButton *pbdossier;
+    QPushButton *pbnewdossier;
+   public :
+    HomeWindow();
+};
+
 #endif // UTPROFILER_H
