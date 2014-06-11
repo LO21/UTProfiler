@@ -11,6 +11,7 @@ int main (int argc, char* argv[]) {
     InterfaceSQL *sql= InterfaceSQL::getInstance();
     UV *lo21=sql->selectUV("SELECT * FROM UV WHERE code = 'LO21';");
     fen->associerUV(lo21);
+
     fen->show();
     return app.exec();
 

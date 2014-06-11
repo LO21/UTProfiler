@@ -17,3 +17,12 @@ bool* UV::getBranche() {
     branche[7] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationUVBranche WHERE uv = '"+code.toStdString()+"' AND branche = 'GSU';"));
     return branche;
 }
+
+QString checkSyntax(QString s){
+    unsigned int i=0;
+    while (s[i]!='\0') {
+        if (s[i]=='\'') {s.insert(i,'\'');}
+        ++i;
+    }
+    return s;
+}

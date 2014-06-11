@@ -22,6 +22,8 @@
 #include <QDebug>
 #include <QTableWidget>
 #include <QTableWidgetItem>
+#include <QSqlDriver>
+#include <QComboBox>
 
 using namespace std;
 
@@ -506,6 +508,7 @@ class DossierWindow : public QWidget {
     QHBoxLayout *hlayout8;
     QHBoxLayout *hlayout9;
     QHBoxLayout *hlayout10;
+    QHBoxLayout *hlayout11;
     QLabel *llogin;
     QLineEdit *lelogin;
     QPushButton *pbrechercher;
@@ -542,6 +545,7 @@ class DossierWindow : public QWidget {
     QCheckBox *cbTC;
     QCheckBox *cbHutech;
     QTableWidget *table;
+    QTableWidget *table2;
 
 
    public :
@@ -553,6 +557,7 @@ class DossierWindow : public QWidget {
     void rechercher();
     void ajouterFormExt();
     void supprFormExt(int r, int c);
+    void ajouterSemestre();
 };
 
 class FormationExtWindow : public QWidget {
@@ -589,5 +594,39 @@ class FormationExtWindow : public QWidget {
    public slots :
     void ajouter();
 };
+
+class SemestreWindow : public QWidget {
+    Q_OBJECT
+
+    QString login;
+
+    QVBoxLayout *mainlayout;
+    QHBoxLayout *hlayout1;
+    QHBoxLayout *hlayout2;
+    QHBoxLayout *hlayout3;
+    QHBoxLayout *hlayout4;
+    QHBoxLayout *hlayout5;
+
+    QLabel *lsaison;
+    QComboBox *cbsaison;
+    QLabel *lannee;
+    QLineEdit *leannee;
+    QLabel *luv;
+    QComboBox *cbuv;
+    QLabel *lnote;
+    QComboBox *cbnote;
+
+    QPushButton *pbajouter;
+
+
+   public :
+    SemestreWindow(const QString& l);
+    QString getLogin() const {return login;}
+
+   public slots :
+    void ajouter();
+};
+
+QString checkSyntax(QString s);
 
 #endif // UTPROFILER_H
