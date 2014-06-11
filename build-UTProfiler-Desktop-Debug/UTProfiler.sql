@@ -44,12 +44,12 @@ INSERT INTO Saison VALUES ('A');
 INSERT INTO Saison VALUES ('P');
 
 CREATE TABLE IF NOT EXISTS Semestre (
-	id INTEGER(10) PRIMARY KEY,
-	saison CHAR(1) REFERENCES Saison(s),
+	saison CHAR(1),
 	annee INTEGER(4),
 	dossier CHAR(8) REFERENCES Dossier(login),
 	commentaire VARCHAR(100),
-	ext BOOL);
+    PRIMARY KEY(saison, annee, dossier)
+);
 	
 CREATE TABLE IF NOT EXISTS Resultat (
 	r VARCHAR(3));
@@ -74,9 +74,11 @@ INSERT INTO Resultat VALUES ('RES');
 
 CREATE TABLE IF NOT EXISTS Inscription (
 	uv VARCHAR(5) REFERENCES UV(code),
-	semestre INTEGER(10) REFERENCES Semestre(id),
+	saison CHAR(1) REFERENCES Semestre(saison),
+    annee INTEGER(4) REFERENCES Semestre(annee),
+    login CHAR(8) REFERENCES Semestre(dossier),
 	resultat VARCHAR(3) REFERENCES Resultat(r),
-	PRIMARY KEY (uv, semestre));
+	PRIMARY KEY (uv, saison, annee, login));
 
 CREATE TABLE IF NOT EXISTS FormationExt (
 	login CHAR(8) REFERENCES Dossier(login),

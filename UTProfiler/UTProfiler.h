@@ -558,6 +558,7 @@ class DossierWindow : public QWidget {
     void ajouterFormExt();
     void supprFormExt(int r, int c);
     void ajouterSemestre();
+    void supprSemestre(int r, int c);
 };
 
 class FormationExtWindow : public QWidget {
