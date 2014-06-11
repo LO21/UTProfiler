@@ -42,6 +42,7 @@ DossierWindow::DossierWindow() {
     table->setHorizontalHeaderLabels(QStringList()<<"Nom"<<"Lieu"<<"Crédits CS"<<"Crédits TM"<<"Crédits TSH"<<"Crédits SP"<<"");
     hlayout10->addWidget(table);
 
+    /* Mineurs */
 
     hlayout4 = new QHBoxLayout();
     lmineurs = new QLabel("Mineurs :");
@@ -63,14 +64,21 @@ DossierWindow::DossierWindow() {
     hlayout5->addWidget(cbINTENT);
     hlayout5->addWidget(cbST);
 
+    /* Tableau Semestres */
+
     hlayout6 = new QHBoxLayout();
     lsemestres = new QLabel("Semestres :");
     pbajoutersemestres = new QPushButton("Ajouter");
     hlayout6->addWidget(lsemestres);
     hlayout6->addWidget(pbajoutersemestres);
 
-    /* Tableau Formations Extérieures */
-    // A implémenter
+    hlayout11 = new QHBoxLayout();
+    table2 = new QTableWidget(this);
+    table2->setColumnCount(8);
+    table2->setHorizontalHeaderLabels(QStringList()<<"Semestre"<<"UV"<<"Note"<<"Crédits CS"<<"Crédits TM"<<"Crédits TSH"<<"Crédits SP"<<"");
+    hlayout11->addWidget(table2);
+
+    /* Branche */
 
     hlayout8 = new QHBoxLayout();
     lbranche = new QLabel("Branche :");
@@ -107,6 +115,7 @@ DossierWindow::DossierWindow() {
     mainlayout->addLayout(hlayout8);
     mainlayout->addLayout(hlayout9);
     mainlayout->addLayout(hlayout6);
+    mainlayout->addLayout(hlayout11);
     mainlayout->addLayout(hlayout4);
     mainlayout->addLayout(hlayout5);
     mainlayout->addLayout(hlayout7);
@@ -132,6 +141,7 @@ DossierWindow::DossierWindow() {
     QObject::connect(pbajouterformext, SIGNAL(clicked()), this, SLOT(ajouterFormExt()));
     QObject::connect(table,SIGNAL(cellChanged(int,int)),this,SLOT(pbsauverEnable()));
     QObject::connect(table,SIGNAL(cellClicked(int,int)),this,SLOT(supprFormExt(int, int)));
+    QObject::connect(pbajoutersemestres, SIGNAL(clicked()), this, SLOT(ajouterSemestre()));
 
 
 }
@@ -291,6 +301,14 @@ void DossierWindow::supprFormExt(int r, int c){
     }
 }
 
+void DossierWindow::ajouterSemestre(){
+    QString l = lelogin->text();
+    SemestreWindow *fenetre = new SemestreWindow(l);
+    fenetre->show();
+}
+
+/* Fonctions liées à l'affichage des formations extérieures */
+
 FormationExtWindow::FormationExtWindow(const QString& l): login(l) {
     mainlayout = new QVBoxLayout();
 
@@ -374,6 +392,108 @@ void FormationExtWindow::ajouter() {
         sql->execQuery(q);
     }
     close();
+}
 
+/* Fonctions liées à l'affichage des semestres */
 
+SemestreWindow::SemestreWindow(const QString& l): login(l) {
+    mainlayout = new QVBoxLayout();
+
+    hlayout1 = new QHBoxLayout();
+    lsaison = new QLabel("Saison : ");
+    cbsaison = new QComboBox;
+    cbsaison->addItems(QStringList()<<"Automne"<<"Printemps");
+    hlayout1->addWidget(lsaison);
+    hlayout1->addWidget(cbsaison);
+
+    hlayout2 = new QHBoxLayout();
+    lannee = new QLabel("Année");
+    leannee = new QLineEdit;
+    hlayout2->addWidget(lannee);
+    hlayout2->addWidget(leannee);
+
+    hlayout3 = new QHBoxLayout();
+    luv = new QLabel("UV : ");
+    cbuv = new QComboBox;
+    QString qu="SELECT code FROM UV;";
+    InterfaceSQL *sql = InterfaceSQL::getInstance();
+    QSqlQuery query = sql->execQuery(qu);
+
+    QStringList res;
+
+    while(query.next())
+    {
+        res<<query.value(0).toString();
+    }
+    cbuv->addItems(res);
+
+    hlayout3->addWidget(luv);
+    hlayout3->addWidget(cbuv);
+
+    hlayout5 = new QHBoxLayout();
+    lnote = new QLabel("Note : ");
+    cbnote = new QComboBox;
+
+    QString qu2="SELECT r FROM Resultat;";
+    QSqlQuery query2 = sql->execQuery(qu2);
+
+    QStringList res2;
+
+    while(query2.next())
+    {
+        res2<<query2.value(0).toString();
+    }
+    cbnote->addItems(res2);
+
+    hlayout5->addWidget(lnote);
+    hlayout5->addWidget(cbnote);
+
+    hlayout4 = new QHBoxLayout();
+    pbajouter = new QPushButton("Ajouter");
+    hlayout4->addWidget(pbajouter);
+
+    mainlayout->addLayout(hlayout1);
+    mainlayout->addLayout(hlayout2);
+    mainlayout->addLayout(hlayout3);
+    mainlayout->addLayout(hlayout5);
+    mainlayout->addLayout(hlayout4);
+
+    this->setLayout(mainlayout);
+
+    QObject::connect(pbajouter,SIGNAL(clicked()),this,SLOT(ajouter()));
+
+}
+
+void SemestreWindow::ajouter() {
+
+    if (getLogin() == '\0'){
+        QMessageBox msg;
+        msg.setText("Pour ajouter un semestre, il faut rentrer au préalable un login.");
+        msg.exec();
+    }
+    /* else if  (lenom->text() == '\0') {
+        QMessageBox msg;
+        msg.setText("Veuillez remplir le nom de la formation.");
+        msg.exec();
+    }
+    else {
+        QString q="INSERT INTO FormationExt(login, nom, lieu, creditsCS, creditsTM, creditsTSH, creditsSP) VALUES ('";
+        q.append(getLogin());
+        q.append("','");
+        q.append(lenom->text());
+        q.append("','");
+        q.append(lelieu->text());
+        q.append("','");
+        q.append(lecs->text());
+        q.append("','");
+        q.append(letm->text());
+        q.append("','");
+        q.append(letsh->text());
+        q.append("','");
+        q.append(lesp->text());
+        q.append("');");
+        InterfaceSQL *sql = InterfaceSQL::getInstance();
+        sql->execQuery(q);
+    }*/
+    close();
 }
