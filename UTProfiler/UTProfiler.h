@@ -66,7 +66,12 @@ class UTProfilerException {
     ~UTProfilerException() {}
 };
 
+//template <typename T> class Manager;
+//class UVManager;
+
 class UV {
+    //friend class UVManager;
+    //friend class Manager<UV>;
     QString code;
     QString titre;
     QString responsable;
@@ -76,9 +81,12 @@ class UV {
     unsigned int creditsSP;
     bool printemps;
     bool automne;
-   public :
     bool *branche;
+   public :
+    UV& operator=(UV& other) {code=other.getCode();titre=other.getTitre();responsable=other.getResponsable();creditsCS=other.getCreditsCS();creditsTM=other.getCreditsTM();creditsTSH=other.getCreditsTSH();creditsSP=other.creditsSP;printemps=other.getPrintemps();automne=other.getAutomne();return *this;}
     UV(const QString& c, const QString& t, const QString& r,unsigned int cs, unsigned int tm, unsigned int tsh, unsigned int sp, bool p, bool a) : code(c), titre(t), responsable(r), creditsCS(cs), creditsTM(tm), creditsTSH(tsh), creditsSP(sp), printemps(p), automne(a) {branche = new bool[8];}
+    UV() : code(""), titre(""), responsable(""), creditsCS(0), creditsTM(0), creditsTSH(0), creditsSP(0), printemps(false), automne(false) {branche = new bool[8];}
+   //public :
     QString getCode() const {return code;}
     QString getTitre() const {return titre;}
     QString getResponsable() const {return responsable;}
@@ -96,7 +104,8 @@ class UV {
     void getCreditsSP(unsigned int sp) {creditsSP=sp;}
     void setPrintemps (bool b) {printemps=b;}
     void setAutomne (bool b) {automne=b;}
-    void getBranche();
+    bool* getBranche();
+    bool operator!=(UV& other) {return code!=other.getCode();}
 };
 
 class Inscription {
@@ -173,6 +182,7 @@ class Semestre {
 };
 
 class Dossier {
+    friend class DossierManager;
     QString login;
     QString nom;
     QString prenom;
@@ -270,42 +280,108 @@ class Formation {
     unsigned int nbCreditsSP;
 };
 
-class Manager {
-    Manager();
+/*template <typename T> class Manager {
+    friend class UVManager;
+    T **tab;
+    unsigned int nbElem;
+    unsigned int nbElemMax;
+    Manager() : nbElem(0), nbElemMax(10) {tab = new T*[10];}
     Manager(Manager& copy);
     Manager& operator=(Manager& other);
    public :
-    virtual Manager* getInstance()=0;
-    virtual void libererInstance()=0;
+    unsigned int getNbElem() const {return nbElem;}
+    unsigned int getNbElemMax() const {return nbElem;}
+    virtual T* creerItem()=0;
+    virtual int trouverItem(const QString& s)=0;
+    int trouverItem(T *item) {
+        Iterator it = begin();
+        int place=0;
+        while (*it!=*end() || *it!=item) {++it;++place;}
+        if (it!=end()) {return place;}
+        else {return -1;}
+    }
+    virtual void ajouterItem(T *item) {
+        if (nbElem==nbElemMax) {
+            nbElemMax+=5;
+            T **copy = new T*[nbElem];
+            for (unsigned int i=0;i<nbElem;++i) {copy[i]=tab[i];}
+            delete tab;
+            tab = new T*[nbElemMax];
+            for (unsigned int i=0;i<nbElem;++i) {tab[i]=copy[i];}
+            delete copy;}
+        if (nbElem!=0) {
+            if (trouverItem(item)==-1)
+                {tab[nbElem++]=item; nbElem++;}
+            else
+                {supprimerItem(item); tab[nbElem++]=item;}
+        }
+        else {tab[nbElem++]=item;}
+    }
+    virtual void supprimerItem(T *item) {
+        int place = trouverItem(item);
+        if (place!=-1) {
+            for (unsigned int i=place;i<nbElem;++i) {tab[i]=tab[i+1];}
+            nbElem--;}
+    }
+
+    class Iterator {
+        T **current;
+       public :
+        Iterator(T **cur) : current(cur) {}
+        Iterator(Iterator& other) {current = new T*(*other);}
+        Iterator& operator=(Iterator& other) {current=*other;}
+        unsigned int getNbElem() const {return nbElem;}
+        unsigned int getNbElemMax() const {return nbElemMax;}
+        T* operator*() const {return *current;}
+        void operator++() {current++;}
+        void operator++(int) {current++;}
+        void operator--() {current--;}
+        void operator--(int) {current--;}
+        bool operator==(Iterator& other) {return *current==*other.current;}
+        bool operator!=(Iterator& other) {return *current!=*other.current;}
+        bool operator<(Iterator& other) {return *current<*other.current;}
+        bool operator<=(Iterator& other) {return *current<=*other.current;}
+        bool operator>(Iterator& other) {return *current>*other.current;}
+        bool operator>=(Iterator& other) {return *current>=*other.current;}
+    };
+    Iterator& begin() {Iterator *it = new Iterator(tab); return *it;}
+    Iterator& end() {Iterator *it = new Iterator(tab+this->getNbElem()); return *it;}
+    Iterator& getIterator(T *item) {Iterator *it = new Iterator(item); return *it;}
 };
 
-class UVManager : public Manager {
-    UV *uvs;
+class UVManager : public Manager<UV> {
+    static UVManager *instanceUnique;
+    UVManager() : Manager<UV>() {}
    public :
-    UV* trouverUV(const string& s);
-    void ajouterUV();
-    void supprimerUV();
-    void modifierUV();
+    static UVManager* getInstance() {
+        if (instanceUnique==0) {instanceUnique = new UVManager(); instanceUnique->creerItem();}
+        return instanceUnique;
+    }
+    UV* creerItem (const QString& c, const QString& t, const QString& r,unsigned int cs, unsigned int tm, unsigned int tsh, unsigned int sp, bool p, bool a) {
+        UV *res = new UV(c,t,r,cs,tm,tsh,sp,p,a);
+        ajouterItem(res);
+        return res;}
+    UV* creerItem() {
+        UV *res = new UV();
+        ajouterItem(res);
+        return res;}
+    int trouverItem(const QString& s) {
+        Iterator it = begin();
+        unsigned int place=0;
+        UV *uv= *it;
+        while (it!=end() || uv->getCode()!=s) {++it;uv=*it;++place;}
+        return place;
+    }
 };
 
-class FormationManager : public Manager {
-    Formation *formations;
-   public :
-    Formation* trouverFormation(const string& s);
-    void ajouterFormation();
-    void supprimerFormation();
-    void modifierFormation();
+class FormationManager : public Manager<Formation> {
+
 };
 
-class DossierManager : public Manager {
-    Dossier *dossiers;
-   public :
-    Dossier* trouverDossier(const string& s);
-    void ajouterDossier();
-    void supprimerDossier();
-    void modifierDossier();
-};
+class DossierManager : public Manager<Dossier> {
 
+};
+*/
 class InterfaceSQL {
     static InterfaceSQL *instanceUnique;
     QSqlDatabase db;
@@ -376,6 +452,7 @@ class UVWindow : public QWidget {
     QLineEdit *lesp;
     QHBoxLayout *hlayout4;
     QPushButton *pbnouveau;
+    QPushButton *pbsupprimer;
     QPushButton *pbannuler;
     QPushButton *pbsauver;
     QHBoxLayout *hlayout5;
@@ -409,6 +486,7 @@ class UVWindow : public QWidget {
    public slots :
     void sauver();
     void annuler();
+    void supprimer();
     void pbsauverEnable();
     void rechercher();
     void nouveau();

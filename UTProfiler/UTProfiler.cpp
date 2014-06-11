@@ -5,7 +5,7 @@ UTProfilerException::UTProfilerException(const QString& s) {
 }
 
 
-void UV::getBranche() {
+bool* UV::getBranche() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     branche[0] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationUVBranche WHERE uv = '"+code.toStdString()+"' AND branche = 'TC';"));
     branche[1] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationUVBranche WHERE uv = '"+code.toStdString()+"' AND branche = 'HUTECH';"));
@@ -15,4 +15,5 @@ void UV::getBranche() {
     branche[5] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationUVBranche WHERE uv = '"+code.toStdString()+"' AND branche = 'GP';"));
     branche[6] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationUVBranche WHERE uv = '"+code.toStdString()+"' AND branche = 'GSM';"));
     branche[7] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationUVBranche WHERE uv = '"+code.toStdString()+"' AND branche = 'GSU';"));
+    return branche;
 }

@@ -1,23 +1,16 @@
 #include "UTProfiler.h"
 
 InterfaceSQL *InterfaceSQL::instanceUnique=0;
+//UVManager *UVManager::instanceUnique=0;
 
 int main (int argc, char* argv[]) {
     QApplication app(argc, argv);
-<<<<<<< HEAD
-    InterfaceSQL *sql = InterfaceSQL::getInstance();
-    sql->load();
-    sql->load();
-    sql->load();
-    sql->load();
-    sql->load();
-    sql->load();
-    DossierWindow *fen = new DossierWindow;
-=======
-    DossierWindow *fen = new DossierWindow;
-    InterfaceSQL *sql = InterfaceSQL::getInstance();
-    //sql->load("G:\\Documents\\LO21\\UTProfiler\\formation.sql");
->>>>>>> b166c9b65c3d4937d3d0ddab2ffea1806a57cb78
+    //DossierWindow *fen = new DossierWindow;
+    //fen->show();
+    UVWindow *fen = new UVWindow();
+    InterfaceSQL *sql= InterfaceSQL::getInstance();
+    UV *lo21=sql->selectUV("SELECT * FROM UV WHERE code = 'LO21';");
+    fen->associerUV(lo21);
     fen->show();
     return app.exec();
 
