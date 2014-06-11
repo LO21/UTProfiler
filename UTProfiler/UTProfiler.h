@@ -22,6 +22,7 @@
 #include <QDebug>
 #include <QTableWidget>
 #include <QTableWidgetItem>
+#include <QSqlDriver>
 
 using namespace std;
 
@@ -511,5 +512,7 @@ class FormationExtWindow : public QWidget {
    public slots :
     void ajouter();
 };
+
+QString checkSyntax(QString s);
 
 #endif // UTPROFILER_H
