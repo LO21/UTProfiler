@@ -1,17 +1,12 @@
-DROP TABLE FormationExt;
+DROP TABLE Inscription;
 
-CREATE TABLE IF NOT EXISTS FormationExt (
-	login CHAR(8) REFERENCES Dossier(login),
-	nom VARCHAR(50),
-	lieu VARCHAR(50) NOT NULL,
-	creditsCS INTEGER(2),
-	creditsTM INTEGER(2),
-	creditsTSH INTEGER(2),
-	creditsSP INTEGER(2),
-	PRIMARY KEY (login, nom));
-	
-INSERT INTO FormationExt(login, nom, lieu, creditsCS, creditsTM,creditsTSH,creditsSP)
-VALUES ('ritgabri', 'UTSEUS', 'Chine', 14, 0, 6, 0);
+CREATE TABLE IF NOT EXISTS Inscription (
+	uv VARCHAR(5) REFERENCES UV(code),
+	saison CHAR(1) REFERENCES Semestre(saison),
+    annee INTEGER(4) REFERENCES Semestre(annee),
+    login CHAR(8) REFERENCES Semestre(dossier),
+	resultat VARCHAR(3) REFERENCES Resultat(r),
+	PRIMARY KEY (uv, saison, annee, login));
 
-INSERT INTO FormationExt(login, nom, lieu, creditsCS, creditsTM,creditsTSH,creditsSP)
-VALUES ('ritgabri', 'MPSI à Pasteur', 'Neuilly sur Seine', 6, 0, 12, 0);
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('IA02', 'P', 2014, 'ritgabri', 'EC');

@@ -142,6 +142,7 @@ DossierWindow::DossierWindow() {
     QObject::connect(table,SIGNAL(cellChanged(int,int)),this,SLOT(pbsauverEnable()));
     QObject::connect(table,SIGNAL(cellClicked(int,int)),this,SLOT(supprFormExt(int, int)));
     QObject::connect(pbajoutersemestres, SIGNAL(clicked()), this, SLOT(ajouterSemestre()));
+    QObject::connect(table2,SIGNAL(cellClicked(int,int)),this,SLOT(supprSemestre(int, int)));
 
 
 }
@@ -226,7 +227,8 @@ void DossierWindow::associerDossier(Dossier *d) {
     cbTC->setChecked(d->checkTC());
     cbHutech->setChecked(d->checkHutech());
 
-    // Afficher ici les semestres sous forme de tableau avec les UV et les notes obtenues
+    /* Affichage des formations extérieures */
+
     QString qu="SELECT nom, lieu, creditsCS, creditsTM, creditsTSH, creditsSP FROM FormationExt WHERE login = '";
     qu.append(lelogin->text());
     qu.append("';");
@@ -265,6 +267,71 @@ void DossierWindow::associerDossier(Dossier *d) {
             itemSuppr->setFlags(itemNom->flags() & ~ Qt::ItemIsEditable);
 
         }
+
+    /* Affichage des semestres */
+
+    QString qu2="SELECT uv, saison, annee, resultat FROM Inscription WHERE login = '";
+    qu2.append(lelogin->text());
+    qu2.append("';");
+    QSqlQuery query2 = sql2->execQuery(qu2);
+
+    while(query2.next())
+        {
+            QString uv = query2.value(0).toString();
+            QString saison = query2.value(1).toString();
+            QString annee = query2.value(2).toString();
+            QString resultat = query2.value(3).toString();
+            QString sem = saison.append(annee);
+            table2->insertRow(table2->currentRow() + 1);
+
+            QTableWidgetItem *itemSem = new QTableWidgetItem(sem);
+            table2->setItem(table2->currentRow() + 1, 0, itemSem);
+            itemSem->setFlags(itemSem->flags() & ~ Qt::ItemIsEditable);
+            QTableWidgetItem *itemUV = new QTableWidgetItem(uv);
+            table2->setItem(table2->currentRow() + 1, 1, itemUV);
+            itemUV->setFlags(itemUV->flags() & ~ Qt::ItemIsEditable);
+            QTableWidgetItem *itemRes = new QTableWidgetItem(resultat);
+            table2->setItem(table2->currentRow() + 1, 2, itemRes);
+
+            /* Récupération des crédits de l'UV concernée*/
+
+            QString qu3="SELECT creditsCS, creditsTM, creditsTSH, creditsSP FROM UV WHERE code = '";
+            qu3.append(uv);
+            qDebug() << "UV :" << uv;
+            qu3.append("';");
+            qDebug() <<qu3;
+            QSqlQuery query3 = sql2->execQuery(qu3);
+
+            query3.next();
+
+            int creditsCS = query3.value(0).toInt();
+            qDebug() << "CS :"<< query3.value(0).toInt() << " "<< creditsCS;
+            int creditsTM = query3.value(1).toInt();
+            int creditsTSH = query3.value(2).toInt();
+            int creditsSP = query3.value(3).toInt();
+
+            QTableWidgetItem *itemCS = new QTableWidgetItem();
+            itemCS->setData(Qt::DisplayRole,creditsCS);
+            itemCS->setFlags(itemCS->flags() & ~ Qt::ItemIsEditable);
+            table2->setItem(table2->currentRow() + 1, 3, itemCS);
+            QTableWidgetItem *itemTM = new QTableWidgetItem();
+            itemTM->setData(Qt::DisplayRole,creditsTM);
+            itemCS->setFlags(itemTM->flags() & ~ Qt::ItemIsEditable);
+            table2->setItem(table2->currentRow() + 1, 4, itemTM);
+            QTableWidgetItem *itemTSH = new QTableWidgetItem();
+            itemTSH->setData(Qt::DisplayRole,creditsTSH);
+            itemCS->setFlags(itemTSH->flags() & ~ Qt::ItemIsEditable);
+            table2->setItem(table2->currentRow() + 1, 5, itemTSH);
+            QTableWidgetItem *itemSP = new QTableWidgetItem();
+            itemSP->setData(Qt::DisplayRole,creditsSP);
+            itemCS->setFlags(itemSP->flags() & ~ Qt::ItemIsEditable);
+            table2->setItem(table2->currentRow() + 1, 6, itemSP);
+
+            QTableWidgetItem *itemSuppr = new QTableWidgetItem("Supprimer");
+            table2->setItem(table2->currentRow() + 1, 7, itemSuppr);
+            itemSuppr->setFlags(itemSuppr->flags() & ~ Qt::ItemIsEditable);
+
+        }
     pbsauver->setEnabled(false);
     //qDebug()<<"Nombre de lignes :"<<table->rowCount();
 
@@ -278,6 +345,8 @@ void DossierWindow::rechercher() {
     Dossier *d = sql->selectDossier(q);
     table->clearContents();
     table->setRowCount(0);
+    table2->clearContents();
+    table2->setRowCount(0);
     associerDossier(d);
 
 }
@@ -305,6 +374,32 @@ void DossierWindow::ajouterSemestre(){
     QString l = lelogin->text();
     SemestreWindow *fenetre = new SemestreWindow(l);
     fenetre->show();
+}
+
+void DossierWindow::supprSemestre(int r, int c){
+    if (c == 7){
+
+        QString sem = (table2->item(r,0)->data(Qt::EditRole)).toString();
+        QString annee = "";
+        annee.append(sem[1]);
+        annee.append(sem[2]);
+        annee.append(sem[3]);
+        annee.append(sem[4]);
+        qDebug() <<annee;
+
+        QString q = "DELETE FROM Inscription WHERE login = '";
+        q.append(lelogin->text());
+        q.append("' AND uv = '");
+        q.append((table2->item(r,1)->data(Qt::EditRole)).toString());
+        q.append("' AND saison ='");
+        q.append(sem[0]);
+        q.append("' AND annee = '");
+        q.append(annee);
+        q.append("';");
+        InterfaceSQL *sql = InterfaceSQL::getInstance();
+        sql->execQuery(q);
+        table2->removeRow(r);
+    }
 }
 
 /* Fonctions liées à l'affichage des formations extérieures */
@@ -471,29 +566,112 @@ void SemestreWindow::ajouter() {
         msg.setText("Pour ajouter un semestre, il faut rentrer au préalable un login.");
         msg.exec();
     }
-    /* else if  (lenom->text() == '\0') {
+    else if  (leannee->text() == '\0') {
         QMessageBox msg;
-        msg.setText("Veuillez remplir le nom de la formation.");
+        msg.setText("Veuillez remplir l'année du semestre.");
         msg.exec();
     }
     else {
-        QString q="INSERT INTO FormationExt(login, nom, lieu, creditsCS, creditsTM, creditsTSH, creditsSP) VALUES ('";
-        q.append(getLogin());
-        q.append("','");
-        q.append(lenom->text());
-        q.append("','");
-        q.append(lelieu->text());
-        q.append("','");
-        q.append(lecs->text());
-        q.append("','");
-        q.append(letm->text());
-        q.append("','");
-        q.append(letsh->text());
-        q.append("','");
-        q.append(lesp->text());
-        q.append("');");
-        InterfaceSQL *sql = InterfaceSQL::getInstance();
-        sql->execQuery(q);
-    }*/
+
+            /* Test pour voir si le semestre demandé existe déjà */
+
+            QString q = "SELECT saison, annee FROM Semestre WHERE dossier = '";
+            q.append(getLogin());
+            q.append("' AND saison = '");
+            qDebug() << cbsaison->currentText();
+            if (cbsaison->currentText() == "Printemps" )
+                q.append("P");
+            else q.append("A");
+            q.append("' AND annee = '");
+            q.append(leannee->text());
+            q.append("';");
+
+
+            InterfaceSQL *sql = InterfaceSQL::getInstance();
+            QSqlQuery query = sql->execQuery(q);
+            query.next();
+            qDebug() << query.value(0);
+
+            if (query.value(0).toString() == ""){ // Le semestre n'existe pas
+
+                /* Ajout du semestre */
+
+                QString q2 = "INSERT INTO Semestre(saison, annee, dossier) VALUES ('";
+                if (cbsaison->currentText() == "Printemps" )
+                    q2.append("P");
+                else q2.append("A");
+                q2.append("', '");
+                q2.append(leannee->text());
+                q2.append("', '");
+                q2.append(getLogin());
+                q2.append("');");
+
+                QSqlQuery query2 = sql->execQuery(q2);
+
+                /* Ajout de l'UV dans inscription */
+
+                QString q3 = "INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES ('";
+                q3.append(cbuv->currentText());
+                q3.append("', '");
+                if (cbsaison->currentText() == "Printemps" )
+                    q3.append("P");
+                else q3.append("A");
+                q3.append("', '");
+                q3.append(leannee->text());
+                q3.append("', '");
+                q3.append(getLogin());
+                q3.append("', '");
+                q3.append(cbnote->currentText());
+                q3.append("');");
+
+                QSqlQuery query3 = sql->execQuery(q3);
+
+            } else { // Le semestre existe déjà --> Vérfier que l'UV est disponible pour la saison demandée /!!!\
+
+                /* Vérification que l'UV n'existe pas déjà dans Inscription pour ce semestre */
+
+                QString q4 = "SELECT uv FROM Inscription WHERE login = '";
+                q4.append(getLogin());
+                q4.append("' AND saison = '");
+                qDebug() << cbsaison->currentText();
+                if (cbsaison->currentText() == "Printemps" )
+                    q4.append("P");
+                else q4.append("A");
+                q4.append("' AND annee = '");
+                q4.append(leannee->text());
+                q4.append("' AND uv = '");
+                q4.append(cbuv->currentText());
+                q4.append("';");
+
+                QSqlQuery query4 = sql->execQuery(q4);
+                query4.next();
+
+                if (query4.value(0).toString() != '\0'){
+                    QMessageBox msg;
+                    msg.setText("Vous avez déjà rajouté cette UV pour ce semestre.");
+                    msg.exec();
+                } else {
+
+                    /* Ajout de l'UV dans inscription */
+
+                    QString q5 = "INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES ('";
+                    q5.append(cbuv->currentText());
+                    q5.append("', '");
+                    if (cbsaison->currentText() == "Printemps" )
+                        q5.append("P");
+                    else q5.append("A");
+                    q5.append("', '");
+                    q5.append(leannee->text());
+                    q5.append("', '");
+                    q5.append(getLogin());
+                    q5.append("', '");
+                    q5.append(cbnote->currentText());
+                    q5.append("');");
+
+                    QSqlQuery query5 = sql->execQuery(q5);
+
+                }
+            }
+    }
     close();
 }

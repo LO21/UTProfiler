@@ -9,3 +9,9 @@ VALUES ('ritgabri', 'UTSEUS', 'Chine', 14, 0, 6, 0);
 
 INSERT INTO FormationExt(login, nom, lieu, creditsCS, creditsTM,creditsTSH,creditsSP)
 VALUES ('ritgabri', 'MPSI à Pasteur', 'Neuilly sur Seine', 6, 0, 12, 0);
+
+INSERT INTO Semestre(saison, annee, dossier, commentaire) 
+VALUES ('P', 2014, 'ritgabri', 'en cours');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('IA02', 'P', 2014, 'ritgabri', 'EC');
