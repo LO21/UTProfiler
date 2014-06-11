@@ -343,10 +343,15 @@ FormationExtWindow::FormationExtWindow(const QString& l): login(l) {
 }
 
 void FormationExtWindow::ajouter() {
-    qDebug() <<"login : "<<getLogin();
+
     if (getLogin() == '\0'){
         QMessageBox msg;
-        msg.setText("Pour ajouter une formation, il faut chercher au préalable un login.");
+        msg.setText("Pour ajouter une formation, il faut rentrer au préalable un login.");
+        msg.exec();
+    }
+    else if  (lenom->text() == '\0') {
+        QMessageBox msg;
+        msg.setText("Veuillez remplir le nom de la formation.");
         msg.exec();
     }
     else {
