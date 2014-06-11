@@ -1,7 +1,7 @@
 #include "UTProfiler.h"
 
 UVWindow::UVWindow() {
-    uv = new UV("","","",0,0,0,0,0,0);
+    //UVManager *uvm = UVManager::getInstance();
     mainlayout = new QVBoxLayout();
     hlayout1 = new QHBoxLayout();
     lcode = new QLabel("Code : ");
@@ -83,9 +83,11 @@ UVWindow::UVWindow() {
     hlayout4->addWidget(cbgsu);
     hlayout5 = new QHBoxLayout();
     pbnouveau = new QPushButton("Nouveau");
+    pbsupprimer = new QPushButton("Supprimer");
     pbannuler = new QPushButton("Annuler");
     pbsauver = new QPushButton("Sauver");
     hlayout5->addWidget(pbnouveau);
+    hlayout5->addWidget(pbsupprimer);
     hlayout5->addWidget(pbannuler);
     hlayout5->addWidget(pbsauver);
     mainlayout->addLayout(hlayout1);
@@ -94,6 +96,7 @@ UVWindow::UVWindow() {
     mainlayout->addLayout(hlayout4);
     mainlayout->addLayout(hlayout5);
     this->setLayout(mainlayout);
+    QObject::connect(pbsupprimer,SIGNAL(clicked()),this,SLOT(supprimer()));
     QObject::connect(pbnouveau,SIGNAL(clicked()),this,SLOT(nouveau()));
     QObject::connect(lecode,SIGNAL(returnPressed()),this,SLOT(rechercher()));
     QObject::connect(pbrechercher,SIGNAL(clicked()),this,SLOT(rechercher()));
@@ -118,6 +121,8 @@ UVWindow::UVWindow() {
 }
 
 void UVWindow::associerUV(UV *newuv) {
+    //UVManager *uvm = UVManager::getInstance();
+    //uvm->ajouterItem(newuv);
     uv=newuv;
     lecode->setText(uv->getCode());
     leresponsable->setText(uv->getResponsable());
@@ -128,15 +133,15 @@ void UVWindow::associerUV(UV *newuv) {
     lesp->setText(QString::number(uv->getCreditsSP()));
     cbautomne->setChecked(uv->getAutomne());
     cbprintemps->setChecked(uv->getPrintemps());
-    uv->getBranche();
-    cbtc->setChecked(uv->branche[0]);
-    cbhutech->setChecked(uv->branche[1]);
-    cbgb->setChecked(uv->branche[2]);
-    cbgi->setChecked(uv->branche[3]);
-    cbgm->setChecked(uv->branche[4]);
-    cbgp->setChecked(uv->branche[5]);
-    cbgsm->setChecked(uv->branche[6]);
-    cbgsu->setChecked(uv->branche[7]);
+    bool *tab=uv->getBranche();
+    cbtc->setChecked(tab[0]);
+    cbhutech->setChecked(tab[1]);
+    cbgb->setChecked(tab[2]);
+    cbgi->setChecked(tab[3]);
+    cbgm->setChecked(tab[4]);
+    cbgp->setChecked(tab[5]);
+    cbgsm->setChecked(tab[6]);
+    cbgsu->setChecked(tab[7]);
     pbsauver->setEnabled(false);
     pbannuler->setEnabled(false);
 }
@@ -173,15 +178,26 @@ void UVWindow::sauver() {
     pbannuler->setEnabled(false);
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     sql->execQuery(q);
-    uv->getBranche();
-    if (uv->branche[0]!=cbtc->isChecked()) {changeTC();}
-    if (uv->branche[1]!=cbhutech->isChecked()) {changeHUTECH();}
-    if (uv->branche[2]!=cbgb->isChecked()) {changeGB();}
-    if (uv->branche[3]!=cbgi->isChecked()) {changeGI();}
-    if (uv->branche[4]!=cbgm->isChecked()) {changeGM();}
-    if (uv->branche[5]!=cbgp->isChecked()) {changeGP();}
-    if (uv->branche[6]!=cbgsm->isChecked()) {changeGSM();}
-    if (uv->branche[7]!=cbgsu->isChecked()) {changeGSU();}
+    bool* tab=uv->getBranche();
+    if (tab[0]!=cbtc->isChecked()) {changeTC();}
+    if (tab[1]!=cbhutech->isChecked()) {changeHUTECH();}
+    if (tab[2]!=cbgb->isChecked()) {changeGB();}
+    if (tab[3]!=cbgi->isChecked()) {changeGI();}
+    if (tab[4]!=cbgm->isChecked()) {changeGM();}
+    if (tab[5]!=cbgp->isChecked()) {changeGP();}
+    if (tab[6]!=cbgsm->isChecked()) {changeGSM();}
+    if (tab[7]!=cbgsu->isChecked()) {changeGSU();}
+}
+
+void UVWindow::supprimer() {
+    //UVManager *uvm = UVManager::getInstance();
+    //uvm->supprimerItem(uv);
+    QString q = QString::fromStdString("DELETE FROM UV WHERE code = '"+uv->getCode().toStdString()+"';");
+    InterfaceSQL *sql = InterfaceSQL::getInstance();
+    sql->execQuery(q);
+    //UVManager::Iterator it = uvm->end();
+    //it--;
+    //associerUV(*it);
 }
 
 void UVWindow::pbsauverEnable() {

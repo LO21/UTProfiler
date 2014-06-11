@@ -120,4 +120,3 @@ CREATE TABLE IF NOT EXISTS AssociationUVBranche (
 	uv VARCHAR(10) REFERENCES UV(code),
 	branche VARCHAR(25) REFERENCES Formation(nom),
 	PRIMARY KEY (uv,branche));
-
