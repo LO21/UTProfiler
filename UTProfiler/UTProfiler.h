@@ -271,15 +271,29 @@ class Dossier {
 };
 
 class Formation {
-    string nom;
-    string responsable;
-    string *uvs;
+    QString nom;
+    QString responsable;
+    QString type;
+    UV *uvs;
     unsigned int nbCreditsTot;
     unsigned int nbCreditsCS;
     unsigned int nbCreditsTM;
     unsigned int nbCreditsCSTM;
     unsigned int nbCreditsTSH;
     unsigned int nbCreditsSP;
+   public :
+    Formation(const QString& n, const QString& r, const QString& t, unsigned int tot, unsigned int cs, unsigned int tm, unsigned int cstm, unsigned int tsh, unsigned int sp) : nom(n), responsable(r), type(t), nbCreditsTot(tot), nbCreditsCS(cs), nbCreditsTM(tm), nbCreditsCSTM(cstm), nbCreditsTSH(tsh), nbCreditsSP(sp) {}
+    Formation() : nom(""), responsable(""), type(""), nbCreditsTot(0), nbCreditsCS(0), nbCreditsTM(0), nbCreditsCSTM(0), nbCreditsTSH(0), nbCreditsSP(0) {}
+    QString getNom() const {return nom;}
+    QString getResponsable() const {return responsable;}
+    QString getType() const {return type;}
+    UV *getUVs() const {return uvs;}
+    unsigned int getNbCreditsTot() const {return nbCreditsTot;}
+    unsigned int getNbCreditsCS() const {return nbCreditsCS;}
+    unsigned int getNbCreditsTM() const {return nbCreditsTM;}
+    unsigned int getNbCreditsCSTM() const {return nbCreditsCSTM;}
+    unsigned int getNbCreditsTSH() const {return nbCreditsTSH;}
+    unsigned int getNbCreditsSP() const {return nbCreditsSP;}
 };
 
 /*template <typename T> class Manager {
@@ -400,6 +414,7 @@ class InterfaceSQL {
     QSqlQuery& execQuery(const QString& q);
     bool tupleExiste(const QString& q) {query->exec(q); query->next(); return query->isValid();}
     UV* selectUV(const QString& q);
+    Formation* selectFormation(const QString& q);
     Dossier* selectDossier(const QString& q);
 };
 
@@ -429,6 +444,7 @@ class UVWindow : public QWidget {
     NewUVWindow *newuvwindow;
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
+    QPushButton *pbretour;
     QLabel *lcode;
     QLineEdit *lecode;
     QPushButton *pbrechercher;
@@ -632,11 +648,54 @@ QString checkSyntax(QString s);
 
 class FormationWindow : public QWidget {
     Q_OBJECT
+    /*CREATE TABLE IF NOT EXISTS Formation (
+        nom VARCHAR(25) PRIMARY KEY,
+        responsable VARCHAR(50),
+        creditsTOT INTEGER(3),
+        creditsCS INTEGER(3),
+        creditsTM INTEGER(3),
+        creditsCSTM INTEGER(3),
+        creditsTSH INTEGER(3),
+        creditsSP INTEGER(3));*/
+    Formation *formation;
+    QVBoxLayout *mainlayout;
+    QHBoxLayout *hlayout1;
+    QPushButton *pbretour;
+    QLabel *lnom;
+    QLineEdit *lenom;
+    QLabel *lresponsable;
+    QLineEdit *leresponsable;
+    QLabel *ltype;
+    QLineEdit *letype;
+    QHBoxLayout *hlayout2;
+    QLabel *lcredits;
+    QLabel *ltot;
+    QLineEdit *letot;
+    QLabel *lcs;
+    QLineEdit *lecs;
+    QLabel *ltm;
+    QLineEdit *letm;
+    QLabel *lcstm;
+    QLineEdit *lecstm;
+    QLabel *ltsh;
+    QLineEdit *letsh;
+    QLabel *lsp;
+    QLineEdit *lesp;
+    QTableWidget *twuvs;
+    QHBoxLayout *hlayout3;
+    QPushButton *pbnouveau;
+    QPushButton *pbsupprimer;
+    QPushButton *pbannuler;
+    QPushButton *pbsauver;
+   public :
+    FormationWindow();
+    void associerFormation(Formation *formation);
+   public slots :
+    void setenabled();
 };
 
 class HomeWindow : public QWidget {
     Q_OBJECT
-    InterfaceSQL *sql;
     UVWindow *uvwindow;
     FormationWindow *formationwindow;
     DossierWindow *dossierwindow;
@@ -651,6 +710,7 @@ class HomeWindow : public QWidget {
     QPushButton *pbdossier;
     QPushButton *pbnewdossier;
    public :
+    InterfaceSQL *sql;
     HomeWindow();
 };
 

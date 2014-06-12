@@ -626,9 +626,9 @@ void SemestreWindow::ajouter() {
 
                 QSqlQuery query3 = sql->execQuery(q3);
 
-            } else { // Le semestre existe déjà --> Vérfier que l'UV est disponible pour la saison demandée /!!!\
+            } else { /* Le semestre existe déjà --> Vérfier que l'UV est disponible pour la saison demandée / ! \
 
-                /* Vérification que l'UV n'existe pas déjà dans Inscription pour ce semestre */
+                Vérification que l'UV n'existe pas déjà dans Inscription pour ce semestre */
 
                 QString q4 = "SELECT uv FROM Inscription WHERE login = '";
                 q4.append(getLogin());

@@ -4,11 +4,13 @@ UVWindow::UVWindow() {
     //UVManager *uvm = UVManager::getInstance();
     mainlayout = new QVBoxLayout();
     hlayout1 = new QHBoxLayout();
+    pbretour = new QPushButton("Retour");
     lcode = new QLabel("Code : ");
     lecode = new QLineEdit();
     pbrechercher = new QPushButton("Rechercher");
     lresponsable = new QLabel("Responsable : ");
     leresponsable = new QLineEdit();
+    hlayout1->addWidget(pbretour);
     hlayout1->addWidget(lcode);
     hlayout1->addWidget(lecode);
     hlayout1->addWidget(pbrechercher);
@@ -96,6 +98,7 @@ UVWindow::UVWindow() {
     mainlayout->addLayout(hlayout4);
     mainlayout->addLayout(hlayout5);
     this->setLayout(mainlayout);
+    QObject::connect(pbretour,SIGNAL(clicked()),this,SLOT(close()));
     QObject::connect(pbsupprimer,SIGNAL(clicked()),this,SLOT(supprimer()));
     QObject::connect(pbnouveau,SIGNAL(clicked()),this,SLOT(nouveau()));
     QObject::connect(lecode,SIGNAL(returnPressed()),this,SLOT(rechercher()));
@@ -272,79 +275,79 @@ void NewUVWindow::nouveau_valider() {//degager la partie titre
 void UVWindow::changeTC() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     if (cbhutech->isChecked()) {
-        sql->execQuery(QString::fromStdString("INSERT INTO AssociationUVBranche(uv,branche) VALUES ('"+uv->getCode().toStdString()+"', 'TC');"));
+        sql->execQuery(QString::fromStdString("INSERT INTO AssociationFormationUV(uv,formation) VALUES ('"+uv->getCode().toStdString()+"', 'TC');"));
     }
     else {
-        sql->execQuery(QString::fromStdString("DELETE FROM AssociationUVBranche WHERE uv = '"+uv->getCode().toStdString()+"' AND branche = 'TC';"));
+        sql->execQuery(QString::fromStdString("DELETE FROM AssociationFormationUV WHERE uv = '"+uv->getCode().toStdString()+"' AND formation = 'TC';"));
     }
 }
 
 void UVWindow::changeHUTECH() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     if (cbgb->isChecked()) {
-        sql->execQuery(QString::fromStdString("INSERT INTO AssociationUVBranche(uv,branche) VALUES ('"+uv->getCode().toStdString()+"', 'HUTECH');"));
+        sql->execQuery(QString::fromStdString("INSERT INTO AssociationFormationUV(uv,formation) VALUES ('"+uv->getCode().toStdString()+"', 'HUTECH');"));
     }
     else {
-        sql->execQuery(QString::fromStdString("DELETE FROM AssociationUVBranche WHERE uv = '"+uv->getCode().toStdString()+"' AND branche = 'HUTECH';"));
+        sql->execQuery(QString::fromStdString("DELETE FROM AssociationFormationUV WHERE uv = '"+uv->getCode().toStdString()+"' AND formation = 'HUTECH';"));
     }
 }
 
 void UVWindow::changeGB() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     if (cbgb->isChecked()) {
-        sql->execQuery(QString::fromStdString("INSERT INTO AssociationUVBranche(uv,branche) VALUES ('"+uv->getCode().toStdString()+"', 'GB');"));
+        sql->execQuery(QString::fromStdString("INSERT INTO AssociationFormationUV(uv,formation) VALUES ('"+uv->getCode().toStdString()+"', 'GB');"));
     }
     else {
-        sql->execQuery(QString::fromStdString("DELETE FROM AssociationUVBranche WHERE uv = '"+uv->getCode().toStdString()+"' AND branche = 'GB';"));
+        sql->execQuery(QString::fromStdString("DELETE FROM AssociationFormationUV WHERE uv = '"+uv->getCode().toStdString()+"' AND formation = 'GB';"));
     }
 }
 
 void UVWindow::changeGI() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     if (cbgi->isChecked()) {
-        sql->execQuery(QString::fromStdString("INSERT INTO AssociationUVBranche(uv,branche) VALUES ('"+uv->getCode().toStdString()+"', 'GI');"));
+        sql->execQuery(QString::fromStdString("INSERT INTO AssociationFormationUV(uv,formation) VALUES ('"+uv->getCode().toStdString()+"', 'GI');"));
     }
     else {
-        sql->execQuery(QString::fromStdString("DELETE FROM AssociationUVBranche WHERE uv = '"+uv->getCode().toStdString()+"' AND branche = 'GI';"));
+        sql->execQuery(QString::fromStdString("DELETE FROM AssociationFormationUV WHERE uv = '"+uv->getCode().toStdString()+"' AND formation = 'GI';"));
     }
 }
 
 void UVWindow::changeGM() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     if (cbgm->isChecked()) {
-        sql->execQuery(QString::fromStdString("INSERT INTO AssociationUVBranche(uv,branche) VALUES ('"+uv->getCode().toStdString()+"', 'GM');"));
+        sql->execQuery(QString::fromStdString("INSERT INTO AssociationFormationUV(uv,formation) VALUES ('"+uv->getCode().toStdString()+"', 'GM');"));
     }
     else {
-        sql->execQuery(QString::fromStdString("DELETE FROM AssociationUVBranche WHERE uv = '"+uv->getCode().toStdString()+"' AND branche = 'GM';"));
+        sql->execQuery(QString::fromStdString("DELETE FROM AssociationFormationUV WHERE uv = '"+uv->getCode().toStdString()+"' AND formation = 'GM';"));
     }
 }
 
 void UVWindow::changeGP() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     if (cbgp->isChecked()) {
-        sql->execQuery(QString::fromStdString("INSERT INTO AssociationUVBranche(uv,branche) VALUES ('"+uv->getCode().toStdString()+"', 'GP');"));
+        sql->execQuery(QString::fromStdString("INSERT INTO AssociationFormationUV(uv,formation) VALUES ('"+uv->getCode().toStdString()+"', 'GP');"));
     }
     else {
-        sql->execQuery(QString::fromStdString("DELETE FROM AssociationUVBranche WHERE uv = '"+uv->getCode().toStdString()+"' AND branche = 'GP';"));
+        sql->execQuery(QString::fromStdString("DELETE FROM AssociationFormationUV WHERE uv = '"+uv->getCode().toStdString()+"' AND formation = 'GP';"));
     }
 }
 
 void UVWindow::changeGSM() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     if (cbgsm->isChecked()) {
-        sql->execQuery(QString::fromStdString("INSERT INTO AssociationUVBranche(uv,branche) VALUES ('"+uv->getCode().toStdString()+"', 'GSM');"));
+        sql->execQuery(QString::fromStdString("INSERT INTO AssociationFormationUV(uv,formation) VALUES ('"+uv->getCode().toStdString()+"', 'GSM');"));
     }
     else {
-        sql->execQuery(QString::fromStdString("DELETE FROM AssociationUVBranche WHERE uv = '"+uv->getCode().toStdString()+"' AND branche = 'GSM';"));
+        sql->execQuery(QString::fromStdString("DELETE FROM AssociationFormationUV WHERE uv = '"+uv->getCode().toStdString()+"' AND formation = 'GSM';"));
     }
 }
 
 void UVWindow::changeGSU() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     if (cbgsu->isChecked()) {
-        sql->execQuery(QString::fromStdString("INSERT INTO AssociationUVBranche(uv,branche) VALUES ('"+uv->getCode().toStdString()+"', 'GSU');"));
+        sql->execQuery(QString::fromStdString("INSERT INTO AssociationFormationUV(uv,formation) VALUES ('"+uv->getCode().toStdString()+"', 'GSU');"));
     }
     else {
-        sql->execQuery(QString::fromStdString("DELETE FROM AssociationUVBranche WHERE uv = '"+uv->getCode().toStdString()+"' AND branche = 'GSU';"));
+        sql->execQuery(QString::fromStdString("DELETE FROM AssociationFormationUV WHERE uv = '"+uv->getCode().toStdString()+"' AND formation = 'GSU';"));
     }
 }

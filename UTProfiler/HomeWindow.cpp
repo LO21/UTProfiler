@@ -5,6 +5,7 @@ HomeWindow::HomeWindow() {
     uvwindow = new UVWindow();
     uvwindow->associerUV(sql->selectUV("SELECT * FROM UV WHERE code = 'LO21';"));
     formationwindow = new FormationWindow();
+    formationwindow->associerFormation(sql->selectFormation("SELECT * FROM Formation WHERE nom='GI';"));
     dossierwindow = new DossierWindow();
     mainlayout = new QVBoxLayout();
     hlayout1 = new QHBoxLayout();
@@ -32,6 +33,7 @@ HomeWindow::HomeWindow() {
     QObject::connect(pbnewuv,SIGNAL(clicked()),uvwindow,SLOT(nouveau()));
     QObject::connect(pbnewuv,SIGNAL(clicked()),this,SLOT(hide()));
     QObject::connect(pbformation,SIGNAL(clicked()),formationwindow,SLOT(show()));
+    QObject::connect(pbformation,SIGNAL(clicked()),this,SLOT(hide()));
     //QObject::connect(pbnewformation,SIGNAL(clicked()),formationwindow,SLOT(show()));
     QObject::connect(pbdossier,SIGNAL(clicked()),dossierwindow,SLOT(show()));
     QObject::connect(pbdossier,SIGNAL(clicked()),this,SLOT(hide()));
