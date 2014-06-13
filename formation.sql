@@ -1,12 +1,20 @@
-DROP TABLE Inscription;
+DROP TABLE Branche;
 
-CREATE TABLE IF NOT EXISTS Inscription (
-	uv VARCHAR(5) REFERENCES UV(code),
-	saison CHAR(1) REFERENCES Semestre(saison),
-    annee INTEGER(4) REFERENCES Semestre(annee),
-    login CHAR(8) REFERENCES Semestre(dossier),
-	resultat VARCHAR(3) REFERENCES Resultat(r),
-	PRIMARY KEY (uv, saison, annee, login));
+CREATE TABLE IF NOT EXISTS Branche (
+	b VARCHAR(10) PRIMARY KEY);
+	
+INSERT INTO Branche VALUES ('TC');
 
-INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
-('IA02', 'P', 2014, 'ritgabri', 'EC');
+INSERT INTO Branche VALUES ('HUTECH');
+
+INSERT INTO Branche VALUES ('GB');
+
+INSERT INTO Branche VALUES ('GI');
+
+INSERT INTO Branche VALUES ('GM');
+
+INSERT INTO Branche VALUES ('GP');
+
+INSERT INTO Branche VALUES ('GSM');
+
+INSERT INTO Branche VALUES ('GSU');
