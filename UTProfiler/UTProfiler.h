@@ -414,6 +414,7 @@ class InterfaceSQL {
     QSqlQuery& execQuery(const QString& q);
     bool tupleExiste(const QString& q) {query->exec(q); query->next(); return query->isValid();}
     UV* selectUV(const QString& q);
+    UV** getAllUvs(const QString& q);
     Formation* selectFormation(const QString& q);
     Dossier* selectDossier(const QString& q);
 };
@@ -663,6 +664,7 @@ class FormationWindow : public QWidget {
     QPushButton *pbretour;
     QLabel *lnom;
     QLineEdit *lenom;
+    QPushButton *pbrechercher;
     QLabel *lresponsable;
     QLineEdit *leresponsable;
     QLabel *ltype;
@@ -692,6 +694,11 @@ class FormationWindow : public QWidget {
     void associerFormation(Formation *formation);
    public slots :
     void setenabled();
+    void rechercher();
+    void nouveau();
+    void supprimer();
+    void annuler();
+    void sauver();
 };
 
 class HomeWindow : public QWidget {

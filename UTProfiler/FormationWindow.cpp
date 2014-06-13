@@ -20,6 +20,7 @@ FormationWindow::FormationWindow() {
     pbretour = new QPushButton("Retour");
     lnom = new QLabel("Nom : ");
     lenom = new QLineEdit();
+    pbrechercher = new QPushButton("Rechercher");
     lresponsable = new QLabel("Responsable : ");
     leresponsable = new QLineEdit();
     ltype = new QLabel("Type : ");
@@ -27,6 +28,7 @@ FormationWindow::FormationWindow() {
     hlayout1->addWidget(pbretour);
     hlayout1->addWidget(lnom);
     hlayout1->addWidget(lenom);
+    hlayout1->addWidget(pbrechercher);
     hlayout1->addWidget(lresponsable);
     hlayout1->addWidget(leresponsable);
     hlayout1->addWidget(ltype);
@@ -45,7 +47,7 @@ FormationWindow::FormationWindow() {
     letsh = new QLineEdit();
     lsp = new QLabel("SP : ");
     lesp = new QLineEdit();
-    twuvs = new QTableWidget();
+    twuvs = new QTableWidget(150,6);
     hlayout2->addWidget(lcredits);
     hlayout2->addWidget(ltot);
     hlayout2->addWidget(letot);
@@ -74,7 +76,6 @@ FormationWindow::FormationWindow() {
     mainlayout->addLayout(hlayout3);
     this->setLayout(mainlayout);
     QObject::connect(pbretour,SIGNAL(clicked()),this,SLOT(close()));
-    QObject::connect(lenom,SIGNAL(textChanged(QString)),this,SLOT(setenabled()));
     QObject::connect(leresponsable,SIGNAL(textChanged(QString)),this,SLOT(setenabled()));
     QObject::connect(letype,SIGNAL(textChanged(QString)),this,SLOT(setenabled()));
     QObject::connect(letot,SIGNAL(textChanged(QString)),this,SLOT(setenabled()));
@@ -83,9 +84,13 @@ FormationWindow::FormationWindow() {
     QObject::connect(lecstm,SIGNAL(textChanged(QString)),this,SLOT(setenabled()));
     QObject::connect(letsh,SIGNAL(textChanged(QString)),this,SLOT(setenabled()));
     QObject::connect(lesp,SIGNAL(textChanged(QString)),this,SLOT(setenabled()));
+    QObject::connect(pbrechercher,SIGNAL(clicked()),this,SLOT(rechercher()));
+    QObject::connect(lenom,SIGNAL(returnPressed()),this,SLOT(rechercher()));
+    QObject::connect(pbannuler,SIGNAL(clicked()),this,SLOT(annuler()));
 }
 
-void FormationWindow::associerFormation(Formation *formation) {
+void FormationWindow::associerFormation(Formation *newformation) {
+    formation=newformation;
     lenom->setText(formation->getNom());
     leresponsable->setText(formation->getResponsable());
     letype->setText(formation->getType());
@@ -95,6 +100,37 @@ void FormationWindow::associerFormation(Formation *formation) {
     lecstm->setText(QString::number(formation->getNbCreditsCSTM()));
     letsh->setText(QString::number(formation->getNbCreditsTSH()));
     lesp->setText(QString::number(formation->getNbCreditsSP()));
+    InterfaceSQL *sql = InterfaceSQL::getInstance();
+    UV** uvs = sql->getAllUvs(QString::fromStdString("SELECT * FROM UV, AssociationFormationUV A WHERE UV.code = A.uv AND A.formation = '"+formation->getNom().toStdString()+"' ;"));
+    unsigned int i=0;
+    QTableWidgetItem *code;
+    QTableWidgetItem *categorie;
+    QTableWidgetItem *nbcredits;
+    QTableWidgetItem *titre;
+    QTableWidgetItem *responsable;
+    QTableWidgetItem *saison;
+    while (uvs[i]!=0) {
+        code = new QTableWidgetItem(uvs[i]->getCode());
+        twuvs->setItem(i,0,code);
+        if (uvs[i]->getCreditsCS()>0) {categorie = new QTableWidgetItem("CS"); nbcredits = new QTableWidgetItem(QString::number(uvs[i]->getCreditsCS()));}
+        else if (uvs[i]->getCreditsTM()>0) {categorie = new QTableWidgetItem("TM"); nbcredits = new QTableWidgetItem(QString::number(uvs[i]->getCreditsTM()));}
+        else if (uvs[i]->getCreditsTSH()>0) {categorie = new QTableWidgetItem("TSH"); nbcredits = new QTableWidgetItem(QString::number(uvs[i]->getCreditsTSH()));}
+        else if (uvs[i]->getCreditsSP()>0) {categorie = new QTableWidgetItem("SP"); nbcredits = new QTableWidgetItem(QString::number(uvs[i]->getCreditsSP()));}
+        else {categorie = new QTableWidgetItem(""); nbcredits = new QTableWidgetItem("");}
+        twuvs->setItem(i,1,categorie);
+        twuvs->setItem(i,2,nbcredits);
+        titre = new QTableWidgetItem(uvs[i]->getTitre());
+        twuvs->setItem(i,3,titre);
+        responsable = new QTableWidgetItem(uvs[i]->getResponsable());
+        twuvs->setItem(i,4,responsable);
+        if (uvs[i]->getAutomne()) {
+            if(uvs[i]->getPrintemps()) {saison = new QTableWidgetItem("A/P");}
+            else {saison = new QTableWidgetItem("A");} }
+        else if (uvs[i]->getPrintemps()) {saison = new QTableWidgetItem("P");}
+        else {saison = new QTableWidgetItem("");}
+        twuvs->setItem(i,5,saison);
+        ++i;
+    }
     pbsauver->setEnabled(false);
     pbannuler->setEnabled(false);
 }
@@ -102,4 +138,24 @@ void FormationWindow::associerFormation(Formation *formation) {
 void FormationWindow::setenabled() {
     pbsauver->setEnabled(true);
     pbannuler->setEnabled(true);
+}
+void FormationWindow::rechercher() {
+    InterfaceSQL *sql = InterfaceSQL::getInstance();
+    Formation *formation = sql->selectFormation(QString::fromStdString("SELECT * FROM Formation WHERE nom = '"+lenom->text().toStdString()+"';"));
+    associerFormation(formation);
+}
+
+void FormationWindow::nouveau() {
+
+}
+
+void FormationWindow::supprimer() {
+}
+
+void FormationWindow::annuler() {
+    associerFormation(formation);
+}
+
+void FormationWindow::sauver() {
+
 }
