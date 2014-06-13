@@ -9,6 +9,27 @@ CREATE TABLE IF NOT EXISTS UV (
 	printemps BOOL,
 	automne BOOL);
 
+<<<<<<< HEAD
+CREATE TABLE IF NOT EXISTS Branche (
+	b VARCHAR(10) PRIMARY KEY);
+
+INSERT INTO Branche VALUES ('TC');
+
+INSERT INTO Branche VALUES ('HUTECH');
+
+INSERT INTO Branche VALUES ('GB');
+
+INSERT INTO Branche VALUES ('GI');
+
+INSERT INTO Branche VALUES ('GM');
+
+INSERT INTO Branche VALUES ('GP');
+
+INSERT INTO Branche VALUES ('GSM');
+
+INSERT INTO Branche VALUES ('GSU');
+=======
+>>>>>>> b9d19d6e084206cadbc583e2acd0d0ae2a690383
 
 CREATE TABLE IF NOT EXISTS Dossier (
 	login CHAR(8) PRIMARY KEY,

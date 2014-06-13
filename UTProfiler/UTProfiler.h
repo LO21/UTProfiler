@@ -555,14 +555,7 @@ class DossierWindow : public QWidget {
     QLabel *lsemestres;
     QPushButton *pbajoutersemestres;
     QLabel *lbranche;
-    QCheckBox *cbGI;
-    QCheckBox *cbGM;
-    QCheckBox *cbGSM;
-    QCheckBox *cbGB;
-    QCheckBox *cbGP;
-    QCheckBox *cbGSU;
-    QCheckBox *cbTC;
-    QCheckBox *cbHutech;
+    QComboBox *cbbranche;
     QTableWidget *table;
     QTableWidget *table2;
 

@@ -82,25 +82,22 @@ DossierWindow::DossierWindow() {
 
     hlayout8 = new QHBoxLayout();
     lbranche = new QLabel("Branche :");
-    hlayout8->addWidget(lbranche);
+    cbbranche = new QComboBox;
 
-    hlayout9 = new QHBoxLayout();
-    cbGI = new QCheckBox("GI");
-    cbGM = new QCheckBox("GM");
-    cbGSM = new QCheckBox("GSM");
-    cbGP = new QCheckBox("GP");
-    cbGB = new QCheckBox("GB");
-    cbGSU = new QCheckBox("GSU");
-    cbTC = new QCheckBox("TC");
-    cbHutech = new QCheckBox("HUTECH");
-    hlayout9->addWidget(cbGI);
-    hlayout9->addWidget(cbGM);
-    hlayout9->addWidget(cbGSM);
-    hlayout9->addWidget(cbGP);
-    hlayout9->addWidget(cbGB);
-    hlayout9->addWidget(cbGSU);
-    hlayout9->addWidget(cbTC);
-    hlayout9->addWidget(cbHutech);
+    QString qu="SELECT * FROM Branche;";
+    InterfaceSQL *sql = InterfaceSQL::getInstance();
+    QSqlQuery query = sql->execQuery(qu);
+
+    QStringList res;
+
+    while(query.next())
+    {
+        res<<query.value(0).toString();
+    }
+    cbbranche->addItems(res);
+
+    hlayout8->addWidget(lbranche);
+    hlayout8->addWidget(cbbranche);
 
     hlayout7 = new QHBoxLayout();
     pbannuler = new QPushButton("Annuler");
@@ -113,7 +110,6 @@ DossierWindow::DossierWindow() {
     mainlayout->addLayout(hlayout3);
     mainlayout->addLayout(hlayout10);
     mainlayout->addLayout(hlayout8);
-    mainlayout->addLayout(hlayout9);
     mainlayout->addLayout(hlayout6);
     mainlayout->addLayout(hlayout11);
     mainlayout->addLayout(hlayout4);
@@ -130,72 +126,65 @@ DossierWindow::DossierWindow() {
     QObject::connect(lAEUOui,SIGNAL(clicked()),this,SLOT(pbsauverEnable()));
     QObject::connect(lAEUNon,SIGNAL(clicked()),this,SLOT(pbsauverEnable()));
     QObject::connect(leconseiller,SIGNAL(textChanged(QString)),this,SLOT(pbsauverEnable()));
-    QObject::connect(cbGI,SIGNAL(stateChanged(int)),this,SLOT(pbsauverEnable()));
-    QObject::connect(cbGM,SIGNAL(stateChanged(int)),this,SLOT(pbsauverEnable()));
-    QObject::connect(cbGSM,SIGNAL(stateChanged(int)),this,SLOT(pbsauverEnable()));
-    QObject::connect(cbGB,SIGNAL(stateChanged(int)),this,SLOT(pbsauverEnable()));
-    QObject::connect(cbGP,SIGNAL(stateChanged(int)),this,SLOT(pbsauverEnable()));
-    QObject::connect(cbGSU,SIGNAL(stateChanged(int)),this,SLOT(pbsauverEnable()));
-    QObject::connect(cbTC,SIGNAL(stateChanged(int)),this,SLOT(pbsauverEnable()));
-    QObject::connect(cbHutech,SIGNAL(stateChanged(int)),this,SLOT(pbsauverEnable()));
     QObject::connect(pbajouterformext, SIGNAL(clicked()), this, SLOT(ajouterFormExt()));
     QObject::connect(table,SIGNAL(cellChanged(int,int)),this,SLOT(pbsauverEnable()));
     QObject::connect(table,SIGNAL(cellClicked(int,int)),this,SLOT(supprFormExt(int, int)));
     QObject::connect(pbajoutersemestres, SIGNAL(clicked()), this, SLOT(ajouterSemestre()));
     QObject::connect(table2,SIGNAL(cellClicked(int,int)),this,SLOT(supprSemestre(int, int)));
+    QObject::connect(cbbranche,SIGNAL(currentTextChanged(QString)),this,SLOT(pbsauverEnable()));
 
 
 }
 
 
 void DossierWindow::sauver() {
-    /* Sauvegarde des modifications liées au dossier */
+    if (lelogin->text() == ""){ // Vérification qu'il y ait bien un dossier à sauvegarder
+        QMessageBox msg;
+        msg.setText("Veuillez rentrer un login.");
+        msg.exec();
+    } else {
 
-    QString q="UPDATE Dossier SET nom = '";
-    q.append(lenom->text());
-    q.append("', prenom = '");
-    q.append(leprenom->text());
-    q.append("', conseiller = '");
-    q.append(leconseiller->text());
-    q.append("', validationAEU = '");
-    if (lAEUOui->isChecked()) {q.append("1");}
-    else {q.append("0");}
-    q.append("', branche = '");
-    if (cbGI->isChecked()) {q.append("GI'");}
-    else if (cbGB->isChecked()) {q.append("GB'");}
-    else if (cbGM->isChecked()) {q.append("GM'");}
-    else if (cbGSM->isChecked()) {q.append("GSM'");}
-    else if (cbGP->isChecked()) {q.append("GP'");}
-    else if (cbGSU->isChecked()) {q.append("GSU'");}
-    else if (cbTC->isChecked()) {q.append("TC'");}
-    else if (cbHutech->isChecked()) {q.append("HUTECH'");}
-    q.append(" WHERE login = '");
-    q.append(lelogin->text());
-    q.append("';");
-    InterfaceSQL *sql = InterfaceSQL::getInstance();
-    sql->execQuery(q);
+        /* Sauvegarde des modifications liées au dossier */
 
-    /* Sauvegarde des modifications liées aux formations extérieures */
+        QString q="UPDATE Dossier SET nom = '";
+        q.append(lenom->text());
+        q.append("', prenom = '");
+        q.append(leprenom->text());
+        q.append("', conseiller = '");
+        q.append(leconseiller->text());
+        q.append("', validationAEU = '");
+        if (lAEUOui->isChecked()) {q.append("1");}
+        else {q.append("0");}
+        q.append("', branche = '");
+        q.append(cbbranche->currentText());
+        q.append("' WHERE login = '");
+        q.append(lelogin->text());
+        q.append("';");
+        InterfaceSQL *sql = InterfaceSQL::getInstance();
+        sql->execQuery(q);
 
-    for (int i=0; i<table->rowCount(); i++){
-        QString q2 = "UPDATE FormationExt SET lieu = '";
-        q2.append((table->item(i,1)->data(Qt::EditRole)).toString());
-        q2.append("', creditsCS = '");
-        q2.append((table->item(i,2)->data(Qt::EditRole)).toString());
-        q2.append("', creditsTM = '");
-        q2.append((table->item(i,3)->data(Qt::EditRole)).toString());
-        q2.append("', creditsTSH = '");
-        q2.append((table->item(i,4)->data(Qt::EditRole)).toString());
-        q2.append("', creditsSP = '");
-        q2.append((table->item(i,5)->data(Qt::EditRole)).toString());
-        q2.append("' WHERE login = '");
-        q2.append(lelogin->text());
-        q2.append("' AND nom = '");
-        q2.append((table->item(i,0)->data(Qt::EditRole)).toString());
-        q2.append("';");
-        sql->execQuery(q2);
+        /* Sauvegarde des modifications liées aux formations extérieures */
+
+        for (int i=0; i<table->rowCount(); i++){
+            QString q2 = "UPDATE FormationExt SET lieu = '";
+            q2.append((table->item(i,1)->data(Qt::EditRole)).toString());
+            q2.append("', creditsCS = '");
+            q2.append((table->item(i,2)->data(Qt::EditRole)).toString());
+            q2.append("', creditsTM = '");
+            q2.append((table->item(i,3)->data(Qt::EditRole)).toString());
+            q2.append("', creditsTSH = '");
+            q2.append((table->item(i,4)->data(Qt::EditRole)).toString());
+            q2.append("', creditsSP = '");
+            q2.append((table->item(i,5)->data(Qt::EditRole)).toString());
+            q2.append("' WHERE login = '");
+            q2.append(lelogin->text());
+            q2.append("' AND nom = '");
+            q2.append((table->item(i,0)->data(Qt::EditRole)).toString());
+            q2.append("';");
+            sql->execQuery(q2);
+        }
+        pbsauver->setEnabled(false);
     }
-    pbsauver->setEnabled(false);
 }
 
 void DossierWindow::pbsauverEnable() {
@@ -218,14 +207,15 @@ void DossierWindow::associerDossier(Dossier *d) {
     cbDDRESET->setChecked(d->checkMineurDDRESET());
     cbINTENT->setChecked(d->checkMineurINTENT());
     cbST->setChecked(d->checkMineurST());
-    cbGI->setChecked(d->checkGI());
+    cbbranche->setCurrentText(d->getBranche());
+    /* cbGI->setChecked(d->checkGI());
     cbGM->setChecked(d->checkGM());
     cbGSM->setChecked(d->checkGSM());
     cbGP->setChecked(d->checkGP());
     cbGB->setChecked(d->checkGB());
     cbGSU->setChecked(d->checkGSU());
     cbTC->setChecked(d->checkTC());
-    cbHutech->setChecked(d->checkHutech());
+    cbHutech->setChecked(d->checkHutech()); */
 
     /* Affichage des formations extérieures */
 
@@ -291,6 +281,7 @@ void DossierWindow::associerDossier(Dossier *d) {
             table2->setItem(table2->currentRow() + 1, 1, itemUV);
             itemUV->setFlags(itemUV->flags() & ~ Qt::ItemIsEditable);
             QTableWidgetItem *itemRes = new QTableWidgetItem(resultat);
+            itemRes->setFlags(itemRes->flags() & ~ Qt::ItemIsEditable);
             table2->setItem(table2->currentRow() + 1, 2, itemRes);
 
             /* Récupération des crédits de l'UV concernée*/
@@ -316,15 +307,15 @@ void DossierWindow::associerDossier(Dossier *d) {
             table2->setItem(table2->currentRow() + 1, 3, itemCS);
             QTableWidgetItem *itemTM = new QTableWidgetItem();
             itemTM->setData(Qt::DisplayRole,creditsTM);
-            itemCS->setFlags(itemTM->flags() & ~ Qt::ItemIsEditable);
+            itemTM->setFlags(itemTM->flags() & ~ Qt::ItemIsEditable);
             table2->setItem(table2->currentRow() + 1, 4, itemTM);
             QTableWidgetItem *itemTSH = new QTableWidgetItem();
             itemTSH->setData(Qt::DisplayRole,creditsTSH);
-            itemCS->setFlags(itemTSH->flags() & ~ Qt::ItemIsEditable);
+            itemTSH->setFlags(itemTSH->flags() & ~ Qt::ItemIsEditable);
             table2->setItem(table2->currentRow() + 1, 5, itemTSH);
             QTableWidgetItem *itemSP = new QTableWidgetItem();
             itemSP->setData(Qt::DisplayRole,creditsSP);
-            itemCS->setFlags(itemSP->flags() & ~ Qt::ItemIsEditable);
+            itemSP->setFlags(itemSP->flags() & ~ Qt::ItemIsEditable);
             table2->setItem(table2->currentRow() + 1, 6, itemSP);
 
             QTableWidgetItem *itemSuppr = new QTableWidgetItem("Supprimer");
