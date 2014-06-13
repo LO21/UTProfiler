@@ -759,7 +759,6 @@ void SemestreWindow::ajouter() {
                 else q2.append("A");
                 q2.append("', '");
                 q2.append(leannee->text());
-                qDebug()<<(leannee->text()).size();
                 q2.append("', '");
                 q2.append(getLogin());
                 q2.append("');");

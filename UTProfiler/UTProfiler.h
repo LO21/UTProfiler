@@ -24,6 +24,7 @@
 #include <QTableWidgetItem>
 #include <QSqlDriver>
 #include <QComboBox>
+#include <QToolTip>
 
 using namespace std;
 
@@ -723,13 +724,16 @@ class HomeWindow : public QWidget {
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
     QPushButton *pbuv;
-    QPushButton *pbnewuv;
     QHBoxLayout *hlayout2;
     QPushButton *pbformation;
-    QPushButton *pbnewformation;
     QHBoxLayout *hlayout3;
     QPushButton *pbdossier;
-    QPushButton *pbnewdossier;
+    QPushButton *pbcompletion;
+    QPushButton *pbquitter;
+    QHBoxLayout *hlayout4;
+    QHBoxLayout *hlayout5;
+    QHBoxLayout *hlayout6;
+    QLabel *lbienvenue;
    public :
     InterfaceSQL *sql;
     HomeWindow();
