@@ -84,7 +84,7 @@ DossierWindow::DossierWindow() {
     lbranche = new QLabel("Branche :");
     cbbranche = new QComboBox;
 
-    QString qu="SELECT * FROM Branche;";
+    QString qu="SELECT * FROM Formation WHERE type ='Branche';";
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     QSqlQuery query = sql->execQuery(qu);
 
@@ -102,8 +102,10 @@ DossierWindow::DossierWindow() {
     hlayout7 = new QHBoxLayout();
     pbannuler = new QPushButton("Annuler");
     pbsauver = new QPushButton("Sauver");
+    pbsuppr = new QPushButton("Supprimer");
     hlayout7->addWidget(pbannuler);
     hlayout7->addWidget(pbsauver);
+    hlayout7->addWidget(pbsuppr);
 
     mainlayout->addLayout(hlayout1);
     mainlayout->addLayout(hlayout2);
@@ -132,6 +134,7 @@ DossierWindow::DossierWindow() {
     QObject::connect(pbajoutersemestres, SIGNAL(clicked()), this, SLOT(ajouterSemestre()));
     QObject::connect(table2,SIGNAL(cellClicked(int,int)),this,SLOT(supprSemestre(int, int)));
     QObject::connect(cbbranche,SIGNAL(currentTextChanged(QString)),this,SLOT(pbsauverEnable()));
+    QObject::connect(pbsuppr,SIGNAL(clicked()),this,SLOT(supprimer()));
 
 
 }
@@ -144,44 +147,72 @@ void DossierWindow::sauver() {
         msg.exec();
     } else {
 
-        /* Sauvegarde des modifications liées au dossier */
-
-        QString q="UPDATE Dossier SET nom = '";
-        q.append(lenom->text());
-        q.append("', prenom = '");
-        q.append(leprenom->text());
-        q.append("', conseiller = '");
-        q.append(leconseiller->text());
-        q.append("', validationAEU = '");
-        if (lAEUOui->isChecked()) {q.append("1");}
-        else {q.append("0");}
-        q.append("', branche = '");
-        q.append(cbbranche->currentText());
-        q.append("' WHERE login = '");
-        q.append(lelogin->text());
-        q.append("';");
+        QString q3="SELECT login FROM Dossier WHERE login = '";
+        q3.append(lelogin->text());
+        q3.append("';");
         InterfaceSQL *sql = InterfaceSQL::getInstance();
-        sql->execQuery(q);
+        QSqlQuery query3 = sql->execQuery(q3);
+        query3.next();
 
-        /* Sauvegarde des modifications liées aux formations extérieures */
+        if (query3.value(0).toString() == ""){ // Le dossier n'existe pas, il faut le créer
+            QString q4="INSERT INTO Dossier(login, nom, prenom, conseiller, validationAEU, branche) VALUES ('";
+            q4.append(lelogin->text());
+            q4.append("', '");
+            q4.append(lenom->text());
+            q4.append("','");
+            q4.append(leprenom->text());
+            q4.append("','");
+            q4.append(leconseiller->text());
+            q4.append("','");
+            if (lAEUOui->isChecked()) {q4.append("1");}
+            else {q4.append("0");}
+            q4.append("','");
+            q4.append(cbbranche->currentText());
+            q4.append("');");
 
-        for (int i=0; i<table->rowCount(); i++){
-            QString q2 = "UPDATE FormationExt SET lieu = '";
-            q2.append((table->item(i,1)->data(Qt::EditRole)).toString());
-            q2.append("', creditsCS = '");
-            q2.append((table->item(i,2)->data(Qt::EditRole)).toString());
-            q2.append("', creditsTM = '");
-            q2.append((table->item(i,3)->data(Qt::EditRole)).toString());
-            q2.append("', creditsTSH = '");
-            q2.append((table->item(i,4)->data(Qt::EditRole)).toString());
-            q2.append("', creditsSP = '");
-            q2.append((table->item(i,5)->data(Qt::EditRole)).toString());
-            q2.append("' WHERE login = '");
-            q2.append(lelogin->text());
-            q2.append("' AND nom = '");
-            q2.append((table->item(i,0)->data(Qt::EditRole)).toString());
-            q2.append("';");
-            sql->execQuery(q2);
+            QSqlQuery query4 = sql->execQuery(q4);
+        } else { // Le dossier existe déjà, il faut le mettre à jour
+
+
+            /* Sauvegarde des modifications liées au dossier */
+
+            QString q="UPDATE Dossier SET nom = '";
+            q.append(lenom->text());
+            q.append("', prenom = '");
+            q.append(leprenom->text());
+            q.append("', conseiller = '");
+            q.append(leconseiller->text());
+            q.append("', validationAEU = '");
+            if (lAEUOui->isChecked()) {q.append("1");}
+            else {q.append("0");}
+            q.append("', branche = '");
+            q.append(cbbranche->currentText());
+            q.append("' WHERE login = '");
+            q.append(lelogin->text());
+            q.append("';");
+            sql->execQuery(q);
+
+        }
+
+            /* Sauvegarde des modifications liées aux formations extérieures */
+
+            for (int i=0; i<table->rowCount(); i++){
+                QString q2 = "UPDATE FormationExt SET lieu = '";
+                q2.append((table->item(i,1)->data(Qt::EditRole)).toString());
+                q2.append("', creditsCS = '");
+                q2.append((table->item(i,2)->data(Qt::EditRole)).toString());
+                q2.append("', creditsTM = '");
+                q2.append((table->item(i,3)->data(Qt::EditRole)).toString());
+                q2.append("', creditsTSH = '");
+                q2.append((table->item(i,4)->data(Qt::EditRole)).toString());
+                q2.append("', creditsSP = '");
+                q2.append((table->item(i,5)->data(Qt::EditRole)).toString());
+                q2.append("' WHERE login = '");
+                q2.append(lelogin->text());
+                q2.append("' AND nom = '");
+                q2.append((table->item(i,0)->data(Qt::EditRole)).toString());
+                q2.append("';");
+                sql->execQuery(q2);
         }
         pbsauver->setEnabled(false);
     }
@@ -288,15 +319,14 @@ void DossierWindow::associerDossier(Dossier *d) {
 
             QString qu3="SELECT creditsCS, creditsTM, creditsTSH, creditsSP FROM UV WHERE code = '";
             qu3.append(uv);
-            qDebug() << "UV :" << uv;
+
             qu3.append("';");
-            qDebug() <<qu3;
+
             QSqlQuery query3 = sql2->execQuery(qu3);
 
             query3.next();
 
             int creditsCS = query3.value(0).toInt();
-            qDebug() << "CS :"<< query3.value(0).toInt() << " "<< creditsCS;
             int creditsTM = query3.value(1).toInt();
             int creditsTSH = query3.value(2).toInt();
             int creditsSP = query3.value(3).toInt();
@@ -324,21 +354,36 @@ void DossierWindow::associerDossier(Dossier *d) {
 
         }
     pbsauver->setEnabled(false);
-    //qDebug()<<"Nombre de lignes :"<<table->rowCount();
+
 
 }
 
 void DossierWindow::rechercher() {
-    QString q = "SELECT * FROM Dossier WHERE login = '";
-    q.append(lelogin->text());
-    q.append("';");
-    InterfaceSQL *sql = InterfaceSQL::getInstance();
-    Dossier *d = sql->selectDossier(q);
-    table->clearContents();
-    table->setRowCount(0);
-    table2->clearContents();
-    table2->setRowCount(0);
-    associerDossier(d);
+    if (lelogin->text() == ""){ // Vérification qu'il y ait bien un dossier à rechercher
+        QMessageBox msg;
+        msg.setText("Veuillez rentrer un login.");
+        msg.exec();
+    } else {
+
+        QString q = "SELECT * FROM Dossier WHERE login = '";
+        q.append(lelogin->text());
+        q.append("';");
+        InterfaceSQL *sql = InterfaceSQL::getInstance();
+        QSqlQuery query = sql->execQuery(q);
+        query.next();
+        if (query.value(0).toString() == ""){ // Le login recherché n'existe pas
+            QMessageBox msg;
+            msg.setText("Le login recherché n'existe pas.");
+            msg.exec();
+        } else {
+            Dossier *d = sql->selectDossier(q);
+            table->clearContents();
+            table->setRowCount(0);
+            table2->clearContents();
+            table2->setRowCount(0);
+            associerDossier(d);
+        }
+    }
 
 }
 
@@ -376,7 +421,6 @@ void DossierWindow::supprSemestre(int r, int c){
         annee.append(sem[2]);
         annee.append(sem[3]);
         annee.append(sem[4]);
-        qDebug() <<annee;
 
         QString q = "DELETE FROM Inscription WHERE login = '";
         q.append(lelogin->text());
@@ -390,6 +434,56 @@ void DossierWindow::supprSemestre(int r, int c){
         InterfaceSQL *sql = InterfaceSQL::getInstance();
         sql->execQuery(q);
         table2->removeRow(r);
+    }
+}
+
+void DossierWindow::supprimer(){
+    if (lelogin->text() == ""){ // Vérification qu'il y ait bien un dossier à supprimer
+        QMessageBox msg;
+        msg.setText("Veuillez rentrer un login.");
+        msg.exec();
+    } else {
+        QString q = "SELECT * FROM Dossier WHERE login = '";
+        q.append(lelogin->text());
+        q.append("';");
+        InterfaceSQL *sql = InterfaceSQL::getInstance();
+        QSqlQuery query = sql->execQuery(q);
+        query.next();
+        if (query.value(0).toString() == ""){ // Le login n'existe pas
+            QMessageBox msg;
+            msg.setText("Le login que vous cherchez à supprimer n'existe pas.");
+            msg.exec();
+        } else {
+            /* Suppression des formations extérieures associées */
+
+            QString q2 = "DELETE FROM FormationExt WHERE login = '";
+            q2.append(lelogin->text());
+            q2.append("';");
+            sql->execQuery(q2);
+
+            /* Suppression de toutes les inscriptions */
+
+            QString q3 = "DELETE FROM Inscription WHERE login = '";
+            q3.append(lelogin->text());
+            q3.append("';");
+            sql->execQuery(q3);
+
+            /* Suppression de tous les semestres */
+
+            QString q4 = "DELETE FROM Semestre WHERE dossier = '";
+            q4.append(lelogin->text());
+            q4.append("';");
+            sql->execQuery(q4);
+
+            /* Suppression du dossier */
+
+            QString q5 = "DELETE FROM Dossier WHERE login = '";
+            q5.append(lelogin->text());
+            q5.append("';");
+            sql->execQuery(q5);
+
+        }
+
     }
 }
 
@@ -569,7 +663,7 @@ void SemestreWindow::ajouter() {
             QString q = "SELECT saison, annee FROM Semestre WHERE dossier = '";
             q.append(getLogin());
             q.append("' AND saison = '");
-            qDebug() << cbsaison->currentText();
+
             if (cbsaison->currentText() == "Printemps" )
                 q.append("P");
             else q.append("A");
@@ -581,7 +675,6 @@ void SemestreWindow::ajouter() {
             InterfaceSQL *sql = InterfaceSQL::getInstance();
             QSqlQuery query = sql->execQuery(q);
             query.next();
-            qDebug() << query.value(0);
 
             if (query.value(0).toString() == ""){ // Le semestre n'existe pas
 
@@ -624,7 +717,6 @@ void SemestreWindow::ajouter() {
                 QString q4 = "SELECT uv FROM Inscription WHERE login = '";
                 q4.append(getLogin());
                 q4.append("' AND saison = '");
-                qDebug() << cbsaison->currentText();
                 if (cbsaison->currentText() == "Printemps" )
                     q4.append("P");
                 else q4.append("A");

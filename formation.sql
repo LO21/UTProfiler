@@ -1,20 +1,25 @@
-DROP TABLE Branche;
+CREATE TABLE IF NOT EXISTS TypeFormation (
+	type VARCHAR(25));
 
-CREATE TABLE IF NOT EXISTS Branche (
-	b VARCHAR(10) PRIMARY KEY);
-	
-INSERT INTO Branche VALUES ('TC');
+INSERT INTO TypeFormation VALUES ('Branche');
 
-INSERT INTO Branche VALUES ('HUTECH');
+INSERT INTO TypeFormation VALUES ('Filière');
 
-INSERT INTO Branche VALUES ('GB');
+INSERT INTO TypeFormation VALUES ('Mineur');
 
-INSERT INTO Branche VALUES ('GI');
+CREATE TABLE IF NOT EXISTS Formation (
+	nom VARCHAR(25) PRIMARY KEY,
+	responsable VARCHAR(50),
+	type VARCHAR(25) REFERENCES TypeFormation(type),
+	creditsTOT INTEGER(3),
+	creditsCS INTEGER(3),
+	creditsTM INTEGER(3),
+	creditsCSTM INTEGER(3),
+	creditsTSH INTEGER(3),
+	creditsSP INTEGER(3));
 
-INSERT INTO Branche VALUES ('GM');
 
-INSERT INTO Branche VALUES ('GP');
-
-INSERT INTO Branche VALUES ('GSM');
-
-INSERT INTO Branche VALUES ('GSU');
+CREATE TABLE IF NOT EXISTS AssociationFormationUV (
+	uv VARCHAR(10) REFERENCES UV(code),
+	formation VARCHAR(25) REFERENCES Formation(nom),
+	PRIMARY KEY (uv,formation));

@@ -558,6 +558,7 @@ class DossierWindow : public QWidget {
     QComboBox *cbbranche;
     QTableWidget *table;
     QTableWidget *table2;
+    QPushButton *pbsuppr;
 
 
    public :
@@ -571,6 +572,7 @@ class DossierWindow : public QWidget {
     void supprFormExt(int r, int c);
     void ajouterSemestre();
     void supprSemestre(int r, int c);
+    void supprimer();
 };
 
 class FormationExtWindow : public QWidget {
