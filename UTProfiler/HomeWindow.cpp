@@ -30,6 +30,7 @@ HomeWindow::HomeWindow() {
     QObject::connect(pbuv,SIGNAL(clicked()),uvwindow,SLOT(show()));
     QObject::connect(pbuv,SIGNAL(clicked()),this,SLOT(hide()));
     QObject::connect(uvwindow->pbretour,SIGNAL(clicked()),this,SLOT(show()));
+    QObject::connect(dossierwindow->pbretour,SIGNAL(clicked()),this,SLOT(show()));
     QObject::connect(pbnewuv,SIGNAL(clicked()),uvwindow,SLOT(show()));
     QObject::connect(pbnewuv,SIGNAL(clicked()),uvwindow,SLOT(nouveau()));
     QObject::connect(pbnewuv,SIGNAL(clicked()),this,SLOT(hide()));

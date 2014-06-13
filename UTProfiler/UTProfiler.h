@@ -559,6 +559,7 @@ class DossierWindow : public QWidget {
     QTableWidget *table;
     QTableWidget *table2;
     QPushButton *pbsuppr;
+    QPushButton *pbretour;
 
 
    public :

@@ -3,6 +3,7 @@
 DossierWindow::DossierWindow() {
     mainlayout = new QVBoxLayout();
     hlayout1 = new QHBoxLayout();
+    pbretour = new QPushButton("Retour");
     llogin = new QLabel("Dossier du login : ");
     lelogin = new QLineEdit();
     pbrechercher = new QPushButton("Rechercher");
@@ -10,6 +11,7 @@ DossierWindow::DossierWindow() {
     lenom = new QLineEdit();
     lprenom = new QLabel("Prénom : ");
     leprenom = new QLineEdit();
+    hlayout1->addWidget(pbretour);
     hlayout1->addWidget(llogin);
     hlayout1->addWidget(lelogin);
     hlayout1->addWidget(pbrechercher);
@@ -121,6 +123,7 @@ DossierWindow::DossierWindow() {
 
     QString l = lelogin->text();
 
+    QObject::connect(pbretour,SIGNAL(clicked()),this,SLOT(close()));
     QObject::connect(pbrechercher,SIGNAL(clicked()),this,SLOT(rechercher()));
     QObject::connect(pbsauver,SIGNAL(clicked()),this,SLOT(sauver()));
     QObject::connect(lenom,SIGNAL(textChanged(QString)),this,SLOT(pbsauverEnable()));
