@@ -528,6 +528,8 @@ class DossierWindow : public QWidget {
     QHBoxLayout *hlayout9;
     QHBoxLayout *hlayout10;
     QHBoxLayout *hlayout11;
+    QHBoxLayout *hlayout12;
+    QHBoxLayout *hlayout13;
     QLabel *llogin;
     QLineEdit *lelogin;
     QPushButton *pbrechercher;
@@ -560,6 +562,8 @@ class DossierWindow : public QWidget {
     QTableWidget *table2;
     QPushButton *pbsuppr;
     QPushButton *pbretour;
+    QLabel *lcommentaire;
+    QTableWidget *table3;
 
 
    public :

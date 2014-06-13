@@ -80,6 +80,19 @@ DossierWindow::DossierWindow() {
     table2->setHorizontalHeaderLabels(QStringList()<<"Semestre"<<"UV"<<"Note"<<"Crédits CS"<<"Crédits TM"<<"Crédits TSH"<<"Crédits SP"<<"");
     hlayout11->addWidget(table2);
 
+    /* Appréciations semestrielles */
+
+    hlayout12 = new QHBoxLayout();
+    lcommentaire = new QLabel("Appréciations semestrielles :");
+    hlayout12->addWidget(lcommentaire);
+
+    hlayout13 = new QHBoxLayout();
+    table3 = new QTableWidget(this);
+    table3->setColumnCount(2);
+    table3->setHorizontalHeaderLabels(QStringList()<<"Semestre"<<"Commentaire");
+    hlayout13->addWidget(table3);
+
+
     /* Branche */
 
     hlayout8 = new QHBoxLayout();
@@ -116,6 +129,8 @@ DossierWindow::DossierWindow() {
     mainlayout->addLayout(hlayout8);
     mainlayout->addLayout(hlayout6);
     mainlayout->addLayout(hlayout11);
+    mainlayout->addLayout(hlayout12);
+    mainlayout->addLayout(hlayout13);
     mainlayout->addLayout(hlayout4);
     mainlayout->addLayout(hlayout5);
     mainlayout->addLayout(hlayout7);
@@ -133,6 +148,7 @@ DossierWindow::DossierWindow() {
     QObject::connect(leconseiller,SIGNAL(textChanged(QString)),this,SLOT(pbsauverEnable()));
     QObject::connect(pbajouterformext, SIGNAL(clicked()), this, SLOT(ajouterFormExt()));
     QObject::connect(table,SIGNAL(cellChanged(int,int)),this,SLOT(pbsauverEnable()));
+    QObject::connect(table3,SIGNAL(cellChanged(int,int)),this,SLOT(pbsauverEnable()));
     QObject::connect(table,SIGNAL(cellClicked(int,int)),this,SLOT(supprFormExt(int, int)));
     QObject::connect(pbajoutersemestres, SIGNAL(clicked()), this, SLOT(ajouterSemestre()));
     QObject::connect(table2,SIGNAL(cellClicked(int,int)),this,SLOT(supprSemestre(int, int)));
@@ -217,6 +233,30 @@ void DossierWindow::sauver() {
                 q2.append("';");
                 sql->execQuery(q2);
         }
+
+         /* Sauvegarde des modifications liées aux appréciations semestrielles */
+
+            for (int i=0; i<table3->rowCount(); i++){
+
+                QString sem = (table3->item(i,0)->data(Qt::EditRole)).toString(); // Récupération du semestre
+                QString annee = "";
+                annee.append(sem[1]);
+                annee.append(sem[2]);
+                annee.append(sem[3]);
+                annee.append(sem[4]);
+
+                QString q5 = "UPDATE Semestre SET commentaire = '";
+                q5.append((table3->item(i,1)->data(Qt::EditRole)).toString());
+                q5.append("' WHERE dossier = '");
+                q5.append(lelogin->text());
+                q5.append("' AND saison = '");
+                q5.append(sem[0]);
+                q5.append("' AND annee = '");
+                q5.append(annee);
+                q5.append("';");
+                sql->execQuery(q5);
+            }
+
         pbsauver->setEnabled(false);
     }
 }
@@ -356,6 +396,30 @@ void DossierWindow::associerDossier(Dossier *d) {
             itemSuppr->setFlags(itemSuppr->flags() & ~ Qt::ItemIsEditable);
 
         }
+
+    /* Affichage des appréciations semestrielles */
+
+    QString qu4="SELECT saison, annee, commentaire FROM Semestre WHERE dossier = '";
+    qu4.append(lelogin->text());
+    qu4.append("';");
+    QSqlQuery query4 = sql2->execQuery(qu4);
+
+    while(query4.next())
+        {
+            QString saison = query4.value(0).toString();
+            QString annee = query4.value(1).toString();
+            QString sem = saison.append(annee);
+            QString commentaire =query4.value(2).toString();
+
+            table3->insertRow(table3->currentRow() + 1);
+
+            QTableWidgetItem *itemSem = new QTableWidgetItem(sem);
+            table3->setItem(table3->currentRow() + 1, 0, itemSem);
+            itemSem->setFlags(itemSem->flags() & ~ Qt::ItemIsEditable);
+            QTableWidgetItem *itemComm = new QTableWidgetItem(commentaire);
+            table3->setItem(table3->currentRow() + 1, 1, itemComm);
+
+        }
     pbsauver->setEnabled(false);
 
 
@@ -384,6 +448,8 @@ void DossierWindow::rechercher() {
             table->setRowCount(0);
             table2->clearContents();
             table2->setRowCount(0);
+            table3->clearContents();
+            table3->setRowCount(0);
             associerDossier(d);
         }
     }
@@ -658,6 +724,10 @@ void SemestreWindow::ajouter() {
         QMessageBox msg;
         msg.setText("Veuillez remplir l'année du semestre.");
         msg.exec();
+    } else if  ((leannee->text()).size() != 4) {
+        QMessageBox msg;
+        msg.setText("Merci de remplir l'année sous la forme AAAA.");
+        msg.exec();
     }
     else {
 
@@ -689,6 +759,7 @@ void SemestreWindow::ajouter() {
                 else q2.append("A");
                 q2.append("', '");
                 q2.append(leannee->text());
+                qDebug()<<(leannee->text()).size();
                 q2.append("', '");
                 q2.append(getLogin());
                 q2.append("');");
