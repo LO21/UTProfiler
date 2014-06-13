@@ -99,6 +99,7 @@ UV** InterfaceSQL::getAllUvs(const QString& q) {
             res[i++] = /*uvm->creerItem*/new UV(query->value(0).toString(),query->value(1).toString(),query->value(2).toString(),query->value(3).toUInt(),query->value(4).toUInt(),query->value(5).toUInt(),query->value(6).toUInt(),query->value(7).toBool(),query->value(8).toBool());
             query->next();
         }
+        res[i++] = new UV ("fin","","",0,0,0,0,false,false);
         return res;
     }
     else {

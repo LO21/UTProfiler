@@ -101,6 +101,7 @@ void FormationWindow::associerFormation(Formation *newformation) {
     letsh->setText(QString::number(formation->getNbCreditsTSH()));
     lesp->setText(QString::number(formation->getNbCreditsSP()));
     InterfaceSQL *sql = InterfaceSQL::getInstance();
+    twuvs->setRowCount(150);
     UV** uvs = sql->getAllUvs(QString::fromStdString("SELECT * FROM UV, AssociationFormationUV A WHERE UV.code = A.uv AND A.formation = '"+formation->getNom().toStdString()+"' ;"));
     unsigned int i=0;
     QTableWidgetItem *code;
@@ -109,7 +110,7 @@ void FormationWindow::associerFormation(Formation *newformation) {
     QTableWidgetItem *titre;
     QTableWidgetItem *responsable;
     QTableWidgetItem *saison;
-    while (uvs[i]!=0) {
+    while (uvs[i]->getCode()!=QString::fromStdString("fin")) {
         code = new QTableWidgetItem(uvs[i]->getCode());
         twuvs->setItem(i,0,code);
         if (uvs[i]->getCreditsCS()>0) {categorie = new QTableWidgetItem("CS"); nbcredits = new QTableWidgetItem(QString::number(uvs[i]->getCreditsCS()));}
@@ -131,6 +132,7 @@ void FormationWindow::associerFormation(Formation *newformation) {
         twuvs->setItem(i,5,saison);
         ++i;
     }
+    twuvs->setRowCount(i);
     pbsauver->setEnabled(false);
     pbannuler->setEnabled(false);
 }

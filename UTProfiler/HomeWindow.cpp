@@ -29,11 +29,13 @@ HomeWindow::HomeWindow() {
     this->setLayout(mainlayout);
     QObject::connect(pbuv,SIGNAL(clicked()),uvwindow,SLOT(show()));
     QObject::connect(pbuv,SIGNAL(clicked()),this,SLOT(hide()));
+    QObject::connect(uvwindow->pbretour,SIGNAL(clicked()),this,SLOT(show()));
     QObject::connect(pbnewuv,SIGNAL(clicked()),uvwindow,SLOT(show()));
     QObject::connect(pbnewuv,SIGNAL(clicked()),uvwindow,SLOT(nouveau()));
     QObject::connect(pbnewuv,SIGNAL(clicked()),this,SLOT(hide()));
     QObject::connect(pbformation,SIGNAL(clicked()),formationwindow,SLOT(show()));
     QObject::connect(pbformation,SIGNAL(clicked()),this,SLOT(hide()));
+    QObject::connect(formationwindow->pbretour,SIGNAL(clicked()),this,SLOT(show()));
     //QObject::connect(pbnewformation,SIGNAL(clicked()),formationwindow,SLOT(show()));
     QObject::connect(pbdossier,SIGNAL(clicked()),dossierwindow,SLOT(show()));
     QObject::connect(pbdossier,SIGNAL(clicked()),this,SLOT(hide()));

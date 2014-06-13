@@ -7,14 +7,14 @@ UTProfilerException::UTProfilerException(const QString& s) {
 
 bool* UV::getBranche() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
-    branche[0] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationFormationUV WHERE uv = '"+code.toStdString()+"' AND formation = 'TC';"));
-    branche[1] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationFormationUV WHERE uv = '"+code.toStdString()+"' AND formation = 'HUTECH';"));
-    branche[2] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationFormationUV WHERE uv = '"+code.toStdString()+"' AND formation = 'GB';"));
-    branche[3] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationFormationUV WHERE uv = '"+code.toStdString()+"' AND formation = 'GI';"));
-    branche[4] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationFormationUV WHERE uv = '"+code.toStdString()+"' AND formation = 'GM';"));
-    branche[5] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationFormationUV WHERE uv = '"+code.toStdString()+"' AND formation = 'GP';"));
-    branche[6] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationFormationUV WHERE uv = '"+code.toStdString()+"' AND formation = 'GSM';"));
-    branche[7] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationFormationUV WHERE uv = '"+code.toStdString()+"' AND formation = 'GSU';"));
+    branche[0] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationFormationUV WHERE uv = '"+getCode().toStdString()+"' AND formation = 'TC';"));
+    branche[1] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationFormationUV WHERE uv = '"+getCode().toStdString()+"' AND formation = 'HUTECH';"));
+    branche[2] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationFormationUV WHERE uv = '"+getCode().toStdString()+"' AND formation = 'GB';"));
+    branche[3] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationFormationUV WHERE uv = '"+getCode().toStdString()+"' AND formation = 'GI';"));
+    branche[4] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationFormationUV WHERE uv = '"+getCode().toStdString()+"' AND formation = 'GM';"));
+    branche[5] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationFormationUV WHERE uv = '"+getCode().toStdString()+"' AND formation = 'GP';"));
+    branche[6] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationFormationUV WHERE uv = '"+getCode().toStdString()+"' AND formation = 'GSM';"));
+    branche[7] = sql->tupleExiste(QString::fromStdString("SELECT * FROM AssociationFormationUV WHERE uv = '"+getCode().toStdString()+"' AND formation = 'GSU';"));
     return branche;
 }
 
