@@ -74,9 +74,9 @@ class UTProfilerException {
 class UV {
     //friend class UVManager;
     //friend class Manager<UV>;
-    QString code;
-    QString titre;
-    QString responsable;
+    QString *code;
+    QString *titre;
+    QString *responsable;
     unsigned int creditsCS;
     unsigned int creditsTM;
     unsigned int creditsTSH;
@@ -85,21 +85,21 @@ class UV {
     bool automne;
     bool *branche;
    public :
-    UV& operator=(UV& other) {code=other.getCode();titre=other.getTitre();responsable=other.getResponsable();creditsCS=other.getCreditsCS();creditsTM=other.getCreditsTM();creditsTSH=other.getCreditsTSH();creditsSP=other.creditsSP;printemps=other.getPrintemps();automne=other.getAutomne();return *this;}
-    UV(const QString& c, const QString& t, const QString& r,unsigned int cs, unsigned int tm, unsigned int tsh, unsigned int sp, bool p, bool a) : code(c), titre(t), responsable(r), creditsCS(cs), creditsTM(tm), creditsTSH(tsh), creditsSP(sp), printemps(p), automne(a) {branche = new bool[8];}
-    UV() : code(""), titre(""), responsable(""), creditsCS(0), creditsTM(0), creditsTSH(0), creditsSP(0), printemps(false), automne(false) {branche = new bool[8];}
+    UV& operator=(UV& other) {code=new QString(other.getCode());titre=new QString(other.getTitre());responsable=new QString(other.getResponsable());creditsCS=other.getCreditsCS();creditsTM=other.getCreditsTM();creditsTSH=other.getCreditsTSH();creditsSP=other.creditsSP;printemps=other.getPrintemps();automne=other.getAutomne();return *this;}
+    UV(const QString& c, const QString& t, const QString& r,unsigned int cs, unsigned int tm, unsigned int tsh, unsigned int sp, bool p, bool a) : creditsCS(cs), creditsTM(tm), creditsTSH(tsh), creditsSP(sp), printemps(p), automne(a) {code = new QString(c); titre = new QString(t); responsable = new QString(r); branche = new bool[8];}
+    UV() : creditsCS(0), creditsTM(0), creditsTSH(0), creditsSP(0), printemps(false), automne(false) {code = new QString(""); titre = new QString(""); responsable = new QString(""); branche = new bool[8];}
    //public :
-    QString getCode() const {return code;}
-    QString getTitre() const {return titre;}
-    QString getResponsable() const {return responsable;}
+    QString getCode() const {return *code;}
+    QString getTitre() const {return *titre;}
+    QString getResponsable() const {return *responsable;}
     unsigned int getCreditsCS() const {return creditsCS;}
     unsigned int getCreditsTM() const {return creditsTM;}
     unsigned int getCreditsTSH() const {return creditsTSH;}
     unsigned int getCreditsSP() const {return creditsSP;}
     bool getPrintemps() const {return printemps;}
     bool getAutomne() const {return automne;}
-    void setCode(const QString& s) {code=s;}
-    void setTitre(const QString& s) {titre=s;}
+    void setCode(QString *s) {code=s;}
+    void setTitre(QString *s) {titre=s;}
     void getCreditsCS(unsigned int cs) {creditsCS=cs;}
     void getCreditsTM(unsigned int tm) {creditsTM=tm;}
     void getCreditsTSH(unsigned int tsh) {creditsTSH=tsh;}
@@ -271,15 +271,29 @@ class Dossier {
 };
 
 class Formation {
-    string nom;
-    string responsable;
-    string *uvs;
+    QString *nom;
+    QString *responsable;
+    QString *type;
+    UV *uvs;
     unsigned int nbCreditsTot;
     unsigned int nbCreditsCS;
     unsigned int nbCreditsTM;
     unsigned int nbCreditsCSTM;
     unsigned int nbCreditsTSH;
     unsigned int nbCreditsSP;
+   public :
+    Formation(const QString& n, const QString& r, const QString& t, unsigned int tot, unsigned int cs, unsigned int tm, unsigned int cstm, unsigned int tsh, unsigned int sp) : nbCreditsTot(tot), nbCreditsCS(cs), nbCreditsTM(tm), nbCreditsCSTM(cstm), nbCreditsTSH(tsh), nbCreditsSP(sp) {nom = new QString(n); responsable = new QString(r); type = new QString(t);}
+    Formation() : nbCreditsTot(0), nbCreditsCS(0), nbCreditsTM(0), nbCreditsCSTM(0), nbCreditsTSH(0), nbCreditsSP(0) {nom = new QString(""); responsable = new QString(""); type = new QString("");}
+    QString getNom() const {return *nom;}
+    QString getResponsable() const {return *responsable;}
+    QString getType() const {return *type;}
+    UV *getUVs() const {return uvs;}
+    unsigned int getNbCreditsTot() const {return nbCreditsTot;}
+    unsigned int getNbCreditsCS() const {return nbCreditsCS;}
+    unsigned int getNbCreditsTM() const {return nbCreditsTM;}
+    unsigned int getNbCreditsCSTM() const {return nbCreditsCSTM;}
+    unsigned int getNbCreditsTSH() const {return nbCreditsTSH;}
+    unsigned int getNbCreditsSP() const {return nbCreditsSP;}
 };
 
 /*template <typename T> class Manager {
@@ -400,6 +414,8 @@ class InterfaceSQL {
     QSqlQuery& execQuery(const QString& q);
     bool tupleExiste(const QString& q) {query->exec(q); query->next(); return query->isValid();}
     UV* selectUV(const QString& q);
+    UV** getAllUvs(const QString& q);
+    Formation* selectFormation(const QString& q);
     Dossier* selectDossier(const QString& q);
 };
 
@@ -425,10 +441,12 @@ class NewUVWindow : public QWidget {
 
 class UVWindow : public QWidget {
     Q_OBJECT
+    friend class HomeWindow;
     UV *uv;
     NewUVWindow *newuvwindow;
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
+    QPushButton *pbretour;
     QLabel *lcode;
     QLineEdit *lecode;
     QPushButton *pbrechercher;
@@ -496,6 +514,7 @@ class UVWindow : public QWidget {
 
 class DossierWindow : public QWidget {
     Q_OBJECT
+    friend class HomeWindow;
     Semestre *semestre;
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
@@ -622,5 +641,71 @@ class SemestreWindow : public QWidget {
 };
 
 QString checkSyntax(QString s);
+
+class FormationWindow : public QWidget {
+    Q_OBJECT
+    friend class HomeWindow;
+    Formation *formation;
+    QVBoxLayout *mainlayout;
+    QHBoxLayout *hlayout1;
+    QPushButton *pbretour;
+    QLabel *lnom;
+    QLineEdit *lenom;
+    QPushButton *pbrechercher;
+    QLabel *lresponsable;
+    QLineEdit *leresponsable;
+    QLabel *ltype;
+    QLineEdit *letype;
+    QHBoxLayout *hlayout2;
+    QLabel *lcredits;
+    QLabel *ltot;
+    QLineEdit *letot;
+    QLabel *lcs;
+    QLineEdit *lecs;
+    QLabel *ltm;
+    QLineEdit *letm;
+    QLabel *lcstm;
+    QLineEdit *lecstm;
+    QLabel *ltsh;
+    QLineEdit *letsh;
+    QLabel *lsp;
+    QLineEdit *lesp;
+    QTableWidget *twuvs;
+    QHBoxLayout *hlayout3;
+    QPushButton *pbnouveau;
+    QPushButton *pbsupprimer;
+    QPushButton *pbannuler;
+    QPushButton *pbsauver;
+   public :
+    FormationWindow();
+    void associerFormation(Formation *formation);
+   public slots :
+    void setenabled();
+    void rechercher();
+    void nouveau();
+    void supprimer();
+    void annuler();
+    void sauver();
+};
+
+class HomeWindow : public QWidget {
+    Q_OBJECT
+    UVWindow *uvwindow;
+    FormationWindow *formationwindow;
+    DossierWindow *dossierwindow;
+    QVBoxLayout *mainlayout;
+    QHBoxLayout *hlayout1;
+    QPushButton *pbuv;
+    QPushButton *pbnewuv;
+    QHBoxLayout *hlayout2;
+    QPushButton *pbformation;
+    QPushButton *pbnewformation;
+    QHBoxLayout *hlayout3;
+    QPushButton *pbdossier;
+    QPushButton *pbnewdossier;
+   public :
+    InterfaceSQL *sql;
+    HomeWindow();
+};
 
 #endif // UTPROFILER_H

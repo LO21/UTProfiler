@@ -84,9 +84,60 @@ UV* InterfaceSQL::selectUV(const QString& q) {
     }
 }
 
+UV** InterfaceSQL::getAllUvs(const QString& q) {
+    string check1 = "SELECT * FROM UV";
+    string check2 = q.toStdString();
+    int check3 = check2.find(check1);
+    if (check3==-1) {throw UTProfilerException(QString::fromStdString("Erreur sur InterfaceSQL::selectUV(const QString&) : La requête doit être de la forme : 'SELECT * FROM UV'"));}
+    if (!query->exec(q)) {throw UTProfilerException(QString::fromStdString("Erreur : La requête suivante n'a pas fonctionné :\n")+q+QString::fromStdString("\n\nDernière Erreur : ")+query->lastError().text());}
+    query->next();
+    if (query->isValid()) {
+        //UVManager *uvm = UVManager::getInstance();
+        UV** res =new UV*[150];
+        unsigned int i=0;
+        while (query->next()) {
+            res[i++] = /*uvm->creerItem*/new UV(query->value(0).toString(),query->value(1).toString(),query->value(2).toString(),query->value(3).toUInt(),query->value(4).toUInt(),query->value(5).toUInt(),query->value(6).toUInt(),query->value(7).toBool(),query->value(8).toBool());
+            query->next();
+        }
+        res[i++] = new UV ("fin","","",0,0,0,0,false,false);
+        return res;
+    }
+    else {
+        throw UTProfilerException(QString::fromStdString("Erreur : la requête suivante n'a pas fonctionné :\n"+q.toStdString()+"\nAucune UV ne correspond"));
+        return 0;
+    }
+}
+
 Dossier* InterfaceSQL::selectDossier(const QString& q) {
+    string check1 = "SELECT * FROM Dossier";
+    string check2 = q.toStdString();
+    int check3 = check2.find(check1);
+    if (check3==-1) {throw UTProfilerException(QString::fromStdString("Erreur sur InterfaceSQL::selectDossier(const QString&) : La requête doit être de la forme : 'SELECT * FROM Dossier'"));}
     if (!query->exec(q)) {throw UTProfilerException(QString::fromStdString("Erreur : La requête :\n")+q+QString::fromStdString("\n n'a pas fonctionné.\nDernière Erreur : ")+query->lastError().text());}
     query->next();
-    Dossier* res = new Dossier(query->value(0).toString(),query->value(1).toString(),query->value(2).toString(),query->value(3).toString(),query->value(4).toBool(), query->value(5).toString());
-    return res;
+    if (query->isValid()) {
+        Dossier* res = new Dossier(query->value(0).toString(),query->value(1).toString(),query->value(2).toString(),query->value(3).toString(),query->value(4).toBool(), query->value(5).toString());
+        return res;
+    }
+    else {
+        throw UTProfilerException(QString::fromStdString("Erreur : la requête suivante n'a pas fonctionné :\n"+q.toStdString()+"\nLa Formation demandée n'existe pas"));
+        return 0;
+    }
+}
+
+Formation* InterfaceSQL::selectFormation(const QString &q) {
+    /*string check1 = "SELECT * FROM Formation";
+    string check2 = q.toStdString();
+    int check3 = check2.find(check1);
+    if (check3==-1) {throw UTProfilerException(QString::fromStdString("Erreur sur InterfaceSQL::selectFormation(const QString&) : La requête doit être de la forme : 'SELECT * FROM Formation'"));}
+  */if (!query->exec(q)) {throw UTProfilerException(QString::fromStdString("Erreur : La requête :\n")+q+QString::fromStdString("\n n'a pas fonctionné.\nDernière Erreur : ")+query->lastError().text());}
+    query->next();
+    if (query->isValid()) {
+        Formation* res = new Formation(query->value(0).toString(),query->value(1).toString(),query->value(2).toString(),query->value(3).toUInt(),query->value(4).toUInt(), query->value(5).toUInt(), query->value(6).toUInt(), query->value(7).toUInt(), query->value(8).toUInt());
+        return res;
+    }
+    else {
+        throw UTProfilerException(QString::fromStdString("Erreur : la requête suivante n'a pas fonctionné :\n"+q.toStdString()+"\nLa Formation demandée n'existe pas"));
+        return 0;
+    }
 }
