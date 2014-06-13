@@ -642,11 +642,31 @@ class SemestreWindow : public QWidget {
     void ajouter();
 };
 
-QString checkSyntax(QString s);
+class FormationWindow;
+
+class NewFormationWindow : public QWidget {
+    Q_OBJECT
+    friend class FormationWindow;
+    FormationWindow *master;
+    QVBoxLayout *mainlayout;
+    QHBoxLayout *hlayout1;
+    QLabel *lnom;
+    QLineEdit *lenom;
+    QHBoxLayout *hlayout2;
+    QPushButton *pbannuler;
+    QPushButton *pbajouter;
+   public :
+    NewFormationWindow(FormationWindow *fw);
+   public slots :
+    void setenabled();
+    void ajouter();
+    void annuler();
+};
 
 class FormationWindow : public QWidget {
     Q_OBJECT
     friend class HomeWindow;
+    NewFormationWindow *newformationwindow;
     Formation *formation;
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
@@ -709,5 +729,7 @@ class HomeWindow : public QWidget {
     InterfaceSQL *sql;
     HomeWindow();
 };
+
+QString checkSyntax(QString s);
 
 #endif // UTPROFILER_H

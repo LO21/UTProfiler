@@ -87,6 +87,9 @@ FormationWindow::FormationWindow() {
     QObject::connect(pbrechercher,SIGNAL(clicked()),this,SLOT(rechercher()));
     QObject::connect(lenom,SIGNAL(returnPressed()),this,SLOT(rechercher()));
     QObject::connect(pbannuler,SIGNAL(clicked()),this,SLOT(annuler()));
+    QObject::connect(pbnouveau,SIGNAL(clicked()),this,SLOT(nouveau()));
+    QObject::connect(pbsupprimer,SIGNAL(clicked()),this,SLOT(supprimer()));
+    QObject::connect(pbsauver,SIGNAL(clicked()),this,SLOT(sauver()));
 }
 
 void FormationWindow::associerFormation(Formation *newformation) {
@@ -148,10 +151,13 @@ void FormationWindow::rechercher() {
 }
 
 void FormationWindow::nouveau() {
-
+    newformationwindow = new NewFormationWindow(this);
 }
 
 void FormationWindow::supprimer() {
+    QString q = QString::fromStdString("DELETE FROM Formation WHERE nom = '"+formation->getNom().toStdString()+"';");
+    InterfaceSQL *sql = InterfaceSQL::getInstance();
+    sql->execQuery(q);
 }
 
 void FormationWindow::annuler() {
@@ -159,5 +165,75 @@ void FormationWindow::annuler() {
 }
 
 void FormationWindow::sauver() {
+    QString q="UPDATE Formation SET responsable = '";
+    q.append(leresponsable->text());
+    q.append("', type = '");
+    q.append(letype->text());
+    q.append("', creditsTot = '");
+    q.append(letot->text());
+    q.append("', creditsCS = '");
+    q.append(lecs->text());
+    q.append("', creditsTM = '");
+    q.append(letm->text());
+    q.append("', creditsCSTM = '");
+    q.append(lecstm->text());
+    q.append("', creditsTSH = '");
+    q.append(letsh->text());
+    q.append("', creditsSP = '");
+    q.append(lesp->text());
+    q.append("' WHERE nom = '");
+    q.append(lenom->text());
+    q.append("';");
+    pbsauver->setEnabled(false);
+    pbannuler->setEnabled(false);
+    InterfaceSQL *sql = InterfaceSQL::getInstance();
+    sql->execQuery(q);
+}
+
+NewFormationWindow::NewFormationWindow(FormationWindow *fw) : master(fw) {
+    mainlayout = new QVBoxLayout();
+    hlayout1 = new QHBoxLayout();
+    lnom = new QLabel("Nom : ");
+    lenom = new QLineEdit();
+    hlayout1->addWidget(lnom);
+    hlayout1->addWidget(lenom);
+    hlayout2 = new QHBoxLayout();
+    pbannuler = new QPushButton("Annuler");
+    pbajouter = new QPushButton("Ajouter");
+    pbajouter->setEnabled(false);
+    hlayout2->addWidget(pbannuler);
+    hlayout2->addWidget(pbajouter);
+    mainlayout->addLayout(hlayout1);
+    mainlayout->addLayout(hlayout2);
+    setLayout(mainlayout);
+    QObject::connect(lenom,SIGNAL(textChanged(QString)),this,SLOT(setenabled()));
+    QObject::connect(lenom,SIGNAL(returnPressed()),this,SLOT(ajouter()));
+    QObject::connect(pbajouter,SIGNAL(clicked()),this,SLOT(ajouter()));
+    QObject::connect(pbannuler,SIGNAL(clicked()),this,SLOT(annuler()));
+    show();
+}
+
+void NewFormationWindow::setenabled() {
+    pbajouter->setEnabled(true);
+}
+
+void NewFormationWindow::annuler() {
+    close();
+}
+
+void NewFormationWindow::ajouter() {
+    QString q = "INSERT INTO Formation(nom) VALUES ('";
+    QString nom = lenom->text();
+    q.append(nom);
+    q.append("');");
+    InterfaceSQL *sql = InterfaceSQL::getInstance();
+    sql->execQuery(q);
+    q.clear();
+    q.append("SELECT * FROM Formation WHERE nom = '");
+    q.append(nom);
+    q.append("';");
+    Formation *formation = sql->selectFormation(q);
+    master->associerFormation(formation);
+    close();
 
 }
