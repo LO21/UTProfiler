@@ -91,21 +91,17 @@ UV** InterfaceSQL::getAllUvs(const QString& q) {
     if (check3==-1) {throw UTProfilerException(QString::fromStdString("Erreur sur InterfaceSQL::selectUV(const QString&) : La requête doit être de la forme : 'SELECT * FROM UV'"));}
     if (!query->exec(q)) {throw UTProfilerException(QString::fromStdString("Erreur : La requête suivante n'a pas fonctionné :\n")+q+QString::fromStdString("\n\nDernière Erreur : ")+query->lastError().text());}
     query->next();
+    UV** res =new UV*[150];
+    unsigned int i=0;
     if (query->isValid()) {
         //UVManager *uvm = UVManager::getInstance();
-        UV** res =new UV*[150];
-        unsigned int i=0;
         while (query->next()) {
             res[i++] = /*uvm->creerItem*/new UV(query->value(0).toString(),query->value(1).toString(),query->value(2).toString(),query->value(3).toUInt(),query->value(4).toUInt(),query->value(5).toUInt(),query->value(6).toUInt(),query->value(7).toBool(),query->value(8).toBool());
             query->next();
         }
-        res[i++] = new UV ("fin","","",0,0,0,0,false,false);
-        return res;
     }
-    else {
-        throw UTProfilerException(QString::fromStdString("Erreur : la requête suivante n'a pas fonctionné :\n"+q.toStdString()+"\nAucune UV ne correspond"));
-        return 0;
-    }
+    res[i++] = new UV ("fin","","",0,0,0,0,false,false);
+    return res;
 }
 
 Dossier* InterfaceSQL::selectDossier(const QString& q) {
