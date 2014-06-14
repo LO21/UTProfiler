@@ -1,6 +1,7 @@
 #include "UTProfiler.h"
 
 DossierWindow::DossierWindow() {
+    setWindowTitle("UTProfiler");
     mainlayout = new QVBoxLayout();
     hlayout1 = new QHBoxLayout();
     pbretour = new QPushButton("Retour");
@@ -551,6 +552,7 @@ void DossierWindow::supprimer(){
 /* Fonctions liées à l'affichage des formations extérieures */
 
 FormationExtWindow::FormationExtWindow(const QString& l): login(l) {
+    setWindowTitle("UTProfiler");
     mainlayout = new QVBoxLayout();
 
     hlayout1 = new QHBoxLayout();
@@ -638,6 +640,7 @@ void FormationExtWindow::ajouter() {
 /* Fonctions liées à l'affichage des semestres */
 
 SemestreWindow::SemestreWindow(const QString& l): login(l) {
+    setWindowTitle("UTProfiler");
     mainlayout = new QVBoxLayout();
 
     hlayout1 = new QHBoxLayout();
