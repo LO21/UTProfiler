@@ -4357,7 +4357,11 @@ CREATE TABLE IF NOT EXISTS AssociationBrancheFiliere (
 	PRIMARY KEY (filiere, branche));
 
 INSERT INTO AssociationBrancheFiliere VALUES ('ADEL', 'GI');
+
 INSERT INTO AssociationBrancheFiliere VALUES ('FDD', 'GI');
+
 INSERT INTO AssociationBrancheFiliere VALUES ('ICSI', 'GI');
+
 INSERT INTO AssociationBrancheFiliere VALUES ('SRI', 'GI');
+
 INSERT INTO AssociationBrancheFiliere VALUES ('STRIE', 'GI');
