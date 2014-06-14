@@ -18,11 +18,27 @@ bool* UV::getBranche() {
     return branche;
 }
 
+bool UV::operator!=(UV& other) {
+    if (getCode()==other.getCode()) {
+        if (getTitre()==other.getTitre()) {
+            if (getResponsable()==other.getResponsable()) {
+                if (getCreditsCS()==other.getCreditsCS()) {
+                    if (getCreditsTM()==other.getCreditsTM()) {
+                        if (getCreditsTSH()==other.getCreditsTSH()) {
+                            if (getCreditsSP()==other.getCreditsSP()) {
+                                if (getAutomne()==other.getAutomne()) {
+                                    if (getPrintemps()==other.getPrintemps()) {
+                                        return true;}}}}}}}}}
+    return false;
+}
+
 QString checkSyntax(QString s){
     unsigned int i=0;
+    QString res("");
     while (s[i]!='\0') {
-        if (s[i]=='\'') {s.insert(i,'\'');}
+        if (s[i]=='\'') {res.append(QString::fromStdString("''"));}
+        else {res.append(s[i]);}
         ++i;
     }
-    return s;
+    return res;
 }

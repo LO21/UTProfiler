@@ -100,14 +100,15 @@ class UV {
     bool getAutomne() const {return automne;}
     void setCode(QString *s) {code=s;}
     void setTitre(QString *s) {titre=s;}
-    void getCreditsCS(unsigned int cs) {creditsCS=cs;}
-    void getCreditsTM(unsigned int tm) {creditsTM=tm;}
-    void getCreditsTSH(unsigned int tsh) {creditsTSH=tsh;}
-    void getCreditsSP(unsigned int sp) {creditsSP=sp;}
+    void setResponsable(QString *s) {responsable=s;}
+    void setCreditsCS(unsigned int cs) {creditsCS=cs;}
+    void setCreditsTM(unsigned int tm) {creditsTM=tm;}
+    void setCreditsTSH(unsigned int tsh) {creditsTSH=tsh;}
+    void setCreditsSP(unsigned int sp) {creditsSP=sp;}
     void setPrintemps (bool b) {printemps=b;}
     void setAutomne (bool b) {automne=b;}
     bool* getBranche();
-    bool operator!=(UV& other) {return code!=other.getCode();}
+    bool operator!=(UV& other);
 };
 
 class Inscription {

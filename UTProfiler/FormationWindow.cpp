@@ -90,6 +90,7 @@ FormationWindow::FormationWindow() {
     QObject::connect(pbnouveau,SIGNAL(clicked()),this,SLOT(nouveau()));
     QObject::connect(pbsupprimer,SIGNAL(clicked()),this,SLOT(supprimer()));
     QObject::connect(pbsauver,SIGNAL(clicked()),this,SLOT(sauver()));
+    QObject::connect(twuvs,SIGNAL(cellChanged(int,int)),this,SLOT(setenabled()));
 }
 
 void FormationWindow::associerFormation(Formation *newformation) {
@@ -184,10 +185,63 @@ void FormationWindow::sauver() {
     q.append("' WHERE nom = '");
     q.append(lenom->text());
     q.append("';");
-    pbsauver->setEnabled(false);
-    pbannuler->setEnabled(false);
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     sql->execQuery(q);
+    UV** uvs = sql->getAllUvs(QString::fromStdString("SELECT * FROM UV, AssociationFormationUV A WHERE UV.code = A.uv AND A.formation = '"+formation->getNom().toStdString()+"' ;"));
+    UV checkChanges;
+    QString *code = new QString;
+    QString *description = new QString;
+    QString *responsable = new QString;
+    unsigned int i=0;
+    int boolean;
+    while (uvs[i]->getCode()!=QString::fromStdString("fin")) {
+        code->clear();
+        code->append(twuvs->item(i,0)->text());
+        checkChanges.setCode(code);
+        if (twuvs->item(i,1)->text()==QString::fromStdString("CS")) {checkChanges.setCreditsCS(twuvs->item(i,2)->text().toUInt());}
+        if (twuvs->item(i,1)->text()==QString::fromStdString("TM")) {checkChanges.setCreditsTM(twuvs->item(i,2)->text().toUInt());}
+        if (twuvs->item(i,1)->text()==QString::fromStdString("TSH")) {checkChanges.setCreditsTSH(twuvs->item(i,2)->text().toUInt());}
+        if (twuvs->item(i,1)->text()==QString::fromStdString("SP")) {checkChanges.setCreditsSP(twuvs->item(i,2)->text().toUInt());}
+        description->clear();
+        description->append(twuvs->item(i,3)->text());
+        checkChanges.setTitre(description);
+        responsable->clear();
+        responsable->append(twuvs->item(i,4)->text());
+        checkChanges.setResponsable(responsable);
+        if (twuvs->item(i,5)->text()==QString::fromStdString("A/P")) {checkChanges.setAutomne(true); checkChanges.setPrintemps(true);}
+        if (twuvs->item(i,5)->text()==QString::fromStdString("A")) {checkChanges.setAutomne(true);}
+        if (twuvs->item(i,5)->text()==QString::fromStdString("P")) {checkChanges.setPrintemps(true);}
+        //if (checkChanges!=*uvs[i]) {
+            if (checkChanges.getCode()==uvs[i]->getCode()) {
+                q.clear();
+                q.append(QString::fromStdString("UPDATE UV SET titre='"));
+                q.append(checkSyntax(checkChanges.getTitre()));
+                q.append(QString::fromStdString("', responsable='"));
+                q.append(checkChanges.getResponsable());
+                q.append(QString::fromStdString("', creditsCS='"));
+                q.append(QString::number(checkChanges.getCreditsCS()));
+                q.append(QString::fromStdString("', creditsTM='"));
+                q.append(QString::number(checkChanges.getCreditsTM()));
+                q.append(QString::fromStdString("', creditsTSH='"));
+                q.append(QString::number(checkChanges.getCreditsTSH()));
+                q.append(QString::fromStdString("', creditsSP='"));
+                q.append(QString::number(checkChanges.getCreditsSP()));
+                q.append(QString::fromStdString("', printemps='"));
+                checkChanges.getPrintemps()?boolean=1:boolean=0;
+                q.append(QString::number(boolean));
+                q.append(QString::fromStdString("', automne='"));
+                checkChanges.getAutomne()?boolean=1:boolean=0;
+                q.append(QString::number(boolean));
+                q.append(QString::fromStdString("' WHERE code='"));
+                q.append(checkChanges.getCode());
+                q.append(QString::fromStdString("';"));
+                sql->execQuery(q);
+            //}
+        }
+        i++;
+    }
+    pbsauver->setEnabled(false);
+    pbannuler->setEnabled(false);
 }
 
 NewFormationWindow::NewFormationWindow(FormationWindow *fw) : master(fw) {

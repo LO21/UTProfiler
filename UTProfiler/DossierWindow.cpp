@@ -84,7 +84,7 @@ DossierWindow::DossierWindow() {
     lbranche = new QLabel("Branche :");
     cbbranche = new QComboBox;
 
-    QString qu="SELECT * FROM Branche;";
+    QString qu="SELECT * FROM Formation;";
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     QSqlQuery query = sql->execQuery(qu);
 
