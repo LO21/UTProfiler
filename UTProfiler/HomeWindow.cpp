@@ -4,9 +4,9 @@ HomeWindow::HomeWindow() {
     sql = InterfaceSQL::getInstance();
     setWindowTitle("UTProfiler");
     uvwindow = new UVWindow();
-    uvwindow->associerUV(sql->selectUV("SELECT * FROM UV WHERE code = 'LO21';"));
+    //uvwindow->associerUV(sql->selectUV("SELECT * FROM UV WHERE code = 'LO21';"));
     formationwindow = new FormationWindow();
-    formationwindow->associerFormation(sql->selectFormation("SELECT * FROM Formation WHERE nom='GI';"));
+    //formationwindow->associerFormation(sql->selectFormation("SELECT * FROM Formation WHERE nom='GI';"));
     dossierwindow = new DossierWindow();
     mainlayout = new QVBoxLayout();
     hlayout6 = new QHBoxLayout();
@@ -25,7 +25,7 @@ HomeWindow::HomeWindow() {
     pbdossier->setToolTip("Le gestionnaire de dossiers permet de consulter les dossiers existants, les modifier, les supprimer et en ajouter de nouveaux.");
     hlayout3->addWidget(pbdossier);
     hlayout4 = new QHBoxLayout();
-    pbcompletion = new QPushButton("Complétion d'un dossier");
+    pbcompletion = new QPushButton("Complétion d'un Dossier");
     pbcompletion->setToolTip("La complétion de dossier vous propose des semestres pour compléter votre profil.");
     hlayout4->addWidget(pbcompletion);
     hlayout5 = new QHBoxLayout();

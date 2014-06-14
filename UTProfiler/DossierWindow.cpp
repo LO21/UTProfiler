@@ -1,6 +1,7 @@
 #include "UTProfiler.h"
 
 DossierWindow::DossierWindow() {
+    setWindowTitle("UTProfiler");
     mainlayout = new QVBoxLayout();
     hlayout1 = new QHBoxLayout();
     pbretour = new QPushButton("Retour");
@@ -282,14 +283,6 @@ void DossierWindow::associerDossier(Dossier *d) {
     cbINTENT->setChecked(d->checkMineurINTENT());
     cbST->setChecked(d->checkMineurST());
     cbbranche->setCurrentText(d->getBranche());
-    /* cbGI->setChecked(d->checkGI());
-    cbGM->setChecked(d->checkGM());
-    cbGSM->setChecked(d->checkGSM());
-    cbGP->setChecked(d->checkGP());
-    cbGB->setChecked(d->checkGB());
-    cbGSU->setChecked(d->checkGSU());
-    cbTC->setChecked(d->checkTC());
-    cbHutech->setChecked(d->checkHutech()); */
 
     /* Affichage des formations extérieures */
 
@@ -559,6 +552,7 @@ void DossierWindow::supprimer(){
 /* Fonctions liées à l'affichage des formations extérieures */
 
 FormationExtWindow::FormationExtWindow(const QString& l): login(l) {
+    setWindowTitle("UTProfiler");
     mainlayout = new QVBoxLayout();
 
     hlayout1 = new QHBoxLayout();
@@ -646,6 +640,7 @@ void FormationExtWindow::ajouter() {
 /* Fonctions liées à l'affichage des semestres */
 
 SemestreWindow::SemestreWindow(const QString& l): login(l) {
+    setWindowTitle("UTProfiler");
     mainlayout = new QVBoxLayout();
 
     hlayout1 = new QHBoxLayout();

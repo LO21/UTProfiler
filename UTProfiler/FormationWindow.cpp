@@ -15,6 +15,7 @@ Items are created ouside the table (with no parent widget) and inserted into the
     tableWidget->setItem(row, column, newItem);*/
 
 FormationWindow::FormationWindow() {
+    setWindowTitle("UTProfiler");
     mainlayout = new QVBoxLayout();
     hlayout1 = new QHBoxLayout();
     pbretour = new QPushButton("Retour");

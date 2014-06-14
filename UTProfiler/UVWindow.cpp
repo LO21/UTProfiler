@@ -2,6 +2,7 @@
 
 UVWindow::UVWindow() {
     //UVManager *uvm = UVManager::getInstance();
+    setWindowTitle("UTProfiler");
     mainlayout = new QVBoxLayout();
     hlayout1 = new QHBoxLayout();
     pbretour = new QPushButton("Retour");
@@ -150,57 +151,93 @@ void UVWindow::associerUV(UV *newuv) {
 }
 
 void UVWindow::sauver() {
-    QString q="UPDATE UV SET responsable = '";
-    q.append(leresponsable->text());
-    q.append("', titre = '");
-    QString checkSyntax = tedescription->toPlainText();
-    unsigned int i=0;
-    while (checkSyntax[i]!='\0') {
-        if (checkSyntax[i]=='\'') {checkSyntax.insert(i,'\'');}
-        ++i;
+    if (lecode->text() == ""){ // Vérification qu'il y ait bien une uv à sauvegarder
+        QMessageBox msg;
+        msg.setText("Veuillez rentrer un code d'UV.");
+        msg.exec();
+    } else {
+        QString q = "SELECT * FROM UV WHERE code = '";
+        q.append(lecode->text());
+        q.append("';");
+        InterfaceSQL *sql = InterfaceSQL::getInstance();
+        QSqlQuery query = sql->execQuery(q);
+        query.next();
+        if (query.value(0).toString() == ""){ // Le code d'UV n'existe pas
+            QMessageBox msg;
+            msg.setText("Cette UV n'existe pas. Pour créer une nouvelle UV, cliquez sur Nouveau.");
+            msg.exec();
+        } else {
+            QString q="UPDATE UV SET responsable = '";
+            q.append(leresponsable->text());
+            q.append("', titre = '");
+            QString checkSyntax = tedescription->toPlainText();
+            unsigned int i=0;
+            while (checkSyntax[i]!='\0') {
+                if (checkSyntax[i]=='\'') {checkSyntax.insert(i,'\'');}
+                ++i;
+            }
+            q.append(checkSyntax);
+            q.append("', creditsCS = '");
+            q.append(lecs->text());
+            q.append("', creditsTM = '");
+            q.append(letm->text());
+            q.append("', creditsTSH = '");
+            q.append(letsh->text());
+            q.append("', creditsSP = '");
+            q.append(lesp->text());
+            q.append("', automne = ");
+            if (cbautomne->isChecked()) {q.append("1");}
+            else {q.append("0");}
+            q.append(", printemps = ");
+            if (cbprintemps->isChecked()) {q.append("1");}
+            else {q.append("0");}
+            q.append(" WHERE code = '");
+            q.append(lecode->text());
+            q.append("';");
+            pbsauver->setEnabled(false);
+            pbannuler->setEnabled(false);
+            InterfaceSQL *sql = InterfaceSQL::getInstance();
+            sql->execQuery(q);
+            bool* tab=uv->getBranche();
+            if (tab[0]!=cbtc->isChecked()) {changeTC();}
+            if (tab[1]!=cbhutech->isChecked()) {changeHUTECH();}
+            if (tab[2]!=cbgb->isChecked()) {changeGB();}
+            if (tab[3]!=cbgi->isChecked()) {changeGI();}
+            if (tab[4]!=cbgm->isChecked()) {changeGM();}
+            if (tab[5]!=cbgp->isChecked()) {changeGP();}
+            if (tab[6]!=cbgsm->isChecked()) {changeGSM();}
+            if (tab[7]!=cbgsu->isChecked()) {changeGSU();}
+        }
     }
-    q.append(checkSyntax);
-    q.append("', creditsCS = '");
-    q.append(lecs->text());
-    q.append("', creditsTM = '");
-    q.append(letm->text());
-    q.append("', creditsTSH = '");
-    q.append(letsh->text());
-    q.append("', creditsSP = '");
-    q.append(lesp->text());
-    q.append("', automne = ");
-    if (cbautomne->isChecked()) {q.append("1");}
-    else {q.append("0");}
-    q.append(", printemps = ");
-    if (cbprintemps->isChecked()) {q.append("1");}
-    else {q.append("0");}
-    q.append(" WHERE code = '");
-    q.append(lecode->text());
-    q.append("';");
-    pbsauver->setEnabled(false);
-    pbannuler->setEnabled(false);
-    InterfaceSQL *sql = InterfaceSQL::getInstance();
-    sql->execQuery(q);
-    bool* tab=uv->getBranche();
-    if (tab[0]!=cbtc->isChecked()) {changeTC();}
-    if (tab[1]!=cbhutech->isChecked()) {changeHUTECH();}
-    if (tab[2]!=cbgb->isChecked()) {changeGB();}
-    if (tab[3]!=cbgi->isChecked()) {changeGI();}
-    if (tab[4]!=cbgm->isChecked()) {changeGM();}
-    if (tab[5]!=cbgp->isChecked()) {changeGP();}
-    if (tab[6]!=cbgsm->isChecked()) {changeGSM();}
-    if (tab[7]!=cbgsu->isChecked()) {changeGSU();}
 }
 
 void UVWindow::supprimer() {
     //UVManager *uvm = UVManager::getInstance();
     //uvm->supprimerItem(uv);
-    QString q = QString::fromStdString("DELETE FROM UV WHERE code = '"+uv->getCode().toStdString()+"';");
-    InterfaceSQL *sql = InterfaceSQL::getInstance();
-    sql->execQuery(q);
-    //UVManager::Iterator it = uvm->end();
-    //it--;
-    //associerUV(*it);
+    if (lecode->text() == ""){ // Vérification qu'il y ait bien une uv à supprimer
+        QMessageBox msg;
+        msg.setText("Veuillez rentrer un code d'UV.");
+        msg.exec();
+    } else {
+        QString q = "SELECT * FROM UV WHERE code = '";
+        q.append(lecode->text());
+        q.append("';");
+        InterfaceSQL *sql = InterfaceSQL::getInstance();
+        QSqlQuery query = sql->execQuery(q);
+        query.next();
+        if (query.value(0).toString() == ""){ // Le code d'UV n'existe pas
+            QMessageBox msg;
+            msg.setText("Cette UV n'existe pas.");
+            msg.exec();
+        } else {
+            QString q = QString::fromStdString("DELETE FROM UV WHERE code = '"+uv->getCode().toStdString()+"';");
+            InterfaceSQL *sql = InterfaceSQL::getInstance();
+            sql->execQuery(q);
+            //UVManager::Iterator it = uvm->end();
+            //it--;
+            //associerUV(*it);
+        }
+    }
 }
 
 void UVWindow::pbsauverEnable() {
@@ -213,12 +250,27 @@ void UVWindow::annuler() {
 }
 
 void UVWindow::rechercher() {
-    QString q = "SELECT * FROM UV WHERE code = '";
-    q.append(lecode->text());
-    q.append("';");
-    InterfaceSQL *sql = InterfaceSQL::getInstance();
-    UV *uv = sql->selectUV(q);
-    associerUV(uv);
+    if (lecode->text() == ""){ // Vérification qu'il y ait bien une uv à rechercher
+        QMessageBox msg;
+        msg.setText("Veuillez rentrer un code d'UV.");
+        msg.exec();
+    } else {
+
+        QString q = "SELECT * FROM UV WHERE code = '";
+        q.append(lecode->text());
+        q.append("';");
+        InterfaceSQL *sql = InterfaceSQL::getInstance();
+        QSqlQuery query = sql->execQuery(q);
+        query.next();
+        if (query.value(0).toString() == ""){ // Le code d'UV recherché n'existe pas
+            QMessageBox msg;
+            msg.setText("L'UV recherchée n'existe pas.");
+            msg.exec();
+        } else {
+            UV *uv = sql->selectUV(q);
+            associerUV(uv);
+        }
+    }
 }
 
 void UVWindow::nouveau() {
@@ -256,25 +308,37 @@ void NewUVWindow::nouveau_annuler() {
     close();
 }
 
-void NewUVWindow::nouveau_valider() {//degager la partie titre
-    QString q = "INSERT INTO UV(code) VALUES ('";
-    QString code = lecode->text();
-    q.append(code);
-    q.append("');");
-    InterfaceSQL *sql = InterfaceSQL::getInstance();
-    sql->execQuery(q);
-    q.clear();
-    q.append("SELECT * FROM UV WHERE code = '");
-    q.append(code);
+void NewUVWindow::nouveau_valider() {
+    /* Vérification que l'UV n'existe pas déjà */
+    QString q = "SELECT * FROM UV WHERE code = '";
+    q.append(lecode->text());
     q.append("';");
-    UV *uv = sql->selectUV(q);
-    master->associerUV(uv);
-    close();
+    InterfaceSQL *sql = InterfaceSQL::getInstance();
+    QSqlQuery query = sql->execQuery(q);
+    query.next();
+    if (query.value(0).toString() != ""){ // L'UV existe déjà
+        QMessageBox msg;
+        msg.setText("L'UV existe déjà.");
+        msg.exec();
+    } else {
+        QString q2 = "INSERT INTO UV(code) VALUES ('";
+        QString code = lecode->text();
+        q2.append(code);
+        q2.append("');");
+        sql->execQuery(q2);
+        q2.clear();
+        q2.append("SELECT * FROM UV WHERE code = '");
+        q2.append(code);
+        q2.append("';");
+        UV *uv = sql->selectUV(q2);
+        master->associerUV(uv);
+        close();
+    }
 }
 
 void UVWindow::changeTC() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
-    if (cbhutech->isChecked()) {
+    if (cbtc->isChecked()) {
         sql->execQuery(QString::fromStdString("INSERT INTO AssociationFormationUV(uv,formation) VALUES ('"+uv->getCode().toStdString()+"', 'TC');"));
     }
     else {
@@ -284,7 +348,7 @@ void UVWindow::changeTC() {
 
 void UVWindow::changeHUTECH() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
-    if (cbgb->isChecked()) {
+    if (cbhutech->isChecked()) {
         sql->execQuery(QString::fromStdString("INSERT INTO AssociationFormationUV(uv,formation) VALUES ('"+uv->getCode().toStdString()+"', 'HUTECH');"));
     }
     else {
