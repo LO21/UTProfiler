@@ -8,6 +8,7 @@ HomeWindow::HomeWindow() {
     formationwindow = new FormationWindow();
     //formationwindow->associerFormation(sql->selectFormation("SELECT * FROM Formation WHERE nom='GI';"));
     dossierwindow = new DossierWindow();
+    completionprofilwindow = new CompletionProfilWindow();
     mainlayout = new QVBoxLayout();
     hlayout6 = new QHBoxLayout();
     lbienvenue = new QLabel("Bienvenue sur UTProfiler. Que souhaitez-vous faire ?");
@@ -50,5 +51,8 @@ HomeWindow::HomeWindow() {
     QObject::connect(pbdossier,SIGNAL(clicked()),dossierwindow,SLOT(show()));
     QObject::connect(pbdossier,SIGNAL(clicked()),this,SLOT(hide()));
     QObject::connect(pbquitter,SIGNAL(clicked()),qApp,SLOT(quit()));
-    //QObject::connect(pbnewdossier,SIGNAL(clicked()),formationwindow,SLOT(show()));
+    QObject::connect(pbcompletion,SIGNAL(clicked()),this,SLOT(hide()));
+    QObject::connect(pbcompletion,SIGNAL(clicked()),completionprofilwindow,SLOT(rechercher()));
+    QObject::connect(completionprofilwindow->pbok,SIGNAL(clicked()),this,SLOT(show()));
+    QObject::connect(completionprofilwindow->searchdossierwindow->pbannuler,SIGNAL(clicked()),this,SLOT(show()));
 }
