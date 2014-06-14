@@ -51,7 +51,9 @@ UVWindow::UVWindow() {
     hlayout3->addWidget(letsh);
     hlayout3->addWidget(lsp);
     hlayout3->addWidget(lesp);
+
     hlayout4 = new QHBoxLayout();
+
     ltc = new QLabel("TC : ");
     cbtc = new QCheckBox();
     lhutech = new QLabel("HUTECH : ");
@@ -68,6 +70,7 @@ UVWindow::UVWindow() {
     cbgsm = new QCheckBox();
     lgsu = new QLabel("GSU : ");
     cbgsu = new QCheckBox();
+
     hlayout4->addWidget(ltc);
     hlayout4->addWidget(cbtc);
     hlayout4->addWidget(lhutech);

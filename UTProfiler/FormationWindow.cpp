@@ -350,6 +350,7 @@ void FormationWindow::sauver() {
             q.append(lenom->text());
             q.append("';");
             sql->execQuery(q);
+            qDebug()<<q;
         }
     }
 
@@ -618,10 +619,17 @@ void AssocierFiliereWindow::ajouter() {
             InterfaceSQL *sql = InterfaceSQL::getInstance();
             sql->execQuery(q2);
 
-            QString q3="INSERT INTO Formation(nom) VALUES ('";
+            QString q3 = "SELECT * FROM Formation WHERE nom = '";
             q3.append(lenom->text());
-            q3.append("');");
-            sql->execQuery(q3);
+            q3.append("';");
+            QSqlQuery query3 = sql->execQuery(q3);
+            query3.next();
+            if (query3.value(0).toString() == ""){ // La formation n'existe pas dans la table formation
+                QString q3="INSERT INTO Formation(nom) VALUES ('";
+                q3.append(lenom->text());
+                q3.append("');");
+                sql->execQuery(q3);
+            }
         }
     }
     close();
