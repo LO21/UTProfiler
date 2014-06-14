@@ -308,25 +308,37 @@ void NewUVWindow::nouveau_annuler() {
     close();
 }
 
-void NewUVWindow::nouveau_valider() {//degager la partie titre
-    QString q = "INSERT INTO UV(code) VALUES ('";
-    QString code = lecode->text();
-    q.append(code);
-    q.append("');");
-    InterfaceSQL *sql = InterfaceSQL::getInstance();
-    sql->execQuery(q);
-    q.clear();
-    q.append("SELECT * FROM UV WHERE code = '");
-    q.append(code);
+void NewUVWindow::nouveau_valider() {
+    /* Vérification que l'UV n'existe pas déjà */
+    QString q = "SELECT * FROM UV WHERE code = '";
+    q.append(lecode->text());
     q.append("';");
-    UV *uv = sql->selectUV(q);
-    master->associerUV(uv);
-    close();
+    InterfaceSQL *sql = InterfaceSQL::getInstance();
+    QSqlQuery query = sql->execQuery(q);
+    query.next();
+    if (query.value(0).toString() != ""){ // L'UV existe déjà
+        QMessageBox msg;
+        msg.setText("L'UV existe déjà.");
+        msg.exec();
+    } else {
+        QString q2 = "INSERT INTO UV(code) VALUES ('";
+        QString code = lecode->text();
+        q2.append(code);
+        q2.append("');");
+        sql->execQuery(q2);
+        q2.clear();
+        q2.append("SELECT * FROM UV WHERE code = '");
+        q2.append(code);
+        q2.append("';");
+        UV *uv = sql->selectUV(q2);
+        master->associerUV(uv);
+        close();
+    }
 }
 
 void UVWindow::changeTC() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
-    if (cbhutech->isChecked()) {
+    if (cbtc->isChecked()) {
         sql->execQuery(QString::fromStdString("INSERT INTO AssociationFormationUV(uv,formation) VALUES ('"+uv->getCode().toStdString()+"', 'TC');"));
     }
     else {
@@ -336,7 +348,7 @@ void UVWindow::changeTC() {
 
 void UVWindow::changeHUTECH() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
-    if (cbgb->isChecked()) {
+    if (cbhutech->isChecked()) {
         sql->execQuery(QString::fromStdString("INSERT INTO AssociationFormationUV(uv,formation) VALUES ('"+uv->getCode().toStdString()+"', 'HUTECH');"));
     }
     else {
