@@ -9,25 +9,6 @@ CREATE TABLE IF NOT EXISTS UV (
 	printemps BOOL,
 	automne BOOL);
 
-CREATE TABLE IF NOT EXISTS Branche (
-	b VARCHAR(10) PRIMARY KEY);
-
-INSERT INTO Branche VALUES ('TC');
-
-INSERT INTO Branche VALUES ('HUTECH');
-
-INSERT INTO Branche VALUES ('GB');
-
-INSERT INTO Branche VALUES ('GI');
-
-INSERT INTO Branche VALUES ('GM');
-
-INSERT INTO Branche VALUES ('GP');
-
-INSERT INTO Branche VALUES ('GSM');
-
-INSERT INTO Branche VALUES ('GSU');
-
 CREATE TABLE IF NOT EXISTS Dossier (
 	login CHAR(8) PRIMARY KEY,
 	nom VARCHAR(25),
@@ -91,7 +72,7 @@ CREATE TABLE IF NOT EXISTS FormationExt (
 	PRIMARY KEY (login, nom));
 
 CREATE TABLE IF NOT EXISTS TypeFormation (
-	type VARCHAR(25));
+	type VARCHAR(25) PRIMARY KEY);
 
 INSERT INTO TypeFormation VALUES ('Branche');
 

@@ -321,7 +321,7 @@ void DossierWindow::associerDossier(Dossier *d) {
             table->setItem(table->currentRow() + 1, 5, itemSP);
             QTableWidgetItem *itemSuppr = new QTableWidgetItem("Supprimer");
             table->setItem(table->currentRow() + 1, 6, itemSuppr);
-            itemSuppr->setFlags(itemNom->flags() & ~ Qt::ItemIsEditable);
+            itemSuppr->setFlags(itemSuppr->flags() & ~ Qt::ItemIsEditable);
 
         }
 

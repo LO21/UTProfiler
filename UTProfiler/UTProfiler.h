@@ -683,7 +683,7 @@ class FormationWindow : public QWidget {
     QLabel *lresponsable;
     QLineEdit *leresponsable;
     QLabel *ltype;
-    QLineEdit *letype;
+    QComboBox *cbtype;
     QHBoxLayout *hlayout2;
     QLabel *lcredits;
     QLabel *ltot;
@@ -704,6 +704,9 @@ class FormationWindow : public QWidget {
     QPushButton *pbsupprimer;
     QPushButton *pbannuler;
     QPushButton *pbsauver;
+    QLabel *luvs;
+    QPushButton *pbajoutuv;
+    QHBoxLayout *hlayout4;
    public :
     FormationWindow();
     void associerFormation(Formation *formation);
@@ -714,6 +717,8 @@ class FormationWindow : public QWidget {
     void supprimer();
     void annuler();
     void sauver();
+    void sauveruv(int r, int c);
+    void ajouteruv();
 };
 
 class HomeWindow : public QWidget {
@@ -737,6 +742,24 @@ class HomeWindow : public QWidget {
    public :
     InterfaceSQL *sql;
     HomeWindow();
+};
+
+class AssocierUVWindow : public QWidget{
+    Q_OBJECT
+    QString formation;
+
+    QVBoxLayout *mainlayout;
+    QHBoxLayout *hlayout1;
+    QHBoxLayout *hlayout2;
+    QLabel *luv;
+    QComboBox *cbuv;
+    QPushButton *pbajouter;
+
+    public :
+        AssocierUVWindow(const QString& f);
+        QString getFormation() const {return formation;}
+    public slots :
+        void ajouter();
 };
 
 QString checkSyntax(QString s);
