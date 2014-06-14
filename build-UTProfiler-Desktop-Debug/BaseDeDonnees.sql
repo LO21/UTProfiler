@@ -9,25 +9,6 @@ CREATE TABLE IF NOT EXISTS UV (
 	printemps BOOL,
 	automne BOOL);
 
-CREATE TABLE IF NOT EXISTS Branche (
-	b VARCHAR(10) PRIMARY KEY);
-
-INSERT INTO Branche VALUES ('TC');
-
-INSERT INTO Branche VALUES ('HUTECH');
-
-INSERT INTO Branche VALUES ('GB');
-
-INSERT INTO Branche VALUES ('GI');
-
-INSERT INTO Branche VALUES ('GM');
-
-INSERT INTO Branche VALUES ('GP');
-
-INSERT INTO Branche VALUES ('GSM');
-
-INSERT INTO Branche VALUES ('GSU');
-
 CREATE TABLE IF NOT EXISTS Dossier (
 	login CHAR(8) PRIMARY KEY,
 	nom VARCHAR(25),
@@ -2076,6 +2057,16 @@ INSERT INTO UV(code,titre,creditsCS,creditsTM,creditsTSH,creditsSP,printemps,aut
 INSERT INTO UV(code,titre,creditsCS,creditsTM,creditsTSH,creditsSP,printemps,automne) VALUES (
 	'IC05',
 	'Technologies Pour La Documentation Et L''Indexation Dans L''Hypermédia',
+	0,
+	0,
+	4,
+	0,
+	1,
+	1);
+	
+INSERT INTO UV(code,titre,creditsCS,creditsTM,creditsTSH,creditsSP,printemps,automne) VALUES (
+	'IC06',
+	'Industrie et conception des jeux videos',
 	0,
 	0,
 	4,
@@ -4299,6 +4290,109 @@ VALUES ('P', 2014, 'ritgabri', 'en cours');
 
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('IA02', 'P', 2014, 'ritgabri', 'EC');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('SR02', 'P', 2014, 'ritgabri', 'EC');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('NF17', 'P', 2014, 'ritgabri', 'EC');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('LO21', 'P', 2014, 'ritgabri', 'EC');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('LC14', 'P', 2014, 'ritgabri', 'EC');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('IA02', 'P', 2014, 'ritgabri', 'EC');
+
+INSERT INTO Semestre(saison, annee, dossier, commentaire) 
+VALUES ('A', 2013, 'ritgabri', 'poursuite normale');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('IA01', 'A', 2013, 'ritgabri', 'B');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('NF16', 'A', 2013, 'ritgabri', 'D');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('SY02', 'A', 2013, 'ritgabri', 'B');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('FQ01', 'A', 2013, 'ritgabri', 'D');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('SR01', 'A', 2013, 'ritgabri', 'C');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('SI28', 'A', 2013, 'ritgabri', 'B');
+
+INSERT INTO Semestre(saison, annee, dossier, commentaire) 
+VALUES ('P', 2013, 'ritgabri', 'passage en branche');
+
+INSERT INTO Semestre(saison, annee, dossier, commentaire) 
+VALUES ('A', 2012, 'ritgabri', 'poursuite normale');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('MT23', 'A', 2012, 'ritgabri', 'F');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('NF93', 'A', 2012, 'ritgabri', 'C');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('NF92', 'A', 2012, 'ritgabri', 'C');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('LG62', 'A', 2012, 'ritgabri', 'A');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('AR03', 'A', 2012, 'ritgabri', 'B');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('IC06', 'A', 2012, 'ritgabri', 'B');
+
+INSERT INTO Semestre(saison, annee, dossier, commentaire) 
+VALUES ('P', 2012, 'ritgabri', 'poursuite normale, bon semestre');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('MT90', 'P', 2012, 'ritgabri', 'A');
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('MT91', 'P', 2012, 'ritgabri', 'E');
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('PS91', 'P', 2012, 'ritgabri', 'D');
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('TN01', 'P', 2012, 'ritgabri', 'D');
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('TN04', 'P', 2012, 'ritgabri', 'B');
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('LA14', 'P', 2012, 'ritgabri', 'C');
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('SI22', 'P', 2012, 'ritgabri', 'B');
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('LG61', 'P', 2012, 'ritgabri', 'A');
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('TN05', 'P', 2012, 'ritgabri', 'B');
+
+INSERT INTO Semestre(saison, annee, dossier, commentaire) 
+VALUES ('A', 2011, 'ritgabri', 'poursuite normale');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('BL01', 'A', 2011, 'ritgabri', 'E');
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('MT22', 'A', 2011, 'ritgabri', 'D');
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('NF01', 'A', 2011, 'ritgabri', 'C');
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('C2I1', 'A', 2011, 'ritgabri', 'C');
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('PS90', 'A', 2011, 'ritgabri', 'B');
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('GE22', 'A', 2011, 'ritgabri', 'D');
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('LG60', 'A', 2011, 'ritgabri', 'A');
+
+
+
 
 INSERT INTO Dossier(login, nom, prenom, conseiller, validationAEU, branche)
 VALUES ('tmonceau', 'Monceaux', 'Timothée', 'Gabrielle Orbach-Lin', 1, 'GI');
