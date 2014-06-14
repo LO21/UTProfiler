@@ -24,6 +24,7 @@
 #include <QTableWidgetItem>
 #include <QSqlDriver>
 #include <QComboBox>
+#include <QToolTip>
 
 using namespace std;
 
@@ -529,6 +530,8 @@ class DossierWindow : public QWidget {
     QHBoxLayout *hlayout9;
     QHBoxLayout *hlayout10;
     QHBoxLayout *hlayout11;
+    QHBoxLayout *hlayout12;
+    QHBoxLayout *hlayout13;
     QLabel *llogin;
     QLineEdit *lelogin;
     QPushButton *pbrechercher;
@@ -559,6 +562,10 @@ class DossierWindow : public QWidget {
     QComboBox *cbbranche;
     QTableWidget *table;
     QTableWidget *table2;
+    QPushButton *pbsuppr;
+    QPushButton *pbretour;
+    QLabel *lcommentaire;
+    QTableWidget *table3;
 
 
    public :
@@ -572,6 +579,7 @@ class DossierWindow : public QWidget {
     void supprFormExt(int r, int c);
     void ajouterSemestre();
     void supprSemestre(int r, int c);
+    void supprimer();
 };
 
 class FormationExtWindow : public QWidget {
@@ -717,13 +725,16 @@ class HomeWindow : public QWidget {
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
     QPushButton *pbuv;
-    QPushButton *pbnewuv;
     QHBoxLayout *hlayout2;
     QPushButton *pbformation;
-    QPushButton *pbnewformation;
     QHBoxLayout *hlayout3;
     QPushButton *pbdossier;
-    QPushButton *pbnewdossier;
+    QPushButton *pbcompletion;
+    QPushButton *pbquitter;
+    QHBoxLayout *hlayout4;
+    QHBoxLayout *hlayout5;
+    QHBoxLayout *hlayout6;
+    QLabel *lbienvenue;
    public :
     InterfaceSQL *sql;
     HomeWindow();
