@@ -4286,9 +4286,6 @@ INSERT INTO AssociationFormationUV(uv,formation) VALUES (
 );
 
 INSERT INTO Dossier(login, nom, prenom, conseiller, validationAEU, branche)
-VALUES ('gveleine', 'Véleine', 'Geoffrey', 'Jacques Pateau', 0, 'GM');
-
-INSERT INTO Dossier(login, nom, prenom, conseiller, validationAEU, branche)
 VALUES ('ritgabri', 'Rit', 'Gabrielle', 'François Sebbah', 0, 'GI');
 
 INSERT INTO FormationExt(login, nom, lieu, creditsCS, creditsTM,creditsTSH,creditsSP)
@@ -4354,3 +4351,13 @@ INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('IC07', 'P', 2014, 'tmonceau', 'EC');
 
+CREATE TABLE IF NOT EXISTS AssociationBrancheFiliere (
+	filiere VARCHAR(25),
+	branche VARCHAR(25),
+	PRIMARY KEY (filiere, branche));
+
+INSERT INTO AssociationBrancheFiliere VALUES ('ADEL', 'GI');
+INSERT INTO AssociationBrancheFiliere VALUES ('FDD', 'GI');
+INSERT INTO AssociationBrancheFiliere VALUES ('ICSI', 'GI');
+INSERT INTO AssociationBrancheFiliere VALUES ('SRI', 'GI');
+INSERT INTO AssociationBrancheFiliere VALUES ('STRIE', 'GI');

@@ -670,52 +670,12 @@ class NewFormationWindow : public QWidget {
     void annuler();
 };
 
-class BindUVWindow : public QWidget {
-    Q_OBJECT
-    friend class FormationWindow;
-    FormationWindow *master;
-    QVBoxLayout *mainlayout;
-    QHBoxLayout *hlayout1;
-    QLabel *lnom;
-    QLineEdit *lenom;
-    QHBoxLayout *hlayout2;
-    QPushButton *pbannuler;
-    QPushButton *pbajouter;
-   public :
-    BindUVWindow(FormationWindow *fw);
-   public slots :
-    void setenabled();
-    void ajouter();
-    void annuler();
-};
-
-class UnbindUVWindow : public QWidget {
-    Q_OBJECT
-    friend class FormationWindow;
-    FormationWindow *master;
-    QVBoxLayout *mainlayout;
-    QHBoxLayout *hlayout1;
-    QLabel *lnom;
-    QLineEdit *lenom;
-    QHBoxLayout *hlayout2;
-    QPushButton *pbannuler;
-    QPushButton *pbdelier;
-   public :
-    UnbindUVWindow(FormationWindow *fw);
-   public slots :
-    void setenabled();
-    void supprimer();
-    void annuler();
-};
-
 class FormationWindow : public QWidget {
     Q_OBJECT
     friend class HomeWindow;
     friend class BindUVWindow;
     friend class UnbindUVWindow;
     NewFormationWindow *newformationwindow;
-    BindUVWindow *binduvwindow;
-    UnbindUVWindow *unbinduvwindow;
     Formation *formation;
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
@@ -726,7 +686,7 @@ class FormationWindow : public QWidget {
     QLabel *lresponsable;
     QLineEdit *leresponsable;
     QLabel *ltype;
-    QLineEdit *letype;
+    QComboBox *cbtype;
     QHBoxLayout *hlayout2;
     QLabel *lcredits;
     QLabel *ltot;
@@ -749,8 +709,13 @@ class FormationWindow : public QWidget {
     QHBoxLayout *hlayout4;
     QPushButton *pbnouveau;
     QPushButton *pbsupprimer;
-    QPushButton *pbannuler;
     QPushButton *pbsauver;
+    QLabel *luvs;
+    QPushButton *pbajoutuv;
+    QHBoxLayout *hlayout5;
+    QLabel *lfilieres;
+    QPushButton *pbajoutfil;
+    QTableWidget *table;
    public :
     FormationWindow();
     void associerFormation(Formation *formation);
@@ -759,10 +724,12 @@ class FormationWindow : public QWidget {
     void rechercher();
     void nouveau();
     void supprimer();
-    void annuler();
     void sauver();
+    void sauveruv(int r, int c);
     void ajouteruv();
-    void supprimeruv();
+    void sauverfil(int r, int c);
+    void ajouterfil();
+
 };
 
 QString checkSyntax(QString s);
@@ -850,6 +817,46 @@ class HomeWindow : public QWidget {
     InterfaceSQL *sql;
     HomeWindow();
 };
+
+class AssocierUVWindow : public QWidget{
+    Q_OBJECT
+    QString formation;
+
+    QVBoxLayout *mainlayout;
+    QHBoxLayout *hlayout1;
+    QHBoxLayout *hlayout2;
+    QLabel *luv;
+    QComboBox *cbuv;
+    QPushButton *pbajouter;
+
+    public :
+        AssocierUVWindow(const QString& f);
+        QString getFormation() const {return formation;}
+    public slots :
+        void ajouter();
+};
+
+class AssocierFiliereWindow : public QWidget{
+    Q_OBJECT
+    QString branche;
+
+    QVBoxLayout *mainlayout;
+    QHBoxLayout *hlayout1;
+    QHBoxLayout *hlayout2;
+    QLabel *lnom;
+    QLineEdit *lenom;
+    QPushButton *pbajouter;
+
+    public :
+        AssocierFiliereWindow(const QString& b);
+        QString getBranche() const {return branche;}
+    public slots :
+        void ajouter();
+};
+
+QString checkSyntax(QString s);
+
+void CompletionProfil(Dossier *dossier);
 
 
 #endif // UTPROFILER_H
