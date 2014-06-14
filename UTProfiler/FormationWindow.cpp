@@ -74,7 +74,7 @@ FormationWindow::FormationWindow() {
     hlayout4->addWidget(luvs);
     hlayout4->addWidget(pbajoutuv);
 
-    twuvs = new QTableWidget(150,6);
+    twuvs = new QTableWidget;
     twuvs->setColumnCount(8);
     twuvs->setRowCount(0);
     twuvs->setHorizontalHeaderLabels(QStringList()<<"UV"<<"Titre"<<"Crédits CS"<<"Crédits TM"<<"Crédits TSH"<<"Crédits SP"<<""<<"");
@@ -86,6 +86,7 @@ FormationWindow::FormationWindow() {
     pbsupprimer = new QPushButton("Supprimer");
     pbannuler = new QPushButton("Annuler");
     pbsauver = new QPushButton("Sauver");
+
     hlayout3->addWidget(pbnouveau);
     hlayout3->addWidget(pbsupprimer);
     hlayout3->addWidget(pbannuler);
@@ -113,8 +114,14 @@ FormationWindow::FormationWindow() {
     QObject::connect(pbnouveau,SIGNAL(clicked()),this,SLOT(nouveau()));
     QObject::connect(pbsupprimer,SIGNAL(clicked()),this,SLOT(supprimer()));
     QObject::connect(pbsauver,SIGNAL(clicked()),this,SLOT(sauver()));
+
     QObject::connect(twuvs,SIGNAL(cellClicked(int,int)),this,SLOT(sauveruv(int, int)));
     QObject::connect(pbajoutuv, SIGNAL(clicked()), this, SLOT(ajouteruv()));
+
+    QObject::connect(twuvs,SIGNAL(cellChanged(int,int)),this,SLOT(setenabled()));
+    QObject::connect(pbajouteruv,SIGNAL(clicked()),this,SLOT(ajouteruv()));
+    QObject::connect(pbsupprimeruv,SIGNAL(clicked()),this,SLOT(supprimeruv()));
+
 }
 
 void FormationWindow::associerFormation(Formation *newformation) {
@@ -215,11 +222,30 @@ void FormationWindow::setenabled() {
     pbannuler->setEnabled(true);
 }
 void FormationWindow::rechercher() {
-    InterfaceSQL *sql = InterfaceSQL::getInstance();
-    Formation *formation = sql->selectFormation(QString::fromStdString("SELECT * FROM Formation WHERE nom = '"+lenom->text().toStdString()+"';"));
-    twuvs->clearContents();
-    twuvs->setRowCount(0);
-    associerFormation(formation);
+    if (lenom->text() == ""){ // Vérification qu'il y ait bien une uv à rechercher
+        QMessageBox msg;
+        msg.setText("Veuillez rentrer le nom de la formation.");
+        msg.exec();
+    } else {
+
+        QString q = "SELECT * FROM Formation WHERE nom = '";
+        q.append(lenom->text());
+        q.append("';");
+        InterfaceSQL *sql = InterfaceSQL::getInstance();
+        QSqlQuery query = sql->execQuery(q);
+        query.next();
+        if (query.value(0).toString() == ""){ // La formation recherchée n'existe pas
+            QMessageBox msg;
+            msg.setText("La formation recherchée n'existe pas.");
+            msg.exec();
+        } else {
+            InterfaceSQL *sql = InterfaceSQL::getInstance();
+            Formation *formation = sql->selectFormation(QString::fromStdString("SELECT * FROM Formation WHERE nom = '"+lenom->text().toStdString()+"';"));
+            twuvs->clearContents();
+            twuvs->setRowCount(0);
+            associerFormation(formation);
+        }
+    }
 }
 
 void FormationWindow::nouveau() {
@@ -321,6 +347,7 @@ void FormationWindow::sauver() {
     pbannuler->setEnabled(false);
 }
 
+
 void FormationWindow::sauveruv(int r, int c){
     /* Sauvegardes des modifications des uvs associées */
         if (c == 6){
@@ -348,7 +375,7 @@ void FormationWindow::sauveruv(int r, int c){
             qDebug()<<q2;
             sql->execQuery(q2);
         }
-        if (c == 7){
+        if (c == 7){ // Supression de l'association entre l'UV et la formation
             QString q = "DELETE FROM AssociationFormationUV WHERE formation = '";
             q.append(lenom->text());
             q.append("' AND uv = '");

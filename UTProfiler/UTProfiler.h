@@ -156,7 +156,7 @@ class Semestre {
     bool ext;
     FormationExterieure *formationExt;
    public :
-    Semestre(unsigned int a, Saison s, string c="");// ???
+    Semestre(unsigned int a, Saison s, string c="") : annee(a), saison(s), commentaire(c), ext(false) {}
     ~Semestre();
     unsigned int getAnnee() const {return annee;}
     Saison getSaison() const {return saison;}
@@ -186,7 +186,7 @@ class Semestre {
 };
 
 class Dossier {
-    friend class DossierManager;
+    //friend class DossierManager;
     QString login;
     QString nom;
     QString prenom;
@@ -418,6 +418,7 @@ class InterfaceSQL {
     UV** getAllUvs(const QString& q);
     Formation* selectFormation(const QString& q);
     Dossier* selectDossier(const QString& q);
+    Semestre* selectSemestre(const QString& q);
 };
 
 class UVWindow;
@@ -672,6 +673,8 @@ class NewFormationWindow : public QWidget {
 class FormationWindow : public QWidget {
     Q_OBJECT
     friend class HomeWindow;
+    friend class BindUVWindow;
+    friend class UnbindUVWindow;
     NewFormationWindow *newformationwindow;
     Formation *formation;
     QVBoxLayout *mainlayout;
@@ -698,15 +701,18 @@ class FormationWindow : public QWidget {
     QLineEdit *letsh;
     QLabel *lsp;
     QLineEdit *lesp;
-    QTableWidget *twuvs;
     QHBoxLayout *hlayout3;
+    QTableWidget *twuvs;
+    QVBoxLayout *vlayout31;
+    QPushButton *pbajouteruv;
+    QPushButton *pbsupprimeruv;
+    QHBoxLayout *hlayout4;
     QPushButton *pbnouveau;
     QPushButton *pbsupprimer;
     QPushButton *pbannuler;
     QPushButton *pbsauver;
     QLabel *luvs;
     QPushButton *pbajoutuv;
-    QHBoxLayout *hlayout4;
    public :
     FormationWindow();
     void associerFormation(Formation *formation);
@@ -719,6 +725,7 @@ class FormationWindow : public QWidget {
     void sauver();
     void sauveruv(int r, int c);
     void ajouteruv();
+
 };
 
 class HomeWindow : public QWidget {
@@ -763,5 +770,7 @@ class AssocierUVWindow : public QWidget{
 };
 
 QString checkSyntax(QString s);
+
+void CompletionProfil(Dossier *dossier);
 
 #endif // UTPROFILER_H

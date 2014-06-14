@@ -43,6 +43,29 @@ QString checkSyntax(QString s){
     return res;
 }
 
+void CompletionProfil(Dossier *dossier) {
+    UV** res = new UV*[4];
+    InterfaceSQL *sql = InterfaceSQL::getInstance();
+    UV** uvsNonValidees = sql->getAllUvs(QString::fromStdString("SELECT * FROM UV,AssociationFormationUV A WHERE A.formation = '"+dossier->getBranche().toStdString()+"' AND A.uv=UV.code AND UV.code NOT IN (SELECT * FROM UV,Inscription WHERE Inscription.login = '"+dossier->getLogin().toStdString()+"' AND Inscription.uv=UV.code);"));
+    Semestre *semestre = sql->selectSemestre(QString::fromStdString("SELECT * FROM Semestre WHERE dossier='"+dossier->getLogin().toStdString()+"' ORDER BY annee DESC, saison DESC;"));
+    Saison saison;
+    semestre->getSaison()==Saison(Printemps)?saison=Saison(Automne):saison=Saison(Printemps);
+    unsigned int compteurUV=0,i=0;
+    while (compteurUV<4) {
+        if (saison==Saison(Printemps)) {
+            if (uvsNonValidees[i]->getPrintemps()) {
+                res[compteurUV++] = uvsNonValidees[i];
+            }
+        }
+        else {
+            if (uvsNonValidees[i]->getAutomne()) {
+                res[compteurUV++] = uvsNonValidees[i];
+            }
+        }
+        i++;
+    }
+}
+
 bool Dossier::checkMineurCCT() const{
     unsigned int countObligatoire = 0, countTheorique = 0, countCommunication = 0;
 
