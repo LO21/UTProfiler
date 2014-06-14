@@ -137,3 +137,18 @@ Formation* InterfaceSQL::selectFormation(const QString &q) {
         return 0;
     }
 }
+
+Semestre* InterfaceSQL::selectSemestre(const QString &q) {
+    if (!query->exec(q)) {throw UTProfilerException(QString::fromStdString("Erreur : La requête :\n")+q+QString::fromStdString("\n n'a pas fonctionné.\nDernière Erreur : ")+query->lastError().text());}
+    query->next();
+    if (query->isValid()) {
+        Semestre *res;
+        if (query->value(0).toChar()=='A') {res = new Semestre(query->value(1).toUInt(),Saison(Automne),query->value(2).toString().toStdString());}
+        else {res = new Semestre(query->value(1).toUInt(),Saison(Printemps),query->value(2).toString().toStdString());}
+        return res;
+    }
+    else {
+        throw UTProfilerException(QString::fromStdString("Erreur : la requête suivante n'a pas fonctionné :\n"+q.toStdString()+"\nLe Semestre demandé n'existe pas"));
+        return 0;
+    }
+}

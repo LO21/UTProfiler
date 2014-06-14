@@ -47,7 +47,6 @@ FormationWindow::FormationWindow() {
     letsh = new QLineEdit();
     lsp = new QLabel("SP : ");
     lesp = new QLineEdit();
-    twuvs = new QTableWidget(150,6);
     hlayout2->addWidget(lcredits);
     hlayout2->addWidget(ltot);
     hlayout2->addWidget(letot);
@@ -62,18 +61,27 @@ FormationWindow::FormationWindow() {
     hlayout2->addWidget(lsp);
     hlayout2->addWidget(lesp);
     hlayout3 = new QHBoxLayout();
+    twuvs = new QTableWidget(150,6);
+    vlayout31 = new QVBoxLayout();
+    pbajouteruv = new QPushButton("Lier une UV à cette Formation");
+    pbsupprimeruv = new QPushButton("Délier une UV de cette Formation");
+    vlayout31->addWidget(pbajouteruv);
+    vlayout31->addWidget(pbsupprimeruv);
+    hlayout3->addWidget(twuvs);
+    hlayout3->addLayout(vlayout31);
+    hlayout4 = new QHBoxLayout();
     pbnouveau = new QPushButton("Nouveau");
     pbsupprimer = new QPushButton("Supprimer");
     pbannuler = new QPushButton("Annuler");
     pbsauver = new QPushButton("Sauver");
-    hlayout3->addWidget(pbnouveau);
-    hlayout3->addWidget(pbsupprimer);
-    hlayout3->addWidget(pbannuler);
-    hlayout3->addWidget(pbsauver);
+    hlayout4->addWidget(pbnouveau);
+    hlayout4->addWidget(pbsupprimer);
+    hlayout4->addWidget(pbannuler);
+    hlayout4->addWidget(pbsauver);
     mainlayout->addLayout(hlayout1);
     mainlayout->addLayout(hlayout2);
-    mainlayout->addWidget(twuvs);
     mainlayout->addLayout(hlayout3);
+    mainlayout->addLayout(hlayout4);
     this->setLayout(mainlayout);
     QObject::connect(pbretour,SIGNAL(clicked()),this,SLOT(close()));
     QObject::connect(leresponsable,SIGNAL(textChanged(QString)),this,SLOT(setenabled()));
@@ -91,6 +99,8 @@ FormationWindow::FormationWindow() {
     QObject::connect(pbsupprimer,SIGNAL(clicked()),this,SLOT(supprimer()));
     QObject::connect(pbsauver,SIGNAL(clicked()),this,SLOT(sauver()));
     QObject::connect(twuvs,SIGNAL(cellChanged(int,int)),this,SLOT(setenabled()));
+    QObject::connect(pbajouteruv,SIGNAL(clicked()),this,SLOT(ajouteruv()));
+    QObject::connect(pbsupprimeruv,SIGNAL(clicked()),this,SLOT(supprimeruv()));
 }
 
 void FormationWindow::associerFormation(Formation *newformation) {
@@ -244,6 +254,15 @@ void FormationWindow::sauver() {
     pbannuler->setEnabled(false);
 }
 
+
+void FormationWindow::ajouteruv() {
+    binduvwindow = new BindUVWindow(this);
+}
+
+void FormationWindow::supprimeruv() {
+    unbinduvwindow = new UnbindUVWindow(this);
+}
+
 NewFormationWindow::NewFormationWindow(FormationWindow *fw) : master(fw) {
     mainlayout = new QVBoxLayout();
     hlayout1 = new QHBoxLayout();
@@ -291,3 +310,105 @@ void NewFormationWindow::ajouter() {
     close();
 
 }
+
+BindUVWindow::BindUVWindow(FormationWindow *fw) : master(fw) {
+    mainlayout = new QVBoxLayout();
+    hlayout1 = new QHBoxLayout();
+    lnom = new QLabel("Code : ");
+    lenom = new QLineEdit();
+    hlayout1->addWidget(lnom);
+    hlayout1->addWidget(lenom);
+    hlayout2 = new QHBoxLayout();
+    pbannuler = new QPushButton("Annuler");
+    pbajouter = new QPushButton("Ajouter");
+    pbajouter->setEnabled(false);
+    hlayout2->addWidget(pbannuler);
+    hlayout2->addWidget(pbajouter);
+    mainlayout->addLayout(hlayout1);
+    mainlayout->addLayout(hlayout2);
+    setLayout(mainlayout);
+    QObject::connect(lenom,SIGNAL(textChanged(QString)),this,SLOT(setenabled()));
+    QObject::connect(lenom,SIGNAL(returnPressed()),this,SLOT(ajouter()));
+    QObject::connect(pbajouter,SIGNAL(clicked()),this,SLOT(ajouter()));
+    QObject::connect(pbannuler,SIGNAL(clicked()),this,SLOT(annuler()));
+    show();
+}
+
+void BindUVWindow::setenabled() {
+    pbajouter->setEnabled(true);
+}
+
+void BindUVWindow::annuler() {
+    close();
+}
+
+void BindUVWindow::ajouter() {
+    QString q = "INSERT INTO AssociationFormationUV VALUES ('";
+    QString nom = lenom->text();
+    q.append(nom);
+    q.append(QString::fromStdString("','"));
+    nom = master->lenom->text();
+    q.append(nom);
+    q.append(QString::fromStdString("');"));
+    InterfaceSQL *sql = InterfaceSQL::getInstance();
+    sql->execQuery(q);
+    q.clear();
+    q.append("SELECT * FROM Formation WHERE nom = '");
+    q.append(nom);
+    q.append("';");
+    Formation *formation = sql->selectFormation(q);
+    master->associerFormation(formation);
+    close();
+
+}
+
+UnbindUVWindow::UnbindUVWindow(FormationWindow *fw) : master(fw) {
+    mainlayout = new QVBoxLayout();
+    hlayout1 = new QHBoxLayout();
+    lnom = new QLabel("Code : ");
+    lenom = new QLineEdit();
+    hlayout1->addWidget(lnom);
+    hlayout1->addWidget(lenom);
+    hlayout2 = new QHBoxLayout();
+    pbannuler = new QPushButton("Annuler");
+    pbdelier = new QPushButton("Délier");
+    pbdelier->setEnabled(false);
+    hlayout2->addWidget(pbannuler);
+    hlayout2->addWidget(pbdelier);
+    mainlayout->addLayout(hlayout1);
+    mainlayout->addLayout(hlayout2);
+    setLayout(mainlayout);
+    QObject::connect(lenom,SIGNAL(textChanged(QString)),this,SLOT(setenabled()));
+    QObject::connect(lenom,SIGNAL(returnPressed()),this,SLOT(supprimer()));
+    QObject::connect(pbdelier,SIGNAL(clicked()),this,SLOT(supprimer()));
+    QObject::connect(pbannuler,SIGNAL(clicked()),this,SLOT(annuler()));
+    show();
+}
+
+void UnbindUVWindow::setenabled() {
+    pbdelier->setEnabled(true);
+}
+
+void UnbindUVWindow::annuler() {
+    close();
+}
+
+void UnbindUVWindow::supprimer() {
+    QString q = "DELETE FROM AssociationFormationUV WHERE uv='";
+    QString nom = lenom->text();
+    q.append(nom);
+    q.append(QString::fromStdString("' AND formation='"));
+    nom = master->lenom->text();
+    q.append(nom);
+    q.append(QString::fromStdString("';"));
+    InterfaceSQL *sql = InterfaceSQL::getInstance();
+    sql->execQuery(q);
+    q.clear();
+    q.append("SELECT * FROM Formation WHERE nom = '");
+    q.append(nom);
+    q.append("';");
+    Formation *formation = sql->selectFormation(q);
+    master->associerFormation(formation);
+    close();
+}
+
