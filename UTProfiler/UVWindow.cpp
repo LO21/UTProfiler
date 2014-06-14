@@ -90,11 +90,9 @@ UVWindow::UVWindow() {
     hlayout5 = new QHBoxLayout();
     pbnouveau = new QPushButton("Nouveau");
     pbsupprimer = new QPushButton("Supprimer");
-    pbannuler = new QPushButton("Annuler");
     pbsauver = new QPushButton("Sauver");
     hlayout5->addWidget(pbnouveau);
     hlayout5->addWidget(pbsupprimer);
-    hlayout5->addWidget(pbannuler);
     hlayout5->addWidget(pbsauver);
     mainlayout->addLayout(hlayout1);
     mainlayout->addLayout(hlayout2);
@@ -108,7 +106,6 @@ UVWindow::UVWindow() {
     QObject::connect(lecode,SIGNAL(returnPressed()),this,SLOT(rechercher()));
     QObject::connect(pbrechercher,SIGNAL(clicked()),this,SLOT(rechercher()));
     QObject::connect(pbsauver,SIGNAL(clicked()),this,SLOT(sauver()));
-    QObject::connect(pbannuler,SIGNAL(clicked()),this,SLOT(annuler()));
     QObject::connect(leresponsable,SIGNAL(textChanged(QString)),this,SLOT(pbsauverEnable()));
     QObject::connect(tedescription,SIGNAL(textChanged()),this,SLOT(pbsauverEnable()));
     QObject::connect(lecs,SIGNAL(textChanged(QString)),this,SLOT(pbsauverEnable()));
@@ -150,7 +147,6 @@ void UVWindow::associerUV(UV *newuv) {
     cbgsm->setChecked(tab[6]);
     cbgsu->setChecked(tab[7]);
     pbsauver->setEnabled(false);
-    pbannuler->setEnabled(false);
 }
 
 void UVWindow::sauver() {
@@ -198,7 +194,6 @@ void UVWindow::sauver() {
             q.append(lecode->text());
             q.append("';");
             pbsauver->setEnabled(false);
-            pbannuler->setEnabled(false);
             InterfaceSQL *sql = InterfaceSQL::getInstance();
             sql->execQuery(q);
             bool* tab=uv->getBranche();
@@ -245,11 +240,6 @@ void UVWindow::supprimer() {
 
 void UVWindow::pbsauverEnable() {
     pbsauver->setEnabled(true);
-    pbannuler->setEnabled(true);
-}
-
-void UVWindow::annuler() {
-    associerUV(uv);
 }
 
 void UVWindow::rechercher() {

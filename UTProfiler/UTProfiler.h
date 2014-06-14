@@ -476,7 +476,6 @@ class UVWindow : public QWidget {
     QHBoxLayout *hlayout4;
     QPushButton *pbnouveau;
     QPushButton *pbsupprimer;
-    QPushButton *pbannuler;
     QPushButton *pbsauver;
     QHBoxLayout *hlayout5;
     QLabel *ltc;
@@ -508,7 +507,6 @@ class UVWindow : public QWidget {
     void changeGSU();
    public slots :
     void sauver();
-    void annuler();
     void supprimer();
     void pbsauverEnable();
     void rechercher();
@@ -540,7 +538,6 @@ class DossierWindow : public QWidget {
     QLineEdit *lenom;
     QLabel *lprenom;
     QLineEdit *leprenom;
-    QPushButton *pbannuler;
     QPushButton *pbsauver;
     QLabel *lconseiller;
     QLineEdit *leconseiller;
