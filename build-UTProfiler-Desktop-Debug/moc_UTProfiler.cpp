@@ -617,203 +617,9 @@ int NewFormationWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     }
     return _id;
 }
-struct qt_meta_stringdata_BindUVWindow_t {
-    QByteArrayData data[5];
-    char stringdata[42];
-};
-#define QT_MOC_LITERAL(idx, ofs, len) \
-    Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_BindUVWindow_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData) \
-    )
-static const qt_meta_stringdata_BindUVWindow_t qt_meta_stringdata_BindUVWindow = {
-    {
-QT_MOC_LITERAL(0, 0, 12),
-QT_MOC_LITERAL(1, 13, 10),
-QT_MOC_LITERAL(2, 24, 0),
-QT_MOC_LITERAL(3, 25, 7),
-QT_MOC_LITERAL(4, 33, 7)
-    },
-    "BindUVWindow\0setenabled\0\0ajouter\0"
-    "annuler\0"
-};
-#undef QT_MOC_LITERAL
-
-static const uint qt_meta_data_BindUVWindow[] = {
-
- // content:
-       7,       // revision
-       0,       // classname
-       0,    0, // classinfo
-       3,   14, // methods
-       0,    0, // properties
-       0,    0, // enums/sets
-       0,    0, // constructors
-       0,       // flags
-       0,       // signalCount
-
- // slots: name, argc, parameters, tag, flags
-       1,    0,   29,    2, 0x0a,
-       3,    0,   30,    2, 0x0a,
-       4,    0,   31,    2, 0x0a,
-
- // slots: parameters
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-
-       0        // eod
-};
-
-void BindUVWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
-{
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        BindUVWindow *_t = static_cast<BindUVWindow *>(_o);
-        switch (_id) {
-        case 0: _t->setenabled(); break;
-        case 1: _t->ajouter(); break;
-        case 2: _t->annuler(); break;
-        default: ;
-        }
-    }
-    Q_UNUSED(_a);
-}
-
-const QMetaObject BindUVWindow::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_BindUVWindow.data,
-      qt_meta_data_BindUVWindow,  qt_static_metacall, 0, 0}
-};
-
-
-const QMetaObject *BindUVWindow::metaObject() const
-{
-    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
-}
-
-void *BindUVWindow::qt_metacast(const char *_clname)
-{
-    if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_BindUVWindow.stringdata))
-        return static_cast<void*>(const_cast< BindUVWindow*>(this));
-    return QWidget::qt_metacast(_clname);
-}
-
-int BindUVWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
-{
-    _id = QWidget::qt_metacall(_c, _id, _a);
-    if (_id < 0)
-        return _id;
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
-            qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
-    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
-            *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 3;
-    }
-    return _id;
-}
-struct qt_meta_stringdata_UnbindUVWindow_t {
-    QByteArrayData data[5];
-    char stringdata[46];
-};
-#define QT_MOC_LITERAL(idx, ofs, len) \
-    Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_UnbindUVWindow_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData) \
-    )
-static const qt_meta_stringdata_UnbindUVWindow_t qt_meta_stringdata_UnbindUVWindow = {
-    {
-QT_MOC_LITERAL(0, 0, 14),
-QT_MOC_LITERAL(1, 15, 10),
-QT_MOC_LITERAL(2, 26, 0),
-QT_MOC_LITERAL(3, 27, 9),
-QT_MOC_LITERAL(4, 37, 7)
-    },
-    "UnbindUVWindow\0setenabled\0\0supprimer\0"
-    "annuler\0"
-};
-#undef QT_MOC_LITERAL
-
-static const uint qt_meta_data_UnbindUVWindow[] = {
-
- // content:
-       7,       // revision
-       0,       // classname
-       0,    0, // classinfo
-       3,   14, // methods
-       0,    0, // properties
-       0,    0, // enums/sets
-       0,    0, // constructors
-       0,       // flags
-       0,       // signalCount
-
- // slots: name, argc, parameters, tag, flags
-       1,    0,   29,    2, 0x0a,
-       3,    0,   30,    2, 0x0a,
-       4,    0,   31,    2, 0x0a,
-
- // slots: parameters
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-
-       0        // eod
-};
-
-void UnbindUVWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
-{
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        UnbindUVWindow *_t = static_cast<UnbindUVWindow *>(_o);
-        switch (_id) {
-        case 0: _t->setenabled(); break;
-        case 1: _t->supprimer(); break;
-        case 2: _t->annuler(); break;
-        default: ;
-        }
-    }
-    Q_UNUSED(_a);
-}
-
-const QMetaObject UnbindUVWindow::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_UnbindUVWindow.data,
-      qt_meta_data_UnbindUVWindow,  qt_static_metacall, 0, 0}
-};
-
-
-const QMetaObject *UnbindUVWindow::metaObject() const
-{
-    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
-}
-
-void *UnbindUVWindow::qt_metacast(const char *_clname)
-{
-    if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_UnbindUVWindow.stringdata))
-        return static_cast<void*>(const_cast< UnbindUVWindow*>(this));
-    return QWidget::qt_metacast(_clname);
-}
-
-int UnbindUVWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
-{
-    _id = QWidget::qt_metacall(_c, _id, _a);
-    if (_id < 0)
-        return _id;
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
-            qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
-    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
-            *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 3;
-    }
-    return _id;
-}
 struct qt_meta_stringdata_FormationWindow_t {
-    QByteArrayData data[10];
-    char stringdata[95];
+    QByteArrayData data[13];
+    char stringdata[109];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -828,14 +634,17 @@ QT_MOC_LITERAL(2, 27, 0),
 QT_MOC_LITERAL(3, 28, 10),
 QT_MOC_LITERAL(4, 39, 7),
 QT_MOC_LITERAL(5, 47, 9),
-QT_MOC_LITERAL(6, 57, 7),
-QT_MOC_LITERAL(7, 65, 6),
-QT_MOC_LITERAL(8, 72, 9),
-QT_MOC_LITERAL(9, 82, 11)
+QT_MOC_LITERAL(6, 57, 6),
+QT_MOC_LITERAL(7, 64, 8),
+QT_MOC_LITERAL(8, 73, 1),
+QT_MOC_LITERAL(9, 75, 1),
+QT_MOC_LITERAL(10, 77, 9),
+QT_MOC_LITERAL(11, 87, 9),
+QT_MOC_LITERAL(12, 97, 10)
     },
     "FormationWindow\0setenabled\0\0rechercher\0"
-    "nouveau\0supprimer\0annuler\0sauver\0"
-    "ajouteruv\0supprimeruv\0"
+    "nouveau\0supprimer\0sauver\0sauveruv\0r\0"
+    "c\0ajouteruv\0sauverfil\0ajouterfil\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -845,7 +654,7 @@ static const uint qt_meta_data_FormationWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -853,14 +662,15 @@ static const uint qt_meta_data_FormationWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   54,    2, 0x0a,
-       3,    0,   55,    2, 0x0a,
-       4,    0,   56,    2, 0x0a,
-       5,    0,   57,    2, 0x0a,
-       6,    0,   58,    2, 0x0a,
-       7,    0,   59,    2, 0x0a,
-       8,    0,   60,    2, 0x0a,
-       9,    0,   61,    2, 0x0a,
+       1,    0,   59,    2, 0x0a,
+       3,    0,   60,    2, 0x0a,
+       4,    0,   61,    2, 0x0a,
+       5,    0,   62,    2, 0x0a,
+       6,    0,   63,    2, 0x0a,
+       7,    2,   64,    2, 0x0a,
+      10,    0,   69,    2, 0x0a,
+      11,    2,   70,    2, 0x0a,
+      12,    0,   75,    2, 0x0a,
 
  // slots: parameters
     QMetaType::Void,
@@ -868,8 +678,9 @@ static const uint qt_meta_data_FormationWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,    8,    9,
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,    8,    9,
     QMetaType::Void,
 
        0        // eod
@@ -884,14 +695,14 @@ void FormationWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 1: _t->rechercher(); break;
         case 2: _t->nouveau(); break;
         case 3: _t->supprimer(); break;
-        case 4: _t->annuler(); break;
-        case 5: _t->sauver(); break;
+        case 4: _t->sauver(); break;
+        case 5: _t->sauveruv((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 6: _t->ajouteruv(); break;
-        case 7: _t->supprimeruv(); break;
+        case 7: _t->sauverfil((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 8: _t->ajouterfil(); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObject FormationWindow::staticMetaObject = {
@@ -919,13 +730,13 @@ int FormationWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 9)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }
@@ -1022,8 +833,8 @@ int SearchDossierWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 struct qt_meta_stringdata_CompletionProfilWindow_t {
-    QByteArrayData data[3];
-    char stringdata[36];
+    QByteArrayData data[15];
+    char stringdata[156];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -1034,9 +845,25 @@ static const qt_meta_stringdata_CompletionProfilWindow_t qt_meta_stringdata_Comp
     {
 QT_MOC_LITERAL(0, 0, 22),
 QT_MOC_LITERAL(1, 23, 10),
-QT_MOC_LITERAL(2, 34, 0)
+QT_MOC_LITERAL(2, 34, 0),
+QT_MOC_LITERAL(3, 35, 10),
+QT_MOC_LITERAL(4, 46, 10),
+QT_MOC_LITERAL(5, 57, 10),
+QT_MOC_LITERAL(6, 68, 10),
+QT_MOC_LITERAL(7, 79, 10),
+QT_MOC_LITERAL(8, 90, 10),
+QT_MOC_LITERAL(9, 101, 8),
+QT_MOC_LITERAL(10, 110, 8),
+QT_MOC_LITERAL(11, 119, 8),
+QT_MOC_LITERAL(12, 128, 8),
+QT_MOC_LITERAL(13, 137, 8),
+QT_MOC_LITERAL(14, 146, 8)
     },
     "CompletionProfilWindow\0rechercher\0\0"
+    "confirmer1\0confirmer2\0confirmer3\0"
+    "confirmer4\0confirmer5\0confirmer6\0"
+    "refuser1\0refuser2\0refuser3\0refuser4\0"
+    "refuser5\0refuser6\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -1046,7 +873,7 @@ static const uint qt_meta_data_CompletionProfilWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+      13,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -1054,9 +881,33 @@ static const uint qt_meta_data_CompletionProfilWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   19,    2, 0x0a,
+       1,    0,   79,    2, 0x0a,
+       3,    0,   80,    2, 0x0a,
+       4,    0,   81,    2, 0x0a,
+       5,    0,   82,    2, 0x0a,
+       6,    0,   83,    2, 0x0a,
+       7,    0,   84,    2, 0x0a,
+       8,    0,   85,    2, 0x0a,
+       9,    0,   86,    2, 0x0a,
+      10,    0,   87,    2, 0x0a,
+      11,    0,   88,    2, 0x0a,
+      12,    0,   89,    2, 0x0a,
+      13,    0,   90,    2, 0x0a,
+      14,    0,   91,    2, 0x0a,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -1068,6 +919,18 @@ void CompletionProfilWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _
         CompletionProfilWindow *_t = static_cast<CompletionProfilWindow *>(_o);
         switch (_id) {
         case 0: _t->rechercher(); break;
+        case 1: _t->confirmer1(); break;
+        case 2: _t->confirmer2(); break;
+        case 3: _t->confirmer3(); break;
+        case 4: _t->confirmer4(); break;
+        case 5: _t->confirmer5(); break;
+        case 6: _t->confirmer6(); break;
+        case 7: _t->refuser1(); break;
+        case 8: _t->refuser2(); break;
+        case 9: _t->refuser3(); break;
+        case 10: _t->refuser4(); break;
+        case 11: _t->refuser5(); break;
+        case 12: _t->refuser6(); break;
         default: ;
         }
     }
@@ -1099,13 +962,13 @@ int CompletionProfilWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 13)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 13;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 13)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 1;
+        _id -= 13;
     }
     return _id;
 }
@@ -1174,6 +1037,182 @@ int HomeWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
+    return _id;
+}
+struct qt_meta_stringdata_AssocierUVWindow_t {
+    QByteArrayData data[3];
+    char stringdata[27];
+};
+#define QT_MOC_LITERAL(idx, ofs, len) \
+    Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_AssocierUVWindow_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+static const qt_meta_stringdata_AssocierUVWindow_t qt_meta_stringdata_AssocierUVWindow = {
+    {
+QT_MOC_LITERAL(0, 0, 16),
+QT_MOC_LITERAL(1, 17, 7),
+QT_MOC_LITERAL(2, 25, 0)
+    },
+    "AssocierUVWindow\0ajouter\0\0"
+};
+#undef QT_MOC_LITERAL
+
+static const uint qt_meta_data_AssocierUVWindow[] = {
+
+ // content:
+       7,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: name, argc, parameters, tag, flags
+       1,    0,   19,    2, 0x0a,
+
+ // slots: parameters
+    QMetaType::Void,
+
+       0        // eod
+};
+
+void AssocierUVWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        AssocierUVWindow *_t = static_cast<AssocierUVWindow *>(_o);
+        switch (_id) {
+        case 0: _t->ajouter(); break;
+        default: ;
+        }
+    }
+    Q_UNUSED(_a);
+}
+
+const QMetaObject AssocierUVWindow::staticMetaObject = {
+    { &QWidget::staticMetaObject, qt_meta_stringdata_AssocierUVWindow.data,
+      qt_meta_data_AssocierUVWindow,  qt_static_metacall, 0, 0}
+};
+
+
+const QMetaObject *AssocierUVWindow::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *AssocierUVWindow::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_AssocierUVWindow.stringdata))
+        return static_cast<void*>(const_cast< AssocierUVWindow*>(this));
+    return QWidget::qt_metacast(_clname);
+}
+
+int AssocierUVWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 1)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 1;
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 1)
+            *reinterpret_cast<int*>(_a[0]) = -1;
+        _id -= 1;
+    }
+    return _id;
+}
+struct qt_meta_stringdata_AssocierFiliereWindow_t {
+    QByteArrayData data[3];
+    char stringdata[32];
+};
+#define QT_MOC_LITERAL(idx, ofs, len) \
+    Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_AssocierFiliereWindow_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+static const qt_meta_stringdata_AssocierFiliereWindow_t qt_meta_stringdata_AssocierFiliereWindow = {
+    {
+QT_MOC_LITERAL(0, 0, 21),
+QT_MOC_LITERAL(1, 22, 7),
+QT_MOC_LITERAL(2, 30, 0)
+    },
+    "AssocierFiliereWindow\0ajouter\0\0"
+};
+#undef QT_MOC_LITERAL
+
+static const uint qt_meta_data_AssocierFiliereWindow[] = {
+
+ // content:
+       7,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: name, argc, parameters, tag, flags
+       1,    0,   19,    2, 0x0a,
+
+ // slots: parameters
+    QMetaType::Void,
+
+       0        // eod
+};
+
+void AssocierFiliereWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        AssocierFiliereWindow *_t = static_cast<AssocierFiliereWindow *>(_o);
+        switch (_id) {
+        case 0: _t->ajouter(); break;
+        default: ;
+        }
+    }
+    Q_UNUSED(_a);
+}
+
+const QMetaObject AssocierFiliereWindow::staticMetaObject = {
+    { &QWidget::staticMetaObject, qt_meta_stringdata_AssocierFiliereWindow.data,
+      qt_meta_data_AssocierFiliereWindow,  qt_static_metacall, 0, 0}
+};
+
+
+const QMetaObject *AssocierFiliereWindow::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *AssocierFiliereWindow::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_AssocierFiliereWindow.stringdata))
+        return static_cast<void*>(const_cast< AssocierFiliereWindow*>(this));
+    return QWidget::qt_metacast(_clname);
+}
+
+int AssocierFiliereWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 1)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 1;
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 1)
+            *reinterpret_cast<int*>(_a[0]) = -1;
+        _id -= 1;
+    }
     return _id;
 }
 QT_END_MOC_NAMESPACE

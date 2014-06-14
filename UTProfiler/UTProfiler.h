@@ -740,6 +740,7 @@ class SearchDossierWindow : public QWidget {
     Q_OBJECT
     friend class CompletionProfilWindow;
     friend class HomeWindow;
+    Dossier *dossier;
     CompletionProfilWindow *master;
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
@@ -754,6 +755,8 @@ class SearchDossierWindow : public QWidget {
     QHBoxLayout *hlayout4;
     QPushButton *pbannuler;
     QPushButton *pbrechercher;
+    QString **souhaits;
+    QString **rejets;
    public :
     SearchDossierWindow(CompletionProfilWindow *fw);
    public slots :
@@ -770,27 +773,51 @@ class CompletionProfilWindow : public QWidget {
     QHBoxLayout *hlayout1;
     QLabel *luv1;
     QLineEdit *leuv1;
+    QPushButton *pbconfirmer1;
+    QPushButton *pbrefuser1;
     QHBoxLayout *hlayout2;
     QLabel *luv2;
     QLineEdit *leuv2;
+    QPushButton *pbconfirmer2;
+    QPushButton *pbrefuser2;
     QHBoxLayout *hlayout3;
     QLabel *luv3;
     QLineEdit *leuv3;
+    QPushButton *pbconfirmer3;
+    QPushButton *pbrefuser3;
     QHBoxLayout *hlayout4;
     QLabel *luv4;
     QLineEdit *leuv4;
+    QPushButton *pbconfirmer4;
+    QPushButton *pbrefuser4;
     QHBoxLayout *hlayout5;
     QLabel *luv5;
     QLineEdit *leuv5;
+    QPushButton *pbconfirmer5;
+    QPushButton *pbrefuser5;
     QHBoxLayout *hlayout6;
     QLabel *luv6;
     QLineEdit *leuv6;
+    QPushButton *pbconfirmer6;
+    QPushButton *pbrefuser6;
     QPushButton *pbok;
    public :
     CompletionProfilWindow();
     void CompletionProfil(Dossier *dossier, QString** souhaits, QString** rejets);
    public slots :
     void rechercher();
+    void confirmer1();
+    void confirmer2();
+    void confirmer3();
+    void confirmer4();
+    void confirmer5();
+    void confirmer6();
+    void refuser1();
+    void refuser2();
+    void refuser3();
+    void refuser4();
+    void refuser5();
+    void refuser6();
 };
 
 

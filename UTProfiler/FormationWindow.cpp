@@ -135,8 +135,6 @@ FormationWindow::FormationWindow() {
     QObject::connect(pbajoutuv, SIGNAL(clicked()), this, SLOT(ajouteruv()));
     QObject::connect(table,SIGNAL(cellChanged(int,int)),this,SLOT(setenabled()));
     QObject::connect(twuvs,SIGNAL(cellChanged(int,int)),this,SLOT(setenabled()));
-    QObject::connect(pbajouteruv,SIGNAL(clicked()),this,SLOT(ajouteruv()));
-    QObject::connect(pbsupprimeruv,SIGNAL(clicked()),this,SLOT(supprimeruv()));
 
 }
 
