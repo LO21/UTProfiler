@@ -765,11 +765,69 @@ class FormationWindow : public QWidget {
     void supprimeruv();
 };
 
+QString checkSyntax(QString s);
+
+class CompletionProfilWindow;
+
+class SearchDossierWindow : public QWidget {
+    Q_OBJECT
+    friend class CompletionProfilWindow;
+    friend class HomeWindow;
+    CompletionProfilWindow *master;
+    QVBoxLayout *mainlayout;
+    QHBoxLayout *hlayout1;
+    QLabel *lnom;
+    QLineEdit *lenom;
+    QHBoxLayout *hlayout2;
+    QPushButton *pbannuler;
+    QPushButton *pbrechercher;
+   public :
+    SearchDossierWindow(CompletionProfilWindow *fw);
+   public slots :
+    void setenabled();
+    void rechercher();
+    void annuler();
+};
+
+class CompletionProfilWindow : public QWidget {
+    Q_OBJECT
+    friend class HomeWindow;
+    SearchDossierWindow *searchdossierwindow;
+    QVBoxLayout *mainlayout;
+    QLabel *lresultat;
+    QHBoxLayout *hlayout1;
+    QLabel *luv1;
+    QLineEdit *leuv1;
+    QHBoxLayout *hlayout2;
+    QLabel *luv2;
+    QLineEdit *leuv2;
+    QHBoxLayout *hlayout3;
+    QLabel *luv3;
+    QLineEdit *leuv3;
+    QHBoxLayout *hlayout4;
+    QLabel *luv4;
+    QLineEdit *leuv4;
+    QHBoxLayout *hlayout5;
+    QLabel *luv5;
+    QLineEdit *leuv5;
+    QHBoxLayout *hlayout6;
+    QLabel *luv6;
+    QLineEdit *leuv6;
+    QPushButton *pbok;
+   public :
+    CompletionProfilWindow();
+    void CompletionProfil(Dossier *dossier);
+   public slots :
+    void rechercher();
+};
+
+
 class HomeWindow : public QWidget {
     Q_OBJECT
     UVWindow *uvwindow;
     FormationWindow *formationwindow;
     DossierWindow *dossierwindow;
+    CompletionProfilWindow *completionprofilwindow;
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
     QPushButton *pbuv;
@@ -788,8 +846,5 @@ class HomeWindow : public QWidget {
     HomeWindow();
 };
 
-QString checkSyntax(QString s);
-
-void CompletionProfil(Dossier *dossier);
 
 #endif // UTPROFILER_H

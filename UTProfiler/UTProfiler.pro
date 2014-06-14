@@ -13,7 +13,8 @@ SOURCES += \
     UVWindow.cpp \
     DossierWindow.cpp \
     HomeWindow.cpp \
-    FormationWindow.cpp
+    FormationWindow.cpp \
+    CompletionProfilWindow.cpp
 
 HEADERS += \
     UTProfiler.h
