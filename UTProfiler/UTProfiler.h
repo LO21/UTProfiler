@@ -777,14 +777,19 @@ class SearchDossierWindow : public QWidget {
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
     QLabel *lnom;
-    QLineEdit *lenom;
+    QComboBox *lenom;
     QHBoxLayout *hlayout2;
+    QLabel *lsouhaits;
+    QLineEdit *lesouhaits;
+    QHBoxLayout *hlayout3;
+    QLabel *lrejets;
+    QLineEdit *lerejets;
+    QHBoxLayout *hlayout4;
     QPushButton *pbannuler;
     QPushButton *pbrechercher;
    public :
     SearchDossierWindow(CompletionProfilWindow *fw);
    public slots :
-    void setenabled();
     void rechercher();
     void annuler();
 };
@@ -816,7 +821,7 @@ class CompletionProfilWindow : public QWidget {
     QPushButton *pbok;
    public :
     CompletionProfilWindow();
-    void CompletionProfil(Dossier *dossier);
+    void CompletionProfil(Dossier *dossier, QString** souhaits, QString** rejets);
    public slots :
     void rechercher();
 };
