@@ -219,14 +219,13 @@ class Dossier {
     void setConseiller (const QString& s) {conseiller=s;}
     void setBranche(const QString& s) {branche=s;}
     void setValidationAEU (bool b) {validationAEU=b;}
-    void checkMineurs();
-    bool checkMineurCCT() const{return false;}
-    bool checkMineurDDRESET() const{return false;}
-    bool checkMineurFIRME() const{return false;}
-    bool checkMineurINTENT() const{return false;}
-    bool checkMineurPHITECO() const{return false;}
-    bool checkMineurST() const{return false;}
-    bool checkMineurTCN() const{return false;}
+    bool checkMineurCCT() const;
+    bool checkMineurDDRESET() const;
+    bool checkMineurFIRME() const;
+    bool checkMineurINTENT() const;
+    bool checkMineurPHITECO() const;
+    bool checkMineurST() const;
+    bool checkMineurTCN() const;
     bool checkGI() const{
         QString b = "GI";
         if (branche == b) {return true;}

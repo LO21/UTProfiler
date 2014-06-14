@@ -282,14 +282,6 @@ void DossierWindow::associerDossier(Dossier *d) {
     cbINTENT->setChecked(d->checkMineurINTENT());
     cbST->setChecked(d->checkMineurST());
     cbbranche->setCurrentText(d->getBranche());
-    /* cbGI->setChecked(d->checkGI());
-    cbGM->setChecked(d->checkGM());
-    cbGSM->setChecked(d->checkGSM());
-    cbGP->setChecked(d->checkGP());
-    cbGB->setChecked(d->checkGB());
-    cbGSU->setChecked(d->checkGSU());
-    cbTC->setChecked(d->checkTC());
-    cbHutech->setChecked(d->checkHutech()); */
 
     /* Affichage des formations extérieures */
 
