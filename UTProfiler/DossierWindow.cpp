@@ -116,10 +116,8 @@ DossierWindow::DossierWindow() {
     hlayout8->addWidget(cbbranche);
 
     hlayout7 = new QHBoxLayout();
-    pbannuler = new QPushButton("Annuler");
     pbsauver = new QPushButton("Sauver");
     pbsuppr = new QPushButton("Supprimer");
-    hlayout7->addWidget(pbannuler);
     hlayout7->addWidget(pbsauver);
     hlayout7->addWidget(pbsuppr);
 

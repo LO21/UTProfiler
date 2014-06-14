@@ -4365,3 +4365,32 @@ INSERT INTO AssociationBrancheFiliere VALUES ('ICSI', 'GI');
 INSERT INTO AssociationBrancheFiliere VALUES ('SRI', 'GI');
 
 INSERT INTO AssociationBrancheFiliere VALUES ('STRIE', 'GI');
+
+INSERT INTO AssociationBrancheFiliere VALUES ('BM', 'GB');
+INSERT INTO AssociationBrancheFiliere VALUES ('BB', 'GB');
+INSERT INTO AssociationBrancheFiliere VALUES ('MPI', 'GB');
+INSERT INTO AssociationBrancheFiliere VALUES ('CIB', 'GB');
+INSERT INTO AssociationBrancheFiliere VALUES ('IAA', 'GB');
+
+INSERT INTO AssociationBrancheFiliere VALUES ('AVI', 'GM');
+INSERT INTO AssociationBrancheFiliere VALUES ('IDI', 'GM');
+INSERT INTO AssociationBrancheFiliere VALUES ('FQI', 'GM');
+INSERT INTO AssociationBrancheFiliere VALUES ('MIT', 'GM');
+INSERT INTO AssociationBrancheFiliere VALUES ('MARS', 'GM');
+INSERT INTO AssociationBrancheFiliere VALUES ('MPI', 'GM');
+
+INSERT INTO AssociationBrancheFiliere VALUES ('CMI', 'GSM');
+INSERT INTO AssociationBrancheFiliere VALUES ('MOPS', 'GSM');
+INSERT INTO AssociationBrancheFiliere VALUES ('PIL', 'GSM');
+INSERT INTO AssociationBrancheFiliere VALUES ('MPI', 'GSM');
+
+INSERT INTO AssociationBrancheFiliere VALUES ('SR', 'GSU');
+INSERT INTO AssociationBrancheFiliere VALUES ('MPI', 'GSU');
+INSERT INTO AssociationBrancheFiliere VALUES ('AIE', 'GSU');
+INSERT INTO AssociationBrancheFiliere VALUES ('STI', 'GSU');
+
+INSERT INTO AssociationBrancheFiliere VALUES ('MPI', 'GP');
+INSERT INTO AssociationBrancheFiliere VALUES ('AIC', 'GP');
+INSERT INTO AssociationBrancheFiliere VALUES ('CPI', 'GP');
+INSERT INTO AssociationBrancheFiliere VALUES ('QSE', 'GP');
+INSERT INTO AssociationBrancheFiliere VALUES ('TE', 'GP');
