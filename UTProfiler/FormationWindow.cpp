@@ -99,12 +99,10 @@ FormationWindow::FormationWindow() {
     hlayout3 = new QHBoxLayout();
     pbnouveau = new QPushButton("Nouveau");
     pbsupprimer = new QPushButton("Supprimer");
-    pbannuler = new QPushButton("Annuler");
     pbsauver = new QPushButton("Sauver");
 
     hlayout3->addWidget(pbnouveau);
     hlayout3->addWidget(pbsupprimer);
-    hlayout3->addWidget(pbannuler);
     hlayout3->addWidget(pbsauver);
 
     mainlayout->addLayout(hlayout1);
@@ -128,7 +126,6 @@ FormationWindow::FormationWindow() {
     QObject::connect(lesp,SIGNAL(textChanged(QString)),this,SLOT(setenabled()));
     QObject::connect(pbrechercher,SIGNAL(clicked()),this,SLOT(rechercher()));
     QObject::connect(lenom,SIGNAL(returnPressed()),this,SLOT(rechercher()));
-    QObject::connect(pbannuler,SIGNAL(clicked()),this,SLOT(annuler()));
     QObject::connect(pbnouveau,SIGNAL(clicked()),this,SLOT(nouveau()));
     QObject::connect(pbsupprimer,SIGNAL(clicked()),this,SLOT(supprimer()));
     QObject::connect(pbsauver,SIGNAL(clicked()),this,SLOT(sauver()));
@@ -241,15 +238,14 @@ void FormationWindow::associerFormation(Formation *newformation) {
         }
 
     pbsauver->setEnabled(false);
-    pbannuler->setEnabled(false);
+
 }
 
 void FormationWindow::setenabled() {
     pbsauver->setEnabled(true);
-    pbannuler->setEnabled(true);
 }
 void FormationWindow::rechercher() {
-    if (lenom->text() == ""){ // Vérification qu'il y ait bien une uv à rechercher
+    if (lenom->text() == ""){ // Vérification qu'il y ait bien une formation à rechercher
         QMessageBox msg;
         msg.setText("Veuillez rentrer le nom de la formation.");
         msg.exec();
@@ -282,98 +278,82 @@ void FormationWindow::nouveau() {
 }
 
 void FormationWindow::supprimer() {
-    QString q = QString::fromStdString("DELETE FROM Formation WHERE nom = '"+formation->getNom().toStdString()+"';");
-    InterfaceSQL *sql = InterfaceSQL::getInstance();
-    sql->execQuery(q);
-}
+    if (lenom->text() == ""){ // Vérification qu'il y ait bien une formation à rechercher
+        QMessageBox msg;
+        msg.setText("Veuillez rentrer le nom de la formation.");
+        msg.exec();
+    } else {
+        InterfaceSQL *sql = InterfaceSQL::getInstance();
 
-void FormationWindow::annuler() {
-    associerFormation(formation);
+        if (cbtype->currentText() == "Branche"){
+
+            /* Suppression des filières associées */
+
+            QString q3 = "DELETE FROM AssociationBrancheFiliere WHERE branche = '";
+            q3.append(lenom->text());
+            q3.append("';");
+            sql->execQuery(q3);
+        }
+
+        /* Suppression des UVs associées */
+
+        QString q2 = "DELETE FROM AssociationFormationUV WHERE formation = '";
+        q2.append(lenom->text());
+        q2.append("';");
+        sql->execQuery(q2);
+
+        /* Suppression de la formation */
+
+        QString q = QString::fromStdString("DELETE FROM Formation WHERE nom = '"+formation->getNom().toStdString()+"';");
+        sql->execQuery(q);
+    }
 }
 
 void FormationWindow::sauver() {
 
-    /* Sauvegardes des modifications liées à la formation */
+    if (lenom->text() == ""){ // Vérification qu'il y ait bien une formation à rechercher
+        QMessageBox msg;
+        msg.setText("Veuillez rentrer le nom de la formation.");
+        msg.exec();
+    } else {
+        QString q2 = "SELECT * FROM Formation WHERE nom = '";
+        q2.append(lenom->text());
+        q2.append("';");
+        InterfaceSQL *sql = InterfaceSQL::getInstance();
+        QSqlQuery query2 = sql->execQuery(q2);
+        query2.next();
+        if (query2.value(0).toString() == ""){ // La formation n'existe pas
+            QMessageBox msg;
+            msg.setText("Cette formation n'existe pas. Pour créer une nouvelle formation, cliquez sur Nouveau.");
+            msg.exec();
+        } else {
 
-    QString q="UPDATE Formation SET responsable = '";
-    q.append(leresponsable->text());
-    q.append("', type = '");
-    q.append(cbtype->currentText());
-    q.append("', creditsTot = '");
-    q.append(letot->text());
-    q.append("', creditsCS = '");
-    q.append(lecs->text());
-    q.append("', creditsTM = '");
-    q.append(letm->text());
-    q.append("', creditsCSTM = '");
-    q.append(lecstm->text());
-    q.append("', creditsTSH = '");
-    q.append(letsh->text());
-    q.append("', creditsSP = '");
-    q.append(lesp->text());
-    q.append("' WHERE nom = '");
-    q.append(lenom->text());
-    q.append("';");
-    InterfaceSQL *sql = InterfaceSQL::getInstance();
-    sql->execQuery(q);
+            /* Sauvegardes des modifications liées à la formation */
 
-    /* InterfaceSQL *sql = InterfaceSQL::getInstance();
-    sql->execQuery(q);
-    UV** uvs = sql->getAllUvs(QString::fromStdString("SELECT * FROM UV, AssociationFormationUV A WHERE UV.code = A.uv AND A.formation = '"+formation->getNom().toStdString()+"' ;"));
-    UV checkChanges;
-    QString *code = new QString;
-    QString *description = new QString;
-    QString *responsable = new QString;
-    unsigned int i=0;
-    int boolean;
-    while (uvs[i]->getCode()!=QString::fromStdString("fin")) {
-        code->clear();
-        code->append(twuvs->item(i,0)->text());
-        checkChanges.setCode(code);
-        if (twuvs->item(i,1)->text()==QString::fromStdString("CS")) {checkChanges.setCreditsCS(twuvs->item(i,2)->text().toUInt());}
-        if (twuvs->item(i,1)->text()==QString::fromStdString("TM")) {checkChanges.setCreditsTM(twuvs->item(i,2)->text().toUInt());}
-        if (twuvs->item(i,1)->text()==QString::fromStdString("TSH")) {checkChanges.setCreditsTSH(twuvs->item(i,2)->text().toUInt());}
-        if (twuvs->item(i,1)->text()==QString::fromStdString("SP")) {checkChanges.setCreditsSP(twuvs->item(i,2)->text().toUInt());}
-        description->clear();
-        description->append(twuvs->item(i,3)->text());
-        checkChanges.setTitre(description);
-        responsable->clear();
-        responsable->append(twuvs->item(i,4)->text());
-        checkChanges.setResponsable(responsable);
-        if (twuvs->item(i,5)->text()==QString::fromStdString("A/P")) {checkChanges.setAutomne(true); checkChanges.setPrintemps(true);}
-        if (twuvs->item(i,5)->text()==QString::fromStdString("A")) {checkChanges.setAutomne(true);}
-        if (twuvs->item(i,5)->text()==QString::fromStdString("P")) {checkChanges.setPrintemps(true);}
-        //if (checkChanges!=*uvs[i]) {
-            if (checkChanges.getCode()==uvs[i]->getCode()) {
-                q.clear();
-                q.append(QString::fromStdString("UPDATE UV SET titre='"));
-                q.append(checkSyntax(checkChanges.getTitre()));
-                q.append(QString::fromStdString("', responsable='"));
-                q.append(checkChanges.getResponsable());
-                q.append(QString::fromStdString("', creditsCS='"));
-                q.append(QString::number(checkChanges.getCreditsCS()));
-                q.append(QString::fromStdString("', creditsTM='"));
-                q.append(QString::number(checkChanges.getCreditsTM()));
-                q.append(QString::fromStdString("', creditsTSH='"));
-                q.append(QString::number(checkChanges.getCreditsTSH()));
-                q.append(QString::fromStdString("', creditsSP='"));
-                q.append(QString::number(checkChanges.getCreditsSP()));
-                q.append(QString::fromStdString("', printemps='"));
-                checkChanges.getPrintemps()?boolean=1:boolean=0;
-                q.append(QString::number(boolean));
-                q.append(QString::fromStdString("', automne='"));
-                checkChanges.getAutomne()?boolean=1:boolean=0;
-                q.append(QString::number(boolean));
-                q.append(QString::fromStdString("' WHERE code='"));
-                q.append(checkChanges.getCode());
-                q.append(QString::fromStdString("';"));
-                sql->execQuery(q);
-            //}
+            QString q="UPDATE Formation SET responsable = '";
+            q.append(leresponsable->text());
+            q.append("', type = '");
+            q.append(cbtype->currentText());
+            q.append("', creditsTot = '");
+            q.append(letot->text());
+            q.append("', creditsCS = '");
+            q.append(lecs->text());
+            q.append("', creditsTM = '");
+            q.append(letm->text());
+            q.append("', creditsCSTM = '");
+            q.append(lecstm->text());
+            q.append("', creditsTSH = '");
+            q.append(letsh->text());
+            q.append("', creditsSP = '");
+            q.append(lesp->text());
+            q.append("' WHERE nom = '");
+            q.append(lenom->text());
+            q.append("';");
+            sql->execQuery(q);
         }
-        i++;
-    } */
+    }
+
     pbsauver->setEnabled(false);
-    pbannuler->setEnabled(false);
 }
 
 

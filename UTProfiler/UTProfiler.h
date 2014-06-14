@@ -709,7 +709,6 @@ class FormationWindow : public QWidget {
     QHBoxLayout *hlayout4;
     QPushButton *pbnouveau;
     QPushButton *pbsupprimer;
-    QPushButton *pbannuler;
     QPushButton *pbsauver;
     QLabel *luvs;
     QPushButton *pbajoutuv;
@@ -725,7 +724,6 @@ class FormationWindow : public QWidget {
     void rechercher();
     void nouveau();
     void supprimer();
-    void annuler();
     void sauver();
     void sauveruv(int r, int c);
     void ajouteruv();

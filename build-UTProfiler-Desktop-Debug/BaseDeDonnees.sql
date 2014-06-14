@@ -4351,3 +4351,13 @@ INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('IC07', 'P', 2014, 'tmonceau', 'EC');
 
+CREATE TABLE IF NOT EXISTS AssociationBrancheFiliere (
+	filiere VARCHAR(25),
+	branche VARCHAR(25),
+	PRIMARY KEY (filiere, branche));
+
+INSERT INTO AssociationBrancheFiliere VALUES ('ADEL', 'GI');
+INSERT INTO AssociationBrancheFiliere VALUES ('FDD', 'GI');
+INSERT INTO AssociationBrancheFiliere VALUES ('ICSI', 'GI');
+INSERT INTO AssociationBrancheFiliere VALUES ('SRI', 'GI');
+INSERT INTO AssociationBrancheFiliere VALUES ('STRIE', 'GI');
