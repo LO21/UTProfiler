@@ -1,10 +1,10 @@
-DROP TABLE TypeFormation;
+CREATE TABLE IF NOT EXISTS AssociationBrancheFiliere (
+	filiere VARCHAR(25),
+	branche VARCHAR(25),
+	PRIMARY KEY (filiere, branche));
 
-CREATE TABLE IF NOT EXISTS TypeFormation (
-	type VARCHAR(25) PRIMARY KEY);
-
-INSERT INTO TypeFormation VALUES ('Branche');
-
-INSERT INTO TypeFormation VALUES ('Filière');
-
-INSERT INTO TypeFormation VALUES ('Mineur');
+INSERT INTO AssociationBrancheFiliere VALUES ('ADEL', 'GI');
+INSERT INTO AssociationBrancheFiliere VALUES ('FDD', 'GI');
+INSERT INTO AssociationBrancheFiliere VALUES ('ICSI', 'GI');
+INSERT INTO AssociationBrancheFiliere VALUES ('SRI', 'GI');
+INSERT INTO AssociationBrancheFiliere VALUES ('STRIE', 'GI');

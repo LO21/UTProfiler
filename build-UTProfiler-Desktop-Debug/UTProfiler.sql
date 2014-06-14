@@ -123,3 +123,14 @@ CREATE TABLE IF NOT EXISTS AssociationFormationUV (
 	uv VARCHAR(10) REFERENCES UV(code),
 	formation VARCHAR(25) REFERENCES Formation(nom),
 	PRIMARY KEY (uv,formation));
+
+	CREATE TABLE IF NOT EXISTS AssociationBrancheFiliere (
+	filiere VARCHAR(25),
+	branche VARCHAR(25),
+	PRIMARY KEY (filiere, branche));
+
+INSERT INTO AssociationBrancheFiliere VALUES ('ADEL', 'GI');
+INSERT INTO AssociationBrancheFiliere VALUES ('FDD', 'GI');
+INSERT INTO AssociationBrancheFiliere VALUES ('ICSI', 'GI');
+INSERT INTO AssociationBrancheFiliere VALUES ('SRI', 'GI');
+INSERT INTO AssociationBrancheFiliere VALUES ('STRIE', 'GI');

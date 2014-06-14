@@ -4286,9 +4286,6 @@ INSERT INTO AssociationFormationUV(uv,formation) VALUES (
 );
 
 INSERT INTO Dossier(login, nom, prenom, conseiller, validationAEU, branche)
-VALUES ('gveleine', 'Véleine', 'Geoffrey', 'Jacques Pateau', 0, 'GM');
-
-INSERT INTO Dossier(login, nom, prenom, conseiller, validationAEU, branche)
 VALUES ('ritgabri', 'Rit', 'Gabrielle', 'François Sebbah', 0, 'GI');
 
 INSERT INTO FormationExt(login, nom, lieu, creditsCS, creditsTM,creditsTSH,creditsSP)

@@ -66,6 +66,21 @@ FormationWindow::FormationWindow() {
     hlayout2->addWidget(lsp);
     hlayout2->addWidget(lesp);
 
+    /* Filières associées aux branches */
+
+
+        hlayout5 = new QHBoxLayout();
+        lfilieres = new QLabel("Filières associées à cette branche :");
+        pbajoutfil = new QPushButton("Ajouter");
+        hlayout5->addWidget(lfilieres);
+        hlayout5->addWidget(pbajoutfil);
+
+        table = new QTableWidget;
+        table->setColumnCount(4);
+        table->setRowCount(0);
+        table->setHorizontalHeaderLabels(QStringList()<<"Filière"<<"Responsable"<<""<<"");
+
+
     /* UV associées */
 
     hlayout4 = new QHBoxLayout();
@@ -94,6 +109,9 @@ FormationWindow::FormationWindow() {
 
     mainlayout->addLayout(hlayout1);
     mainlayout->addLayout(hlayout2);
+    mainlayout->addLayout(hlayout5);
+    mainlayout->addWidget(table);
+
     mainlayout->addLayout(hlayout4);
     mainlayout->addWidget(twuvs);
     mainlayout->addLayout(hlayout3);
@@ -114,10 +132,11 @@ FormationWindow::FormationWindow() {
     QObject::connect(pbnouveau,SIGNAL(clicked()),this,SLOT(nouveau()));
     QObject::connect(pbsupprimer,SIGNAL(clicked()),this,SLOT(supprimer()));
     QObject::connect(pbsauver,SIGNAL(clicked()),this,SLOT(sauver()));
-
+    QObject::connect(pbajoutfil,SIGNAL(clicked()),this,SLOT(ajouterfil()));
     QObject::connect(twuvs,SIGNAL(cellClicked(int,int)),this,SLOT(sauveruv(int, int)));
+    QObject::connect(table,SIGNAL(cellClicked(int,int)),this,SLOT(sauverfil(int, int)));
     QObject::connect(pbajoutuv, SIGNAL(clicked()), this, SLOT(ajouteruv()));
-
+    QObject::connect(table,SIGNAL(cellChanged(int,int)),this,SLOT(setenabled()));
     QObject::connect(twuvs,SIGNAL(cellChanged(int,int)),this,SLOT(setenabled()));
     QObject::connect(pbajouteruv,SIGNAL(clicked()),this,SLOT(ajouteruv()));
     QObject::connect(pbsupprimeruv,SIGNAL(clicked()),this,SLOT(supprimeruv()));
@@ -125,6 +144,7 @@ FormationWindow::FormationWindow() {
 }
 
 void FormationWindow::associerFormation(Formation *newformation) {
+
     formation=newformation;
     lenom->setText(formation->getNom());
     leresponsable->setText(formation->getResponsable());
@@ -135,6 +155,44 @@ void FormationWindow::associerFormation(Formation *newformation) {
     lecstm->setText(QString::number(formation->getNbCreditsCSTM()));
     letsh->setText(QString::number(formation->getNbCreditsTSH()));
     lesp->setText(QString::number(formation->getNbCreditsSP()));
+
+    /* Filières associées */
+    if (cbtype->currentText() == "Branche"){
+        lfilieres->show();
+        pbajoutfil->show();
+        table->show();
+        QString qu="SELECT f.nom, f.responsable FROM Formation f, AssociationBrancheFiliere A WHERE f.nom = A.filiere AND A.branche ='";
+        qu.append(lenom->text());
+        qu.append("';");
+        InterfaceSQL *sql2 = InterfaceSQL::getInstance();
+        QSqlQuery query = sql2->execQuery(qu);
+
+        while(query.next())
+            {
+                QString nom = query.value(0).toString();
+                QString responsable = query.value(1).toString();
+                table->insertRow(table->currentRow() + 1);
+
+                QTableWidgetItem *itemNom = new QTableWidgetItem(nom);
+                table->setItem(table->currentRow() + 1, 0, itemNom);
+                itemNom->setFlags(itemNom->flags() & ~ Qt::ItemIsEditable);
+                QTableWidgetItem *itemResponsable = new QTableWidgetItem(responsable);
+                table->setItem(table->currentRow() + 1, 1, itemResponsable);
+
+                QTableWidgetItem *itemEnr = new QTableWidgetItem("Enregister");
+                table->setItem(table->currentRow() + 1, 2, itemEnr);
+                itemEnr->setFlags(itemEnr->flags() & ~ Qt::ItemIsEditable);
+
+                QTableWidgetItem *itemSuppr = new QTableWidgetItem("Supprimer");
+                table->setItem(table->currentRow() + 1, 3, itemSuppr);
+                itemSuppr->setFlags(itemSuppr->flags() & ~ Qt::ItemIsEditable);
+
+        }
+    } else {
+        lfilieres->hide();
+        pbajoutfil->hide();
+        table->hide();
+    }
 
     /* UVs associées */
 
@@ -182,37 +240,6 @@ void FormationWindow::associerFormation(Formation *newformation) {
 
         }
 
-    /* UV** uvs = sql->getAllUvs(QString::fromStdString("SELECT * FROM UV, AssociationFormationUV A WHERE UV.code = A.uv AND A.formation = '"+formation->getNom().toStdString()+"' ;"));
-    unsigned int i=0;
-    QTableWidgetItem *code;
-    QTableWidgetItem *categorie;
-    QTableWidgetItem *nbcredits;
-    QTableWidgetItem *titre;
-    QTableWidgetItem *responsable;
-    QTableWidgetItem *saison;
-    while (uvs[i]->getCode()!=QString::fromStdString("fin")) {
-        code = new QTableWidgetItem(uvs[i]->getCode());
-        twuvs->setItem(i,0,code);
-        if (uvs[i]->getCreditsCS()>0) {categorie = new QTableWidgetItem("CS"); nbcredits = new QTableWidgetItem(QString::number(uvs[i]->getCreditsCS()));}
-        else if (uvs[i]->getCreditsTM()>0) {categorie = new QTableWidgetItem("TM"); nbcredits = new QTableWidgetItem(QString::number(uvs[i]->getCreditsTM()));}
-        else if (uvs[i]->getCreditsTSH()>0) {categorie = new QTableWidgetItem("TSH"); nbcredits = new QTableWidgetItem(QString::number(uvs[i]->getCreditsTSH()));}
-        else if (uvs[i]->getCreditsSP()>0) {categorie = new QTableWidgetItem("SP"); nbcredits = new QTableWidgetItem(QString::number(uvs[i]->getCreditsSP()));}
-        else {categorie = new QTableWidgetItem(""); nbcredits = new QTableWidgetItem("");}
-        twuvs->setItem(i,1,categorie);
-        twuvs->setItem(i,2,nbcredits);
-        titre = new QTableWidgetItem(uvs[i]->getTitre());
-        twuvs->setItem(i,3,titre);
-        responsable = new QTableWidgetItem(uvs[i]->getResponsable());
-        twuvs->setItem(i,4,responsable);
-        if (uvs[i]->getAutomne()) {
-            if(uvs[i]->getPrintemps()) {saison = new QTableWidgetItem("A/P");}
-            else {saison = new QTableWidgetItem("A");} }
-        else if (uvs[i]->getPrintemps()) {saison = new QTableWidgetItem("P");}
-        else {saison = new QTableWidgetItem("");}
-        twuvs->setItem(i,5,saison);
-        ++i;
-    }
-    twuvs->setRowCount(i); */
     pbsauver->setEnabled(false);
     pbannuler->setEnabled(false);
 }
@@ -243,6 +270,8 @@ void FormationWindow::rechercher() {
             Formation *formation = sql->selectFormation(QString::fromStdString("SELECT * FROM Formation WHERE nom = '"+lenom->text().toStdString()+"';"));
             twuvs->clearContents();
             twuvs->setRowCount(0);
+            table->clearContents();
+            table->setRowCount(0);
             associerFormation(formation);
         }
     }
@@ -387,6 +416,38 @@ void FormationWindow::sauveruv(int r, int c){
         }
 }
 
+void FormationWindow::sauverfil(int r, int c){
+    /* Sauvegardes des modifications des uvs associées */
+        qDebug()<<r<<c;
+        if (c == 2){
+            InterfaceSQL *sql = InterfaceSQL::getInstance();
+            QString responsable = (table->item(r,1)->data(Qt::EditRole)).toString();
+            unsigned int j=0;
+            while (responsable[j]!='\0') {
+                if (responsable[j]=='\'') {responsable.insert(j,'\'');}
+                ++j;
+            }
+
+            QString q2 = "UPDATE Formation SET responsable = '";
+            q2.append(responsable);
+            q2.append("' WHERE nom = '");
+            q2.append((table->item(r,0)->data(Qt::EditRole)).toString());
+            q2.append("';");
+            qDebug()<<q2;
+            sql->execQuery(q2);
+        }
+        if (c == 3){ // Suppression de l'association entre l'UV et la formation
+            QString q = "DELETE FROM AssociationBrancheFiliere WHERE branche = '";
+            q.append(lenom->text());
+            q.append("' AND filiere = '");
+            q.append((table->item(r,0)->data(Qt::EditRole)).toString());
+            q.append("';");
+            InterfaceSQL *sql = InterfaceSQL::getInstance();
+            sql->execQuery(q);
+            table->removeRow(r);
+        }
+}
+
 NewFormationWindow::NewFormationWindow(FormationWindow *fw) : master(fw) {
     mainlayout = new QVBoxLayout();
     hlayout1 = new QHBoxLayout();
@@ -441,6 +502,14 @@ void FormationWindow::ajouteruv(){
     fenetre->show();
 }
 
+void FormationWindow::ajouterfil(){
+    if (cbtype->currentText() == "Branche"){
+        QString b = lenom->text();
+        AssocierFiliereWindow *fenetre = new AssocierFiliereWindow(b);
+        fenetre->show();
+    }
+}
+
 AssocierUVWindow::AssocierUVWindow(const QString& f): formation(f) {
     setWindowTitle("UTProfiler");
     mainlayout = new QVBoxLayout();
@@ -486,8 +555,10 @@ void AssocierUVWindow::ajouter() {
         msg.exec();
     }
     else {
-        QString q = "SELECT * FROM UV WHERE code = '";
+        QString q = "SELECT * FROM AssociationFormationUV WHERE uv = '";
         q.append(cbuv->currentText());
+        q.append("' AND formation ='");
+        q.append(getFormation());
         q.append("';");
         InterfaceSQL *sql = InterfaceSQL::getInstance();
         QSqlQuery query = sql->execQuery(q);
@@ -505,6 +576,72 @@ void AssocierUVWindow::ajouter() {
             q2.append("');");
             InterfaceSQL *sql = InterfaceSQL::getInstance();
             sql->execQuery(q2);
+        }
+    }
+    close();
+}
+
+AssocierFiliereWindow::AssocierFiliereWindow(const QString& b): branche(b) {
+    setWindowTitle("UTProfiler");
+    mainlayout = new QVBoxLayout();
+
+    hlayout1 = new QHBoxLayout();
+
+    lnom = new QLabel("Nom : ");
+    lenom = new QLineEdit;
+
+    hlayout1->addWidget(lnom);
+    hlayout1->addWidget(lenom);
+
+    hlayout2 = new QHBoxLayout();
+    pbajouter = new QPushButton("Ajouter");
+    hlayout2->addWidget(pbajouter);
+
+    mainlayout->addLayout(hlayout1);
+    mainlayout->addLayout(hlayout2);
+
+    this->setLayout(mainlayout);
+
+    QObject::connect(pbajouter,SIGNAL(clicked()),this,SLOT(ajouter()));
+
+}
+
+void AssocierFiliereWindow::ajouter() {
+
+    if (getBranche() == '\0'){
+        QMessageBox msg;
+        msg.setText("Pour associer une filière à une branche, il faut rentrer au préalable le nom d'une branche.");
+        msg.exec();
+    }
+    else {
+        QString q = "SELECT * FROM AssociationBrancheFiliere WHERE filiere = '";
+        q.append(lenom->text());
+        q.append("' AND branche ='");
+        q.append(getBranche());
+        q.append("';");
+        InterfaceSQL *sql = InterfaceSQL::getInstance();
+        QSqlQuery query = sql->execQuery(q);
+        query.next();
+        if (query.value(0).toString() != ""){ // La formation est déjà associée à cette formation
+            QMessageBox msg;
+            QString text = "Cette filière est déjà associée à la branche ";
+            text.append(getBranche());
+            text.append(".");
+            msg.setText(text);
+            msg.exec();
+        } else {
+            QString q2="INSERT INTO AssociationBrancheFiliere(filiere, branche) VALUES ('";
+            q2.append(lenom->text());
+            q2.append("','");
+            q2.append(getBranche());
+            q2.append("');");
+            InterfaceSQL *sql = InterfaceSQL::getInstance();
+            sql->execQuery(q2);
+
+            QString q3="INSERT INTO Formation(nom) VALUES ('";
+            q3.append(lenom->text());
+            q3.append("');");
+            sql->execQuery(q3);
         }
     }
     close();

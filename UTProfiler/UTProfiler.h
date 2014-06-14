@@ -713,6 +713,10 @@ class FormationWindow : public QWidget {
     QPushButton *pbsauver;
     QLabel *luvs;
     QPushButton *pbajoutuv;
+    QHBoxLayout *hlayout5;
+    QLabel *lfilieres;
+    QPushButton *pbajoutfil;
+    QTableWidget *table;
    public :
     FormationWindow();
     void associerFormation(Formation *formation);
@@ -725,6 +729,8 @@ class FormationWindow : public QWidget {
     void sauver();
     void sauveruv(int r, int c);
     void ajouteruv();
+    void sauverfil(int r, int c);
+    void ajouterfil();
 
 };
 
@@ -823,6 +829,24 @@ class AssocierUVWindow : public QWidget{
     public :
         AssocierUVWindow(const QString& f);
         QString getFormation() const {return formation;}
+    public slots :
+        void ajouter();
+};
+
+class AssocierFiliereWindow : public QWidget{
+    Q_OBJECT
+    QString branche;
+
+    QVBoxLayout *mainlayout;
+    QHBoxLayout *hlayout1;
+    QHBoxLayout *hlayout2;
+    QLabel *lnom;
+    QLineEdit *lenom;
+    QPushButton *pbajouter;
+
+    public :
+        AssocierFiliereWindow(const QString& b);
+        QString getBranche() const {return branche;}
     public slots :
         void ajouter();
 };
