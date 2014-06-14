@@ -143,6 +143,16 @@ CREATE TABLE IF NOT EXISTS AssociationFormationUV (
 	formation VARCHAR(25) REFERENCES Formation(nom),
 	PRIMARY KEY (uv,formation));
 
+CREATE TABLE IF NOT EXISTS CompletionProfil (
+	id INTEGER PRIMARY KEY,
+	dossier CHAR(8) REFERENCES Dossier(login),
+	uv1 VARCHAR(10) REFERENCES UV(code),
+	uv2 VARCHAR(10) REFERENCES UV(code),
+	uv3 VARCHAR(10) REFERENCES UV(code),
+	uv4 VARCHAR(10) REFERENCES UV(code),
+	uv5 VARCHAR(10) REFERENCES UV(code),
+	uv6 VARCHAR(10) REFERENCES UV(code));
+
 INSERT INTO UV(code,titre,creditsCS,creditsTM,creditsTSH,creditsSP,printemps,automne) VALUES (
 	'BL01',
 	'Sciences Biologiques Pour L''Ingénieur',

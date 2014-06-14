@@ -419,6 +419,7 @@ class InterfaceSQL {
     Formation* selectFormation(const QString& q);
     Dossier* selectDossier(const QString& q);
     Semestre* selectSemestre(const QString& q);
+    QString*** selectCompletion(const QString& q);
 };
 
 class UVWindow;
@@ -735,11 +736,13 @@ class FormationWindow : public QWidget {
 QString checkSyntax(QString s);
 
 class CompletionProfilWindow;
+class RetrouverCompletionWindow;
 
 class SearchDossierWindow : public QWidget {
     Q_OBJECT
     friend class CompletionProfilWindow;
     friend class HomeWindow;
+    RetrouverCompletionWindow *retrouvercompletionwindow;
     Dossier *dossier;
     CompletionProfilWindow *master;
     QVBoxLayout *mainlayout;
@@ -754,6 +757,7 @@ class SearchDossierWindow : public QWidget {
     QLineEdit *lerejets;
     QHBoxLayout *hlayout4;
     QPushButton *pbannuler;
+    QPushButton *pbretrouver;
     QPushButton *pbrechercher;
     QString **souhaits;
     QString **rejets;
@@ -761,7 +765,45 @@ class SearchDossierWindow : public QWidget {
     SearchDossierWindow(CompletionProfilWindow *fw);
    public slots :
     void rechercher();
+    void retrouver();
     void annuler();
+};
+
+class RetrouverCompletionWindow : public QWidget {
+    Q_OBJECT
+    friend class SearchDossierWindow;
+    QString ***completions;
+    QVBoxLayout *mainlayout;
+    QLabel *lresultat;
+    QHBoxLayout *hlayout1;
+    QLabel *luv1;
+    QLineEdit *leuv1;
+    QHBoxLayout *hlayout2;
+    QLabel *luv2;
+    QLineEdit *leuv2;
+    QHBoxLayout *hlayout3;
+    QLabel *luv3;
+    QLineEdit *leuv3;
+    QHBoxLayout *hlayout4;
+    QLabel *luv4;
+    QLineEdit *leuv4;
+    QHBoxLayout *hlayout5;
+    QLabel *luv5;
+    QLineEdit *leuv5;
+    QHBoxLayout *hlayout6;
+    QLabel *luv6;
+    QLineEdit *leuv6;
+    QHBoxLayout *hlayout7;
+    QPushButton *pbprecedent;
+    QPushButton *pbfermer;
+    QPushButton *pbsuivant;
+    int indice;
+   public :
+    RetrouverCompletionWindow(QString ***c);
+    void associercompletion (QString **completion);
+   public slots :
+    void precedent();
+    void suivant();
 };
 
 class CompletionProfilWindow : public QWidget {
@@ -800,12 +842,17 @@ class CompletionProfilWindow : public QWidget {
     QLineEdit *leuv6;
     QPushButton *pbconfirmer6;
     QPushButton *pbrefuser6;
+    QHBoxLayout *hlayout7;
     QPushButton *pbok;
+    QPushButton *pbenregistrer;
+    int compteurConfirme;
    public :
     CompletionProfilWindow();
     void CompletionProfil(Dossier *dossier, QString** souhaits, QString** rejets);
+    void associercompletion(UV **uvs);
    public slots :
     void rechercher();
+    void enregistrer();
     void confirmer1();
     void confirmer2();
     void confirmer3();

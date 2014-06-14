@@ -1,6 +1,6 @@
 #include "UTProfiler.h"
 
-CompletionProfilWindow::CompletionProfilWindow() {
+CompletionProfilWindow::CompletionProfilWindow() : compteurConfirme(6) {
     searchdossierwindow = new SearchDossierWindow(this);
     mainlayout = new QVBoxLayout();
     lresultat = new QLabel("Voici les UVs que nous vous proposons : ");
@@ -34,7 +34,10 @@ CompletionProfilWindow::CompletionProfilWindow() {
     leuv6 = new QLineEdit();
     pbconfirmer6 = new QPushButton("Confirmer");
     pbrefuser6 = new QPushButton("Refuser");
+    hlayout7 = new QHBoxLayout();
     pbok = new QPushButton("OK");
+    pbenregistrer = new QPushButton("Enregistrer");
+    pbenregistrer->setEnabled(false);
     hlayout1->addWidget(luv1);
     hlayout1->addWidget(leuv1);
     hlayout1->addWidget(pbconfirmer1);
@@ -59,6 +62,8 @@ CompletionProfilWindow::CompletionProfilWindow() {
     hlayout6->addWidget(leuv6);
     hlayout6->addWidget(pbconfirmer6);
     hlayout6->addWidget(pbrefuser6);
+    hlayout7->addWidget(pbok);
+    hlayout7->addWidget(pbenregistrer);
     mainlayout->addWidget(lresultat);
     mainlayout->addLayout(hlayout1);
     mainlayout->addLayout(hlayout2);
@@ -66,7 +71,7 @@ CompletionProfilWindow::CompletionProfilWindow() {
     mainlayout->addLayout(hlayout4);
     mainlayout->addLayout(hlayout5);
     mainlayout->addLayout(hlayout6);
-    mainlayout->addWidget(pbok);
+    mainlayout->addLayout(hlayout7);
     setLayout(mainlayout);
     QObject::connect(pbrefuser1,SIGNAL(clicked()),this,SLOT(refuser1()));
     QObject::connect(pbrefuser2,SIGNAL(clicked()),this,SLOT(refuser2()));
@@ -81,6 +86,7 @@ CompletionProfilWindow::CompletionProfilWindow() {
     QObject::connect(pbconfirmer5,SIGNAL(clicked()),this,SLOT(confirmer5()));
     QObject::connect(pbconfirmer6,SIGNAL(clicked()),this,SLOT(confirmer6()));
     QObject::connect(pbok,SIGNAL(clicked()),this,SLOT(close()));
+    QObject::connect(pbenregistrer,SIGNAL(clicked()),this,SLOT(enregistrer()));
 }
 
 void CompletionProfilWindow::CompletionProfil(Dossier *dossier, QString **souhaits, QString **rejets) {
@@ -144,6 +150,19 @@ void CompletionProfilWindow::CompletionProfil(Dossier *dossier, QString **souhai
 }
 
 void CompletionProfilWindow::rechercher() {
+    compteurConfirme=6;
+    pbconfirmer1->setEnabled(true);
+    pbrefuser1->setEnabled(true);
+    pbconfirmer2->setEnabled(true);
+    pbrefuser2->setEnabled(true);
+    pbconfirmer3->setEnabled(true);
+    pbrefuser3->setEnabled(true);
+    pbconfirmer4->setEnabled(true);
+    pbrefuser4->setEnabled(true);
+    pbconfirmer5->setEnabled(true);
+    pbrefuser5->setEnabled(true);
+    pbconfirmer6->setEnabled(true);
+    pbrefuser6->setEnabled(true);
     searchdossierwindow->show();
     hide();
 }
@@ -173,8 +192,10 @@ SearchDossierWindow::SearchDossierWindow(CompletionProfilWindow *fw) : master(fw
     hlayout3->addWidget(lerejets);
     hlayout4 = new QHBoxLayout();
     pbannuler = new QPushButton("Annuler");
+    pbretrouver = new QPushButton("Retrouver");
     pbrechercher = new QPushButton("Rechercher");
     hlayout4->addWidget(pbannuler);
+    hlayout4->addWidget(pbretrouver);
     hlayout4->addWidget(pbrechercher);
     mainlayout->addLayout(hlayout1);
     mainlayout->addLayout(hlayout2);
@@ -182,6 +203,7 @@ SearchDossierWindow::SearchDossierWindow(CompletionProfilWindow *fw) : master(fw
     mainlayout->addLayout(hlayout4);
     setLayout(mainlayout);
     QObject::connect(pbannuler,SIGNAL(clicked()),this,SLOT(annuler()));
+    QObject::connect(pbretrouver,SIGNAL(clicked()),this,SLOT(retrouver()));
     QObject::connect(pbrechercher,SIGNAL(clicked()),this,SLOT(rechercher()));
 }
 
@@ -189,6 +211,7 @@ void SearchDossierWindow::annuler() {
     master->close();
     close();
 }
+
 void SearchDossierWindow::rechercher() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     dossier = sql->selectDossier(QString::fromStdString("SELECT * FROM Dossier WHERE login = '"+lenom->currentText().toStdString()+"';"));
@@ -225,31 +248,43 @@ void SearchDossierWindow::rechercher() {
 void CompletionProfilWindow::confirmer1() {
     pbconfirmer1->setEnabled(false);
     pbrefuser1->setEnabled(false);
+    compteurConfirme--;
+    if (compteurConfirme==0) {pbenregistrer->setEnabled(true);}
 }
 
 void CompletionProfilWindow::confirmer2() {
     pbconfirmer2->setEnabled(false);
     pbrefuser2->setEnabled(false);
+    compteurConfirme--;
+    if (compteurConfirme==0) {pbenregistrer->setEnabled(true);}
 }
 
 void CompletionProfilWindow::confirmer3() {
     pbconfirmer3->setEnabled(false);
     pbrefuser3->setEnabled(false);
+    compteurConfirme--;
+    if (compteurConfirme==0) {pbenregistrer->setEnabled(true);}
 }
 
 void CompletionProfilWindow::confirmer4() {
     pbconfirmer4->setEnabled(false);
     pbrefuser4->setEnabled(false);
+    compteurConfirme--;
+    if (compteurConfirme==0) {pbenregistrer->setEnabled(true);}
 }
 
 void CompletionProfilWindow::confirmer5() {
     pbconfirmer5->setEnabled(false);
     pbrefuser5->setEnabled(false);
+    compteurConfirme--;
+    if (compteurConfirme==0) {pbenregistrer->setEnabled(true);}
 }
 
 void CompletionProfilWindow::confirmer6() {
     pbconfirmer6->setEnabled(false);
     pbrefuser6->setEnabled(false);
+    compteurConfirme--;
+    if (compteurConfirme==0) {pbenregistrer->setEnabled(true);}
 }
 
 void CompletionProfilWindow::refuser1() {
@@ -298,4 +333,117 @@ void CompletionProfilWindow::refuser6() {
     *searchdossierwindow->rejets[i]=leuv6->text();
     searchdossierwindow->rejets[++i] = new QString("fin");
     CompletionProfil(searchdossierwindow->dossier,searchdossierwindow->souhaits,searchdossierwindow->rejets);
+}
+
+void CompletionProfilWindow::enregistrer() {
+    InterfaceSQL *sql = InterfaceSQL::getInstance();
+    QString q=QString::fromStdString("INSERT INTO CompletionProfil VALUES (");
+    q.append(QString::number((long int)&compteurConfirme*(rand()%500)));
+    q.append(", '");
+    q.append(searchdossierwindow->dossier->getLogin());
+    q.append("', '");
+    q.append(leuv1->text());
+    q.append("', '");
+    q.append(leuv2->text());
+    q.append("', '");
+    q.append(leuv3->text());
+    q.append("', '");
+    q.append(leuv4->text());
+    q.append("', '");
+    q.append(leuv5->text());
+    q.append("', '");
+    q.append(leuv6->text());
+    q.append("');");
+    sql->execQuery(q);
+    pbenregistrer->setEnabled(false);
+}
+
+void SearchDossierWindow::retrouver() {
+    InterfaceSQL *sql = InterfaceSQL::getInstance();
+    QString ***completions = sql->selectCompletion(QString::fromStdString("SELECT * FROM CompletionProfil WHERE dossier ='"+lenom->currentText().toStdString()+"';"));
+    retrouvercompletionwindow = new RetrouverCompletionWindow(completions);
+    QObject::connect(retrouvercompletionwindow->pbfermer,SIGNAL(clicked()),this,SLOT(show()));
+    retrouvercompletionwindow->show();
+    hide();
+}
+
+RetrouverCompletionWindow::RetrouverCompletionWindow(QString ***c) : completions(c), indice(0) {
+    mainlayout = new QVBoxLayout();
+    lresultat = new QLabel("Voici les UVs que nous vous proposons : ");
+    hlayout1 = new QHBoxLayout();
+    luv1 = new QLabel("UV n°1 (CS) : ");
+    leuv1 = new QLineEdit();
+    hlayout2 = new QHBoxLayout();
+    luv2 = new QLabel("UV n°2 (CS) : ");
+    leuv2 = new QLineEdit();
+    hlayout3 = new QHBoxLayout();
+    luv3 = new QLabel("UV n°3 (TM) : ");
+    leuv3 = new QLineEdit();
+    hlayout4 = new QHBoxLayout();
+    luv4 = new QLabel("UV n°4 (TM): ");
+    leuv4 = new QLineEdit();
+    hlayout5 = new QHBoxLayout();
+    luv5 = new QLabel("UV n°5 (TSH) : ");
+    leuv5 = new QLineEdit();
+    hlayout6 = new QHBoxLayout();
+    luv6 = new QLabel("UV n°6 (TSH): ");
+    leuv6 = new QLineEdit();
+    hlayout7 = new QHBoxLayout();
+    pbprecedent = new QPushButton("Précédent");
+    pbprecedent->setEnabled(false);
+    pbfermer = new QPushButton("Fermer");
+    pbsuivant = new QPushButton("Suivant");
+    if (completions[indice+1][0]->toStdString()=="fin") {pbsuivant->setEnabled(false);}
+    hlayout1->addWidget(luv1);
+    hlayout1->addWidget(leuv1);
+    hlayout2->addWidget(luv2);
+    hlayout2->addWidget(leuv2);
+    hlayout3->addWidget(luv3);
+    hlayout3->addWidget(leuv3);
+    hlayout4->addWidget(luv4);
+    hlayout4->addWidget(leuv4);
+    hlayout5->addWidget(luv5);
+    hlayout5->addWidget(leuv5);
+    hlayout6->addWidget(luv6);
+    hlayout7->addWidget(pbprecedent);
+    hlayout7->addWidget(pbfermer);
+    hlayout7->addWidget(pbsuivant);
+    mainlayout->addWidget(lresultat);
+    mainlayout->addLayout(hlayout1);
+    mainlayout->addLayout(hlayout2);
+    mainlayout->addLayout(hlayout3);
+    mainlayout->addLayout(hlayout4);
+    mainlayout->addLayout(hlayout5);
+    mainlayout->addLayout(hlayout6);
+    mainlayout->addLayout(hlayout7);
+    setLayout(mainlayout);
+    associercompletion(completions[0]);
+    QObject::connect(pbprecedent,SIGNAL(clicked()),this,SLOT(precedent()));
+    QObject::connect(pbfermer,SIGNAL(clicked()),this,SLOT(close()));
+    QObject::connect(pbsuivant,SIGNAL(clicked()),this,SLOT(suivant()));
+}
+
+void RetrouverCompletionWindow::precedent() {
+    indice--;
+    associercompletion(completions[indice]);
+    if (indice==0) {pbprecedent->setEnabled(false);}
+}
+
+void RetrouverCompletionWindow::suivant() {
+    pbprecedent->setEnabled(true);
+    indice++;
+    associercompletion(completions[indice]);
+    if (completions[indice+1][0]->toStdString()=="fin") {pbsuivant->setEnabled(false);}
+}
+
+void RetrouverCompletionWindow::associercompletion(QString **completion) {
+    if (completion[0]->toStdString()!="fin") {
+        leuv1->setText(*completion[1]);
+        leuv2->setText(*completion[2]);
+        leuv3->setText(*completion[3]);
+        leuv4->setText(*completion[4]);
+        leuv5->setText(*completion[5]);
+        leuv6->setText(*completion[6]);
+    }
+
 }

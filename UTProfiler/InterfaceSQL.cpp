@@ -104,6 +104,24 @@ UV** InterfaceSQL::getAllUvs(const QString& q) {
     return res;
 }
 
+
+QString*** InterfaceSQL::selectCompletion(const QString& q) {
+    if (!query->exec(q)) {throw UTProfilerException(QString::fromStdString("Erreur : La requête suivante n'a pas fonctionné :\n")+q+QString::fromStdString("\n\nDernière Erreur : ")+query->lastError().text());}
+    query->next();
+    QString*** res = new QString**[10];
+    unsigned int i=0,j;
+    if (query->isValid()) {
+        while (query->next()) {
+            res[i] = new QString*[10];
+            for (j=0;j<7;++j) {res[i][j] = new QString(query->value(j+1).toString());}
+            ++i;
+        }
+        res[i]=new QString*[10];
+        res[i][0] = new QString("fin");
+    }
+    return res;
+}
+
 Dossier* InterfaceSQL::selectDossier(const QString& q) {
     string check1 = "SELECT * FROM Dossier";
     string check2 = q.toStdString();
