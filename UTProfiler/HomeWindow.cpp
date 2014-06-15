@@ -4,9 +4,9 @@ HomeWindow::HomeWindow() {
     sql = InterfaceSQL::getInstance();
     setWindowTitle("UTProfiler");
     uvwindow = new UVWindow();
-    //uvwindow->associerUV(sql->selectUV("SELECT * FROM UV WHERE code = 'LO21';"));
+    uvwindow->associerUV(sql->selectUV("SELECT * FROM UV WHERE code = 'LO21';"));
     formationwindow = new FormationWindow();
-    //formationwindow->associerFormation(sql->selectFormation("SELECT * FROM Formation WHERE nom='GI';"));
+    formationwindow->associerFormation(sql->selectFormation("SELECT * FROM Formation WHERE nom='GI';"));
     dossierwindow = new DossierWindow();
     completionprofilwindow = new CompletionProfilWindow();
     mainlayout = new QVBoxLayout();

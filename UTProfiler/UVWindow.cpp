@@ -1,7 +1,6 @@
 #include "UTProfiler.h"
 
 UVWindow::UVWindow() {
-    //UVManager *uvm = UVManager::getInstance();
     setWindowTitle("UTProfiler");
     mainlayout = new QVBoxLayout();
     hlayout1 = new QHBoxLayout();
@@ -125,8 +124,6 @@ UVWindow::UVWindow() {
 }
 
 void UVWindow::associerUV(UV *newuv) {
-    //UVManager *uvm = UVManager::getInstance();
-    //uvm->ajouterItem(newuv);
     uv=newuv;
     lecode->setText(uv->getCode());
     leresponsable->setText(uv->getResponsable());
@@ -210,8 +207,6 @@ void UVWindow::sauver() {
 }
 
 void UVWindow::supprimer() {
-    //UVManager *uvm = UVManager::getInstance();
-    //uvm->supprimerItem(uv);
     if (lecode->text() == ""){ // Vérification qu'il y ait bien une uv à supprimer
         QMessageBox msg;
         msg.setText("Veuillez rentrer un code d'UV.");

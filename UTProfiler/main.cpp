@@ -1,7 +1,6 @@
 #include "UTProfiler.h"
 
 InterfaceSQL *InterfaceSQL::instanceUnique=0;
-//UVManager *UVManager::instanceUnique=0;
 
 int main (int argc, char* argv[]) {
     QApplication app(argc, argv);

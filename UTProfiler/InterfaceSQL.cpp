@@ -1,5 +1,16 @@
 #include "UTProfiler.h"
 
+/**
+ * \file InterfaceSQL.cpp
+ * \brief Fichier source où sont implémentées les méthodes de la classe InterfaceSQL
+ * \author Gabrielle Rit Timothée Monceaux
+ * \version 0.1
+ */
+
+/**
+ * @brief Méthode permettant de gérer l'existance d'un et d'un seul objet InterfaceSQL
+ * @return L'adresse de l'unique objet InterfaceSQL
+ */
 InterfaceSQL* InterfaceSQL::getInstance() {
     if (instanceUnique==0) {
         instanceUnique = new InterfaceSQL;
@@ -7,10 +18,20 @@ InterfaceSQL* InterfaceSQL::getInstance() {
     return instanceUnique;
 }
 
+/**
+ * @brief Méthode permettant de gérer la destruction de l'unique objet InterfaceSQL
+ */
 void InterfaceSQL::libererInstance() {
     if (instanceUnique!=0) {delete instanceUnique;}
 }
 
+/**
+ * @brief Constructeur
+ *
+ * Le constructeur est ici déclaré en privé car la classe InterfaceSQL est un singleton. Il ne peut donc être appelé
+ * que par la méthode getInstance(), et uniquement lors de son premier appel.
+ * Ce constructeur crée l'unique objet InterfaceSQL et s'occuppe également de la connection à la base de données.
+ */
 InterfaceSQL::InterfaceSQL() {
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("UTProfiler.db");
@@ -18,6 +39,12 @@ InterfaceSQL::InterfaceSQL() {
     query = new QSqlQuery(db);
 }
 
+/**
+ * @brief Méthode permettant de charger un fichier en mémoire
+ * Cette méthode ouvre un explorateur de fichier, permettant à l'utilisateur de rechercher un fichier sql, puis
+ * le découpe de manière à séparer les différentes requêtes (obligatoire avec SQLITE), puis les exécute une par une.
+ * @return True si l'execution a fonctionné, false sinon.
+ */
 bool InterfaceSQL::load() {
     QString chemin = QFileDialog::getOpenFileName();
     QFile f(chemin);
@@ -40,6 +67,13 @@ bool InterfaceSQL::load() {
     return true;
 }
 
+/**
+ * @brief Méthode permettant de charger un fichier en mémoire
+ * Cette méthode est identique à InterfaceSQL::load(), sauf qu'il n'y a pas d'explorateur de fichier, mais que le chemin
+ * du fichier à charger est passé en paramètre.
+ * @param chemin : Chemin du fichier à charger
+ * @return True si l'execution a fonctionné, false sinon.
+ */
 bool InterfaceSQL::load(const QString &chemin) {
     QFile f(chemin);
     if (!f.exists()) {throw UTProfilerException(QString::fromStdString("Erreur : Le fichier '"+chemin.toStdString()+"' n'existe pas.")); return false;}
@@ -61,11 +95,26 @@ bool InterfaceSQL::load(const QString &chemin) {
     return true;
 }
 
+/**
+ * @brief Méthode pour l'execution d'une requête SQL quelconque.
+ * Cette méthode exécute n'importe quelle requête SQL passée en paramètre et retourne une référence vers l'objet query
+ * contenant le résultat de la requête. Pour cette méthode générique, c'est à l'utilisateur de se débrouiller pour obtenir le résultat.
+ * @param q : La requête à exécuter
+ * @return Une référence vers l'objet QSqlQuery contenant le résultat
+ */
 QSqlQuery& InterfaceSQL::execQuery(const QString &q) {
     if (!query->exec(q)) {throw UTProfilerException(QString::fromStdString("Erreur : La requête suivante n'a pas fonctionné :\n")+q+QString::fromStdString("\n\nDernière Erreur : ")+query->lastError().text());}
     return *query;
 }
 
+/**
+ * @brief Méthode pour la séléction d'une UV dans la base de donnée
+ * Cette méthode facilite la séléction d'une UV dans la base de donnée. En effet, elle crée un objet UV contenant le
+ * premier résultat de la requête passée en paramètre et le retourne.
+ * Cette méthode vérifie également que la requête est bien destinée à récupérer une UV.
+ * @param q : La requête à executer
+ * @return Un pointeur vers un objet UV contenant le premier résultat de la requête.
+ */
 UV* InterfaceSQL::selectUV(const QString& q) {
     string check1 = "SELECT * FROM UV";
     string check2 = q.toStdString();
@@ -84,6 +133,14 @@ UV* InterfaceSQL::selectUV(const QString& q) {
     }
 }
 
+/**
+ * @brief Méthode pour la séléction de plusieurs UVs dans la base de donnée
+ * Cette méthode facilite la séléction de plusieurs UVs dans la base de donnée. En effet, elle crée un tableau d'UVs contenant tous
+ * les résultats de la requête passée en paramètre et le retourne.
+ * Cette méthode vérifie également que la requête est bien destinée à récupérer des UVs.
+ * @param q : La requête à executer
+ * @return Un tableau de pointeurs vers des objets UV contenant l'ensemble des résultats de la requête.
+ */
 UV** InterfaceSQL::getAllUvs(const QString& q) {
     string check1 = "SELECT * FROM UV";
     string check2 = q.toStdString();
@@ -104,7 +161,13 @@ UV** InterfaceSQL::getAllUvs(const QString& q) {
     return res;
 }
 
-
+/**
+ * @brief Méthode pour la séléction de toutes les Completions de Profil sauvegardées dans la base de donnée
+ * Cette méthode facilite la séléction de plusieurs Completions de Profil dans la base de donnée. En effet, elle crée un tableau
+ * de Completion de Profils contenant tous les résultats de la requête passée en paramètre et le retourne.
+ * @param q : La requête à executer
+ * @return Un tableau de tableaux de pointeurs vers des objets QString exploitable pour la completion de Profil constitué de l'ensemble des résultats de la requête.
+ */
 QString*** InterfaceSQL::selectCompletion(const QString& q) {
     if (!query->exec(q)) {throw UTProfilerException(QString::fromStdString("Erreur : La requête suivante n'a pas fonctionné :\n")+q+QString::fromStdString("\n\nDernière Erreur : ")+query->lastError().text());}
     query->next();
@@ -122,6 +185,14 @@ QString*** InterfaceSQL::selectCompletion(const QString& q) {
     return res;
 }
 
+/**
+ * @brief Méthode pour la séléction d'un Dossier dans la base de donnée
+ * Cette méthode facilite la séléction d'un Dossier dans la base de donnée. En effet, elle crée un objet Dossier contenant le
+ * premier résultat de la requête passée en paramètre et le retourne.
+ * Cette méthode vérifie également que la requête est bien destinée à récupérer un Dossier.
+ * @param q : La requête à executer
+ * @return Un pointeur vers un objet Dossier contenant le premier résultat de la requête.
+ */
 Dossier* InterfaceSQL::selectDossier(const QString& q) {
     string check1 = "SELECT * FROM Dossier";
     string check2 = q.toStdString();
@@ -139,6 +210,14 @@ Dossier* InterfaceSQL::selectDossier(const QString& q) {
     }
 }
 
+/**
+ * @brief Méthode pour la séléction d'une Formation dans la base de donnée
+ * Cette méthode facilite la séléction d'une Formation dans la base de donnée. En effet, elle crée un objet Formation contenant le
+ * premier résultat de la requête passée en paramètre et le retourne.
+ * Cette méthode vérifie également que la requête est bien destinée à récupérer une Formation.
+ * @param q : La requête à executer
+ * @return Un pointeur vers un objet Formation contenant le premier résultat de la requête.
+ */
 Formation* InterfaceSQL::selectFormation(const QString &q) {
     /*string check1 = "SELECT * FROM Formation";
     string check2 = q.toStdString();
@@ -156,8 +235,20 @@ Formation* InterfaceSQL::selectFormation(const QString &q) {
     }
 }
 
+/**
+ * @brief Méthode pour la séléction d'un Semestre dans la base de donnée
+ * Cette méthode facilite la séléction d'un Semestre dans la base de donnée. En effet, elle crée un objet Semestre contenant le
+ * premier résultat de la requête passée en paramètre et le retourne.
+ * Cette méthode vérifie également que la requête est bien destinée à récupérer un Semestre.
+ * @param q : La requête à executer
+ * @return Un pointeur vers un objet Semestre contenant le premier résultat de la requête.
+ */
 Semestre* InterfaceSQL::selectSemestre(const QString &q) {
-    if (!query->exec(q)) {throw UTProfilerException(QString::fromStdString("Erreur : La requête :\n")+q+QString::fromStdString("\n n'a pas fonctionné.\nDernière Erreur : ")+query->lastError().text());}
+    /*string check1 = "SELECT * FROM Semestre";
+    string check2 = q.toStdString();
+    int check3 = check2.find(check1);
+    if (check3==-1) {throw UTProfilerException(QString::fromStdString("Erreur sur InterfaceSQL::selectSemestre(const QString&) : La requête doit être de la forme : 'SELECT * FROM Semestre'"));}
+  */if (!query->exec(q)) {throw UTProfilerException(QString::fromStdString("Erreur : La requête :\n")+q+QString::fromStdString("\n n'a pas fonctionné.\nDernière Erreur : ")+query->lastError().text());}
     query->next();
     if (query->isValid()) {
         Semestre *res;
