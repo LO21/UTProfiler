@@ -1,0 +1,626 @@
+\hypertarget{class_dossier}{\section{Dossier Class Reference}
+\label{class_dossier}\index{Dossier@{Dossier}}
+}
+
+
+Classe représentant un dossier.  
+
+
+
+
+{\ttfamily \#include $<$U\-T\-Profiler.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_dossier_a1515244d31ad29cf612ed2c57087e5b4}{Dossier} (const Q\-String \&l, const Q\-String \&n, const Q\-String \&p, const Q\-String \&c, bool A\-E\-U, const Q\-String \&b)
+\begin{DoxyCompactList}\small\item\em Constructeur. \end{DoxyCompactList}\item 
+\hyperlink{class_dossier_a4bf1904d4f2dfe7ddbcf38171fc661c0}{$\sim$\-Dossier} ()
+\begin{DoxyCompactList}\small\item\em Destructeur. \end{DoxyCompactList}\item 
+Q\-String \hyperlink{class_dossier_ae6e2044f4bb8202a5a9adce367c5e599}{get\-Login} () const 
+\begin{DoxyCompactList}\small\item\em Accès en lecture au login du dossier. \end{DoxyCompactList}\item 
+Q\-String \hyperlink{class_dossier_a30808ae53f1600719be62fab9365b032}{get\-Nom} () const 
+\begin{DoxyCompactList}\small\item\em Accès en lecture au nom de l'étudiant. \end{DoxyCompactList}\item 
+Q\-String \hyperlink{class_dossier_a7991a5fe62363f3a72cdbc7b4b8e7aa5}{get\-Prenom} () const 
+\begin{DoxyCompactList}\small\item\em Accès en lecture au prénom de l'étudiant. \end{DoxyCompactList}\item 
+Q\-String \hyperlink{class_dossier_ab40652445c64094021520d1e14ddbd71}{get\-Conseiller} () const 
+\begin{DoxyCompactList}\small\item\em Accès en lecture au conseiller de l'étudiant. \end{DoxyCompactList}\item 
+Q\-String \hyperlink{class_dossier_a0fab522247cd17b1dcd3d7dbcb250bd5}{get\-Branche} () const 
+\begin{DoxyCompactList}\small\item\em Accès en lecture à la branche de l'étudiant. \end{DoxyCompactList}\item 
+bool \hyperlink{class_dossier_acd5dd169bf306eef92b8f56933f4e5c3}{get\-Validation\-A\-E\-U} () const 
+\begin{DoxyCompactList}\small\item\em Accès en lecture à la validation d'activité extra universiatire de l'étudiant. \end{DoxyCompactList}\item 
+void \hyperlink{class_dossier_af0977386c8ccd466aa799204a359fdeb}{set\-Login} (const Q\-String \&s)
+\begin{DoxyCompactList}\small\item\em Accès en écriture au login du dossier. \end{DoxyCompactList}\item 
+void \hyperlink{class_dossier_a917390a59f17ed04e4abce7ef658774c}{set\-Nom} (const Q\-String \&s)
+\begin{DoxyCompactList}\small\item\em Accès en écriture au nom de l'étudiant. \end{DoxyCompactList}\item 
+void \hyperlink{class_dossier_a3cb417ca1c4f1858d1240e5ab07bfa56}{set\-Prenom} (const Q\-String \&s)
+\begin{DoxyCompactList}\small\item\em Accès en écriture au prénom de l'étudiant. \end{DoxyCompactList}\item 
+void \hyperlink{class_dossier_a44a2f33a01787922e6604fe7e14de1e2}{set\-Conseiller} (const Q\-String \&s)
+\begin{DoxyCompactList}\small\item\em Accès en écriture au conseiller de l'étudiant. \end{DoxyCompactList}\item 
+void \hyperlink{class_dossier_aed577cc66b49b8ca8d362f24f45688e0}{set\-Branche} (const Q\-String \&s)
+\begin{DoxyCompactList}\small\item\em Accès en écriture à la branche de l'étudiant. \end{DoxyCompactList}\item 
+void \hyperlink{class_dossier_a0c0c7bdfa3a4cb8639cbaaaa4730ad96}{set\-Validation\-A\-E\-U} (bool b)
+\begin{DoxyCompactList}\small\item\em Accès en écriture à la validation d'activité extra universiatire de l'étudiant. \end{DoxyCompactList}\item 
+bool \hyperlink{class_dossier_aa6c9b60422b039741017fb47be117c68}{check\-Mineur\-C\-C\-T} () const 
+\begin{DoxyCompactList}\small\item\em Vérifie si l'étudiant a validé le mineur C\-C\-T. \end{DoxyCompactList}\item 
+bool \hyperlink{class_dossier_abdac9bb5e0dda2922188d1b2eaeef512}{check\-Mineur\-D\-D\-R\-E\-S\-E\-T} () const 
+\begin{DoxyCompactList}\small\item\em Vérifie si l'étudiant a validé le mineur D\-D-\/\-R\-E\-S\-E\-T. \end{DoxyCompactList}\item 
+bool \hyperlink{class_dossier_afff6564a0f1ed856dd10029f02a20e72}{check\-Mineur\-F\-I\-R\-M\-E} () const 
+\begin{DoxyCompactList}\small\item\em Vérifie si l'étudiant a validé le mineur F\-I\-R\-M\-E. \end{DoxyCompactList}\item 
+bool \hyperlink{class_dossier_a8e25d35b689637c3d5f1a23bdf5d1dff}{check\-Mineur\-I\-N\-T\-E\-N\-T} () const 
+\begin{DoxyCompactList}\small\item\em Vérifie si l'étudiant a validé le mineur I\-N\-T\-E\-N\-T. \end{DoxyCompactList}\item 
+bool \hyperlink{class_dossier_acaaaaae68efbb84e0cbc49b9de57e0d0}{check\-Mineur\-P\-H\-I\-T\-E\-C\-O} () const 
+\begin{DoxyCompactList}\small\item\em Vérifie si l'étudiant a validé le mineur P\-H\-I\-T\-E\-C\-O. \end{DoxyCompactList}\item 
+bool \hyperlink{class_dossier_a17f062900ee3200dbf39fdc600853e7f}{check\-Mineur\-S\-T} () const 
+\begin{DoxyCompactList}\small\item\em Vérifie si l'étudiant a validé le mineur S\-T. \end{DoxyCompactList}\item 
+bool \hyperlink{class_dossier_aa2f814f3e4980960cc9c6a0be1f9e090}{check\-Mineur\-T\-C\-N} () const 
+\begin{DoxyCompactList}\small\item\em Vérifie si l'étudiant a validé le mineur T\-C\-N. \end{DoxyCompactList}\item 
+bool \hyperlink{class_dossier_a2b47261df07a11eb2925d4a2f10d161d}{check\-G\-I} () const 
+\begin{DoxyCompactList}\small\item\em Vérifie la branche de l'étudiant. \end{DoxyCompactList}\item 
+bool \hyperlink{class_dossier_aaa4bd55702b759f013674027431965e7}{check\-G\-M} () const 
+\begin{DoxyCompactList}\small\item\em Vérifie la branche de l'étudiant. \end{DoxyCompactList}\item 
+bool \hyperlink{class_dossier_a1de20945ed4b24f32d39a056e93da8d7}{check\-G\-P} () const 
+\begin{DoxyCompactList}\small\item\em Vérifie la branche de l'étudiant. \end{DoxyCompactList}\item 
+bool \hyperlink{class_dossier_a9467e9e3512b81393af80b47f7f67b10}{check\-G\-S\-M} () const 
+\begin{DoxyCompactList}\small\item\em Vérifie la branche de l'étudiant. \end{DoxyCompactList}\item 
+bool \hyperlink{class_dossier_a395f52632ee83f26de3943fbec232834}{check\-G\-S\-U} () const 
+\begin{DoxyCompactList}\small\item\em Vérifie la branche de l'étudiant. \end{DoxyCompactList}\item 
+bool \hyperlink{class_dossier_afb067c27f077ef6c68f87a058e947cd4}{check\-G\-B} () const 
+\begin{DoxyCompactList}\small\item\em Vérifie la branche de l'étudiant. \end{DoxyCompactList}\item 
+bool \hyperlink{class_dossier_a61c7318212cc5b1022f47593054667bd}{check\-T\-C} () const 
+\begin{DoxyCompactList}\small\item\em Vérifie la branche de l'étudiant. \end{DoxyCompactList}\item 
+bool \hyperlink{class_dossier_aa8b190391bf5b72c2856eb19d35c7961}{check\-Hutech} () const 
+\begin{DoxyCompactList}\small\item\em Vérifie la branche de l'étudiant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe représentant un dossier. 
+
+Definition at line 495 of file U\-T\-Profiler.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_dossier_a1515244d31ad29cf612ed2c57087e5b4}{\index{Dossier@{Dossier}!Dossier@{Dossier}}
+\index{Dossier@{Dossier}!Dossier@{Dossier}}
+\subsubsection[{Dossier}]{\setlength{\rightskip}{0pt plus 5cm}Dossier\-::\-Dossier (
+\begin{DoxyParamCaption}
+\item[{const Q\-String \&}]{l, }
+\item[{const Q\-String \&}]{n, }
+\item[{const Q\-String \&}]{p, }
+\item[{const Q\-String \&}]{c, }
+\item[{bool}]{A\-E\-U, }
+\item[{const Q\-String \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_a1515244d31ad29cf612ed2c57087e5b4}
+
+
+Constructeur. 
+
+Constructeur de la classe \hyperlink{class_dossier}{Dossier}
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & \-: login du dossier \\
+\hline
+{\em n} & \-: Nom de l'étudiant \\
+\hline
+{\em p} & \-: Prénom de l'étudiant \\
+\hline
+{\em c} & \-: Conseiller de l'étudiant \\
+\hline
+{\em A\-E\-U} & \-: Booléen représentant si l'étudiant a validé son Activité Extra Universitaire \\
+\hline
+{\em b} & \-: Branche de l'étudiant \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 524 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_a4bf1904d4f2dfe7ddbcf38171fc661c0}{\index{Dossier@{Dossier}!$\sim$\-Dossier@{$\sim$\-Dossier}}
+\index{$\sim$\-Dossier@{$\sim$\-Dossier}!Dossier@{Dossier}}
+\subsubsection[{$\sim$\-Dossier}]{\setlength{\rightskip}{0pt plus 5cm}Dossier\-::$\sim$\-Dossier (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_dossier_a4bf1904d4f2dfe7ddbcf38171fc661c0}
+
+
+Destructeur. 
+
+Destructeur de la classe \hyperlink{class_dossier}{Dossier} 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_dossier_afb067c27f077ef6c68f87a058e947cd4}{\index{Dossier@{Dossier}!check\-G\-B@{check\-G\-B}}
+\index{check\-G\-B@{check\-G\-B}!Dossier@{Dossier}}
+\subsubsection[{check\-G\-B}]{\setlength{\rightskip}{0pt plus 5cm}bool Dossier\-::check\-G\-B (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_afb067c27f077ef6c68f87a058e947cd4}
+
+
+Vérifie la branche de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+vrai si l'étudiant est en G\-B, faux sinon 
+\end{DoxyReturn}
+
+
+Definition at line 723 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_a2b47261df07a11eb2925d4a2f10d161d}{\index{Dossier@{Dossier}!check\-G\-I@{check\-G\-I}}
+\index{check\-G\-I@{check\-G\-I}!Dossier@{Dossier}}
+\subsubsection[{check\-G\-I}]{\setlength{\rightskip}{0pt plus 5cm}bool Dossier\-::check\-G\-I (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_a2b47261df07a11eb2925d4a2f10d161d}
+
+
+Vérifie la branche de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+vrai si l'étudiant est en G\-I, faux sinon 
+\end{DoxyReturn}
+
+
+Definition at line 673 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_aaa4bd55702b759f013674027431965e7}{\index{Dossier@{Dossier}!check\-G\-M@{check\-G\-M}}
+\index{check\-G\-M@{check\-G\-M}!Dossier@{Dossier}}
+\subsubsection[{check\-G\-M}]{\setlength{\rightskip}{0pt plus 5cm}bool Dossier\-::check\-G\-M (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_aaa4bd55702b759f013674027431965e7}
+
+
+Vérifie la branche de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+vrai si l'étudiant est en G\-M, faux sinon 
+\end{DoxyReturn}
+
+
+Definition at line 683 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_a1de20945ed4b24f32d39a056e93da8d7}{\index{Dossier@{Dossier}!check\-G\-P@{check\-G\-P}}
+\index{check\-G\-P@{check\-G\-P}!Dossier@{Dossier}}
+\subsubsection[{check\-G\-P}]{\setlength{\rightskip}{0pt plus 5cm}bool Dossier\-::check\-G\-P (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_a1de20945ed4b24f32d39a056e93da8d7}
+
+
+Vérifie la branche de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+vrai si l'étudiant est en G\-P, faux sinon 
+\end{DoxyReturn}
+
+
+Definition at line 693 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_a9467e9e3512b81393af80b47f7f67b10}{\index{Dossier@{Dossier}!check\-G\-S\-M@{check\-G\-S\-M}}
+\index{check\-G\-S\-M@{check\-G\-S\-M}!Dossier@{Dossier}}
+\subsubsection[{check\-G\-S\-M}]{\setlength{\rightskip}{0pt plus 5cm}bool Dossier\-::check\-G\-S\-M (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_a9467e9e3512b81393af80b47f7f67b10}
+
+
+Vérifie la branche de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+vrai si l'étudiant est en G\-S\-M, faux sinon 
+\end{DoxyReturn}
+
+
+Definition at line 703 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_a395f52632ee83f26de3943fbec232834}{\index{Dossier@{Dossier}!check\-G\-S\-U@{check\-G\-S\-U}}
+\index{check\-G\-S\-U@{check\-G\-S\-U}!Dossier@{Dossier}}
+\subsubsection[{check\-G\-S\-U}]{\setlength{\rightskip}{0pt plus 5cm}bool Dossier\-::check\-G\-S\-U (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_a395f52632ee83f26de3943fbec232834}
+
+
+Vérifie la branche de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+vrai si l'étudiant est en G\-S\-U, faux sinon 
+\end{DoxyReturn}
+
+
+Definition at line 713 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_aa8b190391bf5b72c2856eb19d35c7961}{\index{Dossier@{Dossier}!check\-Hutech@{check\-Hutech}}
+\index{check\-Hutech@{check\-Hutech}!Dossier@{Dossier}}
+\subsubsection[{check\-Hutech}]{\setlength{\rightskip}{0pt plus 5cm}bool Dossier\-::check\-Hutech (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_aa8b190391bf5b72c2856eb19d35c7961}
+
+
+Vérifie la branche de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+vrai si l'étudiant est en H\-U\-T\-E\-C\-H, faux sinon 
+\end{DoxyReturn}
+
+
+Definition at line 743 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_aa6c9b60422b039741017fb47be117c68}{\index{Dossier@{Dossier}!check\-Mineur\-C\-C\-T@{check\-Mineur\-C\-C\-T}}
+\index{check\-Mineur\-C\-C\-T@{check\-Mineur\-C\-C\-T}!Dossier@{Dossier}}
+\subsubsection[{check\-Mineur\-C\-C\-T}]{\setlength{\rightskip}{0pt plus 5cm}bool Dossier\-::check\-Mineur\-C\-C\-T (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_dossier_aa6c9b60422b039741017fb47be117c68}
+
+
+Vérifie si l'étudiant a validé le mineur C\-C\-T. 
+
+\begin{DoxyReturn}{Returns}
+vrai si l'étudiant a validé le mineur C\-C\-T, faux sinon 
+\end{DoxyReturn}
+
+
+Definition at line 46 of file U\-T\-Profiler.\-cpp.
+
+\hypertarget{class_dossier_abdac9bb5e0dda2922188d1b2eaeef512}{\index{Dossier@{Dossier}!check\-Mineur\-D\-D\-R\-E\-S\-E\-T@{check\-Mineur\-D\-D\-R\-E\-S\-E\-T}}
+\index{check\-Mineur\-D\-D\-R\-E\-S\-E\-T@{check\-Mineur\-D\-D\-R\-E\-S\-E\-T}!Dossier@{Dossier}}
+\subsubsection[{check\-Mineur\-D\-D\-R\-E\-S\-E\-T}]{\setlength{\rightskip}{0pt plus 5cm}bool Dossier\-::check\-Mineur\-D\-D\-R\-E\-S\-E\-T (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_dossier_abdac9bb5e0dda2922188d1b2eaeef512}
+
+
+Vérifie si l'étudiant a validé le mineur D\-D-\/\-R\-E\-S\-E\-T. 
+
+\begin{DoxyReturn}{Returns}
+vrai si l'étudiant a validé le mineur D\-D-\/\-R\-E\-S\-E\-T, faux sinon 
+\end{DoxyReturn}
+
+
+Definition at line 73 of file U\-T\-Profiler.\-cpp.
+
+\hypertarget{class_dossier_afff6564a0f1ed856dd10029f02a20e72}{\index{Dossier@{Dossier}!check\-Mineur\-F\-I\-R\-M\-E@{check\-Mineur\-F\-I\-R\-M\-E}}
+\index{check\-Mineur\-F\-I\-R\-M\-E@{check\-Mineur\-F\-I\-R\-M\-E}!Dossier@{Dossier}}
+\subsubsection[{check\-Mineur\-F\-I\-R\-M\-E}]{\setlength{\rightskip}{0pt plus 5cm}bool Dossier\-::check\-Mineur\-F\-I\-R\-M\-E (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_dossier_afff6564a0f1ed856dd10029f02a20e72}
+
+
+Vérifie si l'étudiant a validé le mineur F\-I\-R\-M\-E. 
+
+\begin{DoxyReturn}{Returns}
+vrai si l'étudiant a validé le mineur F\-I\-R\-M\-E, faux sinon 
+\end{DoxyReturn}
+
+
+Definition at line 106 of file U\-T\-Profiler.\-cpp.
+
+\hypertarget{class_dossier_a8e25d35b689637c3d5f1a23bdf5d1dff}{\index{Dossier@{Dossier}!check\-Mineur\-I\-N\-T\-E\-N\-T@{check\-Mineur\-I\-N\-T\-E\-N\-T}}
+\index{check\-Mineur\-I\-N\-T\-E\-N\-T@{check\-Mineur\-I\-N\-T\-E\-N\-T}!Dossier@{Dossier}}
+\subsubsection[{check\-Mineur\-I\-N\-T\-E\-N\-T}]{\setlength{\rightskip}{0pt plus 5cm}bool Dossier\-::check\-Mineur\-I\-N\-T\-E\-N\-T (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_dossier_a8e25d35b689637c3d5f1a23bdf5d1dff}
+
+
+Vérifie si l'étudiant a validé le mineur I\-N\-T\-E\-N\-T. 
+
+\begin{DoxyReturn}{Returns}
+vrai si l'étudiant a validé le mineur I\-N\-T\-E\-N\-T, faux sinon 
+\end{DoxyReturn}
+
+
+Definition at line 134 of file U\-T\-Profiler.\-cpp.
+
+\hypertarget{class_dossier_acaaaaae68efbb84e0cbc49b9de57e0d0}{\index{Dossier@{Dossier}!check\-Mineur\-P\-H\-I\-T\-E\-C\-O@{check\-Mineur\-P\-H\-I\-T\-E\-C\-O}}
+\index{check\-Mineur\-P\-H\-I\-T\-E\-C\-O@{check\-Mineur\-P\-H\-I\-T\-E\-C\-O}!Dossier@{Dossier}}
+\subsubsection[{check\-Mineur\-P\-H\-I\-T\-E\-C\-O}]{\setlength{\rightskip}{0pt plus 5cm}bool Dossier\-::check\-Mineur\-P\-H\-I\-T\-E\-C\-O (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_dossier_acaaaaae68efbb84e0cbc49b9de57e0d0}
+
+
+Vérifie si l'étudiant a validé le mineur P\-H\-I\-T\-E\-C\-O. 
+
+\begin{DoxyReturn}{Returns}
+vrai si l'étudiant a validé le mineur P\-H\-I\-T\-E\-C\-O, faux sinon 
+\end{DoxyReturn}
+
+
+Definition at line 160 of file U\-T\-Profiler.\-cpp.
+
+\hypertarget{class_dossier_a17f062900ee3200dbf39fdc600853e7f}{\index{Dossier@{Dossier}!check\-Mineur\-S\-T@{check\-Mineur\-S\-T}}
+\index{check\-Mineur\-S\-T@{check\-Mineur\-S\-T}!Dossier@{Dossier}}
+\subsubsection[{check\-Mineur\-S\-T}]{\setlength{\rightskip}{0pt plus 5cm}bool Dossier\-::check\-Mineur\-S\-T (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_dossier_a17f062900ee3200dbf39fdc600853e7f}
+
+
+Vérifie si l'étudiant a validé le mineur S\-T. 
+
+\begin{DoxyReturn}{Returns}
+vrai si l'étudiant a validé le mineur S\-T, faux sinon 
+\end{DoxyReturn}
+
+
+Definition at line 190 of file U\-T\-Profiler.\-cpp.
+
+\hypertarget{class_dossier_aa2f814f3e4980960cc9c6a0be1f9e090}{\index{Dossier@{Dossier}!check\-Mineur\-T\-C\-N@{check\-Mineur\-T\-C\-N}}
+\index{check\-Mineur\-T\-C\-N@{check\-Mineur\-T\-C\-N}!Dossier@{Dossier}}
+\subsubsection[{check\-Mineur\-T\-C\-N}]{\setlength{\rightskip}{0pt plus 5cm}bool Dossier\-::check\-Mineur\-T\-C\-N (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_dossier_aa2f814f3e4980960cc9c6a0be1f9e090}
+
+
+Vérifie si l'étudiant a validé le mineur T\-C\-N. 
+
+\begin{DoxyReturn}{Returns}
+vrai si l'étudiant a validé le mineur T\-C\-N, faux sinon 
+\end{DoxyReturn}
+
+
+Definition at line 218 of file U\-T\-Profiler.\-cpp.
+
+\hypertarget{class_dossier_a61c7318212cc5b1022f47593054667bd}{\index{Dossier@{Dossier}!check\-T\-C@{check\-T\-C}}
+\index{check\-T\-C@{check\-T\-C}!Dossier@{Dossier}}
+\subsubsection[{check\-T\-C}]{\setlength{\rightskip}{0pt plus 5cm}bool Dossier\-::check\-T\-C (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_a61c7318212cc5b1022f47593054667bd}
+
+
+Vérifie la branche de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+vrai si l'étudiant est en T\-C, faux sinon 
+\end{DoxyReturn}
+
+
+Definition at line 733 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_a0fab522247cd17b1dcd3d7dbcb250bd5}{\index{Dossier@{Dossier}!get\-Branche@{get\-Branche}}
+\index{get\-Branche@{get\-Branche}!Dossier@{Dossier}}
+\subsubsection[{get\-Branche}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Dossier\-::get\-Branche (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_a0fab522247cd17b1dcd3d7dbcb250bd5}
+
+
+Accès en lecture à la branche de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+la branche de l'étudiant 
+\end{DoxyReturn}
+
+
+Definition at line 568 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_ab40652445c64094021520d1e14ddbd71}{\index{Dossier@{Dossier}!get\-Conseiller@{get\-Conseiller}}
+\index{get\-Conseiller@{get\-Conseiller}!Dossier@{Dossier}}
+\subsubsection[{get\-Conseiller}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Dossier\-::get\-Conseiller (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_ab40652445c64094021520d1e14ddbd71}
+
+
+Accès en lecture au conseiller de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+le conseiller de l'étudiant 
+\end{DoxyReturn}
+
+
+Definition at line 561 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_ae6e2044f4bb8202a5a9adce367c5e599}{\index{Dossier@{Dossier}!get\-Login@{get\-Login}}
+\index{get\-Login@{get\-Login}!Dossier@{Dossier}}
+\subsubsection[{get\-Login}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Dossier\-::get\-Login (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_ae6e2044f4bb8202a5a9adce367c5e599}
+
+
+Accès en lecture au login du dossier. 
+
+\begin{DoxyReturn}{Returns}
+le login du dossier 
+\end{DoxyReturn}
+
+
+Definition at line 540 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_a30808ae53f1600719be62fab9365b032}{\index{Dossier@{Dossier}!get\-Nom@{get\-Nom}}
+\index{get\-Nom@{get\-Nom}!Dossier@{Dossier}}
+\subsubsection[{get\-Nom}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Dossier\-::get\-Nom (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_a30808ae53f1600719be62fab9365b032}
+
+
+Accès en lecture au nom de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+le nom de l'étudiant 
+\end{DoxyReturn}
+
+
+Definition at line 547 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_a7991a5fe62363f3a72cdbc7b4b8e7aa5}{\index{Dossier@{Dossier}!get\-Prenom@{get\-Prenom}}
+\index{get\-Prenom@{get\-Prenom}!Dossier@{Dossier}}
+\subsubsection[{get\-Prenom}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Dossier\-::get\-Prenom (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_a7991a5fe62363f3a72cdbc7b4b8e7aa5}
+
+
+Accès en lecture au prénom de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+le prénom de l'étudiant 
+\end{DoxyReturn}
+
+
+Definition at line 554 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_acd5dd169bf306eef92b8f56933f4e5c3}{\index{Dossier@{Dossier}!get\-Validation\-A\-E\-U@{get\-Validation\-A\-E\-U}}
+\index{get\-Validation\-A\-E\-U@{get\-Validation\-A\-E\-U}!Dossier@{Dossier}}
+\subsubsection[{get\-Validation\-A\-E\-U}]{\setlength{\rightskip}{0pt plus 5cm}bool Dossier\-::get\-Validation\-A\-E\-U (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_acd5dd169bf306eef92b8f56933f4e5c3}
+
+
+Accès en lecture à la validation d'activité extra universiatire de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+la validation d'activité extra universiatire de l'étudiant 
+\end{DoxyReturn}
+
+
+Definition at line 575 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_aed577cc66b49b8ca8d362f24f45688e0}{\index{Dossier@{Dossier}!set\-Branche@{set\-Branche}}
+\index{set\-Branche@{set\-Branche}!Dossier@{Dossier}}
+\subsubsection[{set\-Branche}]{\setlength{\rightskip}{0pt plus 5cm}void Dossier\-::set\-Branche (
+\begin{DoxyParamCaption}
+\item[{const Q\-String \&}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_aed577cc66b49b8ca8d362f24f45688e0}
+
+
+Accès en écriture à la branche de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+la branche de l'étudiant 
+\end{DoxyReturn}
+
+
+Definition at line 610 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_a44a2f33a01787922e6604fe7e14de1e2}{\index{Dossier@{Dossier}!set\-Conseiller@{set\-Conseiller}}
+\index{set\-Conseiller@{set\-Conseiller}!Dossier@{Dossier}}
+\subsubsection[{set\-Conseiller}]{\setlength{\rightskip}{0pt plus 5cm}void Dossier\-::set\-Conseiller (
+\begin{DoxyParamCaption}
+\item[{const Q\-String \&}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_a44a2f33a01787922e6604fe7e14de1e2}
+
+
+Accès en écriture au conseiller de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+le conseiller de l'étudiant 
+\end{DoxyReturn}
+
+
+Definition at line 603 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_af0977386c8ccd466aa799204a359fdeb}{\index{Dossier@{Dossier}!set\-Login@{set\-Login}}
+\index{set\-Login@{set\-Login}!Dossier@{Dossier}}
+\subsubsection[{set\-Login}]{\setlength{\rightskip}{0pt plus 5cm}void Dossier\-::set\-Login (
+\begin{DoxyParamCaption}
+\item[{const Q\-String \&}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_af0977386c8ccd466aa799204a359fdeb}
+
+
+Accès en écriture au login du dossier. 
+
+\begin{DoxyReturn}{Returns}
+le login du dossier 
+\end{DoxyReturn}
+
+
+Definition at line 582 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_a917390a59f17ed04e4abce7ef658774c}{\index{Dossier@{Dossier}!set\-Nom@{set\-Nom}}
+\index{set\-Nom@{set\-Nom}!Dossier@{Dossier}}
+\subsubsection[{set\-Nom}]{\setlength{\rightskip}{0pt plus 5cm}void Dossier\-::set\-Nom (
+\begin{DoxyParamCaption}
+\item[{const Q\-String \&}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_a917390a59f17ed04e4abce7ef658774c}
+
+
+Accès en écriture au nom de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+le nom de l'étudiant 
+\end{DoxyReturn}
+
+
+Definition at line 589 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_a3cb417ca1c4f1858d1240e5ab07bfa56}{\index{Dossier@{Dossier}!set\-Prenom@{set\-Prenom}}
+\index{set\-Prenom@{set\-Prenom}!Dossier@{Dossier}}
+\subsubsection[{set\-Prenom}]{\setlength{\rightskip}{0pt plus 5cm}void Dossier\-::set\-Prenom (
+\begin{DoxyParamCaption}
+\item[{const Q\-String \&}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_a3cb417ca1c4f1858d1240e5ab07bfa56}
+
+
+Accès en écriture au prénom de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+le prénom de l'étudiant 
+\end{DoxyReturn}
+
+
+Definition at line 596 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_dossier_a0c0c7bdfa3a4cb8639cbaaaa4730ad96}{\index{Dossier@{Dossier}!set\-Validation\-A\-E\-U@{set\-Validation\-A\-E\-U}}
+\index{set\-Validation\-A\-E\-U@{set\-Validation\-A\-E\-U}!Dossier@{Dossier}}
+\subsubsection[{set\-Validation\-A\-E\-U}]{\setlength{\rightskip}{0pt plus 5cm}void Dossier\-::set\-Validation\-A\-E\-U (
+\begin{DoxyParamCaption}
+\item[{bool}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dossier_a0c0c7bdfa3a4cb8639cbaaaa4730ad96}
+
+
+Accès en écriture à la validation d'activité extra universiatire de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+la validation d'activité extra universiatire de l'étudiant 
+\end{DoxyReturn}
+
+
+Definition at line 617 of file U\-T\-Profiler.\-h.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_u_t_profiler_8h}{U\-T\-Profiler.\-h}\item 
+U\-T\-Profiler.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,213 @@
+\hypertarget{class_dossier_window}{\section{Dossier\-Window Class Reference}
+\label{class_dossier_window}\index{Dossier\-Window@{Dossier\-Window}}
+}
+
+
+Classe pour la fenêtre qui permet de consulter, modifier, ajouter, supprimer un dossier.  
+
+
+
+
+{\ttfamily \#include $<$U\-T\-Profiler.\-h$>$}
+
+
+
+Inheritance diagram for Dossier\-Window\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{class_dossier_window__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Dossier\-Window\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{class_dossier_window__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_dossier_window_ace55d79178ee85a8cee7203fc555d65b}{void \hyperlink{class_dossier_window_ace55d79178ee85a8cee7203fc555d65b}{sauver} ()}\label{class_dossier_window_ace55d79178ee85a8cee7203fc555d65b}
+
+\begin{DoxyCompactList}\small\item\em Sauvegarde ou ajout d'un dossier. \end{DoxyCompactList}\item 
+void \hyperlink{class_dossier_window_a39e3bf3b53585c4e0619f05ef1cb2ba9}{pbsauver\-Enable} ()
+\begin{DoxyCompactList}\small\item\em Activation du bouton Sauver. \end{DoxyCompactList}\item 
+\hypertarget{class_dossier_window_a585664fe2ceb7da9b4cc3a250b1bcf51}{void \hyperlink{class_dossier_window_a585664fe2ceb7da9b4cc3a250b1bcf51}{rechercher} ()}\label{class_dossier_window_a585664fe2ceb7da9b4cc3a250b1bcf51}
+
+\begin{DoxyCompactList}\small\item\em Recherche d'un dossier existant. \end{DoxyCompactList}\item 
+void \hyperlink{class_dossier_window_a7b9d5a609e9838dc9f7eacd72d196e5e}{ajouter\-Form\-Ext} ()
+\begin{DoxyCompactList}\small\item\em Ajout d'une formation extérieure. \end{DoxyCompactList}\item 
+void \hyperlink{class_dossier_window_a7f5a0e6640ef760f57866c2cd58995a7}{suppr\-Form\-Ext} (int r, int c)
+\begin{DoxyCompactList}\small\item\em Suppression d'une formation extérieure. \end{DoxyCompactList}\item 
+void \hyperlink{class_dossier_window_a7d408ef7ea4239b0c9a0c7a16446105b}{ajouter\-Semestre} ()
+\begin{DoxyCompactList}\small\item\em Ajout d'un semestre. \end{DoxyCompactList}\item 
+void \hyperlink{class_dossier_window_a16be820f96498f8f8240ac683541e93a}{suppr\-Semestre} (int r, int c)
+\begin{DoxyCompactList}\small\item\em Suppression d'une inscription à un semestre. \end{DoxyCompactList}\item 
+void \hyperlink{class_dossier_window_a9a14055702b38bac1ea675a364a24277}{supprimer} ()
+\begin{DoxyCompactList}\small\item\em Suppression d'un dossier existant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_dossier_window_abec87a1dfb4230a3b70a3de10852cfca}{\hyperlink{class_dossier_window_abec87a1dfb4230a3b70a3de10852cfca}{Dossier\-Window} ()}\label{class_dossier_window_abec87a1dfb4230a3b70a3de10852cfca}
+
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \hyperlink{class_dossier_window}{Dossier\-Window}. \end{DoxyCompactList}\item 
+void \hyperlink{class_dossier_window_aa5ef7660c92f59adbadc44bd7aa7f64d}{associer\-Dossier} (\hyperlink{class_dossier}{Dossier} $\ast$d)
+\begin{DoxyCompactList}\small\item\em Association d'un dossier aux champs de la fenêtre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_dossier_window_a89f0e38a39f054c26a0ab852f8a79b18}{class {\bfseries Home\-Window}}\label{class_dossier_window_a89f0e38a39f054c26a0ab852f8a79b18}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe pour la fenêtre qui permet de consulter, modifier, ajouter, supprimer un dossier. 
+
+Definition at line 1012 of file U\-T\-Profiler.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_dossier_window_a7b9d5a609e9838dc9f7eacd72d196e5e}{\index{Dossier\-Window@{Dossier\-Window}!ajouter\-Form\-Ext@{ajouter\-Form\-Ext}}
+\index{ajouter\-Form\-Ext@{ajouter\-Form\-Ext}!DossierWindow@{Dossier\-Window}}
+\subsubsection[{ajouter\-Form\-Ext}]{\setlength{\rightskip}{0pt plus 5cm}void Dossier\-Window\-::ajouter\-Form\-Ext (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_dossier_window_a7b9d5a609e9838dc9f7eacd72d196e5e}
+
+
+Ajout d'une formation extérieure. 
+
+Affiche une fenêtre \hyperlink{class_formation_ext_window}{Formation\-Ext\-Window} pour ajouter une formation extérieure au dossier en cours de visualisation. Cette méthode est appelée par le bouton Ajouter lorsqu'il est cliqué. 
+
+Definition at line 489 of file Dossier\-Window.\-cpp.
+
+\hypertarget{class_dossier_window_a7d408ef7ea4239b0c9a0c7a16446105b}{\index{Dossier\-Window@{Dossier\-Window}!ajouter\-Semestre@{ajouter\-Semestre}}
+\index{ajouter\-Semestre@{ajouter\-Semestre}!DossierWindow@{Dossier\-Window}}
+\subsubsection[{ajouter\-Semestre}]{\setlength{\rightskip}{0pt plus 5cm}void Dossier\-Window\-::ajouter\-Semestre (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_dossier_window_a7d408ef7ea4239b0c9a0c7a16446105b}
+
+
+Ajout d'un semestre. 
+
+Cette fonction ouvre une \hyperlink{class_semestre_window}{Semestre\-Window} pour pouvoir ajouter une inscription à un \hyperlink{class_u_v}{U\-V} pour le dossier en cours de visualisation. 
+
+Definition at line 526 of file Dossier\-Window.\-cpp.
+
+\hypertarget{class_dossier_window_aa5ef7660c92f59adbadc44bd7aa7f64d}{\index{Dossier\-Window@{Dossier\-Window}!associer\-Dossier@{associer\-Dossier}}
+\index{associer\-Dossier@{associer\-Dossier}!DossierWindow@{Dossier\-Window}}
+\subsubsection[{associer\-Dossier}]{\setlength{\rightskip}{0pt plus 5cm}void Dossier\-Window\-::associer\-Dossier (
+\begin{DoxyParamCaption}
+\item[{{\bf Dossier} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}}\label{class_dossier_window_aa5ef7660c92f59adbadc44bd7aa7f64d}
+
+
+Association d'un dossier aux champs de la fenêtre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & \-: le dossier à associer aux champs de la fenêtre \hyperlink{class_dossier_window}{Dossier\-Window} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 296 of file Dossier\-Window.\-cpp.
+
+\hypertarget{class_dossier_window_a39e3bf3b53585c4e0619f05ef1cb2ba9}{\index{Dossier\-Window@{Dossier\-Window}!pbsauver\-Enable@{pbsauver\-Enable}}
+\index{pbsauver\-Enable@{pbsauver\-Enable}!DossierWindow@{Dossier\-Window}}
+\subsubsection[{pbsauver\-Enable}]{\setlength{\rightskip}{0pt plus 5cm}void Dossier\-Window\-::pbsauver\-Enable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_dossier_window_a39e3bf3b53585c4e0619f05ef1cb2ba9}
+
+
+Activation du bouton Sauver. 
+
+Chaque changement au sein de la fenêtre \hyperlink{class_dossier_window}{Dossier\-Window} appelle cette fonction 
+
+Definition at line 286 of file Dossier\-Window.\-cpp.
+
+\hypertarget{class_dossier_window_a7f5a0e6640ef760f57866c2cd58995a7}{\index{Dossier\-Window@{Dossier\-Window}!suppr\-Form\-Ext@{suppr\-Form\-Ext}}
+\index{suppr\-Form\-Ext@{suppr\-Form\-Ext}!DossierWindow@{Dossier\-Window}}
+\subsubsection[{suppr\-Form\-Ext}]{\setlength{\rightskip}{0pt plus 5cm}void Dossier\-Window\-::suppr\-Form\-Ext (
+\begin{DoxyParamCaption}
+\item[{int}]{r, }
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_dossier_window_a7f5a0e6640ef760f57866c2cd58995a7}
+
+
+Suppression d'une formation extérieure. 
+
+Lorsqu'on clique sur une cellule du tableau des formations extérieures, cette fonction est appelée. Si la cellule cliquée appartient à la 6ème colonne du tableau (cellule \char`\"{}\-Supprimer\char`\"{}), alors la ligne est supprimée.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & \-: ligne de la cellule cliquée \\
+\hline
+{\em c} & \-: colonne de la cellule cliquée \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 505 of file Dossier\-Window.\-cpp.
+
+\hypertarget{class_dossier_window_a9a14055702b38bac1ea675a364a24277}{\index{Dossier\-Window@{Dossier\-Window}!supprimer@{supprimer}}
+\index{supprimer@{supprimer}!DossierWindow@{Dossier\-Window}}
+\subsubsection[{supprimer}]{\setlength{\rightskip}{0pt plus 5cm}void Dossier\-Window\-::supprimer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_dossier_window_a9a14055702b38bac1ea675a364a24277}
+
+
+Suppression d'un dossier existant. 
+
+Cette fonction supprime un dossier existant et tout ce qui peut lui être relié (Formations extérieures, Semestres, Inscriptions). 
+
+Definition at line 574 of file Dossier\-Window.\-cpp.
+
+\hypertarget{class_dossier_window_a16be820f96498f8f8240ac683541e93a}{\index{Dossier\-Window@{Dossier\-Window}!suppr\-Semestre@{suppr\-Semestre}}
+\index{suppr\-Semestre@{suppr\-Semestre}!DossierWindow@{Dossier\-Window}}
+\subsubsection[{suppr\-Semestre}]{\setlength{\rightskip}{0pt plus 5cm}void Dossier\-Window\-::suppr\-Semestre (
+\begin{DoxyParamCaption}
+\item[{int}]{r, }
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_dossier_window_a16be820f96498f8f8240ac683541e93a}
+
+
+Suppression d'une inscription à un semestre. 
+
+Lorsqu'on clique sur une cellule du tableau des semestres, cette fonction est appelée. Si la cellule cliquée appartient à la 7ème colonne du tableau (cellule \char`\"{}\-Supprimer\char`\"{}), alors la ligne est supprimée.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & \-: ligne de la cellule cliquée \\
+\hline
+{\em c} & \-: colonne de la cellule cliquée \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 542 of file Dossier\-Window.\-cpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_u_t_profiler_8h}{U\-T\-Profiler.\-h}\item 
+\hyperlink{_dossier_window_8cpp}{Dossier\-Window.\-cpp}\end{DoxyCompactItemize}

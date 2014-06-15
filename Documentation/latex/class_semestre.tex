@@ -1,0 +1,318 @@
+\hypertarget{class_semestre}{\section{Semestre Class Reference}
+\label{class_semestre}\index{Semestre@{Semestre}}
+}
+
+
+Classe permettant de décrire un semestre d'un étudiant de l'U\-T\-C.  
+
+
+
+
+{\ttfamily \#include $<$U\-T\-Profiler.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_semestre_a3980fc8447360ad2ba3c769e40ed0efa}{Semestre} (unsigned int a, \hyperlink{_u_t_profiler_8h_a72fcaae0ef529616dd62b747e259d545}{Saison} s, string c=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Constructeur Permet de créer un objet \hyperlink{class_semestre}{Semestre} initialisé avec les valeurs passées en paramètres. \end{DoxyCompactList}\item 
+\hypertarget{class_semestre_a5a495cd21f249b5a1be4d3c7ebd01e88}{\hyperlink{class_semestre_a5a495cd21f249b5a1be4d3c7ebd01e88}{$\sim$\-Semestre} ()}\label{class_semestre_a5a495cd21f249b5a1be4d3c7ebd01e88}
+
+\begin{DoxyCompactList}\small\item\em Destructeur. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_semestre_a5aa85395e97f58f491ebf251da8231ef}{get\-Annee} () const 
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture de l'année en cours au moment du semestre. \end{DoxyCompactList}\item 
+\hyperlink{_u_t_profiler_8h_a72fcaae0ef529616dd62b747e259d545}{Saison} \hyperlink{class_semestre_a26e25575e7fb65649c47970a9800c3aa}{get\-Saison} () const 
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture de la saison en cours au moment du semestre. \end{DoxyCompactList}\item 
+string \hyperlink{class_semestre_aa6f8274d5868ee938767865bb8e66c25}{get\-Commentaire} () const 
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture du commentaire du jury quant aux résultats de l'étudiant ce semestre. \end{DoxyCompactList}\item 
+\hyperlink{class_inscription}{Inscription} $\ast$ \hyperlink{class_semestre_ac1724b1d1c28eb943496004b44645365}{get\-Inscriptions} () const 
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture du tableau des inscritptions aux U\-Vs de l'étudiant ce semestre. \end{DoxyCompactList}\item 
+bool \hyperlink{class_semestre_aac6af5aa5fc34383afc56a68862329e2}{get\-Ext} () const 
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture du booléen décrivant si l'étudiant était ou non en formation extérieure durant ce semestre. \end{DoxyCompactList}\item 
+\hyperlink{class_formation_exterieure}{Formation\-Exterieure} $\ast$ \hyperlink{class_semestre_afeafdde29055295918dc26b31d1980a0}{get\-Formation\-Exterieure} () const 
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture du pointeur vers la formation extérieure suivie par l'étudiant ce semestre, s'il en a suivi une. \end{DoxyCompactList}\item 
+void \hyperlink{class_semestre_a7d59af6d380e9c204638fa45bdadae0d}{set\-Annee} (unsigned int i)
+\begin{DoxyCompactList}\small\item\em Accesseur en écriture de l'année au moment du semestre. \end{DoxyCompactList}\item 
+void \hyperlink{class_semestre_aae3da84ef2e291dca3360330ff0ec990}{set\-Saison} (\hyperlink{_u_t_profiler_8h_a72fcaae0ef529616dd62b747e259d545}{Saison} \&s)
+\begin{DoxyCompactList}\small\item\em Accesseur en écriture de la saison (Printemps ou Automne) au moment du semestre. \end{DoxyCompactList}\item 
+void \hyperlink{class_semestre_a6120eb48d6cd7363c405332ba5a46d75}{set\-Commentaire} (const string \&s)
+\begin{DoxyCompactList}\small\item\em Accesseur en écriture du commentaire du jury quant à la réussite de l'étudiant ce semestre. \end{DoxyCompactList}\item 
+void \hyperlink{class_semestre_aa77efecd8daa99ab76cb7acf0e868470}{set\-Inscriptions} (\hyperlink{class_inscription}{Inscription} $\ast$i)
+\begin{DoxyCompactList}\small\item\em Accesseur en écriture du tableau d'inscriptions aux U\-Vs de l'étudiant ce semestre. \end{DoxyCompactList}\item 
+void \hyperlink{class_semestre_a673fc1c0bf3a9dbaeb784d603ac58eb4}{set\-Ext} (bool e)
+\begin{DoxyCompactList}\small\item\em Accesseur en écriture du booléen décrivant si l'étudiant suivait ou non une formation exterieure ce semestre. \end{DoxyCompactList}\item 
+void \hyperlink{class_semestre_ad263768ddd1fbb8756340e5593241c75}{set\-Formation\-Exterieure} (\hyperlink{class_formation_exterieure}{Formation\-Exterieure} $\ast$fe)
+\begin{DoxyCompactList}\small\item\em Accesseur en écriture du pointeur vers la formation extérieure suivie par l'étudiant, s'il en a suivi une ce semestre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe permettant de décrire un semestre d'un étudiant de l'U\-T\-C. 
+
+Cette classe permet de garder temporairement en mémoire un semestre d'un étudiant à l'U\-T\-C. Cependant, un objet de cette classe n'est que temporaire, puisque tous nos semestres sont stockés dans notre Base de Données. 
+
+Definition at line 409 of file U\-T\-Profiler.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_semestre_a3980fc8447360ad2ba3c769e40ed0efa}{\index{Semestre@{Semestre}!Semestre@{Semestre}}
+\index{Semestre@{Semestre}!Semestre@{Semestre}}
+\subsubsection[{Semestre}]{\setlength{\rightskip}{0pt plus 5cm}Semestre\-::\-Semestre (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{a, }
+\item[{{\bf Saison}}]{s, }
+\item[{string}]{c = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_semestre_a3980fc8447360ad2ba3c769e40ed0efa}
+
+
+Constructeur Permet de créer un objet \hyperlink{class_semestre}{Semestre} initialisé avec les valeurs passées en paramètres. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \-: L'année de ce semestre \\
+\hline
+{\em s} & \-: La saison de ce semestre \\
+\hline
+{\em c} & \-: Le commentaire du jury de ce semestre \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 424 of file U\-T\-Profiler.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_semestre_a5aa85395e97f58f491ebf251da8231ef}{\index{Semestre@{Semestre}!get\-Annee@{get\-Annee}}
+\index{get\-Annee@{get\-Annee}!Semestre@{Semestre}}
+\subsubsection[{get\-Annee}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Semestre\-::get\-Annee (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_semestre_a5aa85395e97f58f491ebf251da8231ef}
+
+
+Accesseur en lecture de l'année en cours au moment du semestre. 
+
+\begin{DoxyReturn}{Returns}
+L'année en cours au moment du semestre 
+\end{DoxyReturn}
+
+
+Definition at line 433 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_semestre_aa6f8274d5868ee938767865bb8e66c25}{\index{Semestre@{Semestre}!get\-Commentaire@{get\-Commentaire}}
+\index{get\-Commentaire@{get\-Commentaire}!Semestre@{Semestre}}
+\subsubsection[{get\-Commentaire}]{\setlength{\rightskip}{0pt plus 5cm}string Semestre\-::get\-Commentaire (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_semestre_aa6f8274d5868ee938767865bb8e66c25}
+
+
+Accesseur en lecture du commentaire du jury quant aux résultats de l'étudiant ce semestre. 
+
+\begin{DoxyReturn}{Returns}
+Le commentaire du jury quant aux résultats de l'étudiant ce semestre 
+\end{DoxyReturn}
+
+
+Definition at line 443 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_semestre_aac6af5aa5fc34383afc56a68862329e2}{\index{Semestre@{Semestre}!get\-Ext@{get\-Ext}}
+\index{get\-Ext@{get\-Ext}!Semestre@{Semestre}}
+\subsubsection[{get\-Ext}]{\setlength{\rightskip}{0pt plus 5cm}bool Semestre\-::get\-Ext (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_semestre_aac6af5aa5fc34383afc56a68862329e2}
+
+
+Accesseur en lecture du booléen décrivant si l'étudiant était ou non en formation extérieure durant ce semestre. 
+
+\begin{DoxyReturn}{Returns}
+True si l'étudiant suivait une formation extérieure ce semestre, False si il était à Compiègne 
+\end{DoxyReturn}
+
+
+Definition at line 453 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_semestre_afeafdde29055295918dc26b31d1980a0}{\index{Semestre@{Semestre}!get\-Formation\-Exterieure@{get\-Formation\-Exterieure}}
+\index{get\-Formation\-Exterieure@{get\-Formation\-Exterieure}!Semestre@{Semestre}}
+\subsubsection[{get\-Formation\-Exterieure}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Formation\-Exterieure}$\ast$ Semestre\-::get\-Formation\-Exterieure (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_semestre_afeafdde29055295918dc26b31d1980a0}
+
+
+Accesseur en lecture du pointeur vers la formation extérieure suivie par l'étudiant ce semestre, s'il en a suivi une. 
+
+\begin{DoxyReturn}{Returns}
+Le pointeur vers la formation extérieure suivie par l'étudiant ce semestre 
+\end{DoxyReturn}
+
+
+Definition at line 458 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_semestre_ac1724b1d1c28eb943496004b44645365}{\index{Semestre@{Semestre}!get\-Inscriptions@{get\-Inscriptions}}
+\index{get\-Inscriptions@{get\-Inscriptions}!Semestre@{Semestre}}
+\subsubsection[{get\-Inscriptions}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Inscription}$\ast$ Semestre\-::get\-Inscriptions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_semestre_ac1724b1d1c28eb943496004b44645365}
+
+
+Accesseur en lecture du tableau des inscritptions aux U\-Vs de l'étudiant ce semestre. 
+
+\begin{DoxyReturn}{Returns}
+Le tableau des inscritptions aux U\-Vs de l'étudiant ce semestre 
+\end{DoxyReturn}
+
+
+Definition at line 448 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_semestre_a26e25575e7fb65649c47970a9800c3aa}{\index{Semestre@{Semestre}!get\-Saison@{get\-Saison}}
+\index{get\-Saison@{get\-Saison}!Semestre@{Semestre}}
+\subsubsection[{get\-Saison}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Saison} Semestre\-::get\-Saison (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_semestre_a26e25575e7fb65649c47970a9800c3aa}
+
+
+Accesseur en lecture de la saison en cours au moment du semestre. 
+
+\begin{DoxyReturn}{Returns}
+La saison en cours au moment du semestre 
+\end{DoxyReturn}
+
+
+Definition at line 438 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_semestre_a7d59af6d380e9c204638fa45bdadae0d}{\index{Semestre@{Semestre}!set\-Annee@{set\-Annee}}
+\index{set\-Annee@{set\-Annee}!Semestre@{Semestre}}
+\subsubsection[{set\-Annee}]{\setlength{\rightskip}{0pt plus 5cm}void Semestre\-::set\-Annee (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_semestre_a7d59af6d380e9c204638fa45bdadae0d}
+
+
+Accesseur en écriture de l'année au moment du semestre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \-: La nouvelle année de ce semestre \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 463 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_semestre_a6120eb48d6cd7363c405332ba5a46d75}{\index{Semestre@{Semestre}!set\-Commentaire@{set\-Commentaire}}
+\index{set\-Commentaire@{set\-Commentaire}!Semestre@{Semestre}}
+\subsubsection[{set\-Commentaire}]{\setlength{\rightskip}{0pt plus 5cm}void Semestre\-::set\-Commentaire (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_semestre_a6120eb48d6cd7363c405332ba5a46d75}
+
+
+Accesseur en écriture du commentaire du jury quant à la réussite de l'étudiant ce semestre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & \-: Le nouveau commentaire du jury \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 473 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_semestre_a673fc1c0bf3a9dbaeb784d603ac58eb4}{\index{Semestre@{Semestre}!set\-Ext@{set\-Ext}}
+\index{set\-Ext@{set\-Ext}!Semestre@{Semestre}}
+\subsubsection[{set\-Ext}]{\setlength{\rightskip}{0pt plus 5cm}void Semestre\-::set\-Ext (
+\begin{DoxyParamCaption}
+\item[{bool}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_semestre_a673fc1c0bf3a9dbaeb784d603ac58eb4}
+
+
+Accesseur en écriture du booléen décrivant si l'étudiant suivait ou non une formation exterieure ce semestre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \-: La nouvelle valeur du booléen \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 483 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_semestre_ad263768ddd1fbb8756340e5593241c75}{\index{Semestre@{Semestre}!set\-Formation\-Exterieure@{set\-Formation\-Exterieure}}
+\index{set\-Formation\-Exterieure@{set\-Formation\-Exterieure}!Semestre@{Semestre}}
+\subsubsection[{set\-Formation\-Exterieure}]{\setlength{\rightskip}{0pt plus 5cm}void Semestre\-::set\-Formation\-Exterieure (
+\begin{DoxyParamCaption}
+\item[{{\bf Formation\-Exterieure} $\ast$}]{fe}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_semestre_ad263768ddd1fbb8756340e5593241c75}
+
+
+Accesseur en écriture du pointeur vers la formation extérieure suivie par l'étudiant, s'il en a suivi une ce semestre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fe} & \-: La nouvelle valeur de ce pointeur \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 488 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_semestre_aa77efecd8daa99ab76cb7acf0e868470}{\index{Semestre@{Semestre}!set\-Inscriptions@{set\-Inscriptions}}
+\index{set\-Inscriptions@{set\-Inscriptions}!Semestre@{Semestre}}
+\subsubsection[{set\-Inscriptions}]{\setlength{\rightskip}{0pt plus 5cm}void Semestre\-::set\-Inscriptions (
+\begin{DoxyParamCaption}
+\item[{{\bf Inscription} $\ast$}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_semestre_aa77efecd8daa99ab76cb7acf0e868470}
+
+
+Accesseur en écriture du tableau d'inscriptions aux U\-Vs de l'étudiant ce semestre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \-: Le nouveau tableau d'inscriptions aux U\-Vs \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 478 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_semestre_aae3da84ef2e291dca3360330ff0ec990}{\index{Semestre@{Semestre}!set\-Saison@{set\-Saison}}
+\index{set\-Saison@{set\-Saison}!Semestre@{Semestre}}
+\subsubsection[{set\-Saison}]{\setlength{\rightskip}{0pt plus 5cm}void Semestre\-::set\-Saison (
+\begin{DoxyParamCaption}
+\item[{{\bf Saison} \&}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_semestre_aae3da84ef2e291dca3360330ff0ec990}
+
+
+Accesseur en écriture de la saison (Printemps ou Automne) au moment du semestre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & \-: La nouvelle saison de ce semestre \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 468 of file U\-T\-Profiler.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_u_t_profiler_8h}{U\-T\-Profiler.\-h}\end{DoxyCompactItemize}

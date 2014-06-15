@@ -1,0 +1,307 @@
+\hypertarget{class_interface_s_q_l}{\section{Interface\-S\-Q\-L Class Reference}
+\label{class_interface_s_q_l}\index{Interface\-S\-Q\-L@{Interface\-S\-Q\-L}}
+}
+
+
+Classe permettant la communication avec la base de données.  
+
+
+
+
+{\ttfamily \#include $<$U\-T\-Profiler.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_interface_s_q_l_af0f017feacae6ac3ca6f02199a1f4563}{load} ()
+\begin{DoxyCompactList}\small\item\em Méthode permettant de charger un fichier en mémoire Cette méthode ouvre un explorateur de fichier, permettant à l'utilisateur de rechercher un fichier sql, puis le découpe de manière à séparer les différentes requêtes (obligatoire avec S\-Q\-L\-I\-T\-E), puis les exécute une par une. \end{DoxyCompactList}\item 
+bool \hyperlink{class_interface_s_q_l_a9feeb19a1f58fad7a97c0a8b46cfa432}{load} (const Q\-String \&chemin)
+\begin{DoxyCompactList}\small\item\em Méthode permettant de charger un fichier en mémoire Cette méthode est identique à \hyperlink{class_interface_s_q_l_af0f017feacae6ac3ca6f02199a1f4563}{Interface\-S\-Q\-L\-::load()}, sauf qu'il n'y a pas d'explorateur de fichier, mais que le chemin du fichier à charger est passé en paramètre. \end{DoxyCompactList}\item 
+Q\-Sql\-Query \& \hyperlink{class_interface_s_q_l_a3cd459cd03bdb9cd74964e6ca0d49d96}{exec\-Query} (const Q\-String \&q)
+\begin{DoxyCompactList}\small\item\em Méthode pour l'execution d'une requête S\-Q\-L quelconque. Cette méthode exécute n'importe quelle requête S\-Q\-L passée en paramètre et retourne une référence vers l'objet query contenant le résultat de la requête. Pour cette méthode générique, c'est à l'utilisateur de se débrouiller pour obtenir le résultat. \end{DoxyCompactList}\item 
+bool \hyperlink{class_interface_s_q_l_a5da42744b61213a08bb5128f8e6cded7}{tuple\-Existe} (const Q\-String \&q)
+\begin{DoxyCompactList}\small\item\em Méthode permettant de tester si l'exécution d'une requête retourne un résultat valide. \end{DoxyCompactList}\item 
+\hyperlink{class_u_v}{U\-V} $\ast$ \hyperlink{class_interface_s_q_l_a20865b643ac19560f704bf6d27700de4}{select\-U\-V} (const Q\-String \&q)
+\begin{DoxyCompactList}\small\item\em Méthode pour la séléction d'une \hyperlink{class_u_v}{U\-V} dans la base de donnée Cette méthode facilite la séléction d'une \hyperlink{class_u_v}{U\-V} dans la base de donnée. En effet, elle crée un objet \hyperlink{class_u_v}{U\-V} contenant le premier résultat de la requête passée en paramètre et le retourne. Cette méthode vérifie également que la requête est bien destinée à récupérer une \hyperlink{class_u_v}{U\-V}. \end{DoxyCompactList}\item 
+\hyperlink{class_u_v}{U\-V} $\ast$$\ast$ \hyperlink{class_interface_s_q_l_a5ad330fd7f32518b0295cea673fc0754}{get\-All\-Uvs} (const Q\-String \&q)
+\begin{DoxyCompactList}\small\item\em Méthode pour la séléction de plusieurs U\-Vs dans la base de donnée Cette méthode facilite la séléction de plusieurs U\-Vs dans la base de donnée. En effet, elle crée un tableau d'U\-Vs contenant tous les résultats de la requête passée en paramètre et le retourne. Cette méthode vérifie également que la requête est bien destinée à récupérer des U\-Vs. \end{DoxyCompactList}\item 
+\hyperlink{class_formation}{Formation} $\ast$ \hyperlink{class_interface_s_q_l_a4ab411df432ca25ece4c198ba21f1884}{select\-Formation} (const Q\-String \&q)
+\begin{DoxyCompactList}\small\item\em Méthode pour la séléction d'une \hyperlink{class_formation}{Formation} dans la base de donnée Cette méthode facilite la séléction d'une \hyperlink{class_formation}{Formation} dans la base de donnée. En effet, elle crée un objet \hyperlink{class_formation}{Formation} contenant le premier résultat de la requête passée en paramètre et le retourne. Cette méthode vérifie également que la requête est bien destinée à récupérer une \hyperlink{class_formation}{Formation}. \end{DoxyCompactList}\item 
+\hyperlink{class_dossier}{Dossier} $\ast$ \hyperlink{class_interface_s_q_l_ac7dc7d03f6b4488f32a2365356832fdb}{select\-Dossier} (const Q\-String \&q)
+\begin{DoxyCompactList}\small\item\em Méthode pour la séléction d'un \hyperlink{class_dossier}{Dossier} dans la base de donnée Cette méthode facilite la séléction d'un \hyperlink{class_dossier}{Dossier} dans la base de donnée. En effet, elle crée un objet \hyperlink{class_dossier}{Dossier} contenant le premier résultat de la requête passée en paramètre et le retourne. Cette méthode vérifie également que la requête est bien destinée à récupérer un \hyperlink{class_dossier}{Dossier}. \end{DoxyCompactList}\item 
+\hyperlink{class_semestre}{Semestre} $\ast$ \hyperlink{class_interface_s_q_l_a75fbe17f27a92d39b67e7e64a02dbb1e}{select\-Semestre} (const Q\-String \&q)
+\begin{DoxyCompactList}\small\item\em Méthode pour la séléction d'un \hyperlink{class_semestre}{Semestre} dans la base de donnée Cette méthode facilite la séléction d'un \hyperlink{class_semestre}{Semestre} dans la base de donnée. En effet, elle crée un objet \hyperlink{class_semestre}{Semestre} contenant le premier résultat de la requête passée en paramètre et le retourne. Cette méthode vérifie également que la requête est bien destinée à récupérer un \hyperlink{class_semestre}{Semestre}. \end{DoxyCompactList}\item 
+Q\-String $\ast$$\ast$$\ast$ \hyperlink{class_interface_s_q_l_a294f58db1571a7d4cd909aa48c12c75e}{select\-Completion} (const Q\-String \&q)
+\begin{DoxyCompactList}\small\item\em Méthode pour la séléction de toutes les Completions de Profil sauvegardées dans la base de donnée Cette méthode facilite la séléction de plusieurs Completions de Profil dans la base de donnée. En effet, elle crée un tableau de Completion de Profils contenant tous les résultats de la requête passée en paramètre et le retourne. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_interface_s_q_l}{Interface\-S\-Q\-L} $\ast$ \hyperlink{class_interface_s_q_l_a2030b0c3cf1dfcb825b259091e4d2ae3}{get\-Instance} ()
+\begin{DoxyCompactList}\small\item\em Méthode permettant de gérer l'existance d'un et d'un seul objet \hyperlink{class_interface_s_q_l}{Interface\-S\-Q\-L}. \end{DoxyCompactList}\item 
+\hypertarget{class_interface_s_q_l_ab2579eb5e175e0a5a66bfa207bc5ab2b}{static void \hyperlink{class_interface_s_q_l_ab2579eb5e175e0a5a66bfa207bc5ab2b}{liberer\-Instance} ()}\label{class_interface_s_q_l_ab2579eb5e175e0a5a66bfa207bc5ab2b}
+
+\begin{DoxyCompactList}\small\item\em Méthode permettant de gérer la destruction de l'unique objet \hyperlink{class_interface_s_q_l}{Interface\-S\-Q\-L}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe permettant la communication avec la base de données. 
+
+La classe \hyperlink{class_interface_s_q_l}{Interface\-S\-Q\-L} fait l'intermédiaire entre les différentes classes et notre base de données. Elle s'occuppe de s'y connecter, de charger les fichiers sql pour la remplir, d'exécuter les requêtes et de renvoyer les réponses sous forme de pointeur vers un objet.
+
+Cette classe est un singleton, c'est à dire qu'un unique objet de cette classe peut exister à la fois et qu'un pointeur vers cet unique objet est disponible à tout moment à l'aide d'une méthode statique. 
+
+Definition at line 876 of file U\-T\-Profiler.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_interface_s_q_l_a3cd459cd03bdb9cd74964e6ca0d49d96}{\index{Interface\-S\-Q\-L@{Interface\-S\-Q\-L}!exec\-Query@{exec\-Query}}
+\index{exec\-Query@{exec\-Query}!InterfaceSQL@{Interface\-S\-Q\-L}}
+\subsubsection[{exec\-Query}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Sql\-Query \& Interface\-S\-Q\-L\-::exec\-Query (
+\begin{DoxyParamCaption}
+\item[{const Q\-String \&}]{q}
+\end{DoxyParamCaption}
+)}}\label{class_interface_s_q_l_a3cd459cd03bdb9cd74964e6ca0d49d96}
+
+
+Méthode pour l'execution d'une requête S\-Q\-L quelconque. Cette méthode exécute n'importe quelle requête S\-Q\-L passée en paramètre et retourne une référence vers l'objet query contenant le résultat de la requête. Pour cette méthode générique, c'est à l'utilisateur de se débrouiller pour obtenir le résultat. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & \-: La requête à exécuter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Une référence vers l'objet Q\-Sql\-Query contenant le résultat 
+\end{DoxyReturn}
+
+
+Definition at line 105 of file Interface\-S\-Q\-L.\-cpp.
+
+\hypertarget{class_interface_s_q_l_a5ad330fd7f32518b0295cea673fc0754}{\index{Interface\-S\-Q\-L@{Interface\-S\-Q\-L}!get\-All\-Uvs@{get\-All\-Uvs}}
+\index{get\-All\-Uvs@{get\-All\-Uvs}!InterfaceSQL@{Interface\-S\-Q\-L}}
+\subsubsection[{get\-All\-Uvs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf U\-V} $\ast$$\ast$ Interface\-S\-Q\-L\-::get\-All\-Uvs (
+\begin{DoxyParamCaption}
+\item[{const Q\-String \&}]{q}
+\end{DoxyParamCaption}
+)}}\label{class_interface_s_q_l_a5ad330fd7f32518b0295cea673fc0754}
+
+
+Méthode pour la séléction de plusieurs U\-Vs dans la base de donnée Cette méthode facilite la séléction de plusieurs U\-Vs dans la base de donnée. En effet, elle crée un tableau d'U\-Vs contenant tous les résultats de la requête passée en paramètre et le retourne. Cette méthode vérifie également que la requête est bien destinée à récupérer des U\-Vs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & \-: La requête à executer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un tableau de pointeurs vers des objets \hyperlink{class_u_v}{U\-V} contenant l'ensemble des résultats de la requête. 
+\end{DoxyReturn}
+
+
+Definition at line 144 of file Interface\-S\-Q\-L.\-cpp.
+
+\hypertarget{class_interface_s_q_l_a2030b0c3cf1dfcb825b259091e4d2ae3}{\index{Interface\-S\-Q\-L@{Interface\-S\-Q\-L}!get\-Instance@{get\-Instance}}
+\index{get\-Instance@{get\-Instance}!InterfaceSQL@{Interface\-S\-Q\-L}}
+\subsubsection[{get\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Interface\-S\-Q\-L} $\ast$ Interface\-S\-Q\-L\-::get\-Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_interface_s_q_l_a2030b0c3cf1dfcb825b259091e4d2ae3}
+
+
+Méthode permettant de gérer l'existance d'un et d'un seul objet \hyperlink{class_interface_s_q_l}{Interface\-S\-Q\-L}. 
+
+\begin{DoxyReturn}{Returns}
+L'adresse de l'unique objet \hyperlink{class_interface_s_q_l}{Interface\-S\-Q\-L} 
+\end{DoxyReturn}
+
+
+Definition at line 14 of file Interface\-S\-Q\-L.\-cpp.
+
+\hypertarget{class_interface_s_q_l_af0f017feacae6ac3ca6f02199a1f4563}{\index{Interface\-S\-Q\-L@{Interface\-S\-Q\-L}!load@{load}}
+\index{load@{load}!InterfaceSQL@{Interface\-S\-Q\-L}}
+\subsubsection[{load}]{\setlength{\rightskip}{0pt plus 5cm}bool Interface\-S\-Q\-L\-::load (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_interface_s_q_l_af0f017feacae6ac3ca6f02199a1f4563}
+
+
+Méthode permettant de charger un fichier en mémoire Cette méthode ouvre un explorateur de fichier, permettant à l'utilisateur de rechercher un fichier sql, puis le découpe de manière à séparer les différentes requêtes (obligatoire avec S\-Q\-L\-I\-T\-E), puis les exécute une par une. 
+
+\begin{DoxyReturn}{Returns}
+True si l'execution a fonctionné, false sinon. 
+\end{DoxyReturn}
+
+
+Definition at line 48 of file Interface\-S\-Q\-L.\-cpp.
+
+\hypertarget{class_interface_s_q_l_a9feeb19a1f58fad7a97c0a8b46cfa432}{\index{Interface\-S\-Q\-L@{Interface\-S\-Q\-L}!load@{load}}
+\index{load@{load}!InterfaceSQL@{Interface\-S\-Q\-L}}
+\subsubsection[{load}]{\setlength{\rightskip}{0pt plus 5cm}bool Interface\-S\-Q\-L\-::load (
+\begin{DoxyParamCaption}
+\item[{const Q\-String \&}]{chemin}
+\end{DoxyParamCaption}
+)}}\label{class_interface_s_q_l_a9feeb19a1f58fad7a97c0a8b46cfa432}
+
+
+Méthode permettant de charger un fichier en mémoire Cette méthode est identique à \hyperlink{class_interface_s_q_l_af0f017feacae6ac3ca6f02199a1f4563}{Interface\-S\-Q\-L\-::load()}, sauf qu'il n'y a pas d'explorateur de fichier, mais que le chemin du fichier à charger est passé en paramètre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chemin} & \-: Chemin du fichier à charger \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True si l'execution a fonctionné, false sinon. 
+\end{DoxyReturn}
+
+
+Definition at line 77 of file Interface\-S\-Q\-L.\-cpp.
+
+\hypertarget{class_interface_s_q_l_a294f58db1571a7d4cd909aa48c12c75e}{\index{Interface\-S\-Q\-L@{Interface\-S\-Q\-L}!select\-Completion@{select\-Completion}}
+\index{select\-Completion@{select\-Completion}!InterfaceSQL@{Interface\-S\-Q\-L}}
+\subsubsection[{select\-Completion}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String $\ast$$\ast$$\ast$ Interface\-S\-Q\-L\-::select\-Completion (
+\begin{DoxyParamCaption}
+\item[{const Q\-String \&}]{q}
+\end{DoxyParamCaption}
+)}}\label{class_interface_s_q_l_a294f58db1571a7d4cd909aa48c12c75e}
+
+
+Méthode pour la séléction de toutes les Completions de Profil sauvegardées dans la base de donnée Cette méthode facilite la séléction de plusieurs Completions de Profil dans la base de donnée. En effet, elle crée un tableau de Completion de Profils contenant tous les résultats de la requête passée en paramètre et le retourne. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & \-: La requête à executer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un tableau de tableaux de pointeurs vers des objets Q\-String exploitable pour la completion de Profil constitué de l'ensemble des résultats de la requête. 
+\end{DoxyReturn}
+
+
+Definition at line 171 of file Interface\-S\-Q\-L.\-cpp.
+
+\hypertarget{class_interface_s_q_l_ac7dc7d03f6b4488f32a2365356832fdb}{\index{Interface\-S\-Q\-L@{Interface\-S\-Q\-L}!select\-Dossier@{select\-Dossier}}
+\index{select\-Dossier@{select\-Dossier}!InterfaceSQL@{Interface\-S\-Q\-L}}
+\subsubsection[{select\-Dossier}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Dossier} $\ast$ Interface\-S\-Q\-L\-::select\-Dossier (
+\begin{DoxyParamCaption}
+\item[{const Q\-String \&}]{q}
+\end{DoxyParamCaption}
+)}}\label{class_interface_s_q_l_ac7dc7d03f6b4488f32a2365356832fdb}
+
+
+Méthode pour la séléction d'un \hyperlink{class_dossier}{Dossier} dans la base de donnée Cette méthode facilite la séléction d'un \hyperlink{class_dossier}{Dossier} dans la base de donnée. En effet, elle crée un objet \hyperlink{class_dossier}{Dossier} contenant le premier résultat de la requête passée en paramètre et le retourne. Cette méthode vérifie également que la requête est bien destinée à récupérer un \hyperlink{class_dossier}{Dossier}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & \-: La requête à executer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur vers un objet \hyperlink{class_dossier}{Dossier} contenant le premier résultat de la requête. 
+\end{DoxyReturn}
+
+
+Definition at line 196 of file Interface\-S\-Q\-L.\-cpp.
+
+\hypertarget{class_interface_s_q_l_a4ab411df432ca25ece4c198ba21f1884}{\index{Interface\-S\-Q\-L@{Interface\-S\-Q\-L}!select\-Formation@{select\-Formation}}
+\index{select\-Formation@{select\-Formation}!InterfaceSQL@{Interface\-S\-Q\-L}}
+\subsubsection[{select\-Formation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Formation} $\ast$ Interface\-S\-Q\-L\-::select\-Formation (
+\begin{DoxyParamCaption}
+\item[{const Q\-String \&}]{q}
+\end{DoxyParamCaption}
+)}}\label{class_interface_s_q_l_a4ab411df432ca25ece4c198ba21f1884}
+
+
+Méthode pour la séléction d'une \hyperlink{class_formation}{Formation} dans la base de donnée Cette méthode facilite la séléction d'une \hyperlink{class_formation}{Formation} dans la base de donnée. En effet, elle crée un objet \hyperlink{class_formation}{Formation} contenant le premier résultat de la requête passée en paramètre et le retourne. Cette méthode vérifie également que la requête est bien destinée à récupérer une \hyperlink{class_formation}{Formation}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & \-: La requête à executer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur vers un objet \hyperlink{class_formation}{Formation} contenant le premier résultat de la requête. 
+\end{DoxyReturn}
+
+
+Definition at line 221 of file Interface\-S\-Q\-L.\-cpp.
+
+\hypertarget{class_interface_s_q_l_a75fbe17f27a92d39b67e7e64a02dbb1e}{\index{Interface\-S\-Q\-L@{Interface\-S\-Q\-L}!select\-Semestre@{select\-Semestre}}
+\index{select\-Semestre@{select\-Semestre}!InterfaceSQL@{Interface\-S\-Q\-L}}
+\subsubsection[{select\-Semestre}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Semestre} $\ast$ Interface\-S\-Q\-L\-::select\-Semestre (
+\begin{DoxyParamCaption}
+\item[{const Q\-String \&}]{q}
+\end{DoxyParamCaption}
+)}}\label{class_interface_s_q_l_a75fbe17f27a92d39b67e7e64a02dbb1e}
+
+
+Méthode pour la séléction d'un \hyperlink{class_semestre}{Semestre} dans la base de donnée Cette méthode facilite la séléction d'un \hyperlink{class_semestre}{Semestre} dans la base de donnée. En effet, elle crée un objet \hyperlink{class_semestre}{Semestre} contenant le premier résultat de la requête passée en paramètre et le retourne. Cette méthode vérifie également que la requête est bien destinée à récupérer un \hyperlink{class_semestre}{Semestre}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & \-: La requête à executer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur vers un objet \hyperlink{class_semestre}{Semestre} contenant le premier résultat de la requête. 
+\end{DoxyReturn}
+
+
+Definition at line 246 of file Interface\-S\-Q\-L.\-cpp.
+
+\hypertarget{class_interface_s_q_l_a20865b643ac19560f704bf6d27700de4}{\index{Interface\-S\-Q\-L@{Interface\-S\-Q\-L}!select\-U\-V@{select\-U\-V}}
+\index{select\-U\-V@{select\-U\-V}!InterfaceSQL@{Interface\-S\-Q\-L}}
+\subsubsection[{select\-U\-V}]{\setlength{\rightskip}{0pt plus 5cm}{\bf U\-V} $\ast$ Interface\-S\-Q\-L\-::select\-U\-V (
+\begin{DoxyParamCaption}
+\item[{const Q\-String \&}]{q}
+\end{DoxyParamCaption}
+)}}\label{class_interface_s_q_l_a20865b643ac19560f704bf6d27700de4}
+
+
+Méthode pour la séléction d'une \hyperlink{class_u_v}{U\-V} dans la base de donnée Cette méthode facilite la séléction d'une \hyperlink{class_u_v}{U\-V} dans la base de donnée. En effet, elle crée un objet \hyperlink{class_u_v}{U\-V} contenant le premier résultat de la requête passée en paramètre et le retourne. Cette méthode vérifie également que la requête est bien destinée à récupérer une \hyperlink{class_u_v}{U\-V}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & \-: La requête à executer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur vers un objet \hyperlink{class_u_v}{U\-V} contenant le premier résultat de la requête. 
+\end{DoxyReturn}
+
+
+Definition at line 118 of file Interface\-S\-Q\-L.\-cpp.
+
+\hypertarget{class_interface_s_q_l_a5da42744b61213a08bb5128f8e6cded7}{\index{Interface\-S\-Q\-L@{Interface\-S\-Q\-L}!tuple\-Existe@{tuple\-Existe}}
+\index{tuple\-Existe@{tuple\-Existe}!InterfaceSQL@{Interface\-S\-Q\-L}}
+\subsubsection[{tuple\-Existe}]{\setlength{\rightskip}{0pt plus 5cm}bool Interface\-S\-Q\-L\-::tuple\-Existe (
+\begin{DoxyParamCaption}
+\item[{const Q\-String \&}]{q}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_interface_s_q_l_a5da42744b61213a08bb5128f8e6cded7}
+
+
+Méthode permettant de tester si l'exécution d'une requête retourne un résultat valide. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & \-: La requête à tester \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True si la requête trouve une donnée à retourner, False si aucun élément de la base de données ne correspond. 
+\end{DoxyReturn}
+
+
+Definition at line 908 of file U\-T\-Profiler.\-h.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_u_t_profiler_8h}{U\-T\-Profiler.\-h}\item 
+\hyperlink{_interface_s_q_l_8cpp}{Interface\-S\-Q\-L.\-cpp}\item 
+main.\-cpp\end{DoxyCompactItemize}

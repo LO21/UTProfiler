@@ -1,0 +1,164 @@
+\hypertarget{class_inscription}{\section{Inscription Class Reference}
+\label{class_inscription}\index{Inscription@{Inscription}}
+}
+
+
+Classe permettant de décrire l'inscription d'un étudiant à une \hyperlink{class_u_v}{U\-V} de l'U\-T\-C.  
+
+
+
+
+{\ttfamily \#include $<$U\-T\-Profiler.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_inscription_a1eb6ac1e090dd05570321829e959d75f}{\hyperlink{class_inscription_a1eb6ac1e090dd05570321829e959d75f}{Inscription} ()}\label{class_inscription_a1eb6ac1e090dd05570321829e959d75f}
+
+\begin{DoxyCompactList}\small\item\em Constructeur vide Crée un nouvel objet \hyperlink{class_inscription}{Inscription} non initialisé \end{DoxyCompactList}\item 
+\hypertarget{class_inscription_abe0df05b5f2034ae418ae476f7db9ee7}{\hyperlink{class_inscription_abe0df05b5f2034ae418ae476f7db9ee7}{$\sim$\-Inscription} ()}\label{class_inscription_abe0df05b5f2034ae418ae476f7db9ee7}
+
+\begin{DoxyCompactList}\small\item\em Destructeur. \end{DoxyCompactList}\item 
+string \hyperlink{class_inscription_a139f354cf118455ab7bb561f656fa691}{get\-U\-V} () const 
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture pour le code de l'\hyperlink{class_u_v}{U\-V} auquel l'étudiant est inscrit. \end{DoxyCompactList}\item 
+\hyperlink{_u_t_profiler_8h_a89d667cddcff9ee818f60f3d9c6ac987}{Resultat} \hyperlink{class_inscription_a4c38354111c534ed4809da99caf3822f}{get\-Resultat} () const 
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture pour le statut de la validation de l'\hyperlink{class_u_v}{U\-V} par l'étudiant. \end{DoxyCompactList}\item 
+string \hyperlink{class_inscription_a195d9639695dc78b79f03abd89ce06a1}{get\-Login} () const 
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture pour le login de l'étudiant. \end{DoxyCompactList}\item 
+void \hyperlink{class_inscription_a33550fc27d9a7a41c7291fe98c730973}{set\-Uv} (const string \&s)
+\begin{DoxyCompactList}\small\item\em Accesseur en écriture pour le code de l'\hyperlink{class_u_v}{U\-V} dont il est question. \end{DoxyCompactList}\item 
+void \hyperlink{class_inscription_aa957f1dab96c32d59dff404c054f9ad1}{set\-Resultat} (\hyperlink{_u_t_profiler_8h_a89d667cddcff9ee818f60f3d9c6ac987}{Resultat} \&r)
+\begin{DoxyCompactList}\small\item\em Accesseur en écriture pour le statut de la validation de l'\hyperlink{class_u_v}{U\-V} en question. \end{DoxyCompactList}\item 
+void \hyperlink{class_inscription_a9e1b9d1dd5732ba9e18160e806bfec50}{set\-Login} (const string \&l)
+\begin{DoxyCompactList}\small\item\em Accesseur en écriture pour le login de l'étudiant concerné \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe permettant de décrire l'inscription d'un étudiant à une \hyperlink{class_u_v}{U\-V} de l'U\-T\-C. 
+
+Cette classe permet de garder temporairement en mémoire l'inscription d'un étudiant à une \hyperlink{class_u_v}{U\-V}. Cependant, un objet de cette classe n'est que temporaire, puisque toutes nos Inscriptions sont stockées dans notre Base de Données. 
+
+Definition at line 260 of file U\-T\-Profiler.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_inscription_a195d9639695dc78b79f03abd89ce06a1}{\index{Inscription@{Inscription}!get\-Login@{get\-Login}}
+\index{get\-Login@{get\-Login}!Inscription@{Inscription}}
+\subsubsection[{get\-Login}]{\setlength{\rightskip}{0pt plus 5cm}string Inscription\-::get\-Login (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_inscription_a195d9639695dc78b79f03abd89ce06a1}
+
+
+Accesseur en lecture pour le login de l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+Le login de l'étudiant en question 
+\end{DoxyReturn}
+
+
+Definition at line 288 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_inscription_a4c38354111c534ed4809da99caf3822f}{\index{Inscription@{Inscription}!get\-Resultat@{get\-Resultat}}
+\index{get\-Resultat@{get\-Resultat}!Inscription@{Inscription}}
+\subsubsection[{get\-Resultat}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Resultat} Inscription\-::get\-Resultat (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_inscription_a4c38354111c534ed4809da99caf3822f}
+
+
+Accesseur en lecture pour le statut de la validation de l'\hyperlink{class_u_v}{U\-V} par l'étudiant. 
+
+\begin{DoxyReturn}{Returns}
+Le statut de la validation de cette \hyperlink{class_u_v}{U\-V} 
+\end{DoxyReturn}
+
+
+Definition at line 283 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_inscription_a139f354cf118455ab7bb561f656fa691}{\index{Inscription@{Inscription}!get\-U\-V@{get\-U\-V}}
+\index{get\-U\-V@{get\-U\-V}!Inscription@{Inscription}}
+\subsubsection[{get\-U\-V}]{\setlength{\rightskip}{0pt plus 5cm}string Inscription\-::get\-U\-V (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_inscription_a139f354cf118455ab7bb561f656fa691}
+
+
+Accesseur en lecture pour le code de l'\hyperlink{class_u_v}{U\-V} auquel l'étudiant est inscrit. 
+
+\begin{DoxyReturn}{Returns}
+Le code de l'\hyperlink{class_u_v}{U\-V} en question 
+\end{DoxyReturn}
+
+
+Definition at line 278 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_inscription_a9e1b9d1dd5732ba9e18160e806bfec50}{\index{Inscription@{Inscription}!set\-Login@{set\-Login}}
+\index{set\-Login@{set\-Login}!Inscription@{Inscription}}
+\subsubsection[{set\-Login}]{\setlength{\rightskip}{0pt plus 5cm}void Inscription\-::set\-Login (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{l}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_inscription_a9e1b9d1dd5732ba9e18160e806bfec50}
+
+
+Accesseur en écriture pour le login de l'étudiant concerné 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & \-: le login du nouvel étudiant lié à cette inscription \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 303 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_inscription_aa957f1dab96c32d59dff404c054f9ad1}{\index{Inscription@{Inscription}!set\-Resultat@{set\-Resultat}}
+\index{set\-Resultat@{set\-Resultat}!Inscription@{Inscription}}
+\subsubsection[{set\-Resultat}]{\setlength{\rightskip}{0pt plus 5cm}void Inscription\-::set\-Resultat (
+\begin{DoxyParamCaption}
+\item[{{\bf Resultat} \&}]{r}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_inscription_aa957f1dab96c32d59dff404c054f9ad1}
+
+
+Accesseur en écriture pour le statut de la validation de l'\hyperlink{class_u_v}{U\-V} en question. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & \-: Le nouveau statut \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 298 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_inscription_a33550fc27d9a7a41c7291fe98c730973}{\index{Inscription@{Inscription}!set\-Uv@{set\-Uv}}
+\index{set\-Uv@{set\-Uv}!Inscription@{Inscription}}
+\subsubsection[{set\-Uv}]{\setlength{\rightskip}{0pt plus 5cm}void Inscription\-::set\-Uv (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_inscription_a33550fc27d9a7a41c7291fe98c730973}
+
+
+Accesseur en écriture pour le code de l'\hyperlink{class_u_v}{U\-V} dont il est question. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & \-: Le nouveau code de l'\hyperlink{class_u_v}{U\-V} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 293 of file U\-T\-Profiler.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_u_t_profiler_8h}{U\-T\-Profiler.\-h}\end{DoxyCompactItemize}

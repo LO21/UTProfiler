@@ -1,5 +1,11 @@
 #include "UTProfiler.h"
 
+/**
+ * @brief Constructeur
+ *
+ * Ce constructeur initialise toutes les fonctions de l'Interface Graphique de cette fenêtre : créer et organiser les
+ * objets graphiques, et les connecter avec les bons slots.
+ */
 UVWindow::UVWindow() {
     setWindowTitle("UTProfiler");
     mainlayout = new QVBoxLayout();
@@ -123,6 +129,13 @@ UVWindow::UVWindow() {
     QObject::connect(cbgsu,SIGNAL(stateChanged(int)),this,SLOT(pbsauverEnable()));
 }
 
+/**
+ * @brief Méthode pour remplir les différents champs de la fenêtre
+ * Cette méthode prends en paramètre un pointeur vers un objet UV et remplit tous les champs de la fenêtre avec les
+ * différents attributs de l'objet UV, permettant sa consultation et sa modification.
+ *
+ * @param newuv : pointeur vers l'uv à traiter
+ */
 void UVWindow::associerUV(UV *newuv) {
     uv=newuv;
     lecode->setText(uv->getCode());
@@ -146,6 +159,9 @@ void UVWindow::associerUV(UV *newuv) {
     pbsauver->setEnabled(false);
 }
 
+/**
+ * @brief Méthode permettant la sauvegarde des modifications apportées à l'UV en cours de traitement.
+ */
 void UVWindow::sauver() {
     if (lecode->text() == ""){ // Vérification qu'il y ait bien une uv à sauvegarder
         QMessageBox msg;
@@ -206,6 +222,9 @@ void UVWindow::sauver() {
     }
 }
 
+/**
+ * @brief Méthode permettant de supprimer l'UV en cours de traitement de la base de donnée
+ */
 void UVWindow::supprimer() {
     if (lecode->text() == ""){ // Vérification qu'il y ait bien une uv à supprimer
         QMessageBox msg;
@@ -233,10 +252,19 @@ void UVWindow::supprimer() {
     }
 }
 
+/**
+ * @brief Slot rendant le bouton Enregistrer disponible après la modification d'un des champs
+ */
 void UVWindow::pbsauverEnable() {
     pbsauver->setEnabled(true);
 }
 
+/**
+ * @brief Méthode recherchant une UV dans la base de données
+ *
+ * Lorsque le champ code est modifié, l'utilisateur s'en sert pour rechercher une autre UV à consulter.
+ * Cette méthode communique avec l'objet InterfaceSQL pour obtenir l'UV en question puis l'associe à la fenetre.
+ */
 void UVWindow::rechercher() {
     if (lecode->text() == ""){ // Vérification qu'il y ait bien une uv à rechercher
         QMessageBox msg;
@@ -261,10 +289,20 @@ void UVWindow::rechercher() {
     }
 }
 
+/**
+ * @brief Slot permettant de déclencher l'apparition de la fenêtre NewUVWindow, formulaire pour l'ajout d'une nouvelle UV dans la base de données
+ */
 void UVWindow::nouveau() {
     newuvwindow = new NewUVWindow(this);
 }
 
+/**
+ * @brief Constructeur
+ * Ce constructeur est déclaré privé, puisque le cycle de vie de cette classe est géré par la classe UVWindow.
+ * Ce constructeur initialise toutes les fonctions de l'Interface Graphique de cette fenêtre : créer et organiser les
+ * objets graphiques, et les connecter avec les bons slots.
+ * @param m : adresse de l'objet UVWindow gérant son cycle de vie
+ */
 NewUVWindow::NewUVWindow (UVWindow *m) : master(m) {
     label = new QLabel("Code : ");
     lecode = new QLineEdit;
@@ -287,15 +325,23 @@ NewUVWindow::NewUVWindow (UVWindow *m) : master(m) {
     show();
 }
 
+/**
+ * @brief Slot rendant le bouton Ajouter disponible après la modification du champ texte.
+ */
 void NewUVWindow::pbvaliderEnable() {
     pbvalider->setEnabled(true);
 }
 
-
+/**
+ * @brief Slot permettant de retourner à l'écran précédent
+ */
 void NewUVWindow::nouveau_annuler() {
     close();
 }
 
+/**
+ * @brief Slot permettant l'ajout de la nouvelle UV à la base de donnée ainsi que son association dans la fenêtre de consultation UVWindow
+ */
 void NewUVWindow::nouveau_valider() {
     /* Vérification que l'UV n'existe pas déjà */
     QString q = "SELECT * FROM UV WHERE code = '";
@@ -324,6 +370,9 @@ void NewUVWindow::nouveau_valider() {
     }
 }
 
+/**
+ * @brief Slot permettant de sauvegarder dans la base de données la modification des formations dans laquelle l'UV consultée est diplomante
+ */
 void UVWindow::changeTC() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     if (cbtc->isChecked()) {
@@ -334,6 +383,9 @@ void UVWindow::changeTC() {
     }
 }
 
+/**
+ * @brief Slot permettant de sauvegarder dans la base de données la modification des formations dans laquelle l'UV consultée est diplomante
+ */
 void UVWindow::changeHUTECH() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     if (cbhutech->isChecked()) {
@@ -344,6 +396,9 @@ void UVWindow::changeHUTECH() {
     }
 }
 
+/**
+ * @brief Slot permettant de sauvegarder dans la base de données la modification des formations dans laquelle l'UV consultée est diplomante
+ */
 void UVWindow::changeGB() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     if (cbgb->isChecked()) {
@@ -354,6 +409,9 @@ void UVWindow::changeGB() {
     }
 }
 
+/**
+ * @brief Slot permettant de sauvegarder dans la base de données la modification des formations dans laquelle l'UV consultée est diplomante
+ */
 void UVWindow::changeGI() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     if (cbgi->isChecked()) {
@@ -364,6 +422,9 @@ void UVWindow::changeGI() {
     }
 }
 
+/**
+ * @brief Slot permettant de sauvegarder dans la base de données la modification des formations dans laquelle l'UV consultée est diplomante
+ */
 void UVWindow::changeGM() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     if (cbgm->isChecked()) {
@@ -374,6 +435,9 @@ void UVWindow::changeGM() {
     }
 }
 
+/**
+ * @brief Slot permettant de sauvegarder dans la base de données la modification des formations dans laquelle l'UV consultée est diplomante
+ */
 void UVWindow::changeGP() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     if (cbgp->isChecked()) {
@@ -384,6 +448,9 @@ void UVWindow::changeGP() {
     }
 }
 
+/**
+ * @brief Slot permettant de sauvegarder dans la base de données la modification des formations dans laquelle l'UV consultée est diplomante
+ */
 void UVWindow::changeGSM() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     if (cbgsm->isChecked()) {
@@ -394,6 +461,9 @@ void UVWindow::changeGSM() {
     }
 }
 
+/**
+ * @brief Slot permettant de sauvegarder dans la base de données la modification des formations dans laquelle l'UV consultée est diplomante
+ */
 void UVWindow::changeGSU() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     if (cbgsu->isChecked()) {

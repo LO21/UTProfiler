@@ -4366,20 +4366,28 @@ VALUES ('P', 2012, 'ritgabri', 'poursuite normale, bon semestre');
 
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('MT90', 'P', 2012, 'ritgabri', 'A');
+
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('MT91', 'P', 2012, 'ritgabri', 'E');
+
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('PS91', 'P', 2012, 'ritgabri', 'D');
+
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('TN01', 'P', 2012, 'ritgabri', 'D');
+
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('TN04', 'P', 2012, 'ritgabri', 'B');
+
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('LA14', 'P', 2012, 'ritgabri', 'C');
+
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('SI22', 'P', 2012, 'ritgabri', 'B');
+
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('LG61', 'P', 2012, 'ritgabri', 'A');
+
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('TN05', 'P', 2012, 'ritgabri', 'B');
 
@@ -4388,16 +4396,22 @@ VALUES ('A', 2011, 'ritgabri', 'poursuite normale');
 
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('BL01', 'A', 2011, 'ritgabri', 'E');
+
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('MT22', 'A', 2011, 'ritgabri', 'D');
+
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('NF01', 'A', 2011, 'ritgabri', 'C');
+
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('C2I1', 'A', 2011, 'ritgabri', 'C');
+
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('PS90', 'A', 2011, 'ritgabri', 'B');
+
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('GE22', 'A', 2011, 'ritgabri', 'D');
+
 INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
 ('LG60', 'A', 2011, 'ritgabri', 'A');
 
@@ -4409,6 +4423,78 @@ VALUES ('tmonceau', 'Monceaux', 'Timothée', 'Gabrielle Orbach-Lin', 1, 'GI');
 
 INSERT INTO FormationExt(login, nom, lieu, creditsCS, creditsTM,creditsTSH,creditsSP)
 VALUES ('tmonceau', 'UTSEUS', 'Chine', 6, 11, 10, 0);
+
+INSERT INTO Semestre(saison, annee, dossier, commentaire) 
+VALUES ('A', 2011, 'tmonceau', 'poursuite normale - Bon semestre');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('CM11', 'A', 2011, 'tmonceau', 'C');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('MT90', 'A', 2011, 'tmonceau', 'B');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('MT91', 'A', 2011, 'tmonceau', 'B');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('NF01', 'A', 2011, 'tmonceau', 'A');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('PS90', 'A', 2011, 'tmonceau', 'C');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('NP90', 'A', 2011, 'tmonceau', 'C');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('LA02', 'A', 2011, 'tmonceau', 'B');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('SI22', 'A', 2011, 'tmonceau', 'B');
+
+INSERT INTO Semestre(saison, annee, dossier, commentaire) 
+VALUES ('P', 2012, 'tmonceau', 'poursuite normale - Bon semestre');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('MT22', 'P', 2012, 'tmonceau', 'D');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('PS04', 'P', 2012, 'tmonceau', 'A');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('TN04', 'P', 2012, 'tmonceau', 'A');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('C2I1', 'P', 2012, 'tmonceau', 'B');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('TR91', 'P', 2012, 'tmonceau', 'B');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('GE10', 'P', 2012, 'tmonceau', 'C');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('LA03', 'P', 2012, 'tmonceau', 'B');
+
+INSERT INTO Semestre(saison, annee, dossier, commentaire) 
+VALUES ('A', 2012, 'tmonceau', 'poursuite normale');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('MT23', 'A', 2012, 'tmonceau', 'B');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('PS91', 'A', 2012, 'tmonceau', 'B');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('NF93', 'A', 2012, 'tmonceau', 'A');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('TN01', 'A', 2012, 'tmonceau', 'FX');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('LG60', 'A', 2012, 'tmonceau', 'B');
+
+INSERT INTO Inscription(uv, saison, annee, login, resultat) VALUES
+('LA13', 'A', 2012, 'tmonceau', 'B');
 
 INSERT INTO Semestre(saison, annee, dossier, commentaire) 
 VALUES ('A', 2013, 'tmonceau', 'poursuite normale');

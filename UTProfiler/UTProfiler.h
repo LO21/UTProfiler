@@ -410,6 +410,7 @@ class Semestre {
     unsigned int annee; /**< L'année en cours au moment du semestre*/
     Saison saison; /**< La saison en cours (Printemps ou Automne) au moment du semestre*/
     string commentaire; /**< Le commentaire du jury sur les résultats de l'étudiant ce semestre*/
+    string login; /**< Le login de l'étudiant concerné*/
     Inscription *inscriptions; /**< Les différentes inscriptions aux UVs de l'étudiant ce semestre, si il était à Compiègne*/
     bool ext; /**< Booléen décrivant si l'étudiant suivait une formation à l'extérieur de l'UTC ce semestre*/
     FormationExterieure *formationExt; /**< Si l'étudiant suivait une formation à l'extérieur de l'UTC ce semestre, elle est décrite ici*/
@@ -420,8 +421,9 @@ class Semestre {
      * @param a : L'année de ce semestre
      * @param s : La saison de ce semestre
      * @param c : Le commentaire du jury de ce semestre
+     * @param l : Le login de l'étudiant concerné
      */
-    Semestre(unsigned int a, Saison s, string c="") : annee(a), saison(s), commentaire(c), ext(false) {}
+    Semestre(unsigned int a, Saison s, string c="", string l="") : annee(a), saison(s), commentaire(c), login(l), ext(false) {}
     /**
      * @brief Destructeur
      */
@@ -441,6 +443,11 @@ class Semestre {
      * @return Le commentaire du jury quant aux résultats de l'étudiant ce semestre
      */
     string getCommentaire() const {return commentaire;}
+    /**
+     * @brief Accesseur en lecture du login de l'étudiant concerné
+     * @return Le login de l'étudiant concerné
+     */
+    string getLogin() const {return commentaire;}
     /**
      * @brief Accesseur en lecture du tableau des inscritptions aux UVs de l'étudiant ce semestre
      * @return Le tableau des inscritptions aux UVs de l'étudiant ce semestre
@@ -471,6 +478,11 @@ class Semestre {
      * @param s : Le nouveau commentaire du jury
      */
     void setCommentaire (const string& s) {commentaire=s;}
+    /**
+     * @brief Accesseur en écriture du login de l'étudiant concerné
+     * @param s : Le nouveau login de l'étudiant
+     */
+    void setLogin (const string& s) {login=s;}
     /**
      * @brief Accesseur en écriture du tableau d'inscriptions aux UVs de l'étudiant ce semestre
      * @param i : Le nouveau tableau d'inscriptions aux UVs
@@ -744,11 +756,6 @@ class Dossier {
         QString b = "HUTECH";
         if (branche == b) {return true;}
         return false;}
-    /*!
-         *  \brief Propositions de prochain semestre pour ce dossier
-         *
-         *
-         */
 };
 
 /*! \class Formation
@@ -916,10 +923,16 @@ class InterfaceSQL {
 
 class UVWindow;
 
+/**
+ * @class NewUVWindow
+ * @brief Fenêtre servant de formulaire pour l'ajout d'une UV dans la base de données.
+ *
+ * Son cycle de vie est géré par la classe UVWindow.
+ */
 class NewUVWindow : public QWidget {
     Q_OBJECT
    friend class UVWindow;
-    UVWindow *master;
+    UVWindow *master; /**< Pointeur vers l'objet UVWindow qui gère son cycle de vie*/
     QLabel *label;
     QLineEdit *lecode;
     QHBoxLayout *hlayout1;
@@ -934,11 +947,17 @@ class NewUVWindow : public QWidget {
     void nouveau_valider();
 };
 
+/**
+ * @class UVWindow
+ * @brief Fenêtre servant à l'affichage et à la manipulation des UVs de notre base de données
+ *
+ * Son cycle de vie est géré par la classe HomeWindow.
+ */
 class UVWindow : public QWidget {
     Q_OBJECT
     friend class HomeWindow;
-    UV *uv;
-    NewUVWindow *newuvwindow;
+    UV *uv; /**< Pointeur vers un objet UV correspondant à l'UV en cours de traitement dans la fenêtre*/
+    NewUVWindow *newuvwindow; /**< Pointeur vers un objet NewUVWindow qui servira de formulaire si l'utilisateur veux ajouter une nouvelle UV dans la base*/
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
     QPushButton *pbretour;
@@ -1252,11 +1271,12 @@ class FormationWindow : public QWidget {
 
 };
 
-QString checkSyntax(QString s);
-
 class CompletionProfilWindow;
 class RetrouverCompletionWindow;
-
+/**
+ * @class SearchDossierWindow
+ * @brief Fenêtre formulaire visant à retrouver les Complétions de Profil enregistrées pour un dossier
+ */
 class SearchDossierWindow : public QWidget {
     Q_OBJECT
     friend class CompletionProfilWindow;
@@ -1288,6 +1308,10 @@ class SearchDossierWindow : public QWidget {
     void annuler();
 };
 
+/**
+ * @class RetrouverCompletionWindow
+ * @brief Fenêtre permettant de visualiser les différentes Complétions de Profil enregistrées pour un dossier
+ */
 class RetrouverCompletionWindow : public QWidget {
     Q_OBJECT
     friend class SearchDossierWindow;
@@ -1325,6 +1349,10 @@ class RetrouverCompletionWindow : public QWidget {
     void suivant();
 };
 
+/**
+ * @class CompletionProfilWindow
+ * @brief Fenêtre permettant de visualiser et de traiter les résultats de l'algorithme de complétion de profil
+ */
 class CompletionProfilWindow : public QWidget {
     Q_OBJECT
     friend class HomeWindow;

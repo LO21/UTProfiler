@@ -1,0 +1,216 @@
+\hypertarget{class_formation_window}{\section{Formation\-Window Class Reference}
+\label{class_formation_window}\index{Formation\-Window@{Formation\-Window}}
+}
+
+
+Classe de la fenêtre pour la gestion des formations.  
+
+
+
+
+{\ttfamily \#include $<$U\-T\-Profiler.\-h$>$}
+
+
+
+Inheritance diagram for Formation\-Window\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{class_formation_window__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Formation\-Window\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{class_formation_window__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_formation_window_afe595a0a344e7884a2199d49685b72c8}{setenabled} ()
+\begin{DoxyCompactList}\small\item\em Activation du bouton Sauver. \end{DoxyCompactList}\item 
+\hypertarget{class_formation_window_ab1bb1608745c98b9fb3d26df1dcd07cf}{void \hyperlink{class_formation_window_ab1bb1608745c98b9fb3d26df1dcd07cf}{rechercher} ()}\label{class_formation_window_ab1bb1608745c98b9fb3d26df1dcd07cf}
+
+\begin{DoxyCompactList}\small\item\em Recherche d'une formation existante. \end{DoxyCompactList}\item 
+void \hyperlink{class_formation_window_aa1a7bd64e46219b7751dc32322882f5e}{nouveau} ()
+\begin{DoxyCompactList}\small\item\em Ajout d'une nouvelle formation. \end{DoxyCompactList}\item 
+\hypertarget{class_formation_window_a5c6f76c574a7eb28810e718ce88faa40}{void \hyperlink{class_formation_window_a5c6f76c574a7eb28810e718ce88faa40}{supprimer} ()}\label{class_formation_window_a5c6f76c574a7eb28810e718ce88faa40}
+
+\begin{DoxyCompactList}\small\item\em Suppression d'une formation existante. \end{DoxyCompactList}\item 
+\hypertarget{class_formation_window_a9c6fb184cf96a862bd13cb30c17131d1}{void \hyperlink{class_formation_window_a9c6fb184cf96a862bd13cb30c17131d1}{sauver} ()}\label{class_formation_window_a9c6fb184cf96a862bd13cb30c17131d1}
+
+\begin{DoxyCompactList}\small\item\em Sauvegarde d'une formation existante. \end{DoxyCompactList}\item 
+void \hyperlink{class_formation_window_a6efc5f1397dda264a7044d909d8afeab}{sauveruv} (int r, int c)
+\begin{DoxyCompactList}\small\item\em Sauvegarde ou suppression d'une uv associée. \end{DoxyCompactList}\item 
+void \hyperlink{class_formation_window_a58b7866f8ef1242df39e33891bdd3dcc}{ajouteruv} ()
+\begin{DoxyCompactList}\small\item\em Ajout d'une uv associée à une formation. \end{DoxyCompactList}\item 
+void \hyperlink{class_formation_window_a9c5b19cd30fb56ddef12734a2ed68087}{sauverfil} (int r, int c)
+\begin{DoxyCompactList}\small\item\em Sauvegarde ou suppression d'une filière associée à une branche. \end{DoxyCompactList}\item 
+void \hyperlink{class_formation_window_a315bc4d9e13e94e0c03a778941afe0ea}{ajouterfil} ()
+\begin{DoxyCompactList}\small\item\em Ajout d'une filière associée à une branche. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_formation_window_aa440700b3980344aa7099bd3767c9b55}{\hyperlink{class_formation_window_aa440700b3980344aa7099bd3767c9b55}{Formation\-Window} ()}\label{class_formation_window_aa440700b3980344aa7099bd3767c9b55}
+
+\begin{DoxyCompactList}\small\item\em Constructeur de \hyperlink{class_formation_window}{Formation\-Window}. \end{DoxyCompactList}\item 
+void \hyperlink{class_formation_window_a0b0eefb2086fee1ac8250cd1aa1eacc5}{associer\-Formation} (\hyperlink{class_formation}{Formation} $\ast$formation)
+\begin{DoxyCompactList}\small\item\em Association d'une formation aux champs de la fenêtre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_formation_window_a89f0e38a39f054c26a0ab852f8a79b18}{class {\bfseries Home\-Window}}\label{class_formation_window_a89f0e38a39f054c26a0ab852f8a79b18}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe de la fenêtre pour la gestion des formations. 
+
+Definition at line 1195 of file U\-T\-Profiler.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_formation_window_a315bc4d9e13e94e0c03a778941afe0ea}{\index{Formation\-Window@{Formation\-Window}!ajouterfil@{ajouterfil}}
+\index{ajouterfil@{ajouterfil}!FormationWindow@{Formation\-Window}}
+\subsubsection[{ajouterfil}]{\setlength{\rightskip}{0pt plus 5cm}void Formation\-Window\-::ajouterfil (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_formation_window_a315bc4d9e13e94e0c03a778941afe0ea}
+
+
+Ajout d'une filière associée à une branche. 
+
+Cette fonction affiche une \hyperlink{class_associer_filiere_window}{Associer\-Filiere\-Window} lorsque l'utilisateur clique sur Ajouter. 
+
+Definition at line 595 of file Formation\-Window.\-cpp.
+
+\hypertarget{class_formation_window_a58b7866f8ef1242df39e33891bdd3dcc}{\index{Formation\-Window@{Formation\-Window}!ajouteruv@{ajouteruv}}
+\index{ajouteruv@{ajouteruv}!FormationWindow@{Formation\-Window}}
+\subsubsection[{ajouteruv}]{\setlength{\rightskip}{0pt plus 5cm}void Formation\-Window\-::ajouteruv (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_formation_window_a58b7866f8ef1242df39e33891bdd3dcc}
+
+
+Ajout d'une uv associée à une formation. 
+
+Cette fonction affiche une \hyperlink{class_associer_u_v_window}{Associer\-U\-V\-Window} lorsque l'utilisateur clique sur Ajouter. 
+
+Definition at line 582 of file Formation\-Window.\-cpp.
+
+\hypertarget{class_formation_window_a0b0eefb2086fee1ac8250cd1aa1eacc5}{\index{Formation\-Window@{Formation\-Window}!associer\-Formation@{associer\-Formation}}
+\index{associer\-Formation@{associer\-Formation}!FormationWindow@{Formation\-Window}}
+\subsubsection[{associer\-Formation}]{\setlength{\rightskip}{0pt plus 5cm}void Formation\-Window\-::associer\-Formation (
+\begin{DoxyParamCaption}
+\item[{{\bf Formation} $\ast$}]{newformation}
+\end{DoxyParamCaption}
+)}}\label{class_formation_window_a0b0eefb2086fee1ac8250cd1aa1eacc5}
+
+
+Association d'une formation aux champs de la fenêtre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em newformation} & \-: la formation à associer aux champs de la fenêtre \hyperlink{class_dossier_window}{Dossier\-Window} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 158 of file Formation\-Window.\-cpp.
+
+\hypertarget{class_formation_window_aa1a7bd64e46219b7751dc32322882f5e}{\index{Formation\-Window@{Formation\-Window}!nouveau@{nouveau}}
+\index{nouveau@{nouveau}!FormationWindow@{Formation\-Window}}
+\subsubsection[{nouveau}]{\setlength{\rightskip}{0pt plus 5cm}void Formation\-Window\-::nouveau (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_formation_window_aa1a7bd64e46219b7751dc32322882f5e}
+
+
+Ajout d'une nouvelle formation. 
+
+Cette fonction est appelée lorsque l'utilisateur clique sur le bouton Nouveau. Elle ouvre une fenêtre \hyperlink{class_new_formation_window}{New\-Formation\-Window}. 
+
+Definition at line 309 of file Formation\-Window.\-cpp.
+
+\hypertarget{class_formation_window_a9c5b19cd30fb56ddef12734a2ed68087}{\index{Formation\-Window@{Formation\-Window}!sauverfil@{sauverfil}}
+\index{sauverfil@{sauverfil}!FormationWindow@{Formation\-Window}}
+\subsubsection[{sauverfil}]{\setlength{\rightskip}{0pt plus 5cm}void Formation\-Window\-::sauverfil (
+\begin{DoxyParamCaption}
+\item[{int}]{r, }
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_formation_window_a9c5b19cd30fb56ddef12734a2ed68087}
+
+
+Sauvegarde ou suppression d'une filière associée à une branche. 
+
+Cette fonction est appelée lorsqu'une cellule du tableau des filières associées est cliquée. Selon la cellule cliquée, cette fonction enregistre les modifications apportées à une filière, ou la supprime de la table Association\-Branche\-Filiere.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & \-: ligne de la cellule cliquée. \\
+\hline
+{\em c} & \-: colonne de la cellule cliquée. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 474 of file Formation\-Window.\-cpp.
+
+\hypertarget{class_formation_window_a6efc5f1397dda264a7044d909d8afeab}{\index{Formation\-Window@{Formation\-Window}!sauveruv@{sauveruv}}
+\index{sauveruv@{sauveruv}!FormationWindow@{Formation\-Window}}
+\subsubsection[{sauveruv}]{\setlength{\rightskip}{0pt plus 5cm}void Formation\-Window\-::sauveruv (
+\begin{DoxyParamCaption}
+\item[{int}]{r, }
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_formation_window_a6efc5f1397dda264a7044d909d8afeab}
+
+
+Sauvegarde ou suppression d'une uv associée. 
+
+Cette fonction est appelée lorsqu'une cellule du tableau des uv associées est cliquée. Selon la cellule cliquée, cette fonction enregistre les modifications apportées à une uv, ou la supprime de la table Association\-Formation\-U\-V.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & \-: ligne de la cellule cliquée. \\
+\hline
+{\em c} & \-: colonne de la cellule cliquée. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 423 of file Formation\-Window.\-cpp.
+
+\hypertarget{class_formation_window_afe595a0a344e7884a2199d49685b72c8}{\index{Formation\-Window@{Formation\-Window}!setenabled@{setenabled}}
+\index{setenabled@{setenabled}!FormationWindow@{Formation\-Window}}
+\subsubsection[{setenabled}]{\setlength{\rightskip}{0pt plus 5cm}void Formation\-Window\-::setenabled (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_formation_window_afe595a0a344e7884a2199d49685b72c8}
+
+
+Activation du bouton Sauver. 
+
+Cette fonction est appelée lorsqu'un champ de la fenêtre est modifié. 
+
+Definition at line 265 of file Formation\-Window.\-cpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_u_t_profiler_8h}{U\-T\-Profiler.\-h}\item 
+\hyperlink{_formation_window_8cpp}{Formation\-Window.\-cpp}\end{DoxyCompactItemize}

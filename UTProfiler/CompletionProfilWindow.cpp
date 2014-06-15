@@ -1,5 +1,10 @@
 #include "UTProfiler.h"
 
+/**
+ * @brief Constructeur
+ * Ce constructeur initialise toutes les fonctions de l'Interface Graphique de cette fenêtre : créer et organiser les
+ * objets graphiques, et les connecter avec les bons slots.
+ */
 CompletionProfilWindow::CompletionProfilWindow() : compteurConfirme(6) {
     searchdossierwindow = new SearchDossierWindow(this);
     mainlayout = new QVBoxLayout();
@@ -89,6 +94,16 @@ CompletionProfilWindow::CompletionProfilWindow() : compteurConfirme(6) {
     QObject::connect(pbenregistrer,SIGNAL(clicked()),this,SLOT(enregistrer()));
 }
 
+/**
+ * @brief Algorithme de Completion de Profil
+ *
+ * Cette méthode est l'algorithme de completion de profil. S'il devait être modifié, il n'y aurait que cette méthode à changer.
+ * Il cherche et récupère 2 CS, 2 TM et 2 TSH diplomantes selon la branche et disponible au prochain semestre et se charge de
+ * les afficher dans la fenetre, en tenant compte des souhaits et des rejets de l'utilisateur
+ * @param dossier : Etudiant dont le profil est à compléter
+ * @param souhaits : Liste des UVs souhaitées par l'étudiant pour le prochain semestre
+ * @param rejets : Liste des UVs non souhaitées par l'étudiant pour le prochain semestre
+ */
 void CompletionProfilWindow::CompletionProfil(Dossier *dossier, QString **souhaits, QString **rejets) {
     UV** res = new UV*[6];
     UV *test;
@@ -149,6 +164,9 @@ void CompletionProfilWindow::CompletionProfil(Dossier *dossier, QString **souhai
     compteurTSH>1?leuv6->setText(res[5]->getCode()):leuv6->setText("Aucune TSH disponible");
 }
 
+/**
+ * @brief Slot ouvrant la fenetre de recherche de dossier
+ */
 void CompletionProfilWindow::rechercher() {
     compteurConfirme=6;
     pbconfirmer1->setEnabled(true);
@@ -167,6 +185,12 @@ void CompletionProfilWindow::rechercher() {
     hide();
 }
 
+/**
+ * @brief Constructeur
+ * Ce constructeur initialise toutes les fonctions de l'Interface Graphique de cette fenêtre : créer et organiser les
+ * objets graphiques, et les connecter avec les bons slots.
+ * @param fw : pointeur vers la classe CompletionProfilWindow qui gère son cycle de vie
+ */
 SearchDossierWindow::SearchDossierWindow(CompletionProfilWindow *fw) : master(fw) {
     mainlayout = new QVBoxLayout();
     hlayout1 = new QHBoxLayout();
@@ -207,11 +231,17 @@ SearchDossierWindow::SearchDossierWindow(CompletionProfilWindow *fw) : master(fw
     QObject::connect(pbrechercher,SIGNAL(clicked()),this,SLOT(rechercher()));
 }
 
+/**
+ * @brief Slot permettant de revenir à l'écran précédent
+ */
 void SearchDossierWindow::annuler() {
     master->close();
     close();
 }
 
+/**
+ * @brief Slot permettant de rechercher un dossier dans la base de données
+ */
 void SearchDossierWindow::rechercher() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     dossier = sql->selectDossier(QString::fromStdString("SELECT * FROM Dossier WHERE login = '"+lenom->currentText().toStdString()+"';"));
@@ -244,7 +274,9 @@ void SearchDossierWindow::rechercher() {
     close();
 }
 
-
+/**
+ * @brief Slot permettant de valider une UV parmi les suggestions
+ */
 void CompletionProfilWindow::confirmer1() {
     pbconfirmer1->setEnabled(false);
     pbrefuser1->setEnabled(false);
@@ -252,6 +284,9 @@ void CompletionProfilWindow::confirmer1() {
     if (compteurConfirme==0) {pbenregistrer->setEnabled(true);}
 }
 
+/**
+ * @brief Slot permettant de valider une UV parmi les suggestions
+ */
 void CompletionProfilWindow::confirmer2() {
     pbconfirmer2->setEnabled(false);
     pbrefuser2->setEnabled(false);
@@ -259,6 +294,9 @@ void CompletionProfilWindow::confirmer2() {
     if (compteurConfirme==0) {pbenregistrer->setEnabled(true);}
 }
 
+/**
+ * @brief Slot permettant de valider une UV parmi les suggestions
+ */
 void CompletionProfilWindow::confirmer3() {
     pbconfirmer3->setEnabled(false);
     pbrefuser3->setEnabled(false);
@@ -266,6 +304,9 @@ void CompletionProfilWindow::confirmer3() {
     if (compteurConfirme==0) {pbenregistrer->setEnabled(true);}
 }
 
+/**
+ * @brief Slot permettant de valider une UV parmi les suggestions
+ */
 void CompletionProfilWindow::confirmer4() {
     pbconfirmer4->setEnabled(false);
     pbrefuser4->setEnabled(false);
@@ -280,6 +321,9 @@ void CompletionProfilWindow::confirmer5() {
     if (compteurConfirme==0) {pbenregistrer->setEnabled(true);}
 }
 
+/**
+ * @brief Slot permettant de valider une UV parmi les suggestions
+ */
 void CompletionProfilWindow::confirmer6() {
     pbconfirmer6->setEnabled(false);
     pbrefuser6->setEnabled(false);
@@ -287,6 +331,9 @@ void CompletionProfilWindow::confirmer6() {
     if (compteurConfirme==0) {pbenregistrer->setEnabled(true);}
 }
 
+/**
+ * @brief Slot permettant de refuser une UV parmi les suggestions, et de demander à l'algorithme d'en proposer une autre à la place
+ */
 void CompletionProfilWindow::refuser1() {
     unsigned int i=0;
     while (searchdossierwindow->rejets[i]->toStdString()!="fin") {++i;}
@@ -295,6 +342,9 @@ void CompletionProfilWindow::refuser1() {
     CompletionProfil(searchdossierwindow->dossier,searchdossierwindow->souhaits,searchdossierwindow->rejets);
 }
 
+/**
+ * @brief Slot permettant de refuser une UV parmi les suggestions, et de demander à l'algorithme d'en proposer une autre à la place
+ */
 void CompletionProfilWindow::refuser2() {
     unsigned int i=0;
     while (searchdossierwindow->rejets[i]->toStdString()!="fin") {++i;}
@@ -303,6 +353,9 @@ void CompletionProfilWindow::refuser2() {
     CompletionProfil(searchdossierwindow->dossier,searchdossierwindow->souhaits,searchdossierwindow->rejets);
 }
 
+/**
+ * @brief Slot permettant de refuser une UV parmi les suggestions, et de demander à l'algorithme d'en proposer une autre à la place
+ */
 void CompletionProfilWindow::refuser3() {
     unsigned int i=0;
     while (searchdossierwindow->rejets[i]->toStdString()!="fin") {++i;}
@@ -311,6 +364,9 @@ void CompletionProfilWindow::refuser3() {
     CompletionProfil(searchdossierwindow->dossier,searchdossierwindow->souhaits,searchdossierwindow->rejets);
 }
 
+/**
+ * @brief Slot permettant de refuser une UV parmi les suggestions, et de demander à l'algorithme d'en proposer une autre à la place
+ */
 void CompletionProfilWindow::refuser4() {
     unsigned int i=0;
     while (searchdossierwindow->rejets[i]->toStdString()!="fin") {++i;}
@@ -319,6 +375,9 @@ void CompletionProfilWindow::refuser4() {
     CompletionProfil(searchdossierwindow->dossier,searchdossierwindow->souhaits,searchdossierwindow->rejets);
 }
 
+/**
+ * @brief Slot permettant de refuser une UV parmi les suggestions, et de demander à l'algorithme d'en proposer une autre à la place
+ */
 void CompletionProfilWindow::refuser5() {
     unsigned int i=0;
     while (searchdossierwindow->rejets[i]->toStdString()!="fin") {++i;}
@@ -327,6 +386,9 @@ void CompletionProfilWindow::refuser5() {
     CompletionProfil(searchdossierwindow->dossier,searchdossierwindow->souhaits,searchdossierwindow->rejets);
 }
 
+/**
+ * @brief Slot permettant de refuser une UV parmi les suggestions, et de demander à l'algorithme d'en proposer une autre à la place
+ */
 void CompletionProfilWindow::refuser6() {
     unsigned int i=0;
     while (searchdossierwindow->rejets[i]->toStdString()!="fin") {++i;}
@@ -335,6 +397,9 @@ void CompletionProfilWindow::refuser6() {
     CompletionProfil(searchdossierwindow->dossier,searchdossierwindow->souhaits,searchdossierwindow->rejets);
 }
 
+/**
+ * @brief Slot permettant d'enregistrer une completion dont toutes les UVs sont confirmées dans la base de données pour qu'elle puisse être reconsultée plus tard
+ */
 void CompletionProfilWindow::enregistrer() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     QString q=QString::fromStdString("INSERT INTO CompletionProfil VALUES (");
@@ -358,6 +423,9 @@ void CompletionProfilWindow::enregistrer() {
     pbenregistrer->setEnabled(false);
 }
 
+/**
+ * @brief Slot permettant d'ouvrir la fenêtre de consultation des completions de profil enrigistrées après avoir séléctionné un dossier
+ */
 void SearchDossierWindow::retrouver() {
     InterfaceSQL *sql = InterfaceSQL::getInstance();
     QString ***completions = sql->selectCompletion(QString::fromStdString("SELECT * FROM CompletionProfil WHERE dossier ='"+lenom->currentText().toStdString()+"';"));
@@ -367,6 +435,13 @@ void SearchDossierWindow::retrouver() {
     hide();
 }
 
+/**
+ * @brief Constructeur
+ * Ce constructeur initialise toutes les fonctions de l'Interface Graphique de cette fenêtre : créer et organiser les
+ * objets graphiques, et les connecter avec les bons slots.
+ * De plus, il remplit automatiquement les champs grâce au tableau passé en paramètre
+ * @param c : tableau des différentes complétions enregistrées
+ */
 RetrouverCompletionWindow::RetrouverCompletionWindow(QString ***c) : completions(c), indice(0) {
     mainlayout = new QVBoxLayout();
     lresultat = new QLabel("Voici les UVs que nous vous proposons : ");
@@ -405,6 +480,7 @@ RetrouverCompletionWindow::RetrouverCompletionWindow(QString ***c) : completions
     hlayout5->addWidget(luv5);
     hlayout5->addWidget(leuv5);
     hlayout6->addWidget(luv6);
+    hlayout6->addWidget(leuv6);
     hlayout7->addWidget(pbprecedent);
     hlayout7->addWidget(pbfermer);
     hlayout7->addWidget(pbsuivant);
@@ -423,12 +499,19 @@ RetrouverCompletionWindow::RetrouverCompletionWindow(QString ***c) : completions
     QObject::connect(pbsuivant,SIGNAL(clicked()),this,SLOT(suivant()));
 }
 
+/**
+ * @brief Slot permettant de naviguer entre les completions de profil sauvegardées
+ */
 void RetrouverCompletionWindow::precedent() {
+    pbsuivant->setEnabled(true);
     indice--;
     associercompletion(completions[indice]);
     if (indice==0) {pbprecedent->setEnabled(false);}
 }
 
+/**
+ * @brief Slot permettant de naviguer entre les completions de profil sauvegardées
+ */
 void RetrouverCompletionWindow::suivant() {
     pbprecedent->setEnabled(true);
     indice++;
@@ -436,6 +519,10 @@ void RetrouverCompletionWindow::suivant() {
     if (completions[indice+1][0]->toStdString()=="fin") {pbsuivant->setEnabled(false);}
 }
 
+/**
+ * @brief Méthode permettant de remplir les champs texte avec une completion de profil
+ * @param completion : tableau contenant les QString à distribuer dans les champs texte
+ */
 void RetrouverCompletionWindow::associercompletion(QString **completion) {
     if (completion[0]->toStdString()!="fin") {
         leuv1->setText(*completion[1]);

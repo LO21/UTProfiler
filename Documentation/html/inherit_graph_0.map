@@ -1,0 +1,15 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$class_associer_filiere_window.html" title="Classe de la fenêtre pour associer une filière à une branche. " alt="" coords="147,5,301,32"/>
+<area shape="rect" id="node3" href="$class_associer_u_v_window.html" title="Classe de la fenêtre pour associer une uv à une formation. " alt="" coords="155,56,293,83"/>
+<area shape="rect" id="node4" href="$class_completion_profil_window.html" title="CompletionProfilWindow" alt="" coords="141,107,307,133"/>
+<area shape="rect" id="node5" href="$class_dossier_window.html" title="Classe pour la fenêtre qui permet de consulter, modifier, ajouter, supprimer un dossier. " alt="" coords="167,157,281,184"/>
+<area shape="rect" id="node6" href="$class_formation_ext_window.html" title="Classe qui permet d&#39;ajouter une formation extérieure à un login existant. " alt="" coords="151,208,297,235"/>
+<area shape="rect" id="node7" href="$class_formation_window.html" title="Classe de la fenêtre pour la gestion des formations. " alt="" coords="161,259,287,285"/>
+<area shape="rect" id="node8" href="$class_home_window.html" title="Classe de la fenêtre d&#39;accueil de UTProfiler. " alt="" coords="172,309,276,336"/>
+<area shape="rect" id="node9" href="$class_new_formation_window.html" title="Classe qui permet d&#39;ajouter une nouvelle formation. " alt="" coords="147,360,301,387"/>
+<area shape="rect" id="node10" href="$class_new_u_v_window.html" title="NewUVWindow" alt="" coords="167,411,281,437"/>
+<area shape="rect" id="node11" href="$class_retrouver_completion_window.html" title="RetrouverCompletionWindow" alt="" coords="128,461,320,488"/>
+<area shape="rect" id="node12" href="$class_search_dossier_window.html" title="SearchDossierWindow" alt="" coords="147,512,301,539"/>
+<area shape="rect" id="node13" href="$class_semestre_window.html" title="Classe qui permet d&#39;ajouter un semestre/une inscription à un uv, à un login existant. " alt="" coords="161,563,287,589"/>
+<area shape="rect" id="node14" href="$class_u_v_window.html" title="UVWindow" alt="" coords="180,613,268,640"/>
+</map>

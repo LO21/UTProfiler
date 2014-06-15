@@ -1,0 +1,349 @@
+\hypertarget{class_formation_exterieure}{\section{Formation\-Exterieure Class Reference}
+\label{class_formation_exterieure}\index{Formation\-Exterieure@{Formation\-Exterieure}}
+}
+
+
+Classe permettant de décrire une formation extérieure à l'U\-T\-C mais rapportant un certain nombre de crédits par équivalence.  
+
+
+
+
+{\ttfamily \#include $<$U\-T\-Profiler.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_formation_exterieure_aaf1f0e33b9e862ccc2b4390e0e2424cd}{Formation\-Exterieure} (const string \&n, const string \&l, unsigned int cs, unsigned int tm, unsigned int tsh, unsigned int sp)
+\begin{DoxyCompactList}\small\item\em Constructeur Permet de créer un nouvel objet \hyperlink{class_formation_exterieure}{Formation\-Exterieure} initialisé avec les valeurs passés en paramètre. \end{DoxyCompactList}\item 
+\hyperlink{class_formation_exterieure_a64dede0a85be1c33cc477c93cc2a6fcf}{Formation\-Exterieure} (\hyperlink{class_formation_exterieure}{Formation\-Exterieure} \&other)
+\begin{DoxyCompactList}\small\item\em Constructeur par recopie Permet de créer un nouvel objet \hyperlink{class_formation_exterieure}{Formation\-Exterieure} identique à un autre objet de la même classe déjà existant. \end{DoxyCompactList}\item 
+\hypertarget{class_formation_exterieure_a887fa1d6f08d8ea04b716a9564732586}{\hyperlink{class_formation_exterieure_a887fa1d6f08d8ea04b716a9564732586}{$\sim$\-Formation\-Exterieure} ()}\label{class_formation_exterieure_a887fa1d6f08d8ea04b716a9564732586}
+
+\begin{DoxyCompactList}\small\item\em Destructeur. \end{DoxyCompactList}\item 
+string \hyperlink{class_formation_exterieure_a5051dbbbad4ac513e6947f8ec230629b}{get\-Nom} () const 
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture du nom de cette formation. \end{DoxyCompactList}\item 
+string \hyperlink{class_formation_exterieure_a6ad4f9c7f6a74910dabe2df5be3a2583}{get\-Lieu} () const 
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture du lieu de cette formation. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_formation_exterieure_a10ae8cef1659fc8baec652f568f48008}{get\-Credits\-C\-S} () const 
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture du nombre de crédits C\-S validés par cette formation. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_formation_exterieure_a3ddcc11233eeac50dfe97124f2d7075f}{get\-Credits\-T\-M} () const 
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture du nombre de crédits T\-M validés par cette formation. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_formation_exterieure_abb62cc93c6853995a085d141f79d013f}{get\-Credits\-T\-S\-H} () const 
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture du nombre de crédits T\-S\-H validés par cette formation. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_formation_exterieure_ad9ddc5b335cb8cee7e86c8f83534112c}{get\-Credits\-S\-P} () const 
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture du nombre de crédits S\-P validés par cette formation. \end{DoxyCompactList}\item 
+void \hyperlink{class_formation_exterieure_ad81e249506fdb1f104ef7474ff600220}{set\-Nom} (const string \&s)
+\begin{DoxyCompactList}\small\item\em Accesseur en écriture du nom de cette formation. \end{DoxyCompactList}\item 
+void \hyperlink{class_formation_exterieure_a9895b945b46b567648d8d31ede404c05}{set\-Lieu} (const string \&s)
+\begin{DoxyCompactList}\small\item\em Accesseur en écriture du nouveau lieu de cette formation. \end{DoxyCompactList}\item 
+void \hyperlink{class_formation_exterieure_af96fc3f4bd03c161ba4c09b4363917cd}{set\-Credits\-C\-S} (unsigned int i)
+\begin{DoxyCompactList}\small\item\em Accesseur en écriture du nombre de crédits C\-S validés par cette formation. \end{DoxyCompactList}\item 
+void \hyperlink{class_formation_exterieure_a2d2930c7cee5a173b2bfefd01136a1bd}{set\-Credits\-T\-M} (unsigned int i)
+\begin{DoxyCompactList}\small\item\em Accesseur en écriture du nombre de crédits T\-M validés par cette formation. \end{DoxyCompactList}\item 
+void \hyperlink{class_formation_exterieure_a8cd12ed44c76fcb439264e4e0c386de6}{set\-Credits\-T\-S\-H} (unsigned int i)
+\begin{DoxyCompactList}\small\item\em Accesseur en écriture du nombre de crédits T\-S\-H validés par cette formation. \end{DoxyCompactList}\item 
+void \hyperlink{class_formation_exterieure_a44e44569507d7afbb9c39d20975748b6}{set\-Credits\-S\-P} (unsigned int i)
+\begin{DoxyCompactList}\small\item\em Accesseur en écriture du nombre de crédits S\-P validés par cette formation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe permettant de décrire une formation extérieure à l'U\-T\-C mais rapportant un certain nombre de crédits par équivalence. 
+
+Cette classe permet de garder temporairement en mémoire une formation d'un étudiant à l'extérieur de l'U\-T\-C. Cependant, un objet de cette classe n'est que temporaire, puisque toutes nos Formations\-Exterieures sont stockées dans notre Base de Données. 
+
+Definition at line 312 of file U\-T\-Profiler.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_formation_exterieure_aaf1f0e33b9e862ccc2b4390e0e2424cd}{\index{Formation\-Exterieure@{Formation\-Exterieure}!Formation\-Exterieure@{Formation\-Exterieure}}
+\index{Formation\-Exterieure@{Formation\-Exterieure}!FormationExterieure@{Formation\-Exterieure}}
+\subsubsection[{Formation\-Exterieure}]{\setlength{\rightskip}{0pt plus 5cm}Formation\-Exterieure\-::\-Formation\-Exterieure (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{n, }
+\item[{const string \&}]{l, }
+\item[{unsigned int}]{cs, }
+\item[{unsigned int}]{tm, }
+\item[{unsigned int}]{tsh, }
+\item[{unsigned int}]{sp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_formation_exterieure_aaf1f0e33b9e862ccc2b4390e0e2424cd}
+
+
+Constructeur Permet de créer un nouvel objet \hyperlink{class_formation_exterieure}{Formation\-Exterieure} initialisé avec les valeurs passés en paramètre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & \-: le nom de cette nouvelle formation \\
+\hline
+{\em l} & \-: le lieu de cette nouvelle formation \\
+\hline
+{\em cs} & \-: le nombre de crédits C\-S obtenus par cette nouvelle formation \\
+\hline
+{\em tm} & \-: le nombre de crédits T\-M obtenus par cette nouvelle formation \\
+\hline
+{\em tsh} & le nombre de crédits T\-S\-H obtenus par cette nouvelle formation \\
+\hline
+{\em sp} & le nombre de crédits S\-P obtenus par cette nouvelle formation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 330 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_formation_exterieure_a64dede0a85be1c33cc477c93cc2a6fcf}{\index{Formation\-Exterieure@{Formation\-Exterieure}!Formation\-Exterieure@{Formation\-Exterieure}}
+\index{Formation\-Exterieure@{Formation\-Exterieure}!FormationExterieure@{Formation\-Exterieure}}
+\subsubsection[{Formation\-Exterieure}]{\setlength{\rightskip}{0pt plus 5cm}Formation\-Exterieure\-::\-Formation\-Exterieure (
+\begin{DoxyParamCaption}
+\item[{{\bf Formation\-Exterieure} \&}]{other}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_formation_exterieure_a64dede0a85be1c33cc477c93cc2a6fcf}
+
+
+Constructeur par recopie Permet de créer un nouvel objet \hyperlink{class_formation_exterieure}{Formation\-Exterieure} identique à un autre objet de la même classe déjà existant. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \-: l'objet à recopier \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 336 of file U\-T\-Profiler.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_formation_exterieure_a10ae8cef1659fc8baec652f568f48008}{\index{Formation\-Exterieure@{Formation\-Exterieure}!get\-Credits\-C\-S@{get\-Credits\-C\-S}}
+\index{get\-Credits\-C\-S@{get\-Credits\-C\-S}!FormationExterieure@{Formation\-Exterieure}}
+\subsubsection[{get\-Credits\-C\-S}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Formation\-Exterieure\-::get\-Credits\-C\-S (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_formation_exterieure_a10ae8cef1659fc8baec652f568f48008}
+
+
+Accesseur en lecture du nombre de crédits C\-S validés par cette formation. 
+
+\begin{DoxyReturn}{Returns}
+Le nombre de crédits C\-S validés par cette formation 
+\end{DoxyReturn}
+
+
+Definition at line 355 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_formation_exterieure_ad9ddc5b335cb8cee7e86c8f83534112c}{\index{Formation\-Exterieure@{Formation\-Exterieure}!get\-Credits\-S\-P@{get\-Credits\-S\-P}}
+\index{get\-Credits\-S\-P@{get\-Credits\-S\-P}!FormationExterieure@{Formation\-Exterieure}}
+\subsubsection[{get\-Credits\-S\-P}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Formation\-Exterieure\-::get\-Credits\-S\-P (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_formation_exterieure_ad9ddc5b335cb8cee7e86c8f83534112c}
+
+
+Accesseur en lecture du nombre de crédits S\-P validés par cette formation. 
+
+\begin{DoxyReturn}{Returns}
+Le nombre de crédits S\-P validés par cette formation 
+\end{DoxyReturn}
+
+
+Definition at line 370 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_formation_exterieure_a3ddcc11233eeac50dfe97124f2d7075f}{\index{Formation\-Exterieure@{Formation\-Exterieure}!get\-Credits\-T\-M@{get\-Credits\-T\-M}}
+\index{get\-Credits\-T\-M@{get\-Credits\-T\-M}!FormationExterieure@{Formation\-Exterieure}}
+\subsubsection[{get\-Credits\-T\-M}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Formation\-Exterieure\-::get\-Credits\-T\-M (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_formation_exterieure_a3ddcc11233eeac50dfe97124f2d7075f}
+
+
+Accesseur en lecture du nombre de crédits T\-M validés par cette formation. 
+
+\begin{DoxyReturn}{Returns}
+Le nombre de crédits T\-M validés par cette formation 
+\end{DoxyReturn}
+
+
+Definition at line 360 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_formation_exterieure_abb62cc93c6853995a085d141f79d013f}{\index{Formation\-Exterieure@{Formation\-Exterieure}!get\-Credits\-T\-S\-H@{get\-Credits\-T\-S\-H}}
+\index{get\-Credits\-T\-S\-H@{get\-Credits\-T\-S\-H}!FormationExterieure@{Formation\-Exterieure}}
+\subsubsection[{get\-Credits\-T\-S\-H}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Formation\-Exterieure\-::get\-Credits\-T\-S\-H (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_formation_exterieure_abb62cc93c6853995a085d141f79d013f}
+
+
+Accesseur en lecture du nombre de crédits T\-S\-H validés par cette formation. 
+
+\begin{DoxyReturn}{Returns}
+Le nombre de crédits T\-S\-H validés par cette formation 
+\end{DoxyReturn}
+
+
+Definition at line 365 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_formation_exterieure_a6ad4f9c7f6a74910dabe2df5be3a2583}{\index{Formation\-Exterieure@{Formation\-Exterieure}!get\-Lieu@{get\-Lieu}}
+\index{get\-Lieu@{get\-Lieu}!FormationExterieure@{Formation\-Exterieure}}
+\subsubsection[{get\-Lieu}]{\setlength{\rightskip}{0pt plus 5cm}string Formation\-Exterieure\-::get\-Lieu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_formation_exterieure_a6ad4f9c7f6a74910dabe2df5be3a2583}
+
+
+Accesseur en lecture du lieu de cette formation. 
+
+\begin{DoxyReturn}{Returns}
+Le lieu de cette formation 
+\end{DoxyReturn}
+
+
+Definition at line 350 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_formation_exterieure_a5051dbbbad4ac513e6947f8ec230629b}{\index{Formation\-Exterieure@{Formation\-Exterieure}!get\-Nom@{get\-Nom}}
+\index{get\-Nom@{get\-Nom}!FormationExterieure@{Formation\-Exterieure}}
+\subsubsection[{get\-Nom}]{\setlength{\rightskip}{0pt plus 5cm}string Formation\-Exterieure\-::get\-Nom (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_formation_exterieure_a5051dbbbad4ac513e6947f8ec230629b}
+
+
+Accesseur en lecture du nom de cette formation. 
+
+\begin{DoxyReturn}{Returns}
+Le nom de cette formation 
+\end{DoxyReturn}
+
+
+Definition at line 345 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_formation_exterieure_af96fc3f4bd03c161ba4c09b4363917cd}{\index{Formation\-Exterieure@{Formation\-Exterieure}!set\-Credits\-C\-S@{set\-Credits\-C\-S}}
+\index{set\-Credits\-C\-S@{set\-Credits\-C\-S}!FormationExterieure@{Formation\-Exterieure}}
+\subsubsection[{set\-Credits\-C\-S}]{\setlength{\rightskip}{0pt plus 5cm}void Formation\-Exterieure\-::set\-Credits\-C\-S (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_formation_exterieure_af96fc3f4bd03c161ba4c09b4363917cd}
+
+
+Accesseur en écriture du nombre de crédits C\-S validés par cette formation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \-: Nouveau nombre de crédits C\-S validés par cette formation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 385 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_formation_exterieure_a44e44569507d7afbb9c39d20975748b6}{\index{Formation\-Exterieure@{Formation\-Exterieure}!set\-Credits\-S\-P@{set\-Credits\-S\-P}}
+\index{set\-Credits\-S\-P@{set\-Credits\-S\-P}!FormationExterieure@{Formation\-Exterieure}}
+\subsubsection[{set\-Credits\-S\-P}]{\setlength{\rightskip}{0pt plus 5cm}void Formation\-Exterieure\-::set\-Credits\-S\-P (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_formation_exterieure_a44e44569507d7afbb9c39d20975748b6}
+
+
+Accesseur en écriture du nombre de crédits S\-P validés par cette formation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \-: Nouveau nombre de crédits S\-P validés par cette formation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 400 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_formation_exterieure_a2d2930c7cee5a173b2bfefd01136a1bd}{\index{Formation\-Exterieure@{Formation\-Exterieure}!set\-Credits\-T\-M@{set\-Credits\-T\-M}}
+\index{set\-Credits\-T\-M@{set\-Credits\-T\-M}!FormationExterieure@{Formation\-Exterieure}}
+\subsubsection[{set\-Credits\-T\-M}]{\setlength{\rightskip}{0pt plus 5cm}void Formation\-Exterieure\-::set\-Credits\-T\-M (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_formation_exterieure_a2d2930c7cee5a173b2bfefd01136a1bd}
+
+
+Accesseur en écriture du nombre de crédits T\-M validés par cette formation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \-: Nouveau nombre de crédits T\-M validés par cette formation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 390 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_formation_exterieure_a8cd12ed44c76fcb439264e4e0c386de6}{\index{Formation\-Exterieure@{Formation\-Exterieure}!set\-Credits\-T\-S\-H@{set\-Credits\-T\-S\-H}}
+\index{set\-Credits\-T\-S\-H@{set\-Credits\-T\-S\-H}!FormationExterieure@{Formation\-Exterieure}}
+\subsubsection[{set\-Credits\-T\-S\-H}]{\setlength{\rightskip}{0pt plus 5cm}void Formation\-Exterieure\-::set\-Credits\-T\-S\-H (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_formation_exterieure_a8cd12ed44c76fcb439264e4e0c386de6}
+
+
+Accesseur en écriture du nombre de crédits T\-S\-H validés par cette formation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \-: Nouveau nombre de crédits T\-S\-H validés par cette formation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 395 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_formation_exterieure_a9895b945b46b567648d8d31ede404c05}{\index{Formation\-Exterieure@{Formation\-Exterieure}!set\-Lieu@{set\-Lieu}}
+\index{set\-Lieu@{set\-Lieu}!FormationExterieure@{Formation\-Exterieure}}
+\subsubsection[{set\-Lieu}]{\setlength{\rightskip}{0pt plus 5cm}void Formation\-Exterieure\-::set\-Lieu (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_formation_exterieure_a9895b945b46b567648d8d31ede404c05}
+
+
+Accesseur en écriture du nouveau lieu de cette formation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & \-: Le nouveau lieu de cette formation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 380 of file U\-T\-Profiler.\-h.
+
+\hypertarget{class_formation_exterieure_ad81e249506fdb1f104ef7474ff600220}{\index{Formation\-Exterieure@{Formation\-Exterieure}!set\-Nom@{set\-Nom}}
+\index{set\-Nom@{set\-Nom}!FormationExterieure@{Formation\-Exterieure}}
+\subsubsection[{set\-Nom}]{\setlength{\rightskip}{0pt plus 5cm}void Formation\-Exterieure\-::set\-Nom (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_formation_exterieure_ad81e249506fdb1f104ef7474ff600220}
+
+
+Accesseur en écriture du nom de cette formation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & \-: Le nouveau nom de cette formation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 375 of file U\-T\-Profiler.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_u_t_profiler_8h}{U\-T\-Profiler.\-h}\end{DoxyCompactItemize}
