@@ -513,6 +513,10 @@ class UVWindow : public QWidget {
     void nouveau();
 };
 
+/*! \class DossierWindow
+  * \brief Classe pour la fenêtre qui permet de consulter, modifier, ajouter, supprimer un dossier
+  *
+  */
 class DossierWindow : public QWidget {
     Q_OBJECT
     friend class HomeWindow;
@@ -580,10 +584,14 @@ class DossierWindow : public QWidget {
     void supprimer();
 };
 
+/*! \class FormationExtWindow
+  * \brief Classe qui permet d'ajouter une formation extérieure à un login existant
+  *
+  */
 class FormationExtWindow : public QWidget {
     Q_OBJECT
 
-    QString login;
+    QString login; /*!< login pour lequel on souhaite ajouter une formation extérieure */
 
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
@@ -609,16 +617,26 @@ class FormationExtWindow : public QWidget {
 
    public :
     FormationExtWindow(const QString& l);
+    /*!
+         *  \brief Accès en lecture au login
+         *
+         *
+         *  \return l'attribut login
+         */
     QString getLogin() const {return login;}
 
    public slots :
     void ajouter();
 };
 
+/*! \class SemestreWindow
+  * \brief Classe qui permet d'ajouter un semestre/une inscription à un uv, à un login existant
+  *
+  */
 class SemestreWindow : public QWidget {
     Q_OBJECT
 
-    QString login;
+    QString login; /*!< login pour lequel on souhaite ajouter un semestre */
 
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
@@ -641,6 +659,12 @@ class SemestreWindow : public QWidget {
 
    public :
     SemestreWindow(const QString& l);
+    /*!
+         *  \brief Accès en lecture au login
+         *
+         *
+         *  \return l'attribut login
+         */
     QString getLogin() const {return login;}
 
    public slots :
@@ -649,6 +673,10 @@ class SemestreWindow : public QWidget {
 
 class FormationWindow;
 
+/*! \class NewFormationWindow
+  * \brief Classe qui permet d'ajouter une nouvelle formation
+  *
+  */
 class NewFormationWindow : public QWidget {
     Q_OBJECT
     friend class FormationWindow;
@@ -668,11 +696,13 @@ class NewFormationWindow : public QWidget {
     void annuler();
 };
 
+/*! \class FormationWindow
+  * \brief Classe de la fenêtre pour la gestion des formations
+  *
+  */
 class FormationWindow : public QWidget {
     Q_OBJECT
     friend class HomeWindow;
-    friend class BindUVWindow;
-    friend class UnbindUVWindow;
     NewFormationWindow *newformationwindow;
     Formation *formation;
     QVBoxLayout *mainlayout;
@@ -864,7 +894,10 @@ class CompletionProfilWindow : public QWidget {
     void refuser6();
 };
 
-
+/*! \class HomeWindow
+  * \brief Classe de la fenêtre d'accueil de UTProfiler
+  *
+  */
 class HomeWindow : public QWidget {
     Q_OBJECT
     UVWindow *uvwindow;
@@ -889,9 +922,13 @@ class HomeWindow : public QWidget {
     HomeWindow();
 };
 
+/*! \class AssocierUVWindow
+  * \brief Classe de la fenêtre pour associer une uv à une formation
+  *
+  */
 class AssocierUVWindow : public QWidget{
     Q_OBJECT
-    QString formation;
+    QString formation; /*!< Formation pour laquelle on souhaite associer une uv */
 
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
@@ -902,14 +939,24 @@ class AssocierUVWindow : public QWidget{
 
     public :
         AssocierUVWindow(const QString& f);
+        /*!
+             *  \brief Accès en lecture à la formation
+             *
+             *
+             *  \return l'attribut formation
+             */
         QString getFormation() const {return formation;}
     public slots :
         void ajouter();
 };
 
+/*! \class AssocierFiliereWindow
+  * \brief Classe de la fenêtre pour associer une filière à une branche
+  *
+  */
 class AssocierFiliereWindow : public QWidget{
     Q_OBJECT
-    QString branche;
+    QString branche; /*!< Branche pour laquelle on souhaite associer une filière */
 
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
@@ -920,6 +967,12 @@ class AssocierFiliereWindow : public QWidget{
 
     public :
         AssocierFiliereWindow(const QString& b);
+        /*!
+             *  \brief Accès en lecture à la branche
+             *
+             *
+             *  \return l'attribut branche
+             */
         QString getBranche() const {return branche;}
     public slots :
         void ajouter();
