@@ -1,5 +1,16 @@
+/*!
+ * \file FormationWindow.cpp
+ * \brief Fenêtre de gestion des formations
+ * \author Gabrielle Rit et Timothée Monceaux
+ *
+ */
 #include "UTProfiler.h"
 
+/*!
+     *  \brief Constructeur de FormationWindow
+     *
+     *
+     */
 FormationWindow::FormationWindow() {
     setWindowTitle("UTProfiler");
     mainlayout = new QVBoxLayout();
@@ -138,6 +149,12 @@ FormationWindow::FormationWindow() {
 
 }
 
+/*!
+     *  \brief Association d'une formation aux champs de la fenêtre
+     *
+     *
+     *  \param newformation : la formation à associer aux champs de la fenêtre DossierWindow
+     */
 void FormationWindow::associerFormation(Formation *newformation) {
 
     formation=newformation;
@@ -239,9 +256,20 @@ void FormationWindow::associerFormation(Formation *newformation) {
 
 }
 
+/*!
+     *  \brief Activation du bouton Sauver
+     *
+     *  Cette fonction est appelée lorsqu'un champ de la fenêtre est modifié.
+     *
+     */
 void FormationWindow::setenabled() {
     pbsauver->setEnabled(true);
 }
+
+/*!
+     *  \brief Recherche d'une formation existante
+     *
+     */
 void FormationWindow::rechercher() {
     if (lenom->text() == ""){ // Vérification qu'il y ait bien une formation à rechercher
         QMessageBox msg;
@@ -271,42 +299,67 @@ void FormationWindow::rechercher() {
     }
 }
 
+/*!
+     *  \brief Ajout d'une nouvelle formation
+     *
+     *  Cette fonction est appelée lorsque l'utilisateur clique sur le bouton Nouveau.
+     *  Elle ouvre une fenêtre NewFormationWindow.
+     *
+     */
 void FormationWindow::nouveau() {
     newformationwindow = new NewFormationWindow(this);
 }
 
+/*!
+     *  \brief Suppression d'une formation existante
+     *
+     */
 void FormationWindow::supprimer() {
     if (lenom->text() == ""){ // Vérification qu'il y ait bien une formation à rechercher
         QMessageBox msg;
         msg.setText("Veuillez rentrer le nom de la formation.");
         msg.exec();
-    } else {
+    } else { // Vérification que la formation à supprimer existe
+        QString q4 = "SELECT * FROM Formation WHERE nom = '";
+        q4.append(lenom->text());
+        q4.append("';");
         InterfaceSQL *sql = InterfaceSQL::getInstance();
+        QSqlQuery query4 = sql->execQuery(q4);
+        query4.next();
+        if (query4.value(0).toString() == ""){ // La formation n'existe pas
+            QMessageBox msg;
+            msg.setText("Cette formation n'existe pas.");
+            msg.exec();
+        } else {
+            if (cbtype->currentText() == "Branche"){
 
-        if (cbtype->currentText() == "Branche"){
+                /* Suppression des filières associées */
 
-            /* Suppression des filières associées */
+                QString q3 = "DELETE FROM AssociationBrancheFiliere WHERE branche = '";
+                q3.append(lenom->text());
+                q3.append("';");
+                sql->execQuery(q3);
+            }
 
-            QString q3 = "DELETE FROM AssociationBrancheFiliere WHERE branche = '";
-            q3.append(lenom->text());
-            q3.append("';");
-            sql->execQuery(q3);
+            /* Suppression des UVs associées */
+
+            QString q2 = "DELETE FROM AssociationFormationUV WHERE formation = '";
+            q2.append(lenom->text());
+            q2.append("';");
+            sql->execQuery(q2);
+
+            /* Suppression de la formation */
+
+            QString q = QString::fromStdString("DELETE FROM Formation WHERE nom = '"+formation->getNom().toStdString()+"';");
+            sql->execQuery(q);
         }
-
-        /* Suppression des UVs associées */
-
-        QString q2 = "DELETE FROM AssociationFormationUV WHERE formation = '";
-        q2.append(lenom->text());
-        q2.append("';");
-        sql->execQuery(q2);
-
-        /* Suppression de la formation */
-
-        QString q = QString::fromStdString("DELETE FROM Formation WHERE nom = '"+formation->getNom().toStdString()+"';");
-        sql->execQuery(q);
     }
 }
 
+/*!
+     *  \brief Sauvegarde d'une formation existante
+     *
+     */
 void FormationWindow::sauver() {
 
     if (lenom->text() == ""){ // Vérification qu'il y ait bien une formation à rechercher
@@ -355,7 +408,18 @@ void FormationWindow::sauver() {
     pbsauver->setEnabled(false);
 }
 
-
+/*!
+     *  \brief Sauvegarde ou suppression d'une uv associée
+     *
+     *  Cette fonction est appelée lorsqu'une cellule du tableau des
+     *  uv associées est cliquée. Selon la cellule cliquée, cette fonction
+     *  enregistre les modifications apportées à une uv, ou la supprime
+     *  de la table AssociationFormationUV.
+     *
+     *  \param r : ligne de la cellule cliquée.
+     *  \param c : colonne de la cellule cliquée.
+     *
+     */
 void FormationWindow::sauveruv(int r, int c){
     /* Sauvegardes des modifications des uvs associées */
         if (c == 6){
@@ -395,9 +459,20 @@ void FormationWindow::sauveruv(int r, int c){
         }
 }
 
+/*!
+     *  \brief Sauvegarde ou suppression d'une filière associée à une branche
+     *
+     *  Cette fonction est appelée lorsqu'une cellule du tableau des
+     *  filières associées est cliquée. Selon la cellule cliquée, cette fonction
+     *  enregistre les modifications apportées à une filière, ou la supprime
+     *  de la table AssociationBrancheFiliere.
+     *
+     *  \param r : ligne de la cellule cliquée.
+     *  \param c : colonne de la cellule cliquée.
+     *
+     */
 void FormationWindow::sauverfil(int r, int c){
     /* Sauvegardes des modifications des uvs associées */
-        qDebug()<<r<<c;
         if (c == 2){
             InterfaceSQL *sql = InterfaceSQL::getInstance();
             QString responsable = (table->item(r,1)->data(Qt::EditRole)).toString();
@@ -427,6 +502,11 @@ void FormationWindow::sauverfil(int r, int c){
         }
 }
 
+/*!
+     *  \brief Constructeur de NewFormationWindow
+     *
+     *
+     */
 NewFormationWindow::NewFormationWindow(FormationWindow *fw) : master(fw) {
     mainlayout = new QVBoxLayout();
     hlayout1 = new QHBoxLayout();
@@ -450,14 +530,31 @@ NewFormationWindow::NewFormationWindow(FormationWindow *fw) : master(fw) {
     show();
 }
 
+/*!
+     *  \brief Activation du bouton ajouter
+     *
+     *  Active le bouton ajouter lorsque un champ de la fenêtre
+     *  a été modifié.
+     *
+     */
 void NewFormationWindow::setenabled() {
     pbajouter->setEnabled(true);
 }
 
+/*!
+     *  \brief Fermeture de la fenêtre sans ajout de formation
+     *
+     *
+     */
 void NewFormationWindow::annuler() {
     close();
 }
 
+/*!
+     *  \brief Ajout d'une nouvelle formation dans la table Formation
+     *
+     *
+     */
 void NewFormationWindow::ajouter() {
     QString q = "INSERT INTO Formation(nom) VALUES ('";
     QString nom = lenom->text();
@@ -475,12 +572,26 @@ void NewFormationWindow::ajouter() {
 
 }
 
+/*!
+     *  \brief Ajout d'une uv associée à une formation
+     *
+     *  Cette fonction affiche une AssocierUVWindow lorsque
+     *  l'utilisateur clique sur Ajouter.
+     *
+     */
 void FormationWindow::ajouteruv(){
     QString f = lenom->text();
     AssocierUVWindow *fenetre = new AssocierUVWindow(f);
     fenetre->show();
 }
 
+/*!
+     *  \brief Ajout d'une filière associée à une branche
+     *
+     *  Cette fonction affiche une AssocierFiliereWindow lorsque
+     *  l'utilisateur clique sur Ajouter.
+     *
+     */
 void FormationWindow::ajouterfil(){
     if (cbtype->currentText() == "Branche"){
         QString b = lenom->text();
@@ -489,6 +600,11 @@ void FormationWindow::ajouterfil(){
     }
 }
 
+/*!
+     *  \brief Constructeur de AssocierUVWindow
+     *
+     *  \param f : formation pour laquelle on associe une uv
+     */
 AssocierUVWindow::AssocierUVWindow(const QString& f): formation(f) {
     setWindowTitle("UTProfiler");
     mainlayout = new QVBoxLayout();
@@ -526,6 +642,11 @@ AssocierUVWindow::AssocierUVWindow(const QString& f): formation(f) {
 
 }
 
+/*!
+     *  \brief Association d'une uv à une formation
+     *
+     *
+     */
 void AssocierUVWindow::ajouter() {
 
     if (getFormation() == '\0'){
@@ -560,6 +681,11 @@ void AssocierUVWindow::ajouter() {
     close();
 }
 
+/*!
+     *  \brief Constructeur de AssocierFiliereWindow
+     *
+     *  \param b : branche pour laquelle on associe une filière
+     */
 AssocierFiliereWindow::AssocierFiliereWindow(const QString& b): branche(b) {
     setWindowTitle("UTProfiler");
     mainlayout = new QVBoxLayout();
@@ -585,6 +711,10 @@ AssocierFiliereWindow::AssocierFiliereWindow(const QString& b): branche(b) {
 
 }
 
+/*!
+     *  \brief Association d'une filière à une branche
+     *
+     */
 void AssocierFiliereWindow::ajouter() {
 
     if (getBranche() == '\0'){

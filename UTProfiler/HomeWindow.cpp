@@ -1,5 +1,16 @@
+/*!
+ * \file HomeWindow.cpp
+ * \brief Fenêtre d'accueil de UTProfiler
+ * \author Gabrielle Rit et Timothée Monceaux
+ *
+ */
 #include "UTProfiler.h"
 
+/*!
+     *  \brief Constructeur de HomeWindow
+     *
+     *
+     */
 HomeWindow::HomeWindow() {
     sql = InterfaceSQL::getInstance();
     setWindowTitle("UTProfiler");

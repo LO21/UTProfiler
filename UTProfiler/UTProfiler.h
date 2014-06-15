@@ -488,114 +488,377 @@ class Semestre {
     void setFormationExterieure (FormationExterieure* fe) {formationExt=fe;}
 };
 
+/*! \class Dossier
+  * \brief Classe représentant un dossier
+  *
+  */
 class Dossier {
-    QString login;
-    QString nom;
-    QString prenom;
-    QString conseiller;
-    bool validationAEU;
-    QString branche;
-    Semestre *semestres;
-    FormationExterieure *formationsExterieures;
-    bool mineurCCT;
-    bool mineurDDRESET;
-    bool mineurFIRME;
-    bool mineurINTENT;
-    bool mineurPHITECO;
-    bool mineurST;
-    bool mineurTCN;
+    QString login; /*!< Login du dossier */
+    QString nom; /*!< Nom de l'étudiant */
+    QString prenom; /*!< Prénom de l'étudiant */
+    QString conseiller; /*!< Conseille de l'étudiant */
+    bool validationAEU; /*!< Booléen représentant si l'étudiant a validé son Activité Extra Universitaire */
+    QString branche; /*!< Branche de l'étudiant */
+    Semestre *semestres; /*!< Semestres effectués par l'étudiant */
+    FormationExterieure *formationsExterieures; /*!< Formations extérieures effectuées par l'étudiant */
+    bool mineurCCT; /*!< Booléen représentant si l'étudiant a validé le mineur CCT */
+    bool mineurDDRESET; /*!< Booléen représentant si l'étudiant a validé le mineur DDRESET */
+    bool mineurFIRME; /*!< Booléen représentant si l'étudiant a validé le mineur FIRME */
+    bool mineurINTENT; /*!< Booléen représentant si l'étudiant a validé le mineur INTENT */
+    bool mineurPHITECO; /*!< Booléen représentant si l'étudiant a validé le mineur PHITECO */
+    bool mineurST; /*!< Booléen représentant si l'étudiant a validé le mineur ST */
+    bool mineurTCN; /*!< Booléen représentant si l'étudiant a validé le mineur TCN */
    public :
+    /*!
+         *  \brief Constructeur
+         *
+         *  Constructeur de la classe Dossier
+         *
+         *  \param l : login du dossier
+         *  \param n : Nom de l'étudiant
+         *  \param p : Prénom de l'étudiant
+         *  \param c : Conseiller de l'étudiant
+         *  \param AEU : Booléen représentant si l'étudiant a validé son Activité Extra Universitaire
+         *  \param b : Branche de l'étudiant
+         */
     Dossier(const QString& l, const QString& n, const QString& p, const QString& c, bool AEU, const QString& b) : login(l), nom(n),
         prenom(p), conseiller(c), validationAEU(AEU), branche(b), mineurCCT(false), mineurDDRESET(false), mineurFIRME(false),
         mineurINTENT(false), mineurPHITECO(false), mineurST(false), mineurTCN(false){}
+
+    /*!
+     *  \brief Destructeur
+     *
+     *  Destructeur de la classe Dossier
+     */
     ~Dossier();
+    /*!
+         *  \brief Accès en lecture au login du dossier
+         *
+         *
+         *  \return le login du dossier
+         */
     QString getLogin() const {return login;}
+    /*!
+         *  \brief Accès en lecture au nom de l'étudiant
+         *
+         *
+         *  \return le nom de l'étudiant
+         */
     QString getNom() const {return nom;}
+    /*!
+         *  \brief Accès en lecture au prénom de l'étudiant
+         *
+         *
+         *  \return le prénom de l'étudiant
+         */
     QString getPrenom() const {return prenom;}
+    /*!
+         *  \brief Accès en lecture au conseiller de l'étudiant
+         *
+         *
+         *  \return le conseiller de l'étudiant
+         */
     QString getConseiller() const {return conseiller;}
+    /*!
+         *  \brief Accès en lecture à la branche de l'étudiant
+         *
+         *
+         *  \return la branche de l'étudiant
+         */
     QString getBranche() const {return branche;}
+    /*!
+         *  \brief Accès en lecture à la validation d'activité extra universiatire de l'étudiant
+         *
+         *
+         *  \return la validation d'activité extra universiatire de l'étudiant
+         */
     bool getValidationAEU() const {return validationAEU;}
+    /*!
+         *  \brief Accès en écriture au login du dossier
+         *
+         *
+         *  \return le login du dossier
+         */
     void setLogin (const QString& s) {login=s;}
+    /*!
+         *  \brief Accès en écriture au nom de l'étudiant
+         *
+         *
+         *  \return le nom de l'étudiant
+         */
     void setNom (const QString& s) {nom=s;}
+    /*!
+         *  \brief Accès en écriture au prénom de l'étudiant
+         *
+         *
+         *  \return le prénom de l'étudiant
+         */
     void setPrenom (const QString& s) {prenom=s;}
+    /*!
+         *  \brief Accès en écriture au conseiller de l'étudiant
+         *
+         *
+         *  \return le conseiller de l'étudiant
+         */
     void setConseiller (const QString& s) {conseiller=s;}
+    /*!
+         *  \brief Accès en écriture à la branche de l'étudiant
+         *
+         *
+         *  \return la branche de l'étudiant
+         */
     void setBranche(const QString& s) {branche=s;}
+    /*!
+         *  \brief Accès en écriture à la validation d'activité extra universiatire de l'étudiant
+         *
+         *
+         *  \return la validation d'activité extra universiatire de l'étudiant
+         */
     void setValidationAEU (bool b) {validationAEU=b;}
+    /*!
+         *  \brief Vérifie si l'étudiant a validé le mineur CCT
+         *
+         *
+         *  \return vrai si l'étudiant a validé le mineur CCT, faux sinon
+         */
     bool checkMineurCCT() const;
+    /*!
+         *  \brief Vérifie si l'étudiant a validé le mineur DD-RESET
+         *
+         *
+         *  \return vrai si l'étudiant a validé le mineur DD-RESET, faux sinon
+         */
     bool checkMineurDDRESET() const;
+    /*!
+         *  \brief Vérifie si l'étudiant a validé le mineur FIRME
+         *
+         *
+         *  \return vrai si l'étudiant a validé le mineur FIRME, faux sinon
+         */
     bool checkMineurFIRME() const;
+    /*!
+         *  \brief Vérifie si l'étudiant a validé le mineur INTENT
+         *
+         *
+         *  \return vrai si l'étudiant a validé le mineur INTENT, faux sinon
+         */
     bool checkMineurINTENT() const;
+    /*!
+         *  \brief Vérifie si l'étudiant a validé le mineur PHITECO
+         *
+         *
+         *  \return vrai si l'étudiant a validé le mineur PHITECO, faux sinon
+         */
     bool checkMineurPHITECO() const;
+    /*!
+         *  \brief Vérifie si l'étudiant a validé le mineur ST
+         *
+         *
+         *  \return vrai si l'étudiant a validé le mineur ST, faux sinon
+         */
     bool checkMineurST() const;
+    /*!
+         *  \brief Vérifie si l'étudiant a validé le mineur TCN
+         *
+         *
+         *  \return vrai si l'étudiant a validé le mineur TCN, faux sinon
+         */
     bool checkMineurTCN() const;
+    /*!
+         *  \brief Vérifie la branche de l'étudiant
+         *
+         *
+         *  \return vrai si l'étudiant est en GI, faux sinon
+         */
     bool checkGI() const{
         QString b = "GI";
         if (branche == b) {return true;}
         return false;}
+    /*!
+         *  \brief Vérifie la branche de l'étudiant
+         *
+         *
+         *  \return vrai si l'étudiant est en GM, faux sinon
+         */
     bool checkGM()const{
         QString b = "GM";
         if (branche == b) {return true;}
         return false;}
+    /*!
+         *  \brief Vérifie la branche de l'étudiant
+         *
+         *
+         *  \return vrai si l'étudiant est en GP, faux sinon
+         */
     bool checkGP()const{
         QString b = "GP";
         if (branche == b) {return true;}
         return false;}
+    /*!
+         *  \brief Vérifie la branche de l'étudiant
+         *
+         *
+         *  \return vrai si l'étudiant est en GSM, faux sinon
+         */
     bool checkGSM()const{
         QString b = "GSM";
         if (branche == b) {return true;}
         return false;}
+    /*!
+         *  \brief Vérifie la branche de l'étudiant
+         *
+         *
+         *  \return vrai si l'étudiant est en GSU, faux sinon
+         */
     bool checkGSU()const{
         QString b = "GSU";
         if (branche == b) {return true;}
         return false;}
+    /*!
+         *  \brief Vérifie la branche de l'étudiant
+         *
+         *
+         *  \return vrai si l'étudiant est en GB, faux sinon
+         */
     bool checkGB()const{
         QString b = "GB";
         if (branche == b) {return true;}
         return false;}
+    /*!
+         *  \brief Vérifie la branche de l'étudiant
+         *
+         *
+         *  \return vrai si l'étudiant est en TC, faux sinon
+         */
     bool checkTC()const{
         QString b = "TC";
         if (branche == b) {return true;}
         return false;}
+    /*!
+         *  \brief Vérifie la branche de l'étudiant
+         *
+         *
+         *  \return vrai si l'étudiant est en HUTECH, faux sinon
+         */
     bool checkHutech()const{
         QString b = "HUTECH";
         if (branche == b) {return true;}
         return false;}
-    void suggestionsProchainSemestre();
-
-    //iterator pour naviguer entre les semestres
-    void ajouterSemestre();
-    void supprimerSemestre();
-    void modifierSemestre();
-
-    //iterator pour naviguer entre les formations exterieures
-    void ajouterFormationExterieure();
-    void supprimerFormationExterieure();
-    void modiferFormationExterieure();
+    /*!
+         *  \brief Propositions de prochain semestre pour ce dossier
+         *
+         *
+         */
 };
 
+/*! \class Formation
+  * \brief Classe représentant une formation
+  *
+  */
 class Formation {
-    QString *nom;
-    QString *responsable;
-    QString *type;
-    UV *uvs;
-    unsigned int nbCreditsTot;
-    unsigned int nbCreditsCS;
-    unsigned int nbCreditsTM;
-    unsigned int nbCreditsCSTM;
-    unsigned int nbCreditsTSH;
-    unsigned int nbCreditsSP;
+    QString *nom; /*!< Nom de la formation*/
+    QString *responsable; /*!< Responsable de la formation */
+    QString *type; /*!< Type de la formation : Branche, filière ou mineur */
+    UV *uvs; /*!< uvs associées à la formation */
+    unsigned int nbCreditsTot; /*!< Nombre de crédits total requis pour valider la formation */
+    unsigned int nbCreditsCS;/*!< Nombre de crédits CS requis pour valider la formation */
+    unsigned int nbCreditsTM; /*!< Nombre de crédits TM requis pour valider la formation */
+    unsigned int nbCreditsCSTM; /*!< Nombre de crédits CS + TM requis pour valider la formation */
+    unsigned int nbCreditsTSH; /*!< Nombre de crédits TSH requis pour valider la formation */
+    unsigned int nbCreditsSP; /*!< Nombre de crédits SP requis pour valider la formation */
    public :
+    /*!
+         *  \brief Constructeur
+         *
+         *  Constructeur de la classe Formation
+         *
+         *  \param n : nom de la formation
+         *  \param r : responsable de la formation
+         *  \param t : type de la formation
+         *  \param tot : nombre de crédits total requis pour valider la formation
+         *  \param cs : nombre de crédits CS requis pour valider la formation
+         *  \param tm : nombre de crédits TM requis pour valider la formation
+         *  \param cstm : nombre de crédits CS + TM requis pour valider la formation
+         *  \param tsh : nombre de crédits TSH requis pour valider la formation
+         *  \param sp : nombre de crédits SP requis pour valider la formation
+         */
     Formation(const QString& n, const QString& r, const QString& t, unsigned int tot, unsigned int cs, unsigned int tm, unsigned int cstm, unsigned int tsh, unsigned int sp) : nbCreditsTot(tot), nbCreditsCS(cs), nbCreditsTM(tm), nbCreditsCSTM(cstm), nbCreditsTSH(tsh), nbCreditsSP(sp) {nom = new QString(n); responsable = new QString(r); type = new QString(t);}
+    /*!
+         *  \brief Constructeur
+         *
+         *  Constructeur sans arguments de la classe Formation
+         *
+         */
     Formation() : nbCreditsTot(0), nbCreditsCS(0), nbCreditsTM(0), nbCreditsCSTM(0), nbCreditsTSH(0), nbCreditsSP(0) {nom = new QString(""); responsable = new QString(""); type = new QString("");}
+    /*!
+         *  \brief Accès en lecture au nom de la formation
+         *
+         *
+         *  \return le nom de la formation
+         */
     QString getNom() const {return *nom;}
+    /*!
+         *  \brief Accès en lecture au responsable de la formation
+         *
+         *
+         *  \return le responsable de la formation
+         */
     QString getResponsable() const {return *responsable;}
+    /*!
+         *  \brief Accès en lecture au type de la formation
+         *
+         *
+         *  \return le type de la formation
+         */
     QString getType() const {return *type;}
+    /*!
+         *  \brief Accès en lecture aux uvs associées à la formation
+         *
+         *
+         *  \return les uvs associées à la formation
+         */
     UV *getUVs() const {return uvs;}
+    /*!
+         *  \brief Accès en lecture au nombre de crédits total requis pour valider la formation
+         *
+         *
+         *  \return le nom de crédits total requis pour valider la formation
+         */
     unsigned int getNbCreditsTot() const {return nbCreditsTot;}
+    /*!
+         *  \brief Accès en lecture au nombre de crédits CS requis pour valider la formation
+         *
+         *
+         *  \return le nom de crédits CS requis pour valider la formation
+         */
     unsigned int getNbCreditsCS() const {return nbCreditsCS;}
+    /*!
+         *  \brief Accès en lecture au nombre de crédits TM requis pour valider la formation
+         *
+         *
+         *  \return le nom de crédits TM requis pour valider la formation
+         */
     unsigned int getNbCreditsTM() const {return nbCreditsTM;}
+    /*!
+         *  \brief Accès en lecture au nombre de crédits CS + TM requis pour valider la formation
+         *
+         *
+         *  \return le nom de crédits CS + TM requis pour valider la formation
+         */
     unsigned int getNbCreditsCSTM() const {return nbCreditsCSTM;}
+    /*!
+         *  \brief Accès en lecture au nombre de crédits TSH requis pour valider la formation
+         *
+         *
+         *  \return le nom de crédits TSH requis pour valider la formation
+         */
     unsigned int getNbCreditsTSH() const {return nbCreditsTSH;}
+    /*!
+         *  \brief Accès en lecture au nombre de crédits SP requis pour valider la formation
+         *
+         *
+         *  \return le nom de crédits SP requis pour valider la formation
+         */
     unsigned int getNbCreditsSP() const {return nbCreditsSP;}
 };
 
@@ -742,6 +1005,10 @@ class UVWindow : public QWidget {
     void nouveau();
 };
 
+/*! \class DossierWindow
+  * \brief Classe pour la fenêtre qui permet de consulter, modifier, ajouter, supprimer un dossier
+  *
+  */
 class DossierWindow : public QWidget {
     Q_OBJECT
     friend class HomeWindow;
@@ -809,10 +1076,14 @@ class DossierWindow : public QWidget {
     void supprimer();
 };
 
+/*! \class FormationExtWindow
+  * \brief Classe qui permet d'ajouter une formation extérieure à un login existant
+  *
+  */
 class FormationExtWindow : public QWidget {
     Q_OBJECT
 
-    QString login;
+    QString login; /*!< login pour lequel on souhaite ajouter une formation extérieure */
 
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
@@ -838,16 +1109,26 @@ class FormationExtWindow : public QWidget {
 
    public :
     FormationExtWindow(const QString& l);
+    /*!
+         *  \brief Accès en lecture au login
+         *
+         *
+         *  \return l'attribut login
+         */
     QString getLogin() const {return login;}
 
    public slots :
     void ajouter();
 };
 
+/*! \class SemestreWindow
+  * \brief Classe qui permet d'ajouter un semestre/une inscription à un uv, à un login existant
+  *
+  */
 class SemestreWindow : public QWidget {
     Q_OBJECT
 
-    QString login;
+    QString login; /*!< login pour lequel on souhaite ajouter un semestre */
 
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
@@ -870,6 +1151,12 @@ class SemestreWindow : public QWidget {
 
    public :
     SemestreWindow(const QString& l);
+    /*!
+         *  \brief Accès en lecture au login
+         *
+         *
+         *  \return l'attribut login
+         */
     QString getLogin() const {return login;}
 
    public slots :
@@ -878,6 +1165,10 @@ class SemestreWindow : public QWidget {
 
 class FormationWindow;
 
+/*! \class NewFormationWindow
+  * \brief Classe qui permet d'ajouter une nouvelle formation
+  *
+  */
 class NewFormationWindow : public QWidget {
     Q_OBJECT
     friend class FormationWindow;
@@ -897,11 +1188,13 @@ class NewFormationWindow : public QWidget {
     void annuler();
 };
 
+/*! \class FormationWindow
+  * \brief Classe de la fenêtre pour la gestion des formations
+  *
+  */
 class FormationWindow : public QWidget {
     Q_OBJECT
     friend class HomeWindow;
-    friend class BindUVWindow;
-    friend class UnbindUVWindow;
     NewFormationWindow *newformationwindow;
     Formation *formation;
     QVBoxLayout *mainlayout;
@@ -1093,7 +1386,10 @@ class CompletionProfilWindow : public QWidget {
     void refuser6();
 };
 
-
+/*! \class HomeWindow
+  * \brief Classe de la fenêtre d'accueil de UTProfiler
+  *
+  */
 class HomeWindow : public QWidget {
     Q_OBJECT
     UVWindow *uvwindow;
@@ -1118,9 +1414,13 @@ class HomeWindow : public QWidget {
     HomeWindow();
 };
 
+/*! \class AssocierUVWindow
+  * \brief Classe de la fenêtre pour associer une uv à une formation
+  *
+  */
 class AssocierUVWindow : public QWidget{
     Q_OBJECT
-    QString formation;
+    QString formation; /*!< Formation pour laquelle on souhaite associer une uv */
 
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
@@ -1131,14 +1431,24 @@ class AssocierUVWindow : public QWidget{
 
     public :
         AssocierUVWindow(const QString& f);
+        /*!
+             *  \brief Accès en lecture à la formation
+             *
+             *
+             *  \return l'attribut formation
+             */
         QString getFormation() const {return formation;}
     public slots :
         void ajouter();
 };
 
+/*! \class AssocierFiliereWindow
+  * \brief Classe de la fenêtre pour associer une filière à une branche
+  *
+  */
 class AssocierFiliereWindow : public QWidget{
     Q_OBJECT
-    QString branche;
+    QString branche; /*!< Branche pour laquelle on souhaite associer une filière */
 
     QVBoxLayout *mainlayout;
     QHBoxLayout *hlayout1;
@@ -1149,6 +1459,12 @@ class AssocierFiliereWindow : public QWidget{
 
     public :
         AssocierFiliereWindow(const QString& b);
+        /*!
+             *  \brief Accès en lecture à la branche
+             *
+             *
+             *  \return l'attribut branche
+             */
         QString getBranche() const {return branche;}
     public slots :
         void ajouter();

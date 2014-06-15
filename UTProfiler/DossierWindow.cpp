@@ -1,5 +1,17 @@
+/*!
+ * \file DossierWindow.cpp
+ * \brief Fenêtre de gestion des dossiers
+ * \author Gabrielle Rit et Timothée Monceaux
+ *
+ */
+
 #include "UTProfiler.h"
 
+/**
+ * \fn DossierWindow::DossierWindow()
+ * \brief Constructeur de la classe DossierWindow
+ *
+ */
 DossierWindow::DossierWindow() {
     setWindowTitle("UTProfiler");
     mainlayout = new QVBoxLayout();
@@ -157,7 +169,11 @@ DossierWindow::DossierWindow() {
 
 }
 
-
+/*!
+     *  \brief Sauvegarde ou ajout d'un dossier
+     *
+     *
+     */
 void DossierWindow::sauver() {
     if (lelogin->text() == ""){ // Vérification qu'il y ait bien un dossier à sauvegarder
         QMessageBox msg;
@@ -260,11 +276,23 @@ void DossierWindow::sauver() {
     }
 }
 
+/*!
+     *  \brief Activation du bouton Sauver
+     *
+     *  Chaque changement au sein de la fenêtre DossierWindow
+     *  appelle cette fonction
+     *
+     */
 void DossierWindow::pbsauverEnable() {
     pbsauver->setEnabled(true);
 }
 
-
+/*!
+     *  \brief Association d'un dossier aux champs de la fenêtre
+     *
+     *
+     *  \param d : le dossier à associer aux champs de la fenêtre DossierWindow
+     */
 void DossierWindow::associerDossier(Dossier *d) {
     lelogin->setText(d->getLogin());
     lenom->setText(d->getNom());
@@ -416,6 +444,10 @@ void DossierWindow::associerDossier(Dossier *d) {
 
 }
 
+/*!
+     *  \brief Recherche d'un dossier existant
+     *
+     */
 void DossierWindow::rechercher() {
     if (lelogin->text() == ""){ // Vérification qu'il y ait bien un dossier à rechercher
         QMessageBox msg;
@@ -447,12 +479,29 @@ void DossierWindow::rechercher() {
 
 }
 
+/*!
+     *  \brief Ajout d'une formation extérieure
+     *
+     *  Affiche une fenêtre FormationExtWindow pour ajouter
+     *  une formation extérieure au dossier en cours de visualisation.
+     *  Cette méthode est appelée par le bouton Ajouter lorsqu'il est cliqué.
+     */
 void DossierWindow::ajouterFormExt(){
     QString l = lelogin->text();
     FormationExtWindow *fenetre = new FormationExtWindow(l);
     fenetre->show();
 }
 
+/*!
+     *  \brief Suppression d'une formation extérieure
+     *
+     *  Lorsqu'on clique sur une cellule du tableau des formations extérieures,
+     *  cette fonction est appelée. Si la cellule cliquée appartient à la
+     *  6ème colonne du tableau (cellule "Supprimer"), alors la ligne est supprimée.
+     *
+     *  \param r : ligne de la cellule cliquée
+     *  \param c : colonne de la cellule cliquée
+     */
 void DossierWindow::supprFormExt(int r, int c){
     if (c == 6){
         QString q = "DELETE FROM FormationExt WHERE login = '";
@@ -466,12 +515,30 @@ void DossierWindow::supprFormExt(int r, int c){
     }
 }
 
+/*!
+     *  \brief Ajout d'un semestre
+     *
+     *  Cette fonction ouvre une SemestreWindow pour pouvoir
+     *  ajouter une inscription à un UV pour le dossier
+     *  en cours de visualisation.
+     *
+     */
 void DossierWindow::ajouterSemestre(){
     QString l = lelogin->text();
     SemestreWindow *fenetre = new SemestreWindow(l);
     fenetre->show();
 }
 
+/*!
+     *  \brief Suppression d'une inscription à un semestre
+     *
+     *  Lorsqu'on clique sur une cellule du tableau des semestres,
+     *  cette fonction est appelée. Si la cellule cliquée appartient à la
+     *  7ème colonne du tableau (cellule "Supprimer"), alors la ligne est supprimée.
+     *
+     *  \param r : ligne de la cellule cliquée
+     *  \param c : colonne de la cellule cliquée
+     */
 void DossierWindow::supprSemestre(int r, int c){
     if (c == 7){
 
@@ -497,6 +564,13 @@ void DossierWindow::supprSemestre(int r, int c){
     }
 }
 
+/*!
+     *  \brief Suppression d'un dossier existant
+     *
+     *  Cette fonction supprime un dossier existant et tout ce qui peut lui
+     *  être relié (Formations extérieures, Semestres, Inscriptions).
+     *
+     */
 void DossierWindow::supprimer(){
     if (lelogin->text() == ""){ // Vérification qu'il y ait bien un dossier à supprimer
         QMessageBox msg;
@@ -549,6 +623,14 @@ void DossierWindow::supprimer(){
 
 /* Fonctions liées à l'affichage des formations extérieures */
 
+/*!
+     *  \brief Constructeur de FormationExtWindow
+     *
+     *  Affiche une fenêtre pour ajouter une formation extérieure au dossier
+     *  en cours de visualisation.
+     *
+     *  \param l : login du dossier auquel on souhaite ajouter une formation extérieure
+     */
 FormationExtWindow::FormationExtWindow(const QString& l): login(l) {
     setWindowTitle("UTProfiler");
     mainlayout = new QVBoxLayout();
@@ -601,6 +683,12 @@ FormationExtWindow::FormationExtWindow(const QString& l): login(l) {
 
 }
 
+/*!
+     *  \brief Ajout d'une formation extérieure
+     *
+     *  Fonction appelée lorsque l'utilisateur clique sur le bouton Ajouter.
+     *
+     */
 void FormationExtWindow::ajouter() {
 
     if (getLogin() == '\0'){
@@ -637,6 +725,12 @@ void FormationExtWindow::ajouter() {
 
 /* Fonctions liées à l'affichage des semestres */
 
+/*!
+     *  \brief Constructeur de SemestreWindow
+     *
+     *
+     *  \param l : login du dossier auquel on veut ajouter une inscription à une uv
+     */
 SemestreWindow::SemestreWindow(const QString& l): login(l) {
     setWindowTitle("UTProfiler");
     mainlayout = new QVBoxLayout();
@@ -706,6 +800,14 @@ SemestreWindow::SemestreWindow(const QString& l): login(l) {
 
 }
 
+/*!
+     *  \brief Ajout d'un semestre à un dossier existant
+     *
+     *  Fonction appelée lorsque l'utilisateur clique sur le bouton Ajouter de SemestreWindow.
+     *
+     *  \param r : ligne de la cellule cliquée
+     *  \param c : colonne de la cellule cliquée
+     */
 void SemestreWindow::ajouter() {
 
     if (getLogin() == '\0'){
