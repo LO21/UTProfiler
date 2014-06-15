@@ -227,7 +227,7 @@ class UV {
      * \brief Accesseur en écriture du nombre de crédits SP que permet de valider cette UV
      * \param sp : nouveau nombre de credits SP de l'UV
      */
-    void setxCreditsSP(unsigned int sp) {creditsSP=sp;}
+    void setCreditsSP(unsigned int sp) {creditsSP=sp;}
     /**
      * \brief Accesseur en écriture de la disponibilité au printemps de cette UV
      * \param b : nouvelle disponibilité au printemps de l'UV
@@ -310,6 +310,7 @@ class Inscription {
  * Cette classe permet de garder temporairement en mémoire une formation d'un étudiant à l'extérieur de l'UTC. Cependant, un objet de cette classe n'est que temporaire, puisque toutes nos FormationsExterieures sont stockées dans notre Base de Données.
  */
 class FormationExterieure {
+    string login; /**< Le login du dossier pour lequel la formation extérieure est associée */
     string nom; /**< Le nom de cette formation*/
     string lieu; /**< Le lieu où l'étudiant a suivi cette formation*/
     unsigned int creditsCS; /**< Le nombre de credits CS que cette formation lui a rapporté par équivalence*/
@@ -327,17 +328,22 @@ class FormationExterieure {
      * @param tsh: le nombre de crédits TSH obtenus par cette nouvelle formation
      * @param sp: le nombre de crédits SP obtenus par cette nouvelle formation
      */
-    FormationExterieure (const string& n, const string& l, unsigned int cs, unsigned int tm, unsigned int tsh, unsigned int sp) : nom(n), lieu(l), creditsCS(cs), creditsTM(tm), creditsTSH(tsh), creditsSP(sp) {}
+    FormationExterieure (const string& log, const string& n, const string& l, unsigned int cs, unsigned int tm, unsigned int tsh, unsigned int sp) : login(log), nom(n), lieu(l), creditsCS(cs), creditsTM(tm), creditsTSH(tsh), creditsSP(sp) {}
     /**
      * @brief Constructeur par recopie
      * Permet de créer un nouvel objet FormationExterieure identique à un autre objet de la même classe déjà existant
      * @param other : l'objet à recopier
      */
-    FormationExterieure (FormationExterieure& other) : nom(other.getNom()), lieu(other.getLieu()), creditsCS(other.getCreditsCS()), creditsTM(other.getCreditsTM()), creditsTSH(other.getCreditsTSH()), creditsSP(other.getCreditsSP()) {}
+    FormationExterieure (FormationExterieure& other) : login(other.getLogin()),nom(other.getNom()), lieu(other.getLieu()), creditsCS(other.getCreditsCS()), creditsTM(other.getCreditsTM()), creditsTSH(other.getCreditsTSH()), creditsSP(other.getCreditsSP()) {}
     /**
      * \brief Destructeur
      */
     ~FormationExterieure() {}
+    /**
+     * @brief Accesseur en lecture au login du dossier
+     * @return Le login du dossier
+     */
+    string getLogin() const {return login;}
     /**
      * @brief Accesseur en lecture du nom de cette formation
      * @return Le nom de cette formation
@@ -369,8 +375,13 @@ class FormationExterieure {
      */
     unsigned int getCreditsSP() const {return creditsSP;}
     /**
+     * @brief Accesseur en écriture du login du dossier
+     * @param s : Le login du dossier
+     */
+    void setLogin (const string& l) {login = l;}
+    /**
      * @brief Accesseur en écriture du nom de cette formation
-     * @param s : Le nouveau nom de cette formation
+     * @param l : Le nouveau nom de cette formation
      */
     void setNom (const string& s) {nom=s;}
     /**
@@ -407,12 +418,11 @@ class FormationExterieure {
  * Cette classe permet de garder temporairement en mémoire un semestre d'un étudiant à l'UTC. Cependant, un objet de cette classe n'est que temporaire, puisque tous nos semestres sont stockés dans notre Base de Données.
  */
 class Semestre {
+    string login; /**< Login du dossier concerné */
     unsigned int annee; /**< L'année en cours au moment du semestre*/
     Saison saison; /**< La saison en cours (Printemps ou Automne) au moment du semestre*/
     string commentaire; /**< Le commentaire du jury sur les résultats de l'étudiant ce semestre*/
     Inscription *inscriptions; /**< Les différentes inscriptions aux UVs de l'étudiant ce semestre, si il était à Compiègne*/
-    bool ext; /**< Booléen décrivant si l'étudiant suivait une formation à l'extérieur de l'UTC ce semestre*/
-    FormationExterieure *formationExt; /**< Si l'étudiant suivait une formation à l'extérieur de l'UTC ce semestre, elle est décrite ici*/
    public :
     /**
      * @brief Constructeur
@@ -421,11 +431,16 @@ class Semestre {
      * @param s : La saison de ce semestre
      * @param c : Le commentaire du jury de ce semestre
      */
-    Semestre(unsigned int a, Saison s, string c="") : annee(a), saison(s), commentaire(c), ext(false) {}
+    Semestre(unsigned int a, Saison s, string c="") : annee(a), saison(s), commentaire(c){}
     /**
      * @brief Destructeur
      */
-    ~Semestre() {delete inscriptions; delete formationExt;}
+    ~Semestre() {delete inscriptions;}
+    /**
+     * @brief Accesseur en lecture du login concercné
+     * @return Le login concerné
+     */
+    string getLogin() const {return login;}
     /**
      * @brief Accesseur en lecture de l'année en cours au moment du semestre
      * @return L'année en cours au moment du semestre
@@ -447,15 +462,10 @@ class Semestre {
      */
     Inscription* getInscriptions() const {return inscriptions;}
     /**
-     * @brief Accesseur en lecture du booléen décrivant si l'étudiant était ou non en formation extérieure durant ce semestre
-     * @return True si l'étudiant suivait une formation extérieure ce semestre, False si il était à Compiègne
+     * @brief Accesseur en écriture du login concerné
+     * @param l : Le login concerné
      */
-    bool getExt() const {return ext;}
-    /**
-     * @brief Accesseur en lecture du pointeur vers la formation extérieure suivie par l'étudiant ce semestre, s'il en a suivi une
-     * @return Le pointeur vers la formation extérieure suivie par l'étudiant ce semestre
-     */
-    FormationExterieure* getFormationExterieure() const {return formationExt;}
+    void setLogin(const string& l) {login = l;}
     /**
      * @brief Accesseur en écriture de l'année au moment du semestre
      * @param i : La nouvelle année de ce semestre
@@ -476,20 +486,12 @@ class Semestre {
      * @param i : Le nouveau tableau d'inscriptions aux UVs
      */
     void setInscriptions (Inscription *i) {inscriptions=i;}
-    /**
-     * @brief Accesseur en écriture du booléen décrivant si l'étudiant suivait ou non une formation exterieure ce semestre
-     * @param e : La nouvelle valeur du booléen
-     */
-    void setExt (bool e) {ext=e;}
-    /**
-     * @brief Accesseur en écriture du pointeur vers la formation extérieure suivie par l'étudiant, s'il en a suivi une ce semestre
-     * @param fe : La nouvelle valeur de ce pointeur
-     */
-    void setFormationExterieure (FormationExterieure* fe) {formationExt=fe;}
 };
 
 /*! \class Dossier
   * \brief Classe représentant un dossier
+  *
+  * Cette classe permet de garder temporairement en mémoire le dossier d'un étudiant à une UV. Cependant, un objet de cette classe n'est que temporaire, puisque touts les dossiers sont stockés dans notre Base de Données.
   *
   */
 class Dossier {
@@ -753,6 +755,8 @@ class Dossier {
 
 /*! \class Formation
   * \brief Classe représentant une formation
+  *
+  * Cette classe permet de garder temporairement en mémoire une formation. Cependant, un objet de cette classe n'est que temporaire, puisque toutes nos formations sont stockées dans notre Base de Données.
   *
   */
 class Formation {
